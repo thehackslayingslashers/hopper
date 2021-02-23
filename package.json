@@ -1,0 +1,19 @@
+{
+  "name": "hopper",
+  "version": "1.0.0",
+  "description": "FEC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thehackslayingslashers/hopper.git"
+  },
+  "author": "thehackslayingslashers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thehackslayingslashers/hopper/issues"
+  },
+  "homepage": "https://github.com/thehackslayingslashers/hopper#readme"
+}
