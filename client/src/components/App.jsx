@@ -4,7 +4,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <p>LOADED</p>
+      <p>Hello World App is Loading</p>
     )
   }
 }
