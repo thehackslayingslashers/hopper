@@ -1,19 +1,3 @@
-# hopper
-
-Title: FEC Project Hopper
-
-Overview:
-
-Table of Contents:
-
-Description:
-
-Installatons: run npm install
-
-Usage: Demo a front-end
-
-Team Members:
-
 # Project Title
 
 > Project description
