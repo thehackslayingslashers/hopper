@@ -3,21 +3,22 @@ import TarrinsClass from './TarrinsClass';
 import LModule from './LModule';
 
 class App extends React.Component {
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
 
-    }
+    };
   }
-  render () {
+
+  render() {
     return (
       <div>
         <p>App is Loading</p>
 
         <TarrinsClass />
-        <LModule/>
+        <LModule />
       </div>
-    )
+    );
   }
 }
 

@@ -1,28 +1,26 @@
 const path = require('path');
 
-
 module.exports = {
-  entry: './client/src/index.js',
+  entry: './client/src/index.jsx',
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [
       {
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
-          }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
       },
     ],
   },
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: ['.js', '.jsx'],
+  },
 };
-
