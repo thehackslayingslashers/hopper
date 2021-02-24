@@ -2,7 +2,10 @@
   "name": "hopper",
   "version": "1.0.0",
   "description": "FEC",
-  "private": true,
+  "main": "server/index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
@@ -19,6 +22,11 @@
     "url": "https://github.com/thehackslayingslashers/hopper/issues"
   },
   "homepage": "https://github.com/thehackslayingslashers/hopper#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-env", "@babel/preset-react"
+    ]
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "express": "^4.17.1",
@@ -27,8 +35,12 @@
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
     "babel": "^6.23.0",
+    "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7",
+    "@babel/preset-react": "^7.12.13",
     "webpack": "^5.24.1",
     "webpack-cli": "^4.5.0"
   },
