@@ -24,7 +24,8 @@
   "homepage": "https://github.com/thehackslayingslashers/hopper#readme",
   "babel": {
     "presets": [
-      "@babel/preset-env", "@babel/preset-react"
+      "@babel/preset-env",
+      "@babel/preset-react"
     ]
   },
   "dependencies": {
@@ -37,10 +38,10 @@
   "devDependencies": {
     "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
     "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7",
-    "@babel/preset-react": "^7.12.13",
     "webpack": "^5.24.1",
     "webpack-cli": "^4.5.0"
   },
