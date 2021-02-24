@@ -10,5 +10,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is live and happenin on ${port}`)
+  console.log(`Server is live and happenin on ${port}`);
 })
