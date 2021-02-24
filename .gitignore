@@ -105,3 +105,4 @@ dist
 
 # api keys and config info
 config.js
+.env
