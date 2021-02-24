@@ -105,4 +105,8 @@ dist
 
 # api keys and config info
 config.js
+<<<<<<< HEAD
 .env
+=======
+.env
+>>>>>>> ae6fbe3d7d5586d32375b7a9ea919a80ddfbf75d
