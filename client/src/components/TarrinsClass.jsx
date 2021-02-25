@@ -3,16 +3,11 @@ import React from 'react';
 class TarrinsClass extends React.Component {
   constructor() {
     super();
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
-    return (
-      <p>TarrinsClass is loading</p>
-
-    );
+    return <p>TarrinsClass is loading</p>;
   }
 }
 
