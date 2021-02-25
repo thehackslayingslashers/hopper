@@ -1,7 +1,12 @@
 {
+<<<<<<< HEAD
+  "extends": "airbnb",
+  "eslintIgnore": ["public/index.js", "/node_modules/"]
+=======
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": ["error"]
   },
+>>>>>>> d3e209e9297b0c4f0b83c140c459543b5d61d0d7
 }

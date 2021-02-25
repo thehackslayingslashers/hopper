@@ -7,9 +7,7 @@ import Gareth from './GarethsPart';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
@@ -20,6 +18,7 @@ class App extends React.Component {
         <TarrinsClass />
         <JClass />
         <LModule />
+        <Gareth />
       </div>
     );
   }
