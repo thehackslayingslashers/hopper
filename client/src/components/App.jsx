@@ -18,6 +18,7 @@ class App extends React.Component {
 
         <TarrinsClass />
         <LModule />
+        <Gareth />
       </div>
     );
   }
