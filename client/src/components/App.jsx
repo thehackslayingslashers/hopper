@@ -1,5 +1,6 @@
 import React from 'react';
 import TarrinsClass from './TarrinsClass';
+import JClass from './JohnathansClass';
 import LModule from './LModule';
 import Gareth from './GarethsPart';
 
@@ -17,6 +18,7 @@ class App extends React.Component {
         <p>App is Loading</p>
 
         <TarrinsClass />
+        <JClass />
         <LModule />
       </div>
     );
