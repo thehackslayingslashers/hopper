@@ -1,5 +1,5 @@
 import React from 'react';
-import Overview from './OverviewModule/OverviewModule';
+import OverviewMod from './OverviewMod/OverviewMod';
 import JClass from './JClass';
 import LModule from './LModule';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
@@ -15,7 +15,7 @@ class App extends React.Component {
       <div>
         <p>App is Loading</p>
 
-        <Overview />
+        <OverviewMod />
         <JClass />
         <LModule />
         <QuestionsAndAnswers />
