@@ -10,4 +10,3 @@ describe('<App />', () => {
     expect(wrapper.find(LMod)).toHaveLength(1);
   });
 })
-
