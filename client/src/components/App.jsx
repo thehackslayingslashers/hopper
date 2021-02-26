@@ -2,7 +2,7 @@ import React from 'react';
 import TarrinsClass from './TarrinsClass';
 import JClass from './JClass';
 import LModule from './LModule';
-import Gareth from './GarethsPart';
+import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
 
 class App extends React.Component {
   constructor() {
@@ -18,7 +18,7 @@ class App extends React.Component {
         <TarrinsClass />
         <JClass />
         <LModule />
-        <Gareth />
+        <QuestionsAndAnswers/>
       </div>
     );
   }
