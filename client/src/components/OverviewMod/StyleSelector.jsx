@@ -8,7 +8,7 @@ class StyleSelector extends React.Component {
 
   render() {
     return (
-      <div id="styleSelector">
+      <div id="overviewStyleSelector">
         <p>StyleSelector is loading</p>
       </div>
     );

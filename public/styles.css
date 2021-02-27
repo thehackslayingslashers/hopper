@@ -3,13 +3,24 @@ body {
   margin: auto;
 }
 
+/*
+=====================
+Header
+=====================
+*/
+
 #pageHeader {
   background-color: burlywood;
-  height: 53px;
 }
 
 #pageHeader h1 {
   margin: 0;
+  height: 53px;
+}
+
+#announcement {
+  background-color: coral;
+  height: 33px;
 }
 
 /*
@@ -26,28 +37,28 @@ Overview Module
   grid-template-rows: 25% 21% 25% 29%;
 }
 
-#imageGallery {
+#overviewImageGallery {
   background-color: purple;
   grid-row-start: 1;
   grid-row-end: 4;
 }
 
-#basicInfo {
+#overviewBasicInfo {
   background-color: indigo;
   grid-row: 1;
 }
 
-#styleSelector {
+#overviewStyleSelector {
   background-color: blueviolet;
   grid-row: 2;
 }
 
-#addToCart {
+#overviewAddToCart {
   background-color: darkorchid;
   grid-row: 3;
 }
 
-#productInformation {
+#overviewProductInformation {
   background-color: fuchsia;
   grid-row: 4;
   grid-column-start: 1;

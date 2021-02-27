@@ -8,7 +8,7 @@ class ProductInformation extends React.Component {
 
   render() {
     return (
-      <div id="productInformation">
+      <div id="overviewProductInformation">
         <p>ProductInformation is loading</p>
       </div>
     );

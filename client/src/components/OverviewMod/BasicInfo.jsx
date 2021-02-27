@@ -8,7 +8,7 @@ class BasicInfo extends React.Component {
 
   render() {
     return (
-      <div id="basicInfo">
+      <div id="overviewBasicInfo">
         <p>BasicInfo is loading</p>
       </div>
     );
