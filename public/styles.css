@@ -1,8 +1,72 @@
 body {
-  max-width: 100vh;
+  max-width: 114vh;
   margin: auto;
 }
 
-#overview {
-  border: dotted 2px;
+/*
+=====================
+Header
+=====================
+*/
+
+#pageHeader {
+  background-color: burlywood;
 }
+
+#pageHeader h1 {
+  margin: 0;
+  height: 53px;
+}
+
+#announcement {
+  background-color: coral;
+  height: 33px;
+}
+
+/*
+=====================
+Overview Module
+=====================
+*/
+
+#overview {
+  width: 100%;
+  height: 82vh;
+  display: grid;
+  grid-template-columns: 62% 38%;
+  grid-template-rows: 25% 21% 25% 29%;
+}
+
+#overviewImageGallery {
+  background-color: purple;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#overviewBasicInfo {
+  background-color: indigo;
+  grid-row: 1;
+}
+
+#overviewStyleSelector {
+  background-color: blueviolet;
+  grid-row: 2;
+}
+
+#overviewAddToCart {
+  background-color: darkorchid;
+  grid-row: 3;
+}
+
+#overviewProductInformation {
+  background-color: fuchsia;
+  grid-row: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+/*
+=====================
+ Module
+=====================
+*/

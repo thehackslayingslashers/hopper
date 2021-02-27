@@ -7,7 +7,11 @@ class AddToCart extends React.Component {
   }
 
   render() {
-    return <p>AddToCart is loading</p>;
+    return (
+      <div id="overviewAddToCart">
+        <p>AddToCart is loading</p>
+      </div>
+    );
   }
 }
 

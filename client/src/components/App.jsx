@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
 import LModule from './LModule';
@@ -13,7 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>App is Loading</p>
+        <Header />
         <OverviewMod />
         <RelatedItemsAndComparison />
         <LModule />

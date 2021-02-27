@@ -7,7 +7,11 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    return <p>ImageGallery is loading</p>;
+    return (
+      <div id="overviewImageGallery">
+        <p>ImageGallery is loading</p>
+      </div>
+    );
   }
 }
 
