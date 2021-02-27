@@ -3,6 +3,21 @@ body {
   margin: auto;
 }
 
+#pageHeader {
+  background-color: burlywood;
+  height: 53px;
+}
+
+#pageHeader h1 {
+  margin: 0;
+}
+
+/*
+=====================
+Overview Module
+=====================
+*/
+
 #overview {
   width: 100%;
   height: 82vh;
@@ -38,3 +53,9 @@ body {
   grid-column-start: 1;
   grid-column-end: 3;
 }
+
+/*
+=====================
+ Module
+=====================
+*/
