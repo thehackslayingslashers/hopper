@@ -1,6 +1,6 @@
 import React from 'react';
 import OverviewMod from './OverviewMod/OverviewMod';
-import JClass from './JClass';
+import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
 import LModule from './LModule';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
 
@@ -14,9 +14,8 @@ class App extends React.Component {
     return (
       <div>
         <p>App is Loading</p>
-
         <OverviewMod />
-        <JClass />
+        <RelatedItemsAndComparison />
         <LModule />
         <QuestionsAndAnswers />
       </div>
