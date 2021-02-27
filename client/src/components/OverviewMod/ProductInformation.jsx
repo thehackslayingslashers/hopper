@@ -7,7 +7,11 @@ class ProductInformation extends React.Component {
   }
 
   render() {
-    return <p>ProductInformation is loading</p>;
+    return (
+      <div id="productInformation">
+        <p>ProductInformation is loading</p>
+      </div>
+    );
   }
 }
 

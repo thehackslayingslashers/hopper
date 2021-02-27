@@ -7,7 +7,11 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    return <p>StyleSelector is loading</p>;
+    return (
+      <div id="styleSelector">
+        <p>StyleSelector is loading</p>
+      </div>
+    );
   }
 }
 

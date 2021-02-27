@@ -5,4 +5,41 @@ body {
 
 #overview {
   border: dotted 2px;
+  width: 100%;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 25% 25% 25% 25%;
+}
+
+#imageGallery {
+  background-color: purple;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+#basicInfo {
+  background-color: indigo;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+#styleSelector {
+  background-color: blueviolet;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#addToCart {
+  background-color: darkorchid;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+#productInformation {
+  background-color: fuchsia;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
