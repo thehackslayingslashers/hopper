@@ -1,4 +1,8 @@
 import React from 'react';
+import AddToCart from './AddToCart';
+import ImageGallery from './ImageGallery';
+import ProductInformation from './ProductInformation';
+import StyleSelector from './StyleSelector';
 
 class OverviewMod extends React.Component {
   constructor() {
@@ -7,7 +11,15 @@ class OverviewMod extends React.Component {
   }
 
   render() {
-    return <p>OverviewMod is loading</p>;
+    return (
+      <div>
+        <p>OverviewMod is loading</p>
+        <AddToCart />
+        <ImageGallery />
+        <ProductInformation />
+        <StyleSelector />
+      </div>
+    );
   }
 }
 
