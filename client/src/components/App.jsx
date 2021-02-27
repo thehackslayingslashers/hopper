@@ -1,5 +1,5 @@
 import React from 'react';
-import TarrinsClass from './TarrinsClass';
+import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
 import LModule from './LModule';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
@@ -14,11 +14,10 @@ class App extends React.Component {
     return (
       <div>
         <p>App is Loading</p>
-
-        <TarrinsClass />
+        <OverviewMod />
         <RelatedItemsAndComparison />
         <LModule />
-        <QuestionsAndAnswers/>
+        <QuestionsAndAnswers />
       </div>
     );
   }
