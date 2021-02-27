@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
 const axios = require('axios');
-
 const dotenv = require('dotenv').config();
 
 const app = express();
@@ -21,9 +20,20 @@ app.get('/product/:id', (req, res) => {
       Authorization: process.env.GITHUB_API_KEY
     }
   }
+  let basicInfo;
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
     .then((response) => {
-      res.send(response.data)
+      basicInfo = response.data;
+      options.params = {
+        product_id: basicInfo.id
+      }
+      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta`, options)
+        .then(response => {
+          res.send([basicInfo, response.data])
+        })
+        .catch((error) => {
+          res.status(500).send([basicInfo, 'failed to fetch review data'])
+        })
     })
     .catch((error) => {
       res.status(500).send(error)

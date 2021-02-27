@@ -6,16 +6,22 @@ import StyleSelector from './StyleSelector';
 import BasicInfo from './BasicInfo';
 
 class OverviewMod extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
+    const { currentItemInfo, currentItemRatingInfo, currentItemAverageRating } = this.props;
+
     return (
       <div id="overview">
         <ImageGallery />
-        <BasicInfo />
+        <BasicInfo
+          currentItemInfo={currentItemInfo}
+          currentItemRatingInfo={currentItemRatingInfo}
+          currentItemAverageRating={currentItemAverageRating}
+        />
         <StyleSelector />
         <AddToCart />
         <ProductInformation />
