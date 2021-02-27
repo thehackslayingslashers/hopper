@@ -1,6 +1,6 @@
 import React from 'react';
 import TarrinsClass from './TarrinsClass';
-import JClass from './JClass';
+import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
 import LModule from './LModule';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
         <p>App is Loading</p>
 
         <TarrinsClass />
-        <JClass />
+        <RelatedItemsAndComparison />
         <LModule />
         <QuestionsAndAnswers/>
       </div>
