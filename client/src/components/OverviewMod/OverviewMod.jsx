@@ -12,7 +12,7 @@ class OverviewMod extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="overview">
         <p>OverviewMod is loading</p>
         <AddToCart />
         <ImageGallery />
