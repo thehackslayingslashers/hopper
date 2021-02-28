@@ -1,6 +1,6 @@
 import React from 'react';
 
-class LModule extends React.Component {
+class LMod extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,4 +12,4 @@ class LModule extends React.Component {
   }
 }
 
-export default LModule;
+export default LMod;
