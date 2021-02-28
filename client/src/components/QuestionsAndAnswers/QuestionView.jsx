@@ -20,6 +20,7 @@ class QuestionView extends React.Component {
       <div>
         Questions:
         <Question />
+        <Question />
       </div>
     );
   }

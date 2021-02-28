@@ -15,6 +15,7 @@ class App extends React.Component {
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
+      currentItemStyles: [],
     };
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
@@ -30,6 +31,7 @@ class App extends React.Component {
           {
             currentItemInfo: data.data[0],
             currentItemRatingInfo: data.data[1],
+            currentItemStyles: data.data[2].results,
           },
           this.calculateAverageCurrentItemRating
         );
@@ -59,6 +61,7 @@ class App extends React.Component {
           currentItemInfo={this.state.currentItemInfo}
           currentItemRatingInfo={this.state.currentItemRatingInfo}
           currentItemAverageRating={this.state.currentItemAverageRating}
+          currentItemStyles={this.state.currentItemStyles}
         />
         <RelatedItemsAndComparison />
         <LModule />
