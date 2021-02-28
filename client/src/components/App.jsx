@@ -65,7 +65,7 @@ class App extends React.Component {
         />
         <RelatedItemsAndComparison />
         <LModule />
-        <QuestionsAndAnswers />
+        <QuestionsAndAnswers currentProduct={this.state.currentItemId} />
       </div>
     );
   }
