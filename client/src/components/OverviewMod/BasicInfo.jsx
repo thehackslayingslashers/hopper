@@ -8,14 +8,19 @@ class BasicInfo extends React.Component {
 
   render() {
     const { currentItemInfo, currentItemAverageRating } = this.props;
-    return (
-      <div id="overviewBasicInfo">
-        <p>{currentItemAverageRating}</p>
-        <p>{currentItemInfo.category}</p>
-        <p>{currentItemInfo.name}</p>
-        <p>{'$' + currentItemInfo.default_price}</p>
-      </div>
-    );
+
+    if (currentItemInfo.name) {
+      return (
+        <div id="overviewBasicInfo">
+          <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>
+          <p>{currentItemInfo.category}</p>
+          <p>{currentItemInfo.name}</p>
+          <p>{'$' + currentItemInfo.default_price}</p>
+        </div>
+      );
+    } else {
+      return <div id="overviewBasicInfo">Loading</div>;
+    }
   }
 }
 

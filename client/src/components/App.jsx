@@ -19,6 +19,7 @@ class App extends React.Component {
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
   }
+
   getInfoAboutCurrentItem() {
     let productId = this.state.currentItemId;
 
@@ -39,7 +40,6 @@ class App extends React.Component {
   }
 
   calculateAverageCurrentItemRating() {
-    debugger;
     helpers.calculateAverageRating(this.state.currentItemRatingInfo.ratings, (avg) => {
       this.setState({
         currentItemAverageRating: avg,

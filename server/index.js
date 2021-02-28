@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
-const axios = require('axios');
-const dotenv = require('dotenv').config();
+const outbound = require('./outbound');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,19 +14,11 @@ app.get('/', (req, res) => {
 
 app.get('/product/:id', (req, res) => {
   let id = req.params.id;
-  let options = {
-    headers: {
-      Authorization: process.env.GITHUB_API_KEY
-    }
-  }
   let basicInfo;
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
+  outbound.currentItemInfoFetch(id)
     .then((response) => {
       basicInfo = response.data;
-      options.params = {
-        product_id: basicInfo.id
-      }
-      axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta`, options)
+      outbound.reviewInfoFetch(id)
         .then(response => {
           res.send([basicInfo, response.data])
         })
