@@ -33,8 +33,8 @@ Overview Module
   width: 100%;
   height: 82vh;
   display: grid;
-  grid-template-columns: 62% 38%;
-  grid-template-rows: 25% 21% 25% 29%;
+  grid-template-columns: 10% 52% 2% 36%;
+  grid-template-rows: 25% 21% 23% 7% 17% 7%;
 }
 
 /* Image Gallery */
@@ -43,6 +43,8 @@ Overview Module
   background-color: purple;
   grid-row-start: 1;
   grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 /* Basic Info */
@@ -50,6 +52,16 @@ Overview Module
 #overviewBasicInfo {
   background-color: indigo;
   grid-row: 1;
+  grid-column: 4;
+}
+
+#overviewBasicInfo p {
+  line-height: 0.5;
+}
+
+#overviewBasicInfo h1 {
+  line-height: 0.9;
+  margin: 0;
 }
 
 /* Style Selector */
@@ -57,6 +69,7 @@ Overview Module
 #overviewStyleSelector {
   background-color: blueviolet;
   grid-row: 2;
+  grid-column: 4;
 }
 
 /* Add To Cart */
@@ -64,31 +77,37 @@ Overview Module
 #overviewAddToCart {
   background-color: darkorchid;
   grid-row: 3;
+  grid-column: 4;
 }
 
 /* Production Information */
 
 #overviewProductInformation {
   background-color: fuchsia;
-  grid-row: 4;
-  grid-column: 1;
+  grid-row: 5;
+  grid-column: 2;
+  font-size: 12px;
+}
+
+#overviewProductInformation h3 {
+  margin-top: 0;
 }
 
 /* Feature List */
 
 #overviewFeatureList {
   background-color: violet;
-  grid-row: 4;
-  grid-column: 2;
+  grid-row: 5;
+  grid-column: 4;
   margin: 0;
+  border-left: black solid 2px;
 }
 
 #overviewFeatureList li {
-  list-style: none;
-}
-
-#overviewFeatureList li:before {
-  content: '✓';
+  list-style-position: outside;
+  list-style-type: '✓';
+  line-height: 2;
+  font-size: 12px;
 }
 
 /*

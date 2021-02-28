@@ -13,8 +13,8 @@ class BasicInfo extends React.Component {
       return (
         <div id="overviewBasicInfo">
           <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>
-          <p>{currentItemInfo.category}</p>
-          <p>{currentItemInfo.name}</p>
+          <p>{currentItemInfo.category.toUpperCase()}</p>
+          <h1>{currentItemInfo.name}</h1>
           <p>{'$' + currentItemInfo.default_price}</p>
         </div>
       );
