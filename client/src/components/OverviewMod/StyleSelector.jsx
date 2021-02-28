@@ -9,7 +9,7 @@ class StyleSelector extends React.Component {
   render() {
     let { currentItemStyles } = this.props;
 
-    if (currentItemStyles[0]) {
+    if (currentItemStyles && currentItemStyles[0]) {
       let styleItems = currentItemStyles.map((style) => {
         return (
           <div key={style.name} className="overviewStyleItem">
