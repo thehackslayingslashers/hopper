@@ -7,7 +7,7 @@ let options = {
   }
 }
 
-const currentItemInfoFetch = (id) => {
+const fetchItemById = (id) => {
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
 }
 
@@ -19,7 +19,12 @@ const reviewInfoFetch = (id) => {
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta`, localOptions)
 }
 
+const fetchStyles = (id) => {
+  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, options)
+}
+
 module.exports = {
-  currentItemInfoFetch,
-  reviewInfoFetch
+  fetchItemById,
+  reviewInfoFetch,
+  fetchStyles
 }

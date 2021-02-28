@@ -14,20 +14,34 @@ app.get('/', (req, res) => {
 
 app.get('/product/:id', (req, res) => {
   let id = req.params.id;
-  let basicInfo;
-  outbound.currentItemInfoFetch(id)
-    .then((response) => {
-      basicInfo = response.data;
-      outbound.reviewInfoFetch(id)
-        .then(response => {
-          res.send([basicInfo, response.data])
-        })
-        .catch((error) => {
-          res.status(500).send([basicInfo, 'failed to fetch review data'])
-        })
+  let data = []
+  outbound.fetchItemById(id)
+    .then(response => {
+      data.push(response.data);
     })
-    .catch((error) => {
-      res.status(500).send(error)
+    .catch(error => {
+      data.push('failed to pull item data')
+    })
+    .then(() => {
+      return outbound.reviewInfoFetch(id)
+    })
+    .then(response => {
+      data.push(response.data)
+    })
+    .catch(error => {
+      data.push('failed to pull reviews')
+    })
+    .then(() => {
+      return outbound.fetchStyles(id)
+    })
+    .then(response => {
+      data.push(response.data)
+    })
+    .catch(error => {
+      data.push('failed to pull styles')
+    })
+    .then(() => {
+      res.send(data)
     })
 });
 

@@ -35,6 +35,7 @@ Overview Module
   display: grid;
   grid-template-columns: 10% 52% 2% 36%;
   grid-template-rows: 25% 21% 23% 7% 17% 7%;
+  background-color: lightslategray;
 }
 
 /* Image Gallery */

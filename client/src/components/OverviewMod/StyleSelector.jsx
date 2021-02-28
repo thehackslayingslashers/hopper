@@ -1,17 +1,26 @@
 import React from 'react';
 
 class StyleSelector extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    return (
-      <div id="overviewStyleSelector">
-        <p>StyleSelector is loading</p>
-      </div>
-    );
+    let { currentItemStyles } = this.props;
+
+    if (currentItemStyles[0]) {
+      let styleItems = currentItemStyles.map((style) => {
+        return (
+          <div key={style.name} className="overviewStyleItem">
+            {style.name}
+          </div>
+        );
+      });
+      return <div id="overviewStyleSelector">{styleItems}</div>;
+    } else {
+      return <div id="overviewStyleSelector">Loading</div>;
+    }
   }
 }
 
