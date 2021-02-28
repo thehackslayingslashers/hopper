@@ -1,17 +1,26 @@
 import React from 'react';
 
 class BasicInfo extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    return (
-      <div id="overviewBasicInfo">
-        <p>BasicInfo is loading</p>
-      </div>
-    );
+    const { currentItemInfo, currentItemAverageRating } = this.props;
+
+    if (currentItemInfo.name) {
+      return (
+        <div id="overviewBasicInfo">
+          <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>
+          <p>{currentItemInfo.category}</p>
+          <p>{currentItemInfo.name}</p>
+          <p>{'$' + currentItemInfo.default_price}</p>
+        </div>
+      );
+    } else {
+      return <div id="overviewBasicInfo">Loading</div>;
+    }
   }
 }
 
