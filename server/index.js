@@ -14,35 +14,36 @@ app.get('/', (req, res) => {
 
 app.get('/product/:id', (req, res) => {
   let id = req.params.id;
-  let data = []
-  outbound.fetchItemById(id)
-    .then(response => {
+  let data = [];
+  outbound
+    .fetchItemById(id)
+    .then((response) => {
       data.push(response.data);
     })
-    .catch(error => {
-      data.push('failed to pull item data')
+    .catch((error) => {
+      data.push('failed to pull item data');
     })
     .then(() => {
-      return outbound.reviewInfoFetch(id)
+      return outbound.reviewInfoFetch(id);
     })
-    .then(response => {
-      data.push(response.data)
+    .then((response) => {
+      data.push(response.data);
     })
-    .catch(error => {
-      data.push('failed to pull reviews')
-    })
-    .then(() => {
-      return outbound.fetchStyles(id)
-    })
-    .then(response => {
-      data.push(response.data)
-    })
-    .catch(error => {
-      data.push('failed to pull styles')
+    .catch((error) => {
+      data.push('failed to pull reviews');
     })
     .then(() => {
-      res.send(data)
+      return outbound.fetchStyles(id);
     })
+    .then((response) => {
+      data.push(response.data);
+    })
+    .catch((error) => {
+      data.push('failed to pull styles');
+    })
+    .then(() => {
+      res.send(data);
+    });
 });
 
 app.listen(port, () => {
