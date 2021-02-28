@@ -24,7 +24,7 @@ class PostQuestion extends React.Component {
     return (
       <div>
         Post Question Here:
-        <input type="text" onChange={this.handleGetPostQuestionFieldValue}></input>
+        <input className="post-question-field" type="text" onChange={this.handleGetPostQuestionFieldValue}></input>
         <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
       </div>
     );

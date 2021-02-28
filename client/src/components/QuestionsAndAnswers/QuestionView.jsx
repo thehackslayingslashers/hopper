@@ -1,16 +1,27 @@
 import React from 'react';
+import QuestionsAndAnswers from './QuestionsAndAnswers.jsx';
+import Question from './Question.jsx';
 
 class QuestionView extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      displayedQuestions : []
-    }
+      displayedQuestions: [],
+    };
   }
 
-  render () {
-    return(<div>Questions Go Here: Question?</div>);
+  componentDidMount() {
+    console.log(this.props.product);
+  }
+
+  render() {
+    return (
+      <div>
+        Questions:
+        <Question />
+      </div>
+    );
   }
 }
 

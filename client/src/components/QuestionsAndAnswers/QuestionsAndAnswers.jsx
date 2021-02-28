@@ -54,10 +54,11 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     return (
       <div style={{ backgroundColor: 'lightblue' }}>
-        <QuestionView />
+        <QuestionView product={this.state} />
         <QuestionSearch />
         <PostQuestion />
         <AnswerQuestion />
+        <button>Show More</button>
       </div>
     );
   }
