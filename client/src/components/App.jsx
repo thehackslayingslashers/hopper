@@ -4,7 +4,7 @@ import helpers from './helpers';
 import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
-import LModule from './LModule';
+import LMod from './RatingsAndReviewsMod/LMod';
 import QuestionsAndAnswers from './QuestionsAndAnswers/QuestionsAndAnswers';
 
 class App extends React.Component {
@@ -64,7 +64,7 @@ class App extends React.Component {
           currentItemStyles={this.state.currentItemStyles}
         />
         <RelatedItemsAndComparison />
-        <LModule />
+        <LMod />
         <QuestionsAndAnswers currentProduct={this.state.currentItemId} />
       </div>
     );
