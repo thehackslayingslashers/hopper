@@ -16,34 +16,41 @@ app.get('/product/:id', (req, res) => {
   let id = req.params.id;
   let data = []
   outbound.fetchItemById(id)
-    .then((response) => {
+    .then(response => {
+      debugger;
       data.push(response.data);
     })
-    .catch((error) => {
+    .catch(error => {
       data.push('failed to pull item data')
+      debugger;
     })
-    .then(outbound.reviewInfoFetch(id))
+    .then(() => {
+      return outbound.reviewInfoFetch(id)
+    })
     .then(response => {
       data.push(response.data)
+      debugger;
     })
     .catch(error => {
-
+      data.push('failed to pull reviews')
+      debugger;
+    })
+    .then(() => {
+      return outbound.fetchStyles(id)
+    })
+    .then(response => {
+      data.push(response.data)
+      debugger;
+    })
+    .catch(error => {
+      data.push('failed to pull styles')
+      debugger;
+    })
+    .then(() => {
+      debugger;
+      res.send(data)
     })
 });
-
-
-        .then(response => {
-          outbound.fetchStyles(id)
-            .then(response => {
-              res.send([basicInfo, response.data])
-            })
-            .catch((error) => {
-              res.status(500).send([basicInfo, 'failed to fetch review data'])
-            })
-        })
-        .catch((error) => {
-          res.status(500).send([basicInfo, 'failed to fetch review data', ''])
-        })
 
 app.listen(port, () => {
   console.log(`Server is live and happenin on ${port}`);
