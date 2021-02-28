@@ -17,37 +17,30 @@ app.get('/product/:id', (req, res) => {
   let data = []
   outbound.fetchItemById(id)
     .then(response => {
-      debugger;
       data.push(response.data);
     })
     .catch(error => {
       data.push('failed to pull item data')
-      debugger;
     })
     .then(() => {
       return outbound.reviewInfoFetch(id)
     })
     .then(response => {
       data.push(response.data)
-      debugger;
     })
     .catch(error => {
       data.push('failed to pull reviews')
-      debugger;
     })
     .then(() => {
       return outbound.fetchStyles(id)
     })
     .then(response => {
       data.push(response.data)
-      debugger;
     })
     .catch(error => {
       data.push('failed to pull styles')
-      debugger;
     })
     .then(() => {
-      debugger;
       res.send(data)
     })
 });

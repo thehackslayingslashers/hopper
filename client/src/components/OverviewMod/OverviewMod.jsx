@@ -13,7 +13,12 @@ class OverviewMod extends React.Component {
   }
 
   render() {
-    const { currentItemInfo, currentItemRatingInfo, currentItemAverageRating } = this.props;
+    const {
+      currentItemInfo,
+      currentItemRatingInfo,
+      currentItemAverageRating,
+      currentItemStyles,
+    } = this.props;
 
     return (
       <div id="overview">
@@ -23,7 +28,7 @@ class OverviewMod extends React.Component {
           currentItemRatingInfo={currentItemRatingInfo}
           currentItemAverageRating={currentItemAverageRating}
         />
-        <StyleSelector />
+        <StyleSelector currentItemStyles={currentItemStyles} />
         <AddToCart />
         <ProductInformation currentItemInfo={currentItemInfo} />
         <FeatureList features={currentItemInfo.features} />
