@@ -4,6 +4,7 @@ import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
 import StyleSelector from './StyleSelector';
 import BasicInfo from './BasicInfo';
+import FeatureList from './FeatureList';
 
 class OverviewMod extends React.Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class OverviewMod extends React.Component {
         />
         <StyleSelector />
         <AddToCart />
-        <ProductInformation />
+        <ProductInformation currentItemInfo={currentItemInfo} />
+        <FeatureList features={currentItemInfo.features} />
       </div>
     );
   }

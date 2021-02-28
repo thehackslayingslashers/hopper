@@ -37,32 +37,58 @@ Overview Module
   grid-template-rows: 25% 21% 25% 29%;
 }
 
+/* Image Gallery */
+
 #overviewImageGallery {
   background-color: purple;
   grid-row-start: 1;
   grid-row-end: 4;
 }
 
+/* Basic Info */
+
 #overviewBasicInfo {
   background-color: indigo;
   grid-row: 1;
 }
+
+/* Style Selector */
 
 #overviewStyleSelector {
   background-color: blueviolet;
   grid-row: 2;
 }
 
+/* Add To Cart */
+
 #overviewAddToCart {
   background-color: darkorchid;
   grid-row: 3;
 }
 
+/* Production Information */
+
 #overviewProductInformation {
   background-color: fuchsia;
   grid-row: 4;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column: 1;
+}
+
+/* Feature List */
+
+#overviewFeatureList {
+  background-color: violet;
+  grid-row: 4;
+  grid-column: 2;
+  margin: 0;
+}
+
+#overviewFeatureList li {
+  list-style: none;
+}
+
+#overviewFeatureList li:before {
+  content: '✓';
 }
 
 /*

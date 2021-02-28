@@ -1,17 +1,23 @@
 import React from 'react';
 
 class ProductInformation extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   render() {
-    return (
-      <div id="overviewProductInformation">
-        <p>ProductInformation is loading</p>
-      </div>
-    );
+    const { currentItemInfo } = this.props;
+    if (currentItemInfo.slogan) {
+      return (
+        <div id="overviewProductInformation">
+          <h3>{currentItemInfo.slogan}</h3>
+          <p>{currentItemInfo.description}</p>
+        </div>
+      );
+    } else {
+      return <div id="overviewProductInformation">Loading</div>;
+    }
   }
 }
 
