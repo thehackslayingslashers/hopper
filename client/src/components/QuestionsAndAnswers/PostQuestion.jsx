@@ -1,16 +1,33 @@
 import React from 'react';
 
 class PostQuestion extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      postInputValue : ''
-    }
+      postQuestionFieldValue: '',
+    };
+
+    this.handleGetPostQuestionFieldValue = this.handleGetPostQuestionFieldValue.bind(this);
+    this.handleSubmitPostQuestion = this.handleSubmitPostQuestion.bind(this);
   }
 
-  render () {
-    return(<div>Post Question Here: <input type="text"></input></div>);
+  handleGetPostQuestionFieldValue(e) {
+    this.setState({ postQuestionFieldValue: e.target.value });
+  }
+
+  handleSubmitPostQuestion() {
+    console.log(this.state.postQuestionFieldValue);
+  }
+
+  render() {
+    return (
+      <div>
+        Post Question Here:
+        <input type="text" onChange={this.handleGetPostQuestionFieldValue}></input>
+        <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
+      </div>
+    );
   }
 }
 

@@ -5,6 +5,7 @@ import PostQuestion from './PostQuestion';
 import AnswerQuestion from './AnswerQuestion';
 import App from '../App.jsx';
 import axios from 'axios';
+// import GARETHS_TOKEN from '../../config.js';
 
 class QuestionsAndAnswers extends React.Component {
   constructor(props) {
@@ -20,13 +21,12 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   getCurrentProductQuestionsAndAnswers() {
-    const access_token = '394d1d97d4051f63bda9e6f604171a5e4e4081c5';
+    // const access_token = GARETHS_TOKEN;
     let productId = this.state.product_id;
     let pageNum = this.state.page;
     let countNum = this.state.count;
-    debugger;
     axios
-      .get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', {
+      .get('/qa/questions', {
         params: {
           product_id: productId,
           page: pageNum,

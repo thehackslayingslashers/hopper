@@ -5,12 +5,29 @@ class QuestionSearch extends React.Component {
     super(props);
 
     this.state = {
-      questionFieldValue : ''
-    }
+      questionSearchFieldValue: '',
+    };
+
+    this.handleGetQuestionSearchFieldValue = this.handleGetQuestionSearchFieldValue.bind(this);
+    this.handleSubmitQuestionSearch = this.handleSubmitQuestionSearch.bind(this);
   }
 
-  render () {
-    return(<div>Search Questions Here <input type="text"></input></div>);
+  handleGetQuestionSearchFieldValue(e) {
+    this.setState({ questionSearchFieldValue: e.target.value });
+  }
+
+  handleSubmitQuestionSearch() {
+    console.log(this.state.questionSearchFieldValue);
+  }
+
+  render() {
+    return (
+      <div>
+        Search Questions Here:
+        <input type="text" onChange={this.handleGetQuestionSearchFieldValue} />
+        <button onClick={this.handleSubmitQuestionSearch}>Submit</button>
+      </div>
+    );
   }
 }
 
