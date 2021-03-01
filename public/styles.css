@@ -16,12 +16,12 @@ Header
 
 #pageHeader h1 {
   margin: 0;
-  height: 53px;
+  height: 7.3vh;
 }
 
 #announcement {
   background-color: coral;
-  height: 33px;
+  height: 4.4vh;
 }
 
 /*
@@ -49,6 +49,7 @@ Overview Module
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
+  max-height: 57vh;
 }
 
 /* Basic Info */
@@ -62,6 +63,10 @@ Overview Module
 #overviewBasicInfo p {
   margin: 1vh 0 0.25vh 0;
   /* margin-left: 0; */
+}
+
+.noReviews {
+  font-size: 14px;
 }
 
 #overviewBasicInfo span {
@@ -117,6 +122,18 @@ Overview Module
   border: solid 1px grey;
   background-color: grey;
   cursor: pointer;
+}
+
+.selectedCheck {
+  background-color: white;
+  border: black 1px solid;
+  height: 1.5vh;
+  width: 1.5vh;
+  border-radius: 0.8vh;
+  font-size: 14px;
+  text-align: center;
+  z-index: -1;
+  /* position: fixed; */
 }
 
 /* Add To Cart */

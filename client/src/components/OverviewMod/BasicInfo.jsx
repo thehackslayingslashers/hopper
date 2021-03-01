@@ -16,6 +16,12 @@ class BasicInfo extends React.Component {
 
     let price = null;
 
+    let rating = <p className="noReviews">No reviews yet</p>;
+
+    if (currentItemAverageRating !== 'NaN') {
+      rating = <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>;
+    }
+
     if (currentItemStyles[selectedStyleIndex]) {
       if (currentItemStyles[selectedStyleIndex].sale_price) {
         price = (
@@ -29,14 +35,14 @@ class BasicInfo extends React.Component {
           </div>
         );
       } else {
-        price = <p>{'$' + currentItemStyles[selectedStyleIndex].original_price}</p>;
+        price = <div>{'$' + currentItemStyles[selectedStyleIndex].original_price}</div>;
       }
     }
 
     if (currentItemInfo.name) {
       return (
         <div id="overviewBasicInfo">
-          <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>
+          {rating}
           <p>{currentItemInfo.category.toUpperCase()}</p>
           <h1>{currentItemInfo.name}</h1>
           {price}

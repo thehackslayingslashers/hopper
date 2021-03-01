@@ -10,6 +10,7 @@ class StyleSelector extends React.Component {
     let { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
     let styleItems = 'Loading';
     let index = 0;
+    let selectedCheck = <div className="selectedCheck">✓</div>;
 
     if (currentItemStyles && currentItemStyles[0]) {
       styleItems = [
@@ -19,21 +20,44 @@ class StyleSelector extends React.Component {
       ];
       styleItems = styleItems.concat(
         currentItemStyles.map((style) => {
-          return (
-            <img
-              key={style.name + style.style_id}
-              index={index++}
-              className="overviewStyleItem"
-              src={style.photos[0].thumbnail_url}
-              onClick={handleStyleSelection}
-            />
+          let styleImage = (
+            <div>
+              <img
+                key={style.name + style.style_id}
+                index={index}
+                className="overviewStyleItem"
+                src={style.photos[0].thumbnail_url}
+                onClick={handleStyleSelection}
+              />
+            </div>
           );
+          if (selectedStyleIndex === index) {
+            styleImage = (
+              <div>
+                <img
+                  key={style.name + style.style_id}
+                  index={index}
+                  className="overviewStyleItem"
+                  src={style.photos[0].thumbnail_url}
+                  onClick={handleStyleSelection}
+                />
+                {selectedCheck}
+              </div>
+            );
+          }
+          index++;
+          return styleImage;
         })
       );
     } else {
       //error
     }
-    return <div id="overviewStyleSelector">{styleItems}</div>;
+    return (
+      <div id="overviewStyleSelector">
+        {styleItems}
+        {selectedCheck}
+      </div>
+    );
   }
 }
 
