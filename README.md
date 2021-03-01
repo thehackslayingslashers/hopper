@@ -20,12 +20,9 @@ npm install
 npm install -g webpack
 ```
 
-## Team Memembers
-  - [Gareth Rogers](https://github.com/garethdavisrogers)
-  - [Tarrin Neal](https://github.com/tarrinneal)
-  - [Lerroy Mwaghore](https://github.com/lmwaghore)
-  - [Johnathan Etchart](https://github.com/johnathanetchart)
+## Team Members
 
-
-
-
+- [Gareth Rogers](https://github.com/garethdavisrogers)
+- [Tarrin Neal](https://github.com/tarrinneal)
+- [Lerroy Mwaghore](https://github.com/lmwaghore)
+- [Johnathan Etchart](https://github.com/johnathanetchart)
