@@ -162,3 +162,50 @@ Overview Module
  Module
 =====================
 */
+
+/*
+=====================
+LModule
+=====================
+*/
+
+.LModule {
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+hr {
+  height: 1px;
+  background-color: rgb(0, 0, 0);
+}
+
+.emptystars {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.filledstars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.emptystars::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.filledstars::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f7d200;
+}
