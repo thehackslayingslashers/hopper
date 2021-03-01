@@ -54,9 +54,14 @@ class App extends React.Component {
   handleStyleSelection(e) {
     let index = Number(e.target.attributes.index.nodeValue);
     if (this.state.selectedStyleIndex !== index)
-      this.setState({
-        selectedStyleIndex: index,
-      });
+      this.setState(
+        {
+          selectedStyleIndex: index,
+        },
+        () => {
+          console.log(this.state.selectedStyleIndex);
+        }
+      );
   }
 
   componentDidMount() {

@@ -124,6 +124,18 @@ Overview Module
   cursor: pointer;
 }
 
+.selectedCheck {
+  background-color: white;
+  border: black 1px solid;
+  height: 1.5vh;
+  width: 1.5vh;
+  border-radius: 0.8vh;
+  font-size: 14px;
+  text-align: center;
+  z-index: -1;
+  /* position: fixed; */
+}
+
 /* Add To Cart */
 
 #overviewAddToCart {
