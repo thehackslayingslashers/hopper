@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import ReviewsMod from './ReviewsMod';
+import RatingsMod from './RatingsMod';
 
 class LMod extends React.Component {
   constructor(props) {
@@ -37,14 +39,13 @@ class LMod extends React.Component {
     } = this.props;
 
     return (
-    <div className="LModule">All the Reviews:{this.state.allReviews.map((oneReview) => {
-      return(
-        <div key={oneReview.review_id}>
-          <h4>Summary:{oneReview.summary}</h4>
-          <h5>Body:{oneReview.body}</h5>
-        </div>
-      )
-    })}</div>
+      <div className="LModule">
+        <RatingsMod
+        avg={currentItemAverageRating}
+        currentItemRatingInfo={currentItemRatingInfo}
+        />
+        <ReviewsMod reviews={this.state.allReviews}/>
+      </div>
     );
   }
 }
