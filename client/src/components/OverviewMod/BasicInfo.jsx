@@ -7,15 +7,45 @@ class BasicInfo extends React.Component {
   }
 
   render() {
-    const { currentItemInfo, currentItemAverageRating } = this.props;
+    const {
+      currentItemInfo,
+      currentItemAverageRating,
+      currentItemStyles,
+      selectedStyleIndex,
+    } = this.props;
+
+    let price = null;
+
+    let rating = <p className="noReviews">No reviews yet</p>;
+
+    if (currentItemAverageRating !== 'NaN') {
+      rating = <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>;
+    }
+
+    if (currentItemStyles[selectedStyleIndex]) {
+      if (currentItemStyles[selectedStyleIndex].sale_price) {
+        price = (
+          <div>
+            <span className="salePrice">
+              {'$' + currentItemStyles[selectedStyleIndex].sale_price}
+            </span>
+            <span className="strikethrough">
+              {'  $' + currentItemStyles[selectedStyleIndex].original_price}
+            </span>
+          </div>
+        );
+      } else {
+        price = <div>{'$' + currentItemStyles[selectedStyleIndex].original_price}</div>;
+      }
+    }
 
     if (currentItemInfo.name) {
       return (
         <div id="overviewBasicInfo">
-          <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>
+          {rating}
           <p>{currentItemInfo.category.toUpperCase()}</p>
           <h1>{currentItemInfo.name}</h1>
-          <p>{'$' + currentItemInfo.default_price}</p>
+          {price}
         </div>
       );
     } else {

@@ -1,5 +1,6 @@
 body {
   max-width: 114vh;
+  min-width: 90vh;
   margin: auto;
 }
 
@@ -15,12 +16,12 @@ Header
 
 #pageHeader h1 {
   margin: 0;
-  height: 53px;
+  height: 7.3vh;
 }
 
 #announcement {
   background-color: coral;
-  height: 33px;
+  height: 4.4vh;
 }
 
 /*
@@ -31,11 +32,13 @@ Overview Module
 
 #overview {
   width: 100%;
-  height: 82vh;
+  /* height: 82vh; */
   display: grid;
   grid-template-columns: 10% 52% 2% 36%;
-  grid-template-rows: 25% 21% 23% 7% 17% 7%;
+  /* grid-template-rows: 25% 21% 23% 7% 17% 7%; */
+  grid-template-rows: auto auto auto 5vh auto 5vh;
   background-color: lightslategray;
+  font-size: large;
 }
 
 /* Image Gallery */
@@ -46,37 +49,97 @@ Overview Module
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
+  max-height: 57vh;
 }
 
 /* Basic Info */
 
 #overviewBasicInfo {
-  background-color: indigo;
+  border: indigo solid;
   grid-row: 1;
   grid-column: 4;
 }
 
 #overviewBasicInfo p {
-  line-height: 0.5;
+  margin: 1vh 0 0.25vh 0;
+  /* margin-left: 0; */
+}
+
+.noReviews {
+  font-size: 14px;
+}
+
+#overviewBasicInfo span {
+  line-height: 1;
+  margin: 1vh;
+  margin-left: 0;
 }
 
 #overviewBasicInfo h1 {
-  line-height: 0.9;
-  margin: 0;
+  margin: 2vh;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.salePrice {
+  color: red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
 }
 
 /* Style Selector */
 
 #overviewStyleSelector {
-  background-color: blueviolet;
+  border: blueviolet solid;
   grid-row: 2;
   grid-column: 4;
+  display: grid;
+  grid-template-columns: repeat(3, 7vh) auto;
+  grid-template-rows: 3vh 1vh repeat(auto, 7vh);
+}
+
+#selectedStyleName {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: 2vh 0;
+}
+
+.overviewStyleItem {
+  height: 5vh;
+  width: 5vh;
+  object-fit: cover;
+  border-radius: 3vh;
+  border: solid 1px;
+  margin: 1vh 0;
+  background-color: black;
+}
+
+.overviewStyleItem:hover {
+  border: solid 1px grey;
+  background-color: grey;
+  cursor: pointer;
+}
+
+.selectedCheck {
+  background-color: white;
+  border: black 1px solid;
+  height: 1.5vh;
+  width: 1.5vh;
+  border-radius: 0.8vh;
+  font-size: 14px;
+  text-align: center;
+  z-index: -1;
+  /* position: fixed; */
 }
 
 /* Add To Cart */
 
 #overviewAddToCart {
-  background-color: darkorchid;
+  border: solid darkorchid;
   grid-row: 3;
   grid-column: 4;
 }
@@ -87,7 +150,7 @@ Overview Module
   background-color: fuchsia;
   grid-row: 5;
   grid-column: 2;
-  font-size: 12px;
+  font-size: medium;
 }
 
 #overviewProductInformation h3 {
@@ -108,7 +171,7 @@ Overview Module
   list-style-position: outside;
   list-style-type: '✓';
   line-height: 2;
-  font-size: 12px;
+  font-size: medium;
 }
 
 /*
@@ -116,3 +179,50 @@ Overview Module
  Module
 =====================
 */
+
+/*
+=====================
+LModule
+=====================
+*/
+
+.LModule {
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+hr {
+  height: 1px;
+  background-color: rgb(0, 0, 0);
+}
+
+.emptystars {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+
+.filledstars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.emptystars::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.filledstars::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f7d200;
+}

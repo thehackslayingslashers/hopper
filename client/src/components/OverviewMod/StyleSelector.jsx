@@ -7,20 +7,57 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    let { currentItemStyles } = this.props;
+    let { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
+    let styleItems = 'Loading';
+    let index = 0;
+    let selectedCheck = <div className="selectedCheck">✓</div>;
 
     if (currentItemStyles && currentItemStyles[0]) {
-      let styleItems = currentItemStyles.map((style) => {
-        return (
-          <div key={style.name} className="overviewStyleItem">
-            {style.name}
-          </div>
-        );
-      });
-      return <div id="overviewStyleSelector">{styleItems}</div>;
+      styleItems = [
+        <div key="styleName" id="selectedStyleName">
+          <strong>STYLE ></strong> {currentItemStyles[selectedStyleIndex].name.toUpperCase()}
+        </div>,
+      ];
+      styleItems = styleItems.concat(
+        currentItemStyles.map((style) => {
+          let styleImage = (
+            <div>
+              <img
+                key={style.name + style.style_id}
+                index={index}
+                className="overviewStyleItem"
+                src={style.photos[0].thumbnail_url}
+                onClick={handleStyleSelection}
+              />
+            </div>
+          );
+          if (selectedStyleIndex === index) {
+            styleImage = (
+              <div>
+                <img
+                  key={style.name + style.style_id}
+                  index={index}
+                  className="overviewStyleItem"
+                  src={style.photos[0].thumbnail_url}
+                  onClick={handleStyleSelection}
+                />
+                {selectedCheck}
+              </div>
+            );
+          }
+          index++;
+          return styleImage;
+        })
+      );
     } else {
-      return <div id="overviewStyleSelector">Loading</div>;
+      //error
     }
+    return (
+      <div id="overviewStyleSelector">
+        {styleItems}
+        {selectedCheck}
+      </div>
+    );
   }
 }
 
