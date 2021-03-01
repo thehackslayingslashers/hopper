@@ -16,10 +16,11 @@ class App extends React.Component {
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
       currentItemStyles: [],
-      selectedStyleIndex: 3,
+      selectedStyleIndex: 0,
     };
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
+    this.handleStyleSelection = this.handleStyleSelection.bind(this);
   }
 
   getInfoAboutCurrentItem() {
@@ -50,6 +51,14 @@ class App extends React.Component {
     });
   }
 
+  handleStyleSelection(e) {
+    let index = Number(e.target.attributes.index.nodeValue);
+    if (this.state.selectedStyleIndex !== index)
+      this.setState({
+        selectedStyleIndex: index,
+      });
+  }
+
   componentDidMount() {
     this.getInfoAboutCurrentItem();
   }
@@ -64,6 +73,7 @@ class App extends React.Component {
           currentItemAverageRating={this.state.currentItemAverageRating}
           currentItemStyles={this.state.currentItemStyles}
           selectedStyleIndex={this.state.selectedStyleIndex}
+          handleStyleSelection={this.handleStyleSelection}
         />
         <RelatedItemsAndComparison />
         <QuestionsAndAnswers currentProduct={this.state.currentItemId} />
@@ -71,7 +81,7 @@ class App extends React.Component {
           currentItemId={this.state.currentItemId}
           currentItemRatingInfo={this.state.currentItemRatingInfo}
           currentItemAverageRating={this.state.currentItemAverageRating}
-          />
+        />
       </div>
     );
   }
