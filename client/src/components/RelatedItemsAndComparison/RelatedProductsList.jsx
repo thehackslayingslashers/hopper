@@ -12,9 +12,9 @@ class RelatedProductsList extends React.Component {
 
   render () {
     return (
-      <div class="productlistoutercontainer">
+      <div className="productlistoutercontainer">
         <button>L</button>
-        <div class="productlistcontainer">
+        <div className="productlistcontainer">
           <RelatedProductCard />
           <RelatedProductCard />
           <RelatedProductCard />
