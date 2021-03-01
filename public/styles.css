@@ -108,13 +108,17 @@ Overview Module
   margin: 2vh 0;
 }
 
+.overviewStyleItemContainer {
+  position: relative;
+}
+
 .overviewStyleItem {
   height: 5vh;
   width: 5vh;
   object-fit: cover;
   border-radius: 3vh;
   border: solid 1px;
-  margin: 1vh 0;
+  margin: 0.6vh 0;
   background-color: black;
 }
 
@@ -132,8 +136,10 @@ Overview Module
   border-radius: 0.8vh;
   font-size: 14px;
   text-align: center;
-  z-index: -1;
-  /* position: fixed; */
+  z-index: 100;
+  position: absolute;
+  bottom: 70%;
+  left: 3.5vh;
 }
 
 /* Add To Cart */
