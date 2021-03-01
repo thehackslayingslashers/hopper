@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/product/:id', (req, res) => {
-  let id = req.params.id;
+  const id = req.params.id;
   let data = [];
   outbound
     .fetchItemById(id)
@@ -47,14 +47,27 @@ app.get('/product/:id', (req, res) => {
 });
 
 app.get('/reviewsList/:id', (req, res) => {
-  let id = req.params.id;
-  outbound.allReviewFetch(id)
-    .then(response => {
+  const id = req.params.id;
+  outbound
+    .allReviewFetch(id)
+    .then((response) => {
       res.send(response.data);
     })
-    .catch(error => {
+    .catch((error) => {
       res.send(error);
+    });
+});
+
+app.get('/qa/questions/:id', (req, res) => {
+  const id = req.params.id;
+  outbound
+    .fetchQuestions(id)
+    .then((response) => {
+      res.send(response.data.results);
     })
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 app.listen(port, () => {
