@@ -56,6 +56,18 @@ app.get('/reviewsList/:id', (req, res) => {
     })
 });
 
+app.get('/products/:product_id/related', (req,res) => {
+  let id = req.params.product_id;
+  outbound.fetchRelated(id)
+  .then(response => {
+    console.log(response.data);
+    res.send(response.data);
+  })
+  .catch(error => {
+    res.send(error);
+  })
+})
+
 app.listen(port, () => {
   console.log(`Server is live and happenin on ${port}`);
 });
