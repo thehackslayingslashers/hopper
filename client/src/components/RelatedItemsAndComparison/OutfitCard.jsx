@@ -11,8 +11,12 @@ class OutfitCard extends React.Component {
 
   render () {
     return (
-      <div>
-        This is an outfit card.
+      <div class="productcard">
+        <div class="cardimage"></div>
+          CATEGORY
+            <p>Expanded Product Name With Extra Text</p>
+            Price
+            <p>***** (stars)</p>
       </div>
     )
   }
