@@ -1,5 +1,5 @@
 import React from 'react';
-import Stars from './Stars';
+import Stars from '../Stars';
 
 const ReviewEntry = ({ review }) => {
   return (
