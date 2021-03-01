@@ -24,7 +24,7 @@ class StyleSelector extends React.Component {
             <div>
               <img
                 key={style.name + style.style_id}
-                index={index++}
+                index={index}
                 className="overviewStyleItem"
                 src={style.photos[0].thumbnail_url}
                 onClick={handleStyleSelection}
@@ -36,7 +36,7 @@ class StyleSelector extends React.Component {
               <div>
                 <img
                   key={style.name + style.style_id}
-                  index={index++}
+                  index={index}
                   className="overviewStyleItem"
                   src={style.photos[0].thumbnail_url}
                   onClick={handleStyleSelection}
@@ -45,6 +45,7 @@ class StyleSelector extends React.Component {
               </div>
             );
           }
+          index++;
           return styleImage;
         })
       );
