@@ -65,6 +65,14 @@ Overview Module
   margin: 0;
 }
 
+.salePrice {
+  color: red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
 /* Style Selector */
 
 #overviewStyleSelector {
