@@ -108,13 +108,17 @@ Overview Module
   margin: 2vh 0;
 }
 
+.overviewStyleItemContainer {
+  position: relative;
+}
+
 .overviewStyleItem {
   height: 5vh;
   width: 5vh;
   object-fit: cover;
   border-radius: 3vh;
   border: solid 1px;
-  margin: 1vh 0;
+  margin: 0.6vh 0;
   background-color: black;
 }
 
@@ -132,8 +136,10 @@ Overview Module
   border-radius: 0.8vh;
   font-size: 14px;
   text-align: center;
-  z-index: -1;
-  /* position: fixed; */
+  z-index: 100;
+  position: absolute;
+  bottom: 70%;
+  left: 3.5vh;
 }
 
 /* Add To Cart */
@@ -229,8 +235,7 @@ hr {
 
 /*
 =====================
-GarethsModule
-=====================
+QuestionsModule
 */
 
 #questions-and-answers-container {
@@ -238,4 +243,34 @@ GarethsModule
   width: 100%;
   height: 300px;
   padding: 10px;
+
+/*=======
+Related Items Module
+=====================
+*/
+
+.productlistcontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.productcard {
+  width: 18vh;
+  height: 27vh;
+  background: white;
+  margin: auto;
+  overflow: auto;
+  word-wrap: break-word;
+  contain: strict;
+  line-height: 15px;
+}
+
+.productcard .cardimage {
+  height: 61%;
+  width: 100%;
+  background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
+  overflow: hidden;
+  background-size: cover;
 }

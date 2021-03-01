@@ -12,10 +12,13 @@ class RelatedProductsList extends React.Component {
 
   render () {
     return (
-      <div>
-        This is a fancy Related Products Carousel.
+      <div class="productlistcontainer">
+        <button>L</button>
         <RelatedProductCard />
         <RelatedProductCard />
+        <RelatedProductCard />
+        <RelatedProductCard />
+        <button>R</button>
       </div>
     )
   }
