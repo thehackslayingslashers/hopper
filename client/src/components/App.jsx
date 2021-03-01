@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17764,
+      currentItemId: 17762,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -66,8 +66,12 @@ class App extends React.Component {
           selectedStyleIndex={this.state.selectedStyleIndex}
         />
         <RelatedItemsAndComparison />
-        <LMod />
         <QuestionsAndAnswers currentProduct={this.state.currentItemId} />
+        <LMod
+          currentItemId={this.state.currentItemId}
+          currentItemRatingInfo={this.state.currentItemRatingInfo}
+          currentItemAverageRating={this.state.currentItemAverageRating}
+          />
       </div>
     );
   }
