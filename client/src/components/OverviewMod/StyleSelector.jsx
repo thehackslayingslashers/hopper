@@ -21,7 +21,7 @@ class StyleSelector extends React.Component {
       styleItems = styleItems.concat(
         currentItemStyles.map((style) => {
           let styleImage = (
-            <div>
+            <div className="overviewStyleItemContainer">
               <img
                 key={style.name + style.style_id}
                 index={index}
@@ -33,7 +33,7 @@ class StyleSelector extends React.Component {
           );
           if (selectedStyleIndex === index) {
             styleImage = (
-              <div>
+              <div className="overviewStyleItemContainer">
                 <img
                   key={style.name + style.style_id}
                   index={index}
@@ -49,15 +49,8 @@ class StyleSelector extends React.Component {
           return styleImage;
         })
       );
-    } else {
-      //error
     }
-    return (
-      <div id="overviewStyleSelector">
-        {styleItems}
-        {selectedCheck}
-      </div>
-    );
+    return <div id="overviewStyleSelector">{styleItems}</div>;
   }
 }
 
