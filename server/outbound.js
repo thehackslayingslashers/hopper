@@ -47,10 +47,16 @@ const fetchQuestions = (id) => {
   );
 };
 
+const fetchRelated = (id) => {
+  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
+}
+
+
 module.exports = {
   fetchItemById,
   reviewInfoFetch,
   allReviewFetch,
   fetchStyles,
   fetchQuestions,
+  fetchRelated
 };
