@@ -11,8 +11,12 @@ class RelatedProductCard extends React.Component {
 
   render () {
     return (
-      <div>
-        This is a Related Product card.
+      <div class="productcard">
+        <div class="cardimage"></div>
+        CATEGORY
+          <p>Expanded Product Name With Extra Text</p>
+          Price
+          <p>***** (stars)</p>
       </div>
     )
   }

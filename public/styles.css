@@ -232,3 +232,35 @@ hr {
   content: '\f005 \f005 \f005 \f005 \f005';
   color: #f7d200;
 }
+
+/*
+=====================
+Related Items Module
+=====================
+*/
+
+.productlistcontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: aquamarine;
+}
+
+.productcard {
+  width: 18vh;
+  height: 27vh;
+  background: white;
+  margin: auto;
+  overflow: auto;
+  word-wrap: break-word;
+  contain: strict;
+  line-height: 15px;
+}
+
+.productcard .cardimage {
+  height: 61%;
+  width: 100%;
+  background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
+  overflow: hidden;
+  background-size: cover;
+}
