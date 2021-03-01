@@ -45,6 +45,17 @@ app.get('/product/:id', (req, res) => {
     })
 });
 
+app.get('/reviewsList/:id', (req, res) => {
+  let id = req.params.id;
+  outbound.allReviewFetch(id)
+    .then(response => {
+      res.send(response.data);
+    })
+    .catch(error => {
+      res.send(error);
+    })
+});
+
 app.listen(port, () => {
   console.log(`Server is live and happenin on ${port}`);
 });

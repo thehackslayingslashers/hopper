@@ -18,6 +18,13 @@ const reviewInfoFetch = (id) => {
   }
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta`, localOptions)
 }
+const allReviewFetch = (id) => {
+  let localOptions = Object.create(options);
+  localOptions.params = {
+    product_id: id
+  };
+  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/`, localOptions)
+}
 
 const fetchStyles = (id) => {
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, options)
@@ -26,5 +33,6 @@ const fetchStyles = (id) => {
 module.exports = {
   fetchItemById,
   reviewInfoFetch,
+  allReviewFetch,
   fetchStyles
 }
