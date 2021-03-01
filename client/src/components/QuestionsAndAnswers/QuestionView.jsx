@@ -5,22 +5,19 @@ import Question from './Question.jsx';
 class QuestionView extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      displayedQuestions: [],
+      questionsDisplayed: 2,
     };
   }
 
-  componentDidMount() {
-    console.log(this.props.product);
-  }
-
   render() {
+    const questionList = this.props.currentProductQuestions.slice(0, this.state.questionsDisplayed);
     return (
       <div>
-        Questions:
-        <Question />
-        <Question />
+        {questionList.map((question, index) => (
+          <Question key={index} question={question} />
+        ))}
+        <button>Show More</button>
       </div>
     );
   }

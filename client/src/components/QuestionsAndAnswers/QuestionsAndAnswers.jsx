@@ -11,54 +11,36 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product_id: 17762,
-      page: 1,
-      count: 4,
+      currentProductQuestions: [],
     };
     this.getCurrentProductQuestionsAndAnswers = this.getCurrentProductQuestionsAndAnswers.bind(
       this
     );
   }
 
-  getCurrentProductQuestionsAndAnswers() {
-    // const access_token = GARETHS_TOKEN;
-    let productId = this.state.product_id;
-    let pageNum = this.state.page;
-    let countNum = this.state.count;
+  getCurrentProductQuestionsAndAnswers(id) {
     axios
-      .get('/qa/questions', {
-        params: {
-          product_id: productId,
-          page: pageNum,
-          count: countNum,
-        },
-        // {
-        //   headers: {
-        //     'Authorization': `token ${access_token}`
-        //   }
-        // }
+      .get(`/qa/questions/${id}`)
+      .then((results) => {
+        this.setState({ currentProductQuestions: results.data });
       })
-      .then((response) => {
-        console.log(response.results);
+      .catch((error) => {
+        console.log('failed to load questions');
       });
   }
 
   componentDidMount() {
-    this.getCurrentProductQuestionsAndAnswers;
-    //get product with axios <this.props.currentProduct>
-    //request will take product_id, page, and count as parameters <page=1, count= 4>
-    //render questions about product (4 by default)
-    //render answers with questions (2 by default)
+    this.getCurrentProductQuestionsAndAnswers(this.props.currentItemId);
   }
 
   render() {
     return (
-      <div style={{ backgroundColor: 'lightblue' }}>
-        <QuestionView product={this.state} />
+      <div id="questions-and-answers-container">
+        <div id="questions-and-answers-header">Questions About This Product:</div>
+        <QuestionView currentProductQuestions={this.state.currentProductQuestions} />
         <QuestionSearch />
         <PostQuestion />
         <AnswerQuestion />
-        <button>Show More</button>
       </div>
     );
   }

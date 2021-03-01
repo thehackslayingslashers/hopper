@@ -13,47 +13,61 @@ app.get('/', (req, res) => {
 });
 
 app.get('/product/:id', (req, res) => {
-  let id = req.params.id;
-  let data = []
-  outbound.fetchItemById(id)
-    .then(response => {
+  const id = req.params.id;
+  let data = [];
+  outbound
+    .fetchItemById(id)
+    .then((response) => {
       data.push(response.data);
     })
-    .catch(error => {
-      data.push('failed to pull item data')
+    .catch((error) => {
+      data.push('failed to pull item data');
     })
     .then(() => {
-      return outbound.reviewInfoFetch(id)
+      return outbound.reviewInfoFetch(id);
     })
-    .then(response => {
-      data.push(response.data)
+    .then((response) => {
+      data.push(response.data);
     })
-    .catch(error => {
-      data.push('failed to pull reviews')
-    })
-    .then(() => {
-      return outbound.fetchStyles(id)
-    })
-    .then(response => {
-      data.push(response.data)
-    })
-    .catch(error => {
-      data.push('failed to pull styles')
+    .catch((error) => {
+      data.push('failed to pull reviews');
     })
     .then(() => {
-      res.send(data)
+      return outbound.fetchStyles(id);
     })
+    .then((response) => {
+      data.push(response.data);
+    })
+    .catch((error) => {
+      data.push('failed to pull styles');
+    })
+    .then(() => {
+      res.send(data);
+    });
 });
 
 app.get('/reviewsList/:id', (req, res) => {
-  let id = req.params.id;
-  outbound.allReviewFetch(id)
-    .then(response => {
+  const id = req.params.id;
+  outbound
+    .allReviewFetch(id)
+    .then((response) => {
       res.send(response.data);
     })
-    .catch(error => {
+    .catch((error) => {
       res.send(error);
+    });
+});
+
+app.get('/qa/questions/:id', (req, res) => {
+  const id = req.params.id;
+  outbound
+    .fetchQuestions(id)
+    .then((response) => {
+      res.send(response.data.results);
     })
+    .catch((error) => {
+      res.send(error);
+    });
 });
 
 app.listen(port, () => {
