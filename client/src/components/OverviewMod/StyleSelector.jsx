@@ -7,20 +7,30 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    let { currentItemStyles } = this.props;
-    // debugger;
+    let { currentItemStyles, selectedStyleIndex } = this.props;
+    let styleItems = 'Loading';
+
     if (currentItemStyles && currentItemStyles[0]) {
-      let styleItems = currentItemStyles.map((style) => {
-        return (
-          <div key={style.name + style.style_id} className="overviewStyleItem">
-            {style.name}
-          </div>
-        );
-      });
-      return <div id="overviewStyleSelector">{styleItems}</div>;
+      styleItems = [
+        <div key="styleName" id="selectedStyleName">
+          <strong>STYLE ></strong> {currentItemStyles[selectedStyleIndex].name.toUpperCase()}
+        </div>,
+      ];
+      styleItems = styleItems.concat(
+        currentItemStyles.map((style) => {
+          return (
+            <img
+              key={style.name + style.style_id}
+              className="overviewStyleItem"
+              src={style.photos[0].thumbnail_url}
+            />
+          );
+        })
+      );
     } else {
-      return <div id="overviewStyleSelector">Loading</div>;
+      //error
     }
+    return <div id="overviewStyleSelector">{styleItems}</div>;
   }
 }
 
