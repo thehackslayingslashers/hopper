@@ -12,15 +12,15 @@ class OutfitList extends React.Component {
 
   render () {
     return (
-      <div>
-        <div class="productlistcontainer">
-          <button>L</button>
+      <div className="productlistoutercontainer">
+        <button>L</button>
+        <div className="productlistcontainer">
           <OutfitCard />
           <OutfitCard />
           <OutfitCard />
           <OutfitCard />
-          <button>R</button>
         </div>
+        <button>R</button>
       </div>
     )
   }
