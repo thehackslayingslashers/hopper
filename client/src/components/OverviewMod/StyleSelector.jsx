@@ -7,8 +7,9 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    let { currentItemStyles, selectedStyleIndex } = this.props;
+    let { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
     let styleItems = 'Loading';
+    let index = 0;
 
     if (currentItemStyles && currentItemStyles[0]) {
       styleItems = [
@@ -21,8 +22,10 @@ class StyleSelector extends React.Component {
           return (
             <img
               key={style.name + style.style_id}
+              index={index++}
               className="overviewStyleItem"
               src={style.photos[0].thumbnail_url}
+              onClick={handleStyleSelection}
             />
           );
         })

@@ -60,8 +60,8 @@ Overview Module
 }
 
 #overviewBasicInfo p {
-  margin: 0.75vh;
-  margin-left: 0;
+  margin: 1vh 0 0.25vh 0;
+  /* margin-left: 0; */
 }
 
 #overviewBasicInfo span {
@@ -71,12 +71,9 @@ Overview Module
 }
 
 #overviewBasicInfo h1 {
-  /* line-height: 0.9; */
-  /* margin: auto auto auto auto; */
-
   margin: 2vh;
   margin-left: 0;
-  margin-top: 1vh;
+  margin-top: 0;
 }
 
 .salePrice {
@@ -94,8 +91,8 @@ Overview Module
   grid-row: 2;
   grid-column: 4;
   display: grid;
-  grid-template-columns: repeat(3, 21%) auto;
-  grid-template-rows: 3vh 2vh repeat(auto-fill, 7vh);
+  grid-template-columns: repeat(3, 7vh) auto;
+  grid-template-rows: 3vh 1vh repeat(auto, 7vh);
 }
 
 #selectedStyleName {
@@ -112,7 +109,7 @@ Overview Module
   object-fit: cover;
   border-radius: 3vh;
   border: solid 1px;
-  margin: 2px;
+  margin: 1vh 0;
   background-color: black;
 }
 
