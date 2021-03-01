@@ -12,12 +12,14 @@ class RelatedProductsList extends React.Component {
 
   render () {
     return (
-      <div class="productlistcontainer">
+      <div class="productlistoutercontainer">
         <button>L</button>
-        <RelatedProductCard />
-        <RelatedProductCard />
-        <RelatedProductCard />
-        <RelatedProductCard />
+        <div class="productlistcontainer">
+          <RelatedProductCard />
+          <RelatedProductCard />
+          <RelatedProductCard />
+          <RelatedProductCard />
+        </div>
         <button>R</button>
       </div>
     )

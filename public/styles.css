@@ -239,6 +239,14 @@ Related Items Module
 =====================
 */
 
+.productlistoutercontainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: grey;
+  padding: 20px;
+}
+
 .productlistcontainer {
   display: flex;
   justify-content: flex-start;
@@ -247,18 +255,18 @@ Related Items Module
 }
 
 .productcard {
-  width: 18vh;
-  height: 27vh;
+  width: 22vh;
+  height: 33vh;
   background: white;
-  margin: auto;
+  margin: 1.5vh;
   overflow: auto;
   word-wrap: break-word;
   contain: strict;
-  line-height: 15px;
+  line-height: 12px;
 }
 
 .productcard .cardimage {
-  height: 61%;
+  height: 58%;
   width: 100%;
   background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
   overflow: hidden;
