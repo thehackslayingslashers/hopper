@@ -27,7 +27,7 @@ class QuestionsAndAnswers extends React.Component {
         this.setState({ currentProductQuestions: results.data });
       })
       .catch((error) => {
-        console.log('failed to load questions');
+        console.log(error);
       });
   }
 
