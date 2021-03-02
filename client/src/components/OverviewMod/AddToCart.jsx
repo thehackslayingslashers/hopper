@@ -15,16 +15,16 @@ class AddToCart extends React.Component {
   }
 
   selectSize(e) {
-    if (Number(e.currentTarget.value) !== 'NaN') {
+    if (Number(e.currentTarget.value) >= 0) {
       this.setState({
         selectedSizeIndex: e.currentTarget.value,
         selectedQuantity: this.state.selectedQuantity || '1',
       });
     } else {
       this.setState({
-        selectedSizeIndex: null,
         selectedSize: '',
-        selectedSizeIndex: '',
+        selectedSizeIndex: null,
+        selectedQuantity: '',
       });
     }
   }

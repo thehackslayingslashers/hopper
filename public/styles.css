@@ -35,7 +35,7 @@ Overview Module
   display: grid;
   grid-template-columns: 10% 52% 2% 36%;
   grid-template-rows: auto auto auto 5vh auto 5vh;
-  background-color: lightslategray;
+  /* background-color: lightslategray; */
   font-size: large;
 }
 
