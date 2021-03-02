@@ -46,6 +46,7 @@ class QuestionsAndAnswers extends React.Component {
         <QuestionSearch
           currentProductQuestions={this.state.currentProductQuestions}
           setCurrentQuestionsToMatchSearch={this.setCurrentQuestionsToMatchSearch}
+          getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
         <QuestionView
           currentProductQuestions={this.state.currentProductQuestions}
