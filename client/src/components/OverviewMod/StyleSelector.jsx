@@ -40,7 +40,7 @@ class StyleSelector extends React.Component {
                 <img
                   index={index}
                   className="overviewStyleItem"
-                  src={style.photos[0].thumbnail_url}
+                  src={url}
                   onClick={handleStyleSelection}
                 />
                 {selectedCheck}

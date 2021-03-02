@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FeatureList = ({ features }) => {
-  debugger;
   let index = 0;
   if (features) {
     let listItems = features.map((feat) => {
