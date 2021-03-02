@@ -251,23 +251,26 @@ QuestionsModule
 
 #question-search-field {
   width: 100%;
-  background-color: whitesmoke;
+  background-color: white;
   outline: 2px solid black;
-  display: inline-block;
-  display: flex;
-  flex-wrap: nowrap;
+  flex: auto;
 }
 
 #question-search-field-input {
+  outline: none;
+  border: none;
   padding-top: 16px;
   padding-bottom: 16px;
-  width: 90%;
+  width: 99%;
 }
 
 #question-search-submit-button {
   float: right;
-  display: flex;
   width: 10%;
+  margin-right: 200px;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-55px);
 }
 
 #question-and-answer-item-container {

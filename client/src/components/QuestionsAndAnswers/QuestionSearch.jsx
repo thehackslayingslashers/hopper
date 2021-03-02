@@ -29,9 +29,11 @@ class QuestionSearch extends React.Component {
           onChange={this.handleGetQuestionSearchFieldValue}
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         />
-        <button id="question-search-submit-button" onClick={this.handleSubmitQuestionSearch}>
-          Submit
-        </button>
+        <i
+          class="fas fa-search fa-3x"
+          id="question-search-submit-button"
+          onClick={this.handleSubmitQuestionSearch}
+        ></i>
       </div>
     );
   }
