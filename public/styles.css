@@ -296,7 +296,10 @@ Related Items Module
   justify-content: space-around;
   align-items: center;
   background-color: grey;
-  padding: 20px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  border-width: 1px;
+  border: red;
 }
 
 .productlistcontainer {

@@ -1,6 +1,7 @@
 import React from 'react';
 import RelatedProductsList from './RelatedProductsList';
 import OutfitList from './OutfitList';
+import axios from 'axios';
 
 class RelatedItemsAndComparison extends React.Component {
   constructor(props) {
@@ -10,6 +11,9 @@ class RelatedItemsAndComparison extends React.Component {
 
     };
   }
+
+  // axios
+  //   .get
 
   render () {
     return (
