@@ -47,7 +47,7 @@ class AddToCart extends React.Component {
             selectedSizeIndex={this.state.selectedSizeIndex}
             selectQuantity={this.selectQuantity}
           />
-          <button>Add To Cart</button>
+          <button id="overviewAddToCartButton">Add To Cart</button>
         </div>
       );
     }
