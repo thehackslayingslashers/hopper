@@ -4,7 +4,7 @@ import QuestionsAndAnswers from './QuestionsAndAnswers';
 import QuestionSearch from './QuestionSearch';
 import PostQuestion from './PostQuestion';
 import QuestionView from './QuestionView';
-import AnswerQuestion from './AnswerQuestion';
+import PostAnswer from './PostAnswer';
 import Question from './Question.jsx';
 
 describe('<PostQuestion/>', () => {

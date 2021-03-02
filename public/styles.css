@@ -340,7 +340,8 @@ QuestionsModule
 .answer-text {
   font-weight: 200;
 }
-/*=======
+/*
+=====================
 Related Items Module
 =====================
 */
@@ -363,7 +364,7 @@ Related Items Module
   background-color: aquamarine;
 }
 
-.productcard {
+.card {
   width: 22vh;
   height: 33vh;
   background: white;
@@ -371,13 +372,27 @@ Related Items Module
   overflow: auto;
   word-wrap: break-word;
   contain: strict;
-  line-height: 12px;
+  border-radius: 10px;
 }
 
-.productcard .cardimage {
+.productcard {
+  line-height: 12px;
+  /* padding-left: 10px; */
+}
+
+.cardimage {
   height: 58%;
   width: 100%;
   background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
   overflow: hidden;
   background-size: cover;
+  border-radius: 10px;
+}
+.cardinfo {
+  line-height: 12px;
+  padding: 10px;
+}
+
+.addtooutfit {
+  padding: 20px;
 }
