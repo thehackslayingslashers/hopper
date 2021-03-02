@@ -12,8 +12,9 @@ class LMod extends React.Component {
     this.getAllReviews = this.getAllReviews.bind(this);
   }
 
-  getAllReviews(id) {
-    axios.get(`/reviewsList/${id}`).then((results) => {
+  getAllReviews(id, count) {
+    let reviewObj = {id: id, count: count}
+    axios.post(`/reviewsList`, reviewObj).then((results) => {
       this.setState({
         allReviews: results.data.results,
       });
@@ -21,10 +22,14 @@ class LMod extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { currentItemId } = this.props;
+    const { currentItemId, currentItemRatingInfo } = this.props;
+    let total = 0;
+    for (let keys in currentItemRatingInfo.ratings) {
+      total += Number(currentItemRatingInfo.ratings[keys]);
+    }
 
     if (this.props !== prevProps) {
-      this.getAllReviews(currentItemId);
+      this.getAllReviews(currentItemId, total);
     }
   }
 
