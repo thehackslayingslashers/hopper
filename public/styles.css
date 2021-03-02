@@ -280,7 +280,7 @@ QuestionsModule
   padding-bottom: 20px;
 }
 
-#answer-item-container {
+#answers-container {
   background-color: maroon;
   padding-left: 8px;
   padding-top: 8px;
