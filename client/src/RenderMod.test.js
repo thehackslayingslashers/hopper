@@ -9,9 +9,9 @@ import LMod from './components/RatingsAndReviewsMod/LMod.jsx';
 
 describe('<App />', () => {
   it('render LMod once', () => {
-    const wrapper = shallow(<App/>);
-    // expect(wrapper.find(OverviewMod)).toHaveLength(1);
-    expect(wrapper.find(QuestionsAndAnswers)).toHaveLength(2);
+    const wrapper = mount(<App/>);
+    expect(wrapper.find(OverviewMod)).toHaveLength(1);
+    expect(wrapper.find(QuestionsAndAnswers)).toHaveLength(1);
     expect(wrapper.find(RelatedItemsAndComparison)).toHaveLength(1);
     expect(wrapper.find(LMod)).toHaveLength(1);
   });
