@@ -31,6 +31,7 @@ class QuestionSearch extends React.Component {
       }
       if (matchingQueries.length > 0) {
         this.props.setCurrentQuestionsToMatchSearch(matchingQueries);
+        console.log(matchingQueries);
       } else {
         console.log('No results matched your query');
       }
