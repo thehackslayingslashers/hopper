@@ -7,24 +7,21 @@ class LMod extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allReviews: []
+      allReviews: [],
     };
     this.getAllReviews = this.getAllReviews.bind(this);
   }
 
   getAllReviews(id) {
-    axios.get(`/reviewsList/${id}`)
-    .then((results) => {
+    axios.get(`/reviewsList/${id}`).then((results) => {
       this.setState({
-        allReviews: results.data.results
-      })
-    })
+        allReviews: results.data.results,
+      });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const {
-      currentItemId
-    } = this.props;
+    const { currentItemId } = this.props;
 
     if (this.props !== prevProps) {
       this.getAllReviews(currentItemId);
@@ -32,19 +29,12 @@ class LMod extends React.Component {
   }
 
   render() {
-    const {
-      currentItemId,
-      currentItemRatingInfo,
-      currentItemAverageRating
-    } = this.props;
+    const { currentItemId, currentItemRatingInfo, currentItemAverageRating } = this.props;
 
     return (
-      <div className="LModule">
-        <RatingsMod
-        avg={currentItemAverageRating}
-        currentItemRatingInfo={currentItemRatingInfo}
-        />
-        <ReviewsMod reviews={this.state.allReviews}/>
+      <div className="LModule" id="reviews">
+        <RatingsMod avg={currentItemAverageRating} currentItemRatingInfo={currentItemRatingInfo} />
+        <ReviewsMod reviews={this.state.allReviews} />
       </div>
     );
   }
