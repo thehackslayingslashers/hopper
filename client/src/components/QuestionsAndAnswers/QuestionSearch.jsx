@@ -30,7 +30,7 @@ class QuestionSearch extends React.Component {
           placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         />
         <i
-          class="fas fa-search fa-3x"
+          class="fas fa-search fa-2x"
           id="question-search-submit-button"
           onClick={this.handleSubmitQuestionSearch}
         ></i>
