@@ -70,7 +70,7 @@ app.get('/qa/questions/:id', (req, res) => {
     });
 });
 
-app.get('/products/:product_id/related', (req,res) => {
+app.get('/products/:product_id/related', (req, res) => {
   let id = req.params.product_id;
   outbound.fetchRelated(id, (err, relatedItems) => {
     if (err) {

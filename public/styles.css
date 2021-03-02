@@ -238,9 +238,53 @@ QuestionsModule
 
 #questions-and-answers-container {
   background-color: aqua;
+  margin: auto;
   width: 100%;
-  height: 300px;
-  padding: 10px;
+}
+
+#questions-and-answers-header {
+  background-color: whitesmoke;
+  padding-top: 35px;
+  padding-left: 2px;
+  padding-bottom: 35px;
+}
+
+#question-search-field {
+  width: 100%;
+  background-color: whitesmoke;
+  outline: 2px solid black;
+  display: inline-block;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#question-search-field-input {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  width: 90%;
+}
+
+#question-search-submit-button {
+  float: right;
+  display: flex;
+  width: 10%;
+}
+
+#question-and-answer-item-container {
+}
+
+#question-item-container {
+  background-color: lime;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-bottom: 20px;
+}
+
+#answers-container {
+  background-color: maroon;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-bottom: 20px;
 }
 /*=======
 Related Items Module
