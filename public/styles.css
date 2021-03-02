@@ -53,7 +53,6 @@ Overview Module
 /* Basic Info */
 
 #overviewBasicInfo {
-  border: indigo solid;
   grid-row: 1;
   grid-column: 4;
 }
@@ -90,7 +89,6 @@ Overview Module
 /* Style Selector */
 
 #overviewStyleSelector {
-  border: blueviolet solid;
   grid-row: 2;
   grid-column: 4;
   display: grid;
@@ -143,15 +141,28 @@ Overview Module
 /* Add To Cart */
 
 #overviewAddToCart {
-  border: solid darkorchid;
   grid-row: 3;
   grid-column: 4;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto auto;
+}
+
+#overviewSizeSelector,
+#overviewQuantitySelector {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  text-align-last: center;
+}
+
+#overviewAddToCartButton {
+  grid-column: 1 / 3;
 }
 
 /* Production Information */
 
 #overviewProductInformation {
-  background-color: fuchsia;
   grid-row: 5;
   grid-column: 2;
   font-size: medium;
@@ -164,7 +175,6 @@ Overview Module
 /* Feature List */
 
 #overviewFeatureList {
-  background-color: violet;
   grid-row: 5;
   grid-column: 4;
   margin: 0;

@@ -83,7 +83,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.currentItemInfo.id ? (
       <div onClick={this.props.onClickAnywhere}>
         <Header />
         <OverviewMod
@@ -105,6 +105,8 @@ class App extends React.Component {
           currentItemAverageRating={this.state.currentItemAverageRating}
         />
       </div>
+    ) : (
+      'THE CONTENT IS LOADING'
     );
   }
 }
