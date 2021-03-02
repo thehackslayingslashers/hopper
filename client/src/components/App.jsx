@@ -41,12 +41,11 @@ class App extends React.Component {
         );
       })
       .then(() => {
-        cb()
+        cb();
       })
       .catch((error) => {
         console.log(error);
-      })
-
+      });
   }
 
   calculateAverageCurrentItemRating() {
@@ -71,11 +70,14 @@ class App extends React.Component {
   }
 
   handleCardClickIdChange(newId, cb) {
-    this.setState({
-      currentItemId: newId
-    }, () => {
-      this.getInfoAboutCurrentItem(cb);
-    });
+    this.setState(
+      {
+        currentItemId: newId,
+      },
+      () => {
+        this.getInfoAboutCurrentItem(cb);
+      }
+    );
   }
 
   componentDidMount() {
@@ -83,7 +85,7 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.currentItemInfo.id ? (
+    return (
       <div onClick={this.props.onClickAnywhere}>
         <Header />
         <OverviewMod
@@ -95,8 +97,8 @@ class App extends React.Component {
           handleStyleSelection={this.handleStyleSelection}
         />
         <RelatedItemsAndComparison
-        currentItemId={this.state.currentItemId}
-        handleCardClickIdChange={this.handleCardClickIdChange}
+          currentItemId={this.state.currentItemId}
+          handleCardClickIdChange={this.handleCardClickIdChange}
         />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod
@@ -105,8 +107,6 @@ class App extends React.Component {
           currentItemAverageRating={this.state.currentItemAverageRating}
         />
       </div>
-    ) : (
-      'THE CONTENT IS LOADING'
     );
   }
 }
