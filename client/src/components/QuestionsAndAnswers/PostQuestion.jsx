@@ -17,7 +17,8 @@ class PostQuestion extends React.Component {
   }
 
   handleSubmitPostQuestion() {
-    console.log(this.state.postQuestionFieldValue);
+    // console.log(this.state.postQuestionFieldValue);
+    return;
   }
 
   render() {
