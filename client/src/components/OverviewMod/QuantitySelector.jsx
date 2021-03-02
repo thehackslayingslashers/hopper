@@ -14,7 +14,6 @@ const QuantitySelector = ({ skus, selectedSizeIndex, selectQuantity }) => {
     }
     return (
       <select id="overviewQuantitySelector" onChange={selectQuantity}>
-        <option value="">Select Amount</option>
         {QuantitySelector}
       </select>
     );
