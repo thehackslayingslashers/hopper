@@ -66,6 +66,11 @@ Overview Module
   font-size: 14px;
 }
 
+#readAllReviews a {
+  font-size: smaller;
+  color: black;
+}
+
 #overviewBasicInfo span {
   line-height: 1;
   margin: 1vh;
@@ -141,6 +146,7 @@ Overview Module
 /* Add To Cart */
 
 #overviewAddToCart {
+  height: 10vh;
   grid-row: 3;
   grid-column: 4;
   display: grid;
