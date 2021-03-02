@@ -16,9 +16,10 @@ class BasicInfo extends React.Component {
     } = this.props;
 
     let price = null;
+    console.log(currentItemInfo.id);
+    // debugger;
 
     let rating = <p className="noReviews">No reviews yet</p>;
-
     if (currentItemAverageRating !== 'NaN') {
       rating = (
         <div>
