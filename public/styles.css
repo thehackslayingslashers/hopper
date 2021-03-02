@@ -53,13 +53,13 @@ Overview Module
 /* Basic Info */
 
 #overviewBasicInfo {
+  width: 28vh;
   grid-row: 1;
   grid-column: 4;
 }
 
 #overviewBasicInfo p {
   margin: 1vh 0 0.25vh 0;
-  /* margin-left: 0; */
 }
 
 .noReviews {
@@ -94,6 +94,7 @@ Overview Module
 /* Style Selector */
 
 #overviewStyleSelector {
+  width: 28vh;
   grid-row: 2;
   grid-column: 4;
   display: grid;
@@ -150,20 +151,31 @@ Overview Module
   grid-row: 3;
   grid-column: 4;
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 6vh 6vh;
 }
 
 #overviewSizeSelector,
 #overviewQuantitySelector {
-  height: 100%;
-  width: 100%;
+  height: 95%;
+  width: 95%;
   text-align: center;
   text-align-last: center;
+  font-size: x-large;
+}
+
+#overviewQuantitySelector {
+  margin-left: 5%;
 }
 
 #overviewAddToCartButton {
+  margin-top: 2%;
   grid-column: 1 / 3;
+  font-size: x-large;
+}
+
+#addToCartPlus {
+  float: right;
 }
 
 /* Production Information */

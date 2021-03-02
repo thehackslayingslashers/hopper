@@ -15,13 +15,16 @@ class AddToCart extends React.Component {
   }
 
   selectSize(e) {
-    if (e.currentTarget.value === 'Select Size') {
+    if (Number(e.currentTarget.value) !== 'NaN') {
       this.setState({
-        selectedSizeIndex: null,
+        selectedSizeIndex: e.currentTarget.value,
+        selectedQuantity: this.state.selectedQuantity || '1',
       });
     } else {
       this.setState({
-        selectedSizeIndex: e.currentTarget.value,
+        selectedSizeIndex: null,
+        selectedSize: '',
+        selectedSizeIndex: '',
       });
     }
   }
@@ -35,10 +38,20 @@ class AddToCart extends React.Component {
 
   render() {
     let { currentItemStyles, selectedStyleIndex } = this.props;
+    let button = null;
+
+    if (Number(this.state.selectedQuantity)) {
+      button = (
+        <button id="overviewAddToCartButton">
+          <span>ADD TO BAG</span>
+          <span id="addToCartPlus">+</span>
+        </button>
+      );
+    }
+
     if (currentItemStyles[0]) {
       let skus = currentItemStyles[selectedStyleIndex].skus;
 
-      let sizeSelector = skus.map;
       return (
         <div id="overviewAddToCart">
           <SizeSelector skus={skus} selectSize={this.selectSize} />
@@ -47,11 +60,11 @@ class AddToCart extends React.Component {
             selectedSizeIndex={this.state.selectedSizeIndex}
             selectQuantity={this.selectQuantity}
           />
-          <button id="overviewAddToCartButton">Add To Cart</button>
+          {button}
         </div>
       );
     }
-    return null;
+    return <div id="overviewAddToCart">Loading</div>;
   }
 }
 
