@@ -7,7 +7,24 @@ class QuestionView extends React.Component {
     super(props);
     this.state = {
       questionsDisplayed: 2,
+      collapsed: true,
+      showButtonText: 'Show more',
     };
+
+    this.handleShowMore = this.handleShowMore.bind(this);
+  }
+
+  handleShowMore() {
+    const questionListLength = this.props.currentProductQuestions.length;
+    if (this.state.collapsed) {
+      this.setState({ questionsDisplayed: questionListLength });
+      this.state.collapsed = false;
+      this.state.showButtonText = 'Show less';
+    } else {
+      this.setState({ questionsDisplayed: 2 });
+      this.state.collapsed = true;
+      this.state.showButtonText = 'Show more';
+    }
   }
 
   render() {
@@ -15,9 +32,11 @@ class QuestionView extends React.Component {
     return (
       <div>
         {questionList.map((question, index) => (
-          <Question key={index} question={question} />
+          <div key={index}>
+            <Question question={question} />
+          </div>
         ))}
-        <button>Show More</button>
+        <button onClick={this.handleShowMore}>{this.state.showButtonText}</button>
       </div>
     );
   }

@@ -36,9 +36,9 @@ class QuestionsAndAnswers extends React.Component {
   render() {
     return (
       <div id="questions-and-answers-container">
-        <div id="questions-and-answers-header">Questions About This Product:</div>
-        <QuestionView currentProductQuestions={this.state.currentProductQuestions} />
+        <div id="questions-and-answers-header">QUESTIONS & ANSWERS</div>
         <QuestionSearch />
+        <QuestionView currentProductQuestions={this.state.currentProductQuestions} />
         <PostQuestion />
         <AnswerQuestion />
       </div>
