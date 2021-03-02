@@ -3,8 +3,8 @@ import AnswerList from './AnswerList.jsx';
 
 const Question = ({ question }) => {
   return (
-    <div>
-      <div>{question.question_body}</div>
+    <div id="question-and-answer-item-container">
+      <div id="question-item-container">Q: {question.question_body}</div>
       <AnswerList answers={question.answers} />
     </div>
   );

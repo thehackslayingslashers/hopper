@@ -1,14 +1,9 @@
 import React from 'react';
 
-const AnswerList = (props) => {
-  const answers = props.answers;
-  return (
-    <div>
-      {answers.map((answer) => (
-        <div>{answers.body}</div>
-      ))}
-    </div>
-  );
+const AnswerList = ({ answers }) => {
+  const keyArray = [];
+  console.log(Object.keys(answers));
+  return <div id="answer-item-container">A: Answer</div>;
 };
 
 export default AnswerList;
