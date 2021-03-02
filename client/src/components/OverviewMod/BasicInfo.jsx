@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from '../Stars.jsx';
 
 class BasicInfo extends React.Component {
   constructor(props) {
@@ -19,7 +20,14 @@ class BasicInfo extends React.Component {
     let rating = <p className="noReviews">No reviews yet</p>;
 
     if (currentItemAverageRating !== 'NaN') {
-      rating = <p>{currentItemAverageRating + ' stars, link to all reviews'}</p>;
+      rating = (
+        <div>
+          <Stars rating={currentItemAverageRating} />
+          <span>
+            <a href="#reviews"> Read all reviews</a>
+          </span>
+        </div>
+      );
     }
 
     if (currentItemStyles[selectedStyleIndex]) {
