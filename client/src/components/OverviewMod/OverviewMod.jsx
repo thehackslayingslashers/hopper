@@ -37,7 +37,7 @@ class OverviewMod extends React.Component {
           selectedStyleIndex={selectedStyleIndex}
           handleStyleSelection={handleStyleSelection}
         />
-        <AddToCart />
+        <AddToCart currentItemStyles={currentItemStyles} selectedStyleIndex={selectedStyleIndex} />
         <ProductInformation currentItemInfo={currentItemInfo} />
         <FeatureList features={currentItemInfo.features} />
       </div>
