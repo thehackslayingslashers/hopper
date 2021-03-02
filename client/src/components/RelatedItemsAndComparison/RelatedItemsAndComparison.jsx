@@ -10,18 +10,21 @@ class RelatedItemsAndComparison extends React.Component {
     this.state = {
       relatedProducts: []
     };
+
+    this.handleCardClick = this.handleCardClick.bind(this);
+    this.getRelatedProductsToCurrent = this.getRelatedProductsToCurrent.bind(this);
   }
 
-  getRelatedProductsToCurrent(id) {
+  handleCardClick(newId) {
+    this.props.handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
+  }
+
+  getRelatedProductsToCurrent() {
     axios
-      .get(`/products/${id}/related`)
+      .get(`/products/${this.props.currentItemId}/related`)
       .then((data) => {
-        //will need to add rating for each item
-        // console.log(data.data);
         this.setState({
           relatedProducts: data.data
-        }, () => {
-          console.log(this.state.relatedProducts);
         });
       })
       .catch((error) => {
@@ -30,13 +33,16 @@ class RelatedItemsAndComparison extends React.Component {
   }
 
   componentDidMount() {
-    this.getRelatedProductsToCurrent(this.props.currentItemId);
+    this.getRelatedProductsToCurrent();
   }
 
   render () {
     return (
       <div>
-        <RelatedProductsList relatedProducts={this.state.relatedProducts}/>
+        <RelatedProductsList
+        relatedProducts={this.state.relatedProducts}
+        handleCardClick={this.handleCardClick}
+        />
         <OutfitList />
       </div>
     );

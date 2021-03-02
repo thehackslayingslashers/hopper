@@ -20,7 +20,10 @@ class RelatedProductsList extends React.Component {
             {
               this.props.relatedProducts.map((relatedProduct) => {
                 return(
-                  <RelatedProductCard relatedProduct={relatedProduct}/>
+                  <RelatedProductCard
+                  relatedProduct={relatedProduct}
+                  handleCardClick={this.props.handleCardClick}
+                  />
                 )
               })
 

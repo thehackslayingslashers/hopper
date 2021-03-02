@@ -21,9 +21,10 @@ class App extends React.Component {
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
     this.handleStyleSelection = this.handleStyleSelection.bind(this);
+    this.handleCardClickIdChange = this.handleCardClickIdChange.bind(this);
   }
 
-  getInfoAboutCurrentItem() {
+  getInfoAboutCurrentItem(cb = () => {}) {
     let productId = this.state.currentItemId;
 
     axios
@@ -38,9 +39,13 @@ class App extends React.Component {
           this.calculateAverageCurrentItemRating
         );
       })
+      .then(() => {
+        cb()
+      })
       .catch((error) => {
         console.log(error);
-      });
+      })
+
   }
 
   calculateAverageCurrentItemRating() {
@@ -64,6 +69,14 @@ class App extends React.Component {
       );
   }
 
+  handleCardClickIdChange(newId, cb) {
+    this.setState({
+      currentItemId: newId
+    }, () => {
+      this.getInfoAboutCurrentItem(cb);
+    });
+  }
+
   componentDidMount() {
     this.getInfoAboutCurrentItem();
   }
@@ -82,6 +95,7 @@ class App extends React.Component {
         />
         <RelatedItemsAndComparison
         currentItemId={this.state.currentItemId}
+        handleCardClickIdChange={this.handleCardClickIdChange}
         />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod
