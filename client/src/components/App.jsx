@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import helpers from './helpers';
+import withClickTracker from './withClickTracker';
 import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
@@ -11,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17761,
+      currentItemId: 17762,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -21,9 +22,10 @@ class App extends React.Component {
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
     this.handleStyleSelection = this.handleStyleSelection.bind(this);
+    this.handleCardClickIdChange = this.handleCardClickIdChange.bind(this);
   }
 
-  getInfoAboutCurrentItem() {
+  getInfoAboutCurrentItem(cb = () => {}) {
     let productId = this.state.currentItemId;
 
     axios
@@ -38,9 +40,13 @@ class App extends React.Component {
           this.calculateAverageCurrentItemRating
         );
       })
+      .then(() => {
+        cb()
+      })
       .catch((error) => {
         console.log(error);
-      });
+      })
+
   }
 
   calculateAverageCurrentItemRating() {
@@ -64,13 +70,21 @@ class App extends React.Component {
       );
   }
 
+  handleCardClickIdChange(newId, cb) {
+    this.setState({
+      currentItemId: newId
+    }, () => {
+      this.getInfoAboutCurrentItem(cb);
+    });
+  }
+
   componentDidMount() {
     this.getInfoAboutCurrentItem();
   }
 
   render() {
-    return (
-      <div>
+    return this.state.currentItemInfo.id ? (
+      <div onClick={this.props.onClickAnywhere}>
         <Header />
         <OverviewMod
           currentItemInfo={this.state.currentItemInfo}
@@ -82,6 +96,7 @@ class App extends React.Component {
         />
         <RelatedItemsAndComparison
         currentItemId={this.state.currentItemId}
+        handleCardClickIdChange={this.handleCardClickIdChange}
         />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod
@@ -90,8 +105,10 @@ class App extends React.Component {
           currentItemAverageRating={this.state.currentItemAverageRating}
         />
       </div>
+    ) : (
+      'THE CONTENT IS LOADING'
     );
   }
 }
 
-export default App;
+export default withClickTracker(App);

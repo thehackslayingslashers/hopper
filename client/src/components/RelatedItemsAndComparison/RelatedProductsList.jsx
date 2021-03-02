@@ -12,15 +12,28 @@ class RelatedProductsList extends React.Component {
 
   render () {
     return (
-      <div className="productlistoutercontainer">
-        <button>L</button>
-        <div className="productlistcontainer">
-          <RelatedProductCard />
-          <RelatedProductCard />
-          <RelatedProductCard />
-          <RelatedProductCard />
+      <div>
+        <h2>Related Products</h2>
+        <div className="productlistoutercontainer">
+          <div className="productlistcontainer">
+            <button>L</button>
+            {
+              this.props.relatedProducts.map((relatedProduct) => {
+                return(
+                  <RelatedProductCard
+                  relatedProduct={relatedProduct}
+                  handleCardClick={this.props.handleCardClick}
+                  />
+                )
+              })
+
+
+            }
+
+
+            <button>R</button>
+          </div>
         </div>
-        <button>R</button>
       </div>
     )
   }

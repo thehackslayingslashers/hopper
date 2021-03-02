@@ -32,10 +32,8 @@ Overview Module
 
 #overview {
   width: 100%;
-  /* height: 82vh; */
   display: grid;
   grid-template-columns: 10% 52% 2% 36%;
-  /* grid-template-rows: 25% 21% 23% 7% 17% 7%; */
   grid-template-rows: auto auto auto 5vh auto 5vh;
   background-color: lightslategray;
   font-size: large;
@@ -49,13 +47,12 @@ Overview Module
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
-  max-height: 57vh;
+  height: 57vh;
 }
 
 /* Basic Info */
 
 #overviewBasicInfo {
-  border: indigo solid;
   grid-row: 1;
   grid-column: 4;
 }
@@ -92,7 +89,6 @@ Overview Module
 /* Style Selector */
 
 #overviewStyleSelector {
-  border: blueviolet solid;
   grid-row: 2;
   grid-column: 4;
   display: grid;
@@ -145,7 +141,6 @@ Overview Module
 /* Add To Cart */
 
 #overviewAddToCart {
-  border: solid darkorchid;
   grid-row: 3;
   grid-column: 4;
 }
@@ -153,7 +148,6 @@ Overview Module
 /* Production Information */
 
 #overviewProductInformation {
-  background-color: fuchsia;
   grid-row: 5;
   grid-column: 2;
   font-size: medium;
@@ -166,7 +160,6 @@ Overview Module
 /* Feature List */
 
 #overviewFeatureList {
-  background-color: violet;
   grid-row: 5;
   grid-column: 4;
   margin: 0;
@@ -240,9 +233,79 @@ QuestionsModule
 
 #questions-and-answers-container {
   background-color: aqua;
+  font-family: Arial, sans-serif;
+  font-size: 18pt;
+  margin: auto;
   width: 100%;
-  height: 300px;
-  padding: 10px;
+}
+
+#questions-and-answers-header {
+  background-color: white;
+  font-weight: 200;
+  padding-top: 60px;
+  padding-left: 2px;
+  padding-bottom: 20px;
+}
+
+#question-search-field {
+  width: 100%;
+  background-color: white;
+  outline: 1px solid black;
+  flex: auto;
+}
+
+#question-search-field-input {
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  width: 99%;
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+#question-search-field-input::placeholder {
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+#question-search-submit-button {
+  float: right;
+  width: 10%;
+  padding-top: 5px;
+  margin-right: 200px;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-55px);
+}
+
+#question-and-answer-item-container {
+  font-weight: bold;
+  font-size: 14pt;
+}
+
+#question-item-container {
+  background-color: lime;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-bottom: 20px;
+}
+
+#answers-container {
+  background-color: maroon;
+  padding-left: 8px;
+  padding-top: 8px;
+  padding-bottom: 20px;
+}
+
+.a-for-answer-and-answer-text {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.answer-text {
+  font-weight: 200;
 }
 /*=======
 Related Items Module
@@ -254,7 +317,10 @@ Related Items Module
   justify-content: space-around;
   align-items: center;
   background-color: grey;
-  padding: 20px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  border-width: 1px;
+  border: red;
 }
 
 .productlistcontainer {
