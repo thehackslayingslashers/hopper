@@ -17,10 +17,20 @@ class RelatedProductsList extends React.Component {
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
             <button>L</button>
-            <RelatedProductCard />
-            <RelatedProductCard />
-            <RelatedProductCard />
-            <RelatedProductCard />
+            {
+              this.props.relatedProducts.map((relatedProduct) => {
+                return(
+                  <RelatedProductCard
+                  relatedProduct={relatedProduct}
+                  handleCardClick={this.props.handleCardClick}
+                  />
+                )
+              })
+
+
+            }
+
+
             <button>R</button>
           </div>
         </div>
