@@ -23,8 +23,9 @@ class BasicInfo extends React.Component {
       rating = (
         <div>
           <Stars rating={currentItemAverageRating} />
-          <span>
-            <a href="#reviews"> Read all reviews</a>
+          <span id="readAllReviews">
+            {' '}
+            <a href="#reviews">Read all reviews</a>
           </span>
         </div>
       );

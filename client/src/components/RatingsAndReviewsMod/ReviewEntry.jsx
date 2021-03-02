@@ -1,13 +1,18 @@
 import React from 'react';
+import Moment from 'moment';
 import Stars from '../Stars';
 
+
 const ReviewEntry = ({ review }) => {
+  Moment.locale('en');
+  let timeStamp = review.date;
   return (
-    <article className="reviewEntry">
+    <article className="reviewEntry" style={{color:`grey`}}>
       <Stars rating={review.rating}/>
+      <h4>{`${review.reviewer_name}, ${Moment(timeStamp).format('MMM DD, YYYY')}`}</h4>
       <div id={review.review_id}>
-        <h4>Summary: {review.summary}</h4>
-        <h5>Body: {review.body}</h5>
+        <h2 style={{color:`black`}}><b>{review.summary}</b></h2>
+        <h4>{review.body}</h4>
       </div>
       <hr />
     </article>
