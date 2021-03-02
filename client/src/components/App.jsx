@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import helpers from './helpers';
+import withClickTracker from './withClickTracker';
 import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
@@ -11,7 +12,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17761,
+      currentItemId: 17762,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -70,7 +71,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div onClick={this.props.onClickAnywhere}>
         <Header />
         <OverviewMod
           currentItemInfo={this.state.currentItemInfo}
@@ -80,9 +81,7 @@ class App extends React.Component {
           selectedStyleIndex={this.state.selectedStyleIndex}
           handleStyleSelection={this.handleStyleSelection}
         />
-        <RelatedItemsAndComparison
-        currentItemId={this.state.currentItemId}
-        />
+        <RelatedItemsAndComparison currentItemId={this.state.currentItemId} />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod
           currentItemId={this.state.currentItemId}
@@ -94,4 +93,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withClickTracker(App);
