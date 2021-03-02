@@ -7,7 +7,11 @@ const sizeSelector = ({ skus, selectSize }) => {
   let sizeSelector = skuKeys.map((sku) => {
     // debugger;
     if (skus[sku].quantity > 0) {
-      return <option value={index++}>{skus[sku].size}</option>;
+      return (
+        <option key={index} value={index++}>
+          {skus[sku].size}
+        </option>
+      );
     } else {
       index++;
       return null;

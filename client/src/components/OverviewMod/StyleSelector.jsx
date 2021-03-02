@@ -25,9 +25,8 @@ class StyleSelector extends React.Component {
             url = url.substr(1);
           }
           let styleImage = (
-            <div className="overviewStyleItemContainer">
+            <div key={style.name + style.style_id} className="overviewStyleItemContainer">
               <img
-                key={style.name + style.style_id}
                 index={index}
                 className="overviewStyleItem"
                 src={url}
@@ -37,9 +36,8 @@ class StyleSelector extends React.Component {
           );
           if (selectedStyleIndex === index) {
             styleImage = (
-              <div className="overviewStyleItemContainer">
+              <div key={style.name + style.style_id} className="overviewStyleItemContainer">
                 <img
-                  key={style.name + style.style_id}
                   index={index}
                   className="overviewStyleItem"
                   src={style.photos[0].thumbnail_url}
