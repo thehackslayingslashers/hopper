@@ -11,6 +11,7 @@ class QuestionsAndAnswers extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allQuestions: [],
       currentProductQuestions: [],
       searchedQuestion: null,
     };
@@ -46,6 +47,7 @@ class QuestionsAndAnswers extends React.Component {
         <QuestionSearch
           currentProductQuestions={this.state.currentProductQuestions}
           setCurrentQuestionsToMatchSearch={this.setCurrentQuestionsToMatchSearch}
+          getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
         <QuestionView
           currentProductQuestions={this.state.currentProductQuestions}
