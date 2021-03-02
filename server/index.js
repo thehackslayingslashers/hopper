@@ -72,14 +72,13 @@ app.get('/qa/questions/:id', (req, res) => {
 
 app.get('/products/:product_id/related', (req,res) => {
   let id = req.params.product_id;
-  outbound.fetchRelated(id)
-  .then(response => {
-    console.log(response.data);
-    res.send(response.data);
-  })
-  .catch(error => {
-    res.send(error);
-  })
+  outbound.fetchRelated(id, (err, relatedItems) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(relatedItems);
+    }
+  });
 })
 
 app.listen(port, () => {
