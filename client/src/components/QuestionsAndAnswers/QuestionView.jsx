@@ -18,12 +18,12 @@ class QuestionView extends React.Component {
     const questionListLength = this.props.currentProductQuestions.length;
     if (this.state.questionsCollapsed) {
       this.setState({ questionsDisplayed: questionListLength });
-      this.state.questionsCollapsed = false;
-      this.state.showButtonText = 'Show less questions';
+      this.setState({ questionsCollapsed: false });
+      this.setState({ showMoreQuestionsButtonText: 'Show less questions' });
     } else {
       this.setState({ questionsDisplayed: 2 });
-      this.state.questionsCollapsed = true;
-      this.state.showButtonText = 'Show more questions';
+      this.setState({ questionsCollapsed: true });
+      this.setState({ showMoreQuestionsButtonText: 'Show more questions' });
     }
   }
 
