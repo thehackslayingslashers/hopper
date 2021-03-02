@@ -47,32 +47,50 @@ const fetchQuestions = (id) => {
   );
 };
 
+const postQuestion = (id, body, name, email) => {
+  let localOptions = Object.create(options);
+  localOptions.params = {
+    body: body,
+    name: name,
+    email: email,
+    product_id: id,
+  };
+  return axios.post(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    localOptions
+  );
+};
+
 const fetchRelated = (id, callback) => {
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
-    .then(response => {
+  axios
+    .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
+    .then((response) => {
       let relatedArray = [];
       response.data.map((id) => {
-        relatedArray.push(axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options));
-      })
-      axios.all(relatedArray)
-        .then (axios.spread((...responses) => {
-          let results = [];
-          responses.map((response) => {
-            results.push(response.data);
+        relatedArray.push(
+          axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
+        );
+      });
+      axios
+        .all(relatedArray)
+        .then(
+          axios.spread((...responses) => {
+            let results = [];
+            responses.map((response) => {
+              results.push(response.data);
+            });
+            callback(null, results);
           })
-          callback(null, results);
-        }))
+        )
         .catch((error) => {
           console.log('erroring out of axios.all request in fetchRelated call');
           callback(error);
-        })
+        });
     })
     .catch((error) => {
       callback(error);
-    })
-
-}
-
+    });
+};
 
 module.exports = {
   fetchItemById,
@@ -80,5 +98,6 @@ module.exports = {
   allReviewFetch,
   fetchStyles,
   fetchQuestions,
-  fetchRelated
+  fetchRelated,
+  postQuestion,
 };
