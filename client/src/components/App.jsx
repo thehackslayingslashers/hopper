@@ -81,7 +81,7 @@ class App extends React.Component {
           selectedStyleIndex={this.state.selectedStyleIndex}
           handleStyleSelection={this.handleStyleSelection}
         />
-        <RelatedItemsAndComparison />
+        <RelatedItemsAndComparison currentItemId={this.state.currentItemId} />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod
           currentItemId={this.state.currentItemId}

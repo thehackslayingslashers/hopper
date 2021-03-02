@@ -106,6 +106,3 @@ dist
 # api keys and config info
 config.js
 .env
-
-# rebuilt on save
-public/index.js
