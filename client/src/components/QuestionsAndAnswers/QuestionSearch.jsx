@@ -17,7 +17,24 @@ class QuestionSearch extends React.Component {
   }
 
   handleSubmitQuestionSearch() {
-    console.log(this.state.questionSearchFieldValue);
+    const currentProductQuestions = this.props.currentProductQuestions;
+    if (this.state.questionSearchFieldValue.length < 4) {
+      console.log('Please type at least 3 characters');
+    } else {
+      const matchingQueries = [];
+      for (let i = 0; i < currentProductQuestions.length; i++) {
+        if (
+          currentProductQuestions[i].question_body.includes(this.state.questionSearchFieldValue)
+        ) {
+          matchingQueries.push(currentProductQuestions[i]);
+        }
+      }
+      if (matchingQueries.length > 0) {
+        this.props.setCurrentQuestionsToMatchSearch(matchingQueries);
+      } else {
+        console.log('No results matched your query');
+      }
+    }
   }
 
   render() {
