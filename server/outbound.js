@@ -21,11 +21,13 @@ const reviewInfoFetch = (id) => {
     localOptions
   );
 };
-const allReviewFetch = (id) => {
+const allReviewFetch = (id, count) => {
   let localOptions = Object.create(options);
   localOptions.params = {
     product_id: id,
+    count: count
   };
+  
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/`, localOptions);
 };
 
