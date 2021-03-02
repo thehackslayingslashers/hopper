@@ -2,7 +2,7 @@ import React from 'react';
 import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
 import PostQuestion from './PostQuestion';
-import AnswerQuestion from './AnswerQuestion';
+import PostAnswer from './PostAnswer';
 import App from '../App.jsx';
 import axios from 'axios';
 // import GARETHS_TOKEN from '../../config.js';
@@ -12,10 +12,12 @@ class QuestionsAndAnswers extends React.Component {
     super(props);
     this.state = {
       currentProductQuestions: [],
+      searchedQuestion: null,
     };
     this.getCurrentProductQuestionsAndAnswers = this.getCurrentProductQuestionsAndAnswers.bind(
       this
     );
+    this.setCurrentQuestionsToMatchSearch = this.setCurrentQuestionsToMatchSearch.bind(this);
   }
 
   getCurrentProductQuestionsAndAnswers(id) {
@@ -29,6 +31,10 @@ class QuestionsAndAnswers extends React.Component {
       });
   }
 
+  setCurrentQuestionsToMatchSearch(newQuestionArray) {
+    this.setState({ currentProductQuestions: newQuestionArray });
+  }
+
   componentDidMount() {
     this.getCurrentProductQuestionsAndAnswers(this.props.currentItemId);
   }
@@ -37,10 +43,16 @@ class QuestionsAndAnswers extends React.Component {
     return (
       <div id="questions-and-answers-container">
         <div id="questions-and-answers-header">QUESTIONS & ANSWERS</div>
-        <QuestionSearch />
-        <QuestionView currentProductQuestions={this.state.currentProductQuestions} />
+        <QuestionSearch
+          currentProductQuestions={this.state.currentProductQuestions}
+          setCurrentQuestionsToMatchSearch={this.setCurrentQuestionsToMatchSearch}
+        />
+        <QuestionView
+          currentProductQuestions={this.state.currentProductQuestions}
+          searchedQuestion={this.state.searchedQuestion}
+        />
         <PostQuestion />
-        <AnswerQuestion />
+        <PostAnswer />
       </div>
     );
   }

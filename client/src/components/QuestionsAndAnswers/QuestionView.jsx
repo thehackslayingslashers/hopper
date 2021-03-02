@@ -16,6 +16,7 @@ class QuestionView extends React.Component {
 
   handleShowMore() {
     const questionListLength = this.props.currentProductQuestions.length;
+    const searchedQuestion = this.props.searchedQuestion;
     if (this.state.collapsed) {
       this.setState({ questionsDisplayed: questionListLength });
       this.state.collapsed = false;
