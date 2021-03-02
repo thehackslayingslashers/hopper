@@ -20,25 +20,27 @@ class StyleSelector extends React.Component {
       ];
       styleItems = styleItems.concat(
         currentItemStyles.map((style) => {
+          let url = style.photos[0].thumbnail_url;
+          if (url[0] !== 'h') {
+            url = url.substr(1);
+          }
           let styleImage = (
-            <div className="overviewStyleItemContainer">
+            <div key={style.name + style.style_id} className="overviewStyleItemContainer">
               <img
-                key={style.name + style.style_id}
                 index={index}
                 className="overviewStyleItem"
-                src={style.photos[0].thumbnail_url}
+                src={url}
                 onClick={handleStyleSelection}
               />
             </div>
           );
           if (selectedStyleIndex === index) {
             styleImage = (
-              <div className="overviewStyleItemContainer">
+              <div key={style.name + style.style_id} className="overviewStyleItemContainer">
                 <img
-                  key={style.name + style.style_id}
                   index={index}
                   className="overviewStyleItem"
-                  src={style.photos[0].thumbnail_url}
+                  src={url}
                   onClick={handleStyleSelection}
                 />
                 {selectedCheck}
