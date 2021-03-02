@@ -79,7 +79,7 @@ app.get('/products/:product_id/related', (req,res) => {
       res.send(relatedItems);
     }
   });
-})
+});
 
 app.listen(port, () => {
   console.log(`Server is live and happenin on ${port}`);

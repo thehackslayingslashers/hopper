@@ -10,12 +10,13 @@ class RelatedProductCard extends React.Component {
   }
 
   render () {
+    let product = this.props.relatedProduct;
     return (
       <div className="productcard">
         <div className="cardimage"></div>
-        CATEGORY
-          <p>Expanded Product Name With Extra Text</p>
-          Price
+        {product.category}
+          <p>{product.name}</p>
+          {product.default_price}
           <p>***** (stars)</p>
       </div>
     )
