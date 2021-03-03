@@ -12,7 +12,7 @@ class AddOutfitCard extends React.Component {
   render () {
     return (
       <div className="card productcard">
-        <div className="addtooutfit">
+        <div className="addtooutfit" onClick={this.props.handleAddClick}>
           <div className="circle"></div>
           <h3>Add Current Product To Outfits</h3>
         </div>

@@ -460,8 +460,8 @@ Related Items Module
 
 .circle {
   border-radius: 50%;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   background-color: rgb(44, 108, 128);
   position: relative;
   margin: auto;

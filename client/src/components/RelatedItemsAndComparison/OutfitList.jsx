@@ -9,6 +9,11 @@ class OutfitList extends React.Component {
     this.state = {
       outfits: [1]
     };
+    this.handleAddClick = this.handleAddClick.bind(this);
+  }
+
+  handleAddClick (e) {
+    console.log('clicked add card!')
   }
 
   render () {
@@ -18,7 +23,9 @@ class OutfitList extends React.Component {
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
             <button>L</button>
-            <AddOutfitCard />
+            <AddOutfitCard
+            handleAddClick={this.handleAddClick}
+            />
             {
               this.state.outfits.map((outfitItem) => {
                 return (
