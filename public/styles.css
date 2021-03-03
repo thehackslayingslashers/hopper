@@ -225,7 +225,7 @@ LModule
 
 article {
   width: 90%;
-  margin: 20px auto;
+  margin: 20px 0;
   border-radius: 10px;
   padding: 10px;
 }
@@ -257,6 +257,18 @@ hr {
 .filledstars::before {
   content: '\f005 \f005 \f005 \f005 \f005';
   color: #f7d200;
+}
+
+.recommended {
+  padding-left: 15px;
+}
+.recommended li {
+  list-style-type: '✓';
+}
+
+.recommended li span {
+  position: relative;
+  left: 5px;
 }
 
 /*
