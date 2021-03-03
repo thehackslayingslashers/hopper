@@ -429,12 +429,33 @@ Related Items Module
 .card {
   width: 22vh;
   height: 33vh;
+  position: relative;
   background: white;
   margin: 1.5vh;
   overflow: auto;
   word-wrap: break-word;
   contain: strict;
   border-radius: 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.card:hover {
+  transform: scale(1);
+  transition: 0.5s;
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+.icon {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  color: red;
+  background-color: blue;
+  opacity: 1;
+}
+.icon:hover {
+  transform: scale(1.3);
+  transition: 0.5s;
 }
 
 .productcard {
@@ -456,5 +477,43 @@ Related Items Module
 }
 
 .addtooutfit {
-  padding: 20px;
+  padding-top: 80px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: rgb(44, 108, 128);
+  position: relative;
+  margin: auto;
+}
+.circle::after {
+  content: ' ';
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  height: 10px;
+  margin-top: -5px;
+  top: 50%;
+  left: 5px;
+  right: 5px;
+  z-index: 9;
+}
+.circle::before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  width: 10px;
+  margin-left: -5px;
+  left: 50%;
+  top: 5px;
+  bottom: 5px;
+  z-index: 9;
 }

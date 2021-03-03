@@ -23,6 +23,7 @@ class RelatedProductsList extends React.Component {
                   <RelatedProductCard
                   relatedProduct={relatedProduct}
                   handleCardClick={this.props.handleCardClick}
+                  key={relatedProduct.id}
                   />
                 )
               })
