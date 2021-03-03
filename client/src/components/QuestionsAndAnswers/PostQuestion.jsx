@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class PostQuestion extends React.Component {
   constructor(props) {
@@ -6,38 +7,67 @@ class PostQuestion extends React.Component {
 
     this.state = {
       postQuestionFieldValue: '',
-      questionToPost: {
-        body: '',
-        name: '',
-        email: '',
-        product_id: '',
-      },
+      postEmailFieldValue: '',
+      postUsernameFieldValue: '',
     };
 
-    this.handleGetPostQuestionFieldValue = this.handleGetPostQuestionFieldValue.bind(this);
+    this.handleGetQuestionBodyValue = this.handleGetQuestionBodyValue.bind(this);
+    this.handleGetEmailValue = this.handleGetEmailValue.bind(this);
+    this.handleGetUsernameValue = this.handleGetUsernameValue.bind(this);
     this.handleSubmitPostQuestion = this.handleSubmitPostQuestion.bind(this);
   }
 
-  handleGetPostQuestionFieldValue(e) {
+  handleGetQuestionBodyValue(e) {
     this.setState({ postQuestionFieldValue: e.target.value });
-    e.target.value = '';
+  }
+  handleGetEmailValue(e) {
+    this.setState({ postEmailFieldValue: e.target.value });
+  }
+  handleGetUsernameValue(e) {
+    this.setState({ postUsernameFieldValue: e.target.value });
   }
 
-  handleSubmitPostQuestion() {
-    // console.log(this.state.postQuestionFieldValue);
-    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`);
-    return;
+  handleSubmitPostQuestion(e) {
+    e.preventDefault();
+    // console.log(this.state.postQuestionFieldValue);'
+    const productId = this.props.currentItemId;
+    var usernameField = this.state.postUsernameFieldValue;
+    var emailField = this.state.postEmailFieldValue;
+    var questionField = this.state.postQuestionFieldValue;
+    if (usernameField.length > 3 && emailField.length > 3 && questionField.length > 3) {
+      var questionPostRequest = {
+        body: questionField,
+        name: usernameField,
+        email: emailField,
+        product_id: productId,
+      };
+      axios({
+        method: 'post',
+        url: '/qa/questions/',
+        data: questionPostRequest,
+      })
+        .then((response) => {
+          console.log('Post went through');
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
   }
 
   render() {
     return (
       <div>
-        Post Question Here:
+        Post Question Body:
         <input
           className="post-question-field"
           type="text"
-          onChange={this.handleGetPostQuestionFieldValue}
-        ></input>
+          onChange={this.handleGetQuestionBodyValue}
+        />
+        Username:
+        <input className="post-username-field" type="text" onChange={this.handleGetUsernameValue} />
+        Email:
+        <input className="post-email-field" type="text" onChange={this.handleGetEmailValue} />
         <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
       </div>
     );

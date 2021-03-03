@@ -49,16 +49,12 @@ const fetchQuestions = (id) => {
   );
 };
 
-const postQuestion = (id, body, name, email) => {
-  let localOptions = Object.create(options);
-  localOptions.params = {
-    body: body,
-    name: name,
-    email: email,
-    product_id: id,
-  };
+const postQuestion = (obj) => {
+  let localOptions = Object.assign(options);
+  let stringyObj = JSON.stringify(obj);
   return axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    obj,
     localOptions
   );
 };
