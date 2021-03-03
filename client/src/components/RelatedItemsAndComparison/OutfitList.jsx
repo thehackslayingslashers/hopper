@@ -23,14 +23,15 @@ class OutfitList extends React.Component {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits
         }
+      }, () => {
+        //update local storage
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
     }
-
   }
 
   handleDeleteClick (item) {
-    console.log(item)
-    console.log('the x was clicked!')
     if (this.state.outfitIds.includes(item.id)) {
       console.log(item.id)
       this.setState((prevState) => {
@@ -41,10 +42,21 @@ class OutfitList extends React.Component {
           outfits: prevState.outfits
         }
       }, () => {
-        console.log(this.state)
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
     }
 
+  }
+
+  componentDidMount () {
+    //load up the local storage stuff
+    let storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
+    let storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
+    this.setState({
+      outfitIds: storedOutfitIds,
+      outfits: storedOutfits
+    });
   }
 
   render () {
@@ -63,7 +75,8 @@ class OutfitList extends React.Component {
                   <OutfitCard
                   outfitItem={outfitItem}
                   handleDeleteClick={this.handleDeleteClick}
-                  key={outfitItem.id}
+                  handleCardClick={this.props.handleCardClick}
+                  key={'outfit' + outfitItem.id}
                   />
                 );
               })

@@ -12,10 +12,10 @@ class OutfitCard extends React.Component {
   render () {
     let product = this.props.outfitItem;
     return (
-      <div className="card productcard" onClick={this.props.onCardClick}>
+      <div className="card productcard">
         <button className="icon" onClick={()=> (this.props.handleDeleteClick(this.props.outfitItem))}>X</button>
-        <div className="cardimage"></div>
-        <div className="cardinfo">
+        <div className="cardimage"  onClick={() => this.props.handleCardClick(product.id)}></div>
+        <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
           {product.category.toUpperCase()}
           <p>{product.name}</p>
           {product.default_price}
