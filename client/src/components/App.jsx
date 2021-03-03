@@ -18,7 +18,7 @@ class App extends React.Component {
       currentItemAverageRating: 0,
       currentItemStyles: [],
       selectedStyleIndex: 0,
-      numberOfReviews: 0
+      numberOfReviews: 0,
     };
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
@@ -59,16 +59,16 @@ class App extends React.Component {
     });
   }
 
-  calculateAllReviews () {
+  calculateAllReviews() {
     let total = 0;
 
     for (let keys in this.state.currentItemRatingInfo.ratings) {
       total += Number(this.state.currentItemRatingInfo.ratings[keys]);
-    };
+    }
 
     this.setState({
-      numberOfReviews: total
-    })
+      numberOfReviews: total,
+    });
   }
 
   handleStyleSelection(e) {
@@ -109,6 +109,7 @@ class App extends React.Component {
           currentItemAverageRating={this.state.currentItemAverageRating}
           currentItemStyles={this.state.currentItemStyles}
           selectedStyleIndex={this.state.selectedStyleIndex}
+          numberOfReviews={this.state.numberOfReviews}
           handleStyleSelection={this.handleStyleSelection}
         />
         <RelatedItemsAndComparison
