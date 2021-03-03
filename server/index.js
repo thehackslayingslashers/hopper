@@ -49,7 +49,7 @@ app.get('/product/:id', (req, res) => {
 app.post('/reviewsList/', (req, res) => {
   const id = req.body.id;
   const count = req.body.count;
-  
+
   outbound
     .allReviewFetch(id, count)
     .then((response) => {
