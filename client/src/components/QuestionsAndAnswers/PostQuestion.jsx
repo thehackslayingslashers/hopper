@@ -17,14 +17,19 @@ class PostQuestion extends React.Component {
   }
 
   handleSubmitPostQuestion() {
-    console.log(this.state.postQuestionFieldValue);
+    // console.log(this.state.postQuestionFieldValue);
+    return;
   }
 
   render() {
     return (
       <div>
         Post Question Here:
-        <input className="post-question-field" type="text" onChange={this.handleGetPostQuestionFieldValue}></input>
+        <input
+          className="post-question-field"
+          type="text"
+          onChange={this.handleGetPostQuestionFieldValue}
+        ></input>
         <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
       </div>
     );

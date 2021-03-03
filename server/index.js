@@ -72,11 +72,23 @@ app.get('/qa/questions/:id', (req, res) => {
     });
 });
 
+app.post('qa/questions/', (req, res) => {
+  const id = req.params.id;
+  outbound
+    .postQuestion(id)
+    .then((response) => {
+      res.send('received');
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
 app.get('/products/:product_id/related', (req, res) => {
   let id = req.params.product_id;
   outbound.fetchRelated(id, (err, relatedItems) => {
     if (err) {
-      res.send(err)
+      res.send(err);
     } else {
       res.send(relatedItems);
     }

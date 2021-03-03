@@ -6,6 +6,8 @@ class QuestionSearch extends React.Component {
 
     this.state = {
       questionSearchFieldValue: '',
+      errorMessage: { display: 'none' },
+      errorMessageText: 'We could not find any questions matching your query',
     };
 
     this.handleGetQuestionSearchFieldValue = this.handleGetQuestionSearchFieldValue.bind(this);
@@ -18,8 +20,10 @@ class QuestionSearch extends React.Component {
 
   handleSubmitQuestionSearch() {
     const currentProductQuestions = this.props.currentProductQuestions;
+    this.setState({ questionSearchFieldValue: '' });
     if (this.state.questionSearchFieldValue.length < 4) {
-      console.log('Please type at least 3 characters');
+      this.setState({ errorMessageText: 'Please provide at least 3 characters' });
+      this.setState({ errorMessage: { display: 'flex' } });
     } else {
       const matchingQueries = [];
       for (let i = 0; i < currentProductQuestions.length; i++) {
@@ -30,10 +34,12 @@ class QuestionSearch extends React.Component {
         }
       }
       if (matchingQueries.length > 0) {
+        this.setState({ errorMessage: { display: 'none' } });
         this.props.setCurrentQuestionsToMatchSearch(matchingQueries);
-        console.log(matchingQueries);
+        // console.log(matchingQueries);
       } else {
-        console.log('No results matched your query');
+        this.setState({ errorMessage: { display: 'flex' } });
+        this.setState({ errorMessageText: 'We could not find any questions matching your query' });
       }
     }
   }
@@ -41,17 +47,22 @@ class QuestionSearch extends React.Component {
   render() {
     return (
       <div id="question-search-field">
-        <input
-          id="question-search-field-input"
-          type="text"
-          onChange={this.handleGetQuestionSearchFieldValue}
-          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        />
-        <i
-          class="fas fa-search fa-2x"
-          id="question-search-submit-button"
-          onClick={this.handleSubmitQuestionSearch}
-        ></i>
+        <div>
+          <input
+            id="question-search-field-input"
+            type="text"
+            onChange={this.handleGetQuestionSearchFieldValue}
+            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+          />
+          <i
+            className="fas fa-search fa-2x"
+            id="question-search-submit-button"
+            onClick={this.handleSubmitQuestionSearch}
+          ></i>
+        </div>
+        <div id="no-matching-queries-message" style={this.state.errorMessage}>
+          {this.state.errorMessageText}
+        </div>
       </div>
     );
   }

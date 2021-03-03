@@ -352,6 +352,13 @@ QuestionsModule
 .answer-text {
   font-weight: 200;
 }
+
+#no-matching-queries-message {
+  font-weight: 100;
+  width: 100%;
+  text-align: center;
+  background-color: lightcoral;
+}
 /*
 =====================
 Related Items Module

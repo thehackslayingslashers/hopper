@@ -20,14 +20,15 @@ class QuestionsAndAnswers extends React.Component {
     this.setCurrentQuestionsToMatchSearch = this.setCurrentQuestionsToMatchSearch.bind(this);
   }
 
-  getCurrentProductQuestionsAndAnswers(id) {
+  getCurrentProductQuestionsAndAnswers() {
+    let id = this.props.currentItemId;
     axios
       .get(`/qa/questions/${id}`)
       .then((results) => {
         this.setState({ currentProductQuestions: results.data });
       })
       .catch((error) => {
-        console.log('failed to load questions');
+        throw error;
       });
   }
 
@@ -36,7 +37,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   componentDidMount() {
-    this.getCurrentProductQuestionsAndAnswers(this.props.currentItemId);
+    this.getCurrentProductQuestionsAndAnswers();
   }
 
   render() {
