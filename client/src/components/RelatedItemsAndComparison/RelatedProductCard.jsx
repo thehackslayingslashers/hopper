@@ -19,9 +19,11 @@ class RelatedProductCard extends React.Component {
     let product = this.props.relatedProduct;
     return (
       <div className="card productcard" onClick={this.onCardClick}>
+        <button class="icon">star
+        </button>
         <div className="cardimage"></div>
         <div className="cardinfo">
-          {product.category}
+          {product.category.toUpperCase()}
           <p>{product.name}</p>
           {product.default_price}
           <p>***** (stars)</p>

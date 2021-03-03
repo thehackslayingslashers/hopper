@@ -429,12 +429,31 @@ Related Items Module
 .card {
   width: 22vh;
   height: 33vh;
+  position: relative;
   background: white;
   margin: 1.5vh;
   overflow: auto;
   word-wrap: break-word;
   contain: strict;
   border-radius: 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.icon {
+  position: absolute;
+  right: 9px;
+  top: 9px;
+  color: red;
+  background-color: blue;
+  opacity: 1;
+}
+.icon:hover {
+  transform: scale(1.5);
+}
+.card:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
 }
 
 .productcard {
