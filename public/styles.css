@@ -190,6 +190,43 @@ Overview Module
   margin-top: 0;
 }
 
+.smIcon {
+  height: 20px;
+  width: 20px;
+  margin: 0 20px 0 0;
+}
+
+.smIcon:hover {
+  color: grey;
+}
+
+.smIcon:active {
+  animation-name: shareAnimation;
+  animation-duration: 0.2s;
+  animation-iteration-count: 3;
+}
+
+@keyframes shareAnimation {
+  0% {
+    color: red;
+  }
+  20% {
+    color: orange;
+  }
+  40% {
+    color: yellow;
+  }
+  60% {
+    color: green;
+  }
+  80% {
+    color: blue;
+  }
+  100% {
+    color: violet;
+  }
+}
+
 /* Feature List */
 
 #overviewFeatureList {

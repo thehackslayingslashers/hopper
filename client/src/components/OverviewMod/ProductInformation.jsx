@@ -1,4 +1,12 @@
 import React from 'react';
+import {
+  RiTwitterLine,
+  RiFacebookCircleLine,
+  RiPinterestLine,
+  RiDiscordLine,
+  RiRedditLine,
+  RiLinkedinLine,
+} from 'react-icons/ri';
 
 class ProductInformation extends React.Component {
   constructor(props) {
@@ -13,6 +21,12 @@ class ProductInformation extends React.Component {
         <div id="overviewProductInformation">
           <h3>{currentItemInfo.slogan}</h3>
           <p>{currentItemInfo.description}</p>
+          <RiTwitterLine className="smIcon" />
+          <RiFacebookCircleLine className="smIcon" />
+          <RiPinterestLine className="smIcon" />
+          <RiDiscordLine className="smIcon" />
+          <RiRedditLine className="smIcon" />
+          <RiLinkedinLine className="smIcon" />
         </div>
       );
     } else {
