@@ -20,6 +20,7 @@ class OverviewMod extends React.Component {
       currentItemStyles,
       selectedStyleIndex,
       handleStyleSelection,
+      numberOfReviews,
     } = this.props;
 
     return (
@@ -31,6 +32,7 @@ class OverviewMod extends React.Component {
           currentItemAverageRating={currentItemAverageRating}
           currentItemStyles={currentItemStyles}
           selectedStyleIndex={selectedStyleIndex}
+          numberOfReviews={numberOfReviews}
         />
         <StyleSelector
           currentItemStyles={currentItemStyles}
