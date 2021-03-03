@@ -6,6 +6,12 @@ class PostQuestion extends React.Component {
 
     this.state = {
       postQuestionFieldValue: '',
+      questionToPost: {
+        body: '',
+        name: '',
+        email: '',
+        product_id: '',
+      },
     };
 
     this.handleGetPostQuestionFieldValue = this.handleGetPostQuestionFieldValue.bind(this);
@@ -14,10 +20,12 @@ class PostQuestion extends React.Component {
 
   handleGetPostQuestionFieldValue(e) {
     this.setState({ postQuestionFieldValue: e.target.value });
+    e.target.value = '';
   }
 
   handleSubmitPostQuestion() {
     // console.log(this.state.postQuestionFieldValue);
+    axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`);
     return;
   }
 

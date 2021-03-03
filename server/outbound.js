@@ -25,9 +25,9 @@ const allReviewFetch = (id, count) => {
   let localOptions = Object.create(options);
   localOptions.params = {
     product_id: id,
-    count: count
+    count: count,
   };
-  
+
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/`, localOptions);
 };
 
@@ -59,6 +59,21 @@ const postQuestion = (id, body, name, email) => {
   };
   return axios.post(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    localOptions
+  );
+};
+
+const postAnswer = (id, body, name, email, photos) => {
+  let localOptions = Object.create(options);
+  localOptions.params = {
+    body: body,
+    name: name,
+    email: email,
+    question_id: id,
+    photos: photos,
+  };
+  return axios.post(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/answers`,
     localOptions
   );
 };

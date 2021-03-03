@@ -49,7 +49,7 @@ app.get('/product/:id', (req, res) => {
 app.post('/reviewsList/', (req, res) => {
   const id = req.body.id;
   const count = req.body.count;
-  
+
   outbound
     .allReviewFetch(id, count)
     .then((response) => {
@@ -73,11 +73,30 @@ app.get('/qa/questions/:id', (req, res) => {
 });
 
 app.post('qa/questions/', (req, res) => {
-  const id = req.params.id;
+  const id = req.body.id;
+  const body = req.body.body;
+  const email = req.body.email;
+  const name = req.body.name;
   outbound
-    .postQuestion(id)
+    .postQuestion(id, body, name, email)
     .then((response) => {
-      res.send('received');
+      res.send('received question post');
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
+app.post('qa/questions/:question_id/answers', (req, res) => {
+  const id = req.body.question_id;
+  const body = req.body.body;
+  const email = req.body.email;
+  const name = req.body.name;
+  const photos = req.body.photos;
+  outbound
+    .postQuestion(id, body, name, email, photos)
+    .then((response) => {
+      res.send('received question post');
     })
     .catch((error) => {
       res.send(error);
