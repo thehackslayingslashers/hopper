@@ -374,10 +374,22 @@ QuestionsModule
 }
 
 #question-item-container {
+  display: flex;
+  flex-wrap: nowrap;
   background-color: lime;
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
+}
+
+.upvote-question-button {
+  width: 10%;
+  font-size: 10pt;
+  float: right;
+}
+
+.question-text {
+  width: 85%;
 }
 
 #answers-container {
@@ -402,6 +414,7 @@ QuestionsModule
   text-align: center;
   background-color: lightcoral;
 }
+
 /*
 =====================
 Related Items Module
