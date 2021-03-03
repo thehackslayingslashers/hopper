@@ -11,6 +11,7 @@ class OutfitList extends React.Component {
       outfits: []
     };
     this.handleAddClick = this.handleAddClick.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   handleAddClick () {
@@ -22,6 +23,25 @@ class OutfitList extends React.Component {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits
         }
+      });
+    }
+
+  }
+
+  handleDeleteClick (item) {
+    console.log(item)
+    console.log('the x was clicked!')
+    if (this.state.outfitIds.includes(item.id)) {
+      console.log(item.id)
+      this.setState((prevState) => {
+        prevState.outfitIds.splice(prevState.outfitIds.indexOf(item.id), 1);
+        prevState.outfits.splice(prevState.outfitIds.indexOf(item), 1);
+        return {
+          outfitIds: prevState.outfitIds,
+          outfits: prevState.outfits
+        }
+      }, () => {
+        console.log(this.state)
       });
     }
 
@@ -40,7 +60,11 @@ class OutfitList extends React.Component {
             {
               this.state.outfits.map((outfitItem) => {
                 return (
-                  <OutfitCard outfitItem={outfitItem} key={outfitItem.id}/>
+                  <OutfitCard
+                  outfitItem={outfitItem}
+                  handleDeleteClick={this.handleDeleteClick}
+                  key={outfitItem.id}
+                  />
                 );
               })
             }
