@@ -27,7 +27,7 @@ const allReviewFetch = (id, count) => {
     product_id: id,
     count: count
   };
-  
+
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/`, localOptions);
 };
 
