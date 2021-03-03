@@ -49,7 +49,7 @@ app.get('/product/:id', (req, res) => {
 app.post('/reviewsList/', (req, res) => {
   const id = req.body.id;
   const count = req.body.count;
-  
+
   outbound
     .allReviewFetch(id, count)
     .then((response) => {
@@ -96,5 +96,5 @@ app.get('/products/:product_id/related', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is live and happenin on ${port}`);
+  console.log(`Server is live and happenin on port ${port}`);
 });
