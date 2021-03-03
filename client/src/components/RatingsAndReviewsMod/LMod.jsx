@@ -22,14 +22,10 @@ class LMod extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { currentItemId, currentItemRatingInfo } = this.props;
-    let total = 0;
-    for (let keys in currentItemRatingInfo.ratings) {
-      total += Number(currentItemRatingInfo.ratings[keys]);
-    }
+    const { currentItemId, currentItemRatingInfo, numberOfReviews } = this.props;
 
     if (this.props !== prevProps) {
-      this.getAllReviews(currentItemId, total);
+      this.getAllReviews(currentItemId, numberOfReviews);
     }
   }
 

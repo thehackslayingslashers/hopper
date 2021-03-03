@@ -14,6 +14,11 @@ const ReviewEntry = ({ review }) => {
         <h2 style={{color:`black`}}><b>{review.summary}</b></h2>
         <h4>{review.body}</h4>
       </div>
+      {review.recommend && (
+        <ul className="recommended">
+          <b><li><span>I recommend this product</span></li></b>
+        </ul>
+      )}
       <hr />
     </article>
   );
