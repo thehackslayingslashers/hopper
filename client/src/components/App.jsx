@@ -109,7 +109,10 @@ class App extends React.Component {
         />
         <RelatedItemsAndComparison
           currentItemId={this.state.currentItemId}
+          currentItemInfo={this.state.currentItemInfo}
+          currentItemStyles={this.state.currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
+
         />
         <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
         <LMod

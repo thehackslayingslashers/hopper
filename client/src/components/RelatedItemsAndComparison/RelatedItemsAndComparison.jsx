@@ -43,7 +43,11 @@ class RelatedItemsAndComparison extends React.Component {
         relatedProducts={this.state.relatedProducts}
         handleCardClick={this.handleCardClick}
         />
-        <OutfitList />
+        <OutfitList
+        currentItemId={this.props.currentItemId}
+        currentItemInfo={this.props.currentItemInfo}
+        currentItemStyles={this.props.currentItemStyles}
+        />
       </div>
     );
   }
