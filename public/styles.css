@@ -56,6 +56,8 @@ Overview Module
   width: 28vh;
   grid-row: 1;
   grid-column: 4;
+  margin-top: 4vh;
+  min-height: 10vh;
 }
 
 #overviewBasicInfo p {
@@ -99,7 +101,7 @@ Overview Module
   grid-column: 4;
   display: grid;
   grid-template-columns: repeat(3, 7vh) auto;
-  grid-template-rows: 3vh 1vh repeat(auto, 7vh);
+  grid-template-rows: 2vh 1vh repeat(auto, 7vh);
 }
 
 #selectedStyleName {
@@ -131,6 +133,7 @@ Overview Module
 }
 
 .selectedCheck {
+  color: white;
   background-color: black;
   height: 1.7vh;
   width: 1.7vh;
@@ -139,7 +142,6 @@ Overview Module
   position: absolute;
   bottom: 6vh;
   left: 3.5vh;
-  color: white;
 }
 
 /* Add To Cart */

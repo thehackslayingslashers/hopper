@@ -38,19 +38,27 @@ class AddToCart extends React.Component {
 
   render() {
     let { currentItemStyles, selectedStyleIndex } = this.props;
-    let button = null;
-
-    if (Number(this.state.selectedQuantity)) {
-      button = (
-        <button id="overviewAddToCartButton">
-          <span>ADD TO BAG</span>
-          <span id="addToCartPlus">+</span>
-        </button>
-      );
-    }
 
     if (currentItemStyles[0]) {
       let skus = currentItemStyles[selectedStyleIndex].skus;
+      let skuKeys = Object.keys(skus);
+      let button = null;
+
+      let available = false;
+      for (let i = 0; i < skuKeys.length && !available; i++) {
+        if (skus[skuKeys[i]].quantity > 0) {
+          available = true;
+        }
+      }
+
+      if (available) {
+        button = (
+          <button id="overviewAddToCartButton">
+            <span>ADD TO BAG</span>
+            <span id="addToCartPlus">+</span>
+          </button>
+        );
+      }
 
       return (
         <div id="overviewAddToCart">
