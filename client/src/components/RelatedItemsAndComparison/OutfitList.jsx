@@ -24,7 +24,6 @@ class OutfitList extends React.Component {
           outfits: prevState.outfits
         }
       }, () => {
-        //update local storage
         window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
         window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
@@ -33,7 +32,6 @@ class OutfitList extends React.Component {
 
   handleDeleteClick (item) {
     if (this.state.outfitIds.includes(item.id)) {
-      console.log(item.id)
       this.setState((prevState) => {
         prevState.outfitIds.splice(prevState.outfitIds.indexOf(item.id), 1);
         prevState.outfits.splice(prevState.outfitIds.indexOf(item), 1);
@@ -50,16 +48,18 @@ class OutfitList extends React.Component {
   }
 
   componentDidMount () {
-    //load up the local storage stuff
     let storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     let storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
-    this.setState({
-      outfitIds: storedOutfitIds,
-      outfits: storedOutfits
-    });
+    if (storedOutfits !== null) {
+      this.setState({
+        outfitIds: storedOutfitIds,
+        outfits: storedOutfits
+      });
+    }
   }
 
   render () {
+    let outfits = this.state.outfits;
     return (
       <div>
         <h2>Your Outfit</h2>
@@ -70,7 +70,7 @@ class OutfitList extends React.Component {
             handleAddClick={this.handleAddClick}
             />
             {
-              this.state.outfits.map((outfitItem) => {
+              outfits.map((outfitItem) => {
                 return (
                   <OutfitCard
                   outfitItem={outfitItem}
@@ -78,7 +78,7 @@ class OutfitList extends React.Component {
                   handleCardClick={this.props.handleCardClick}
                   key={'outfit' + outfitItem.id}
                   />
-                );
+                )
               })
             }
             <button>R</button>
