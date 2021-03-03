@@ -6,6 +6,20 @@ body {
 
 /*
 =====================
+General Use
+=====================
+*/
+
+.salePrice {
+  color: red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+/*
+=====================
 Header
 =====================
 */
@@ -83,14 +97,6 @@ Overview Module
   margin: 2vh;
   margin-left: 0;
   margin-top: 0;
-}
-
-.salePrice {
-  color: red;
-}
-
-.strikethrough {
-  text-decoration: line-through;
 }
 
 /* Style Selector */
