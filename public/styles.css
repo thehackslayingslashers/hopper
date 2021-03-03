@@ -131,17 +131,15 @@ Overview Module
 }
 
 .selectedCheck {
-  background-color: white;
-  border: black 1px solid;
-  height: 1.5vh;
-  width: 1.5vh;
-  border-radius: 0.8vh;
-  font-size: 14px;
-  text-align: center;
+  background-color: black;
+  height: 1.7vh;
+  width: 1.7vh;
+  border-radius: 0.85vh;
   z-index: 100;
   position: absolute;
-  bottom: 70%;
+  bottom: 6vh;
   left: 3.5vh;
+  color: white;
 }
 
 /* Add To Cart */
