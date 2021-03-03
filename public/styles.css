@@ -6,6 +6,20 @@ body {
 
 /*
 =====================
+General Use
+=====================
+*/
+
+.salePrice {
+  color: red;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+/*
+=====================
 Header
 =====================
 */
@@ -56,6 +70,8 @@ Overview Module
   width: 28vh;
   grid-row: 1;
   grid-column: 4;
+  margin-top: 4vh;
+  min-height: 10vh;
 }
 
 #overviewBasicInfo p {
@@ -83,14 +99,6 @@ Overview Module
   margin-top: 0;
 }
 
-.salePrice {
-  color: red;
-}
-
-.strikethrough {
-  text-decoration: line-through;
-}
-
 /* Style Selector */
 
 #overviewStyleSelector {
@@ -99,7 +107,7 @@ Overview Module
   grid-column: 4;
   display: grid;
   grid-template-columns: repeat(3, 7vh) auto;
-  grid-template-rows: 3vh 1vh repeat(auto, 7vh);
+  grid-template-rows: 2vh 1vh repeat(auto, 7vh);
 }
 
 #selectedStyleName {
@@ -131,16 +139,14 @@ Overview Module
 }
 
 .selectedCheck {
-  background-color: white;
-  border: black 1px solid;
-  height: 1.5vh;
-  width: 1.5vh;
-  border-radius: 0.8vh;
-  font-size: 14px;
-  text-align: center;
+  color: white;
+  background-color: black;
+  height: 1.7vh;
+  width: 1.7vh;
+  border-radius: 0.85vh;
   z-index: 100;
   position: absolute;
-  bottom: 70%;
+  bottom: 6vh;
   left: 3.5vh;
 }
 

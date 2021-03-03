@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdCheckCircle } from 'react-icons/md';
 
 class StyleSelector extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class StyleSelector extends React.Component {
     let { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
     let styleItems = 'Loading';
     let index = 0;
-    let selectedCheck = <div className="selectedCheck">✓</div>;
+    let selectedCheck = <MdCheckCircle className="selectedCheck" />;
 
     if (currentItemStyles && currentItemStyles[0]) {
       styleItems = [
