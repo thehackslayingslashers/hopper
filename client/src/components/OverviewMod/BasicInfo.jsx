@@ -13,18 +13,19 @@ class BasicInfo extends React.Component {
       currentItemAverageRating,
       currentItemStyles,
       selectedStyleIndex,
+      numberOfReviews,
     } = this.props;
 
     let price = null;
 
     let rating = null;
-    if (currentItemAverageRating !== 'NaN') {
+    if (numberOfReviews > 0) {
       rating = (
         <div>
           <Stars rating={currentItemAverageRating} />
           <span id="readAllReviews">
             {' '}
-            <a href="#reviews">Read all reviews</a>
+            <a href="#reviews">Read all {numberOfReviews} reviews</a>
           </span>
         </div>
       );
