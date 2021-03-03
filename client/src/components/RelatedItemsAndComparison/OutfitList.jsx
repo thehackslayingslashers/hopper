@@ -7,13 +7,24 @@ class OutfitList extends React.Component {
     super(props);
 
     this.state = {
-      outfits: [1]
+      outfitIds: [],
+      outfits: []
     };
     this.handleAddClick = this.handleAddClick.bind(this);
   }
 
-  handleAddClick (e) {
-    console.log('clicked add card!')
+  handleAddClick () {
+    if (!this.state.outfitIds.includes(this.props.currentItemId)) {
+      this.setState((prevState) => {
+        prevState.outfitIds.push(this.props.currentItemId);
+        prevState.outfits.push(this.props.currentItemInfo);
+        return {
+          outfitIds: prevState.outfitIds,
+          outfits: prevState.outfits
+        }
+      });
+    }
+
   }
 
   render () {
@@ -29,7 +40,7 @@ class OutfitList extends React.Component {
             {
               this.state.outfits.map((outfitItem) => {
                 return (
-                  <OutfitCard />
+                  <OutfitCard outfitItem={outfitItem} key={outfitItem.id}/>
                 );
               })
             }

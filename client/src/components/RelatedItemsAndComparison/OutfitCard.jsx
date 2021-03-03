@@ -10,16 +10,27 @@ class OutfitCard extends React.Component {
   }
 
   render () {
+    let product = this.props.outfitItem;
     return (
-      <div className="card productcard">
+      <div className="card productcard" onClick={this.onCardClick}>
         <div className="cardimage"></div>
         <div className="cardinfo">
-            CATEGORY
-            <p>Expanded Product Name With Extra Text</p>
-            Price
-            <p>***** (stars)</p>
+          {product.category}
+          <p>{product.name}</p>
+          {product.default_price}
+          <p>***** (stars)</p>
         </div>
       </div>
+
+      // <div className="card productcard">
+      //   <div className="cardimage"></div>
+      //   <div className="cardinfo">
+      //       CATEGORY
+      //       <p>Expanded Product Name With Extra Text</p>
+      //       Price
+      //       <p>***** (stars)</p>
+      //   </div>
+      // </div>
     )
   }
 }
