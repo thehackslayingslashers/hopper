@@ -1,12 +1,13 @@
 import React from 'react';
 import OutfitCard from './OutfitCard';
+import AddOutfitCard from './AddOutfitCard';
 
 class OutfitList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      outfits: [1]
     };
   }
 
@@ -17,10 +18,14 @@ class OutfitList extends React.Component {
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
             <button>L</button>
-            <OutfitCard />
-            <OutfitCard />
-            <OutfitCard />
-            <OutfitCard />
+            <AddOutfitCard />
+            {
+              this.state.outfits.map((outfitItem) => {
+                return (
+                  <OutfitCard />
+                );
+              })
+            }
             <button>R</button>
           </div>
         </div>
