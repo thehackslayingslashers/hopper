@@ -60,7 +60,6 @@ class QuestionsAndAnswers extends React.Component {
           currentProductQuestions={this.state.currentProductQuestions}
           searchedQuestion={this.state.searchedQuestion}
         />
-        <PostQuestion currentItemId={this.props.currentItemId} />
       </div>
     );
   }
