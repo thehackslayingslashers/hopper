@@ -72,12 +72,28 @@ app.get('/qa/questions/:id', (req, res) => {
     });
 });
 
-app.post('qa/questions/', (req, res) => {
-  const id = req.params.id;
+app.post('/qa/questions/', (req, res) => {
   outbound
-    .postQuestion(id)
+    .postQuestion(req.body)
     .then((response) => {
-      res.send('received');
+      console.log(response.data);
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
+app.post('qa/questions/:question_id/answers', (req, res) => {
+  const id = req.body.question_id;
+  const body = req.body.body;
+  const email = req.body.email;
+  const name = req.body.name;
+  const photos = req.body.photos;
+  outbound
+    .postQuestion(id, body, name, email, photos)
+    .then((response) => {
+      res.send('received question post');
     })
     .catch((error) => {
       res.send(error);
