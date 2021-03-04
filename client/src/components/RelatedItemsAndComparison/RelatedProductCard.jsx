@@ -7,22 +7,17 @@ class RelatedProductCard extends React.Component {
     this.state = {
 
     };
-    this.onCardClick = this.onCardClick.bind(this);
-  }
-
-  onCardClick(e) {
-    this.props.handleCardClick(this.props.relatedProduct.id);
   }
 
   render () {
 
     let product = this.props.relatedProduct;
     return (
-      <div className="card productcard" onClick={this.onCardClick}>
+      <div className="card productcard">
         <div className="icon"><i>star</i>
         </div>
-        <div className="cardimage"></div>
-        <div className="cardinfo">
+        <div className="cardimage"  onClick={() => this.props.handleCardClick(product.id)}></div>
+        <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
           {product.category.toUpperCase()}
           <p>{product.name}</p>
           {product.default_price}

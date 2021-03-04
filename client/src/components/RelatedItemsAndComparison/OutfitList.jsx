@@ -23,31 +23,43 @@ class OutfitList extends React.Component {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits
         }
+      }, () => {
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
     }
-
   }
 
   handleDeleteClick (item) {
-    console.log(item)
-    console.log('the x was clicked!')
     if (this.state.outfitIds.includes(item.id)) {
-      console.log(item.id)
       this.setState((prevState) => {
-        prevState.outfitIds.splice(prevState.outfitIds.indexOf(item.id), 1);
-        prevState.outfits.splice(prevState.outfitIds.indexOf(item), 1);
+        let indexToDelete = prevState.outfitIds.indexOf(item.id);
+        prevState.outfitIds.splice(indexToDelete, 1);
+        prevState.outfits.splice(indexToDelete, 1);
         return {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits
         }
       }, () => {
-        console.log(this.state)
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
     }
+  }
 
+  componentDidMount () {
+    let storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
+    let storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
+    if (storedOutfits !== null) {
+      this.setState({
+        outfitIds: storedOutfitIds,
+        outfits: storedOutfits
+      });
+    }
   }
 
   render () {
+    let outfits = this.state.outfits;
     return (
       <div>
         <h2>Your Outfit</h2>
@@ -58,14 +70,15 @@ class OutfitList extends React.Component {
             handleAddClick={this.handleAddClick}
             />
             {
-              this.state.outfits.map((outfitItem) => {
+              outfits.map((outfitItem) => {
                 return (
                   <OutfitCard
                   outfitItem={outfitItem}
                   handleDeleteClick={this.handleDeleteClick}
-                  key={outfitItem.id}
+                  handleCardClick={this.props.handleCardClick}
+                  key={'outfit' + outfitItem.id}
                   />
-                );
+                )
               })
             }
             <button>R</button>
