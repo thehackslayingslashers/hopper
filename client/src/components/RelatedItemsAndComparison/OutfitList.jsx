@@ -8,18 +8,19 @@ class OutfitList extends React.Component {
 
     this.state = {
       outfitIds: [],
-      outfits: []
+      outfits: [],
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
+
   componentDidMount() {
     let storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     let storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
     if (storedOutfits !== null) {
       this.setState({
         outfitIds: storedOutfitIds,
-        outfits: storedOutfits
+        outfits: storedOutfits,
       });
     }
   }
@@ -29,13 +30,11 @@ class OutfitList extends React.Component {
       this.setState((prevState) => {
         prevState.outfitIds.push(this.props.currentItem.id);
         prevState.outfits.push(this.props.currentItem);
-        console.log(prevState)
         return {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits,
         };
       }, () => {
-        console.log(this.state)
         window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
         window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
@@ -68,19 +67,17 @@ class OutfitList extends React.Component {
           <div className="productlistcontainer">
             <button>L</button>
             <AddOutfitCard
-            handleAddClick={this.handleAddClick}
+              handleAddClick={this.handleAddClick}
             />
             {
-              outfits.map((outfitItem) => {
-                return (
-                  <OutfitCard
+              outfits.map((outfitItem) => (
+                <OutfitCard
                   outfitItem={outfitItem}
                   handleDeleteClick={this.handleDeleteClick}
                   handleCardClick={this.props.handleCardClick}
                   key={'outfit' + outfitItem.id}
-                  />
-                )
-              })
+                />
+              ))
             }
             <button>R</button>
           </div>

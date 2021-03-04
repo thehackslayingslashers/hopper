@@ -11,7 +11,6 @@ class RelatedProductCard extends React.Component {
 
   render() {
     const product = this.props.relatedProduct;
-    console.log(product);
     return (
       <div className="card productcard">
         <button className="icon">*</button>
