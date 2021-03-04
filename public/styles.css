@@ -84,8 +84,16 @@ Overview Module
   transition: width 200ms;
 }
 
+#overviewBigImage:hover {
+  cursor: zoom-in;
+}
+
 #overviewBigImage.full {
   width: 1200px;
+}
+
+#overviewBigImage.full:hover {
+  cursor: zoom-out;
 }
 
 #fullScreenButton {

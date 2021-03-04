@@ -56,7 +56,6 @@ app.post('/reviewsList/', (req, res) => {
 });
 
 app.get('/qa/questions/:id', (req, res) => {
-
   const { id } = req.params;
 
   outbound
