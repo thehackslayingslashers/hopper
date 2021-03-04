@@ -278,10 +278,16 @@ hr {
   background-color: rgb(0, 0, 0);
 }
 
+.TopMost {
+  display: flex;
+  justify-content: space-between;
+}
+
 .emptystars {
-  display: inline-block;
   position: relative;
   font-family: FontAwesome;
+  top: 0;
+  left: 0;
 }
 
 .filledstars {
@@ -312,6 +318,22 @@ hr {
 .recommended li span {
   position: relative;
   left: 5px;
+}
+
+.LModButton {
+  padding:8px 12px;
+  margin:5px;
+  border:2px solid grey;
+  background:0;
+  color:black;
+  cursor:pointer;
+  transition:all .3s;
+}
+
+.LModButton:hover {
+  background:#8a068f;
+  color:#fff;
+  border: 2px solid #8a068f;
 }
 
 /*

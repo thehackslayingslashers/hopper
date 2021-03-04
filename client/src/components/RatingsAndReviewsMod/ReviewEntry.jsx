@@ -8,8 +8,10 @@ const ReviewEntry = ({ review }) => {
   let timeStamp = review.date;
   return (
     <article className="reviewEntry" style={{color:`grey`}}>
-      <Stars rating={review.rating}/>
-      <h4>{`${review.reviewer_name}, ${Moment(timeStamp).format('MMM DD, YYYY')}`}</h4>
+      <div className='TopMost'>
+        <Stars rating={review.rating}/>
+        <h4>{`${review.reviewer_name}, ${Moment(timeStamp).format('MMM DD, YYYY')}`}</h4>
+      </div>
       <div id={review.review_id}>
         <h2 style={{color:`black`}}><b>{review.summary}</b></h2>
         <h4>{review.body}</h4>

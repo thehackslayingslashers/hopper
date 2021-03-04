@@ -9,6 +9,8 @@ const ReviewsMod = ({reviews}) => {
       {reviews.map((oneReview) => {
         return (<ReviewEntry review={oneReview} key={oneReview.review_id}/>);
       })}
+      <button className="LModButton">More Reviews</button>
+      <button className="LModButton">Add Review</button>
     </section>
   );
 };
