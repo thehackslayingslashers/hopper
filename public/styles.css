@@ -302,10 +302,19 @@ hr {
   background-color: rgb(0, 0, 0);
 }
 
+.stars {
+  float: left;
+}
+
+.DateandUser {
+  float: right;
+}
+
 .emptystars {
-  display: inline-block;
   position: relative;
   font-family: FontAwesome;
+  top: 0;
+  left: 0;
 }
 
 .filledstars {
@@ -337,6 +346,70 @@ hr {
   position: relative;
   left: 5px;
 }
+
+.LModButton {
+  padding: 8px 12px;
+  margin: 5px;
+  border: 2px solid grey;
+  background: 0;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.LModButton:hover {
+  background: #8a068f;
+  color: #fff;
+  border: 2px solid #8a068f;
+}
+
+.sortingList {
+  display: inline-block;
+  position: relative;
+  margin-left: 6px;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+.sortingList span {
+  transition: all 1s;
+  color: #7b00ff;
+  position: relative;
+}
+
+.sortingList span::after {
+  position: absolute;
+  content: "";
+  height: 5px;
+  width: 0;
+  left: 0;
+  background-color: purple;
+  bottom: 0;
+  transition: all 0.5s ease-out;
+}
+
+.sortingList span:hover::after {
+  width: 100%;
+}
+
+.sortingList span:hover {
+  cursor: pointer;
+  color: purple;
+}
+
+.currentSort {
+  text-align: left;
+  border-bottom: 2px solid;
+  cursor: pointer;
+}
+
+.currentSort:hover {
+  color: #7b00ff;
+}
+
 
 /*
 =====================
