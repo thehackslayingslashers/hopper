@@ -1,6 +1,6 @@
 body {
-  max-width: 114vh;
-  min-width: 90vh;
+  max-width: 50%;
+  min-width: 1200px;
   margin: auto;
 }
 
@@ -30,12 +30,12 @@ Header
 
 #pageHeader h1 {
   margin: 0;
-  height: 7.3vh;
+  height: 80px;
 }
 
 #announcement {
   background-color: coral;
-  height: 4.4vh;
+  height: 50px;
 }
 
 /*
@@ -48,34 +48,40 @@ Overview Module
   width: 100%;
   display: grid;
   grid-template-columns: 10% 52% 2% 36%;
-  grid-template-rows: auto auto auto 5vh auto 5vh;
-  /* background-color: lightslategray; */
+  grid-template-rows: auto auto auto 60px auto 60px;
   font-size: large;
 }
 
 /* Image Gallery */
 
 #overviewImageGallery {
-  background-color: purple;
   grid-row-start: 1;
   grid-row-end: 4;
   grid-column-start: 1;
   grid-column-end: 3;
   height: 57vh;
+  min-height: 500px;
+}
+
+#overviewBigImage {
+  height: 57vh;
+  min-height: 500px;
+  width: 100%;
+  object-fit: cover;
 }
 
 /* Basic Info */
 
 #overviewBasicInfo {
-  width: 28vh;
+  width: 75%;
   grid-row: 1;
   grid-column: 4;
-  margin-top: 4vh;
+  margin-top: 10%;
   min-height: 10vh;
 }
 
 #overviewBasicInfo p {
-  margin: 1vh 0 0.25vh 0;
+  margin-bottom: 0;
 }
 
 .noReviews {
@@ -89,33 +95,29 @@ Overview Module
 
 #overviewBasicInfo span {
   line-height: 1;
-  margin: 1vh;
   margin-left: 0;
 }
 
 #overviewBasicInfo h1 {
-  margin: 2vh;
-  margin-left: 0;
-  margin-top: 0;
+  margin: 0 0 20px 0;
 }
 
 /* Style Selector */
 
 #overviewStyleSelector {
-  width: 28vh;
+  width: 75%;
   grid-row: 2;
   grid-column: 4;
   display: grid;
-  grid-template-columns: repeat(3, 7vh) auto;
-  grid-template-rows: 2vh 1vh repeat(auto, 7vh);
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 30px repeat(auto, 70px);
+  height: 240px;
 }
 
 #selectedStyleName {
   grid-column-start: 1;
   grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 3;
-  margin: 2vh 0;
+  margin: 20px 0;
 }
 
 .overviewStyleItemContainer {
@@ -123,12 +125,11 @@ Overview Module
 }
 
 .overviewStyleItem {
-  height: 5vh;
-  width: 5vh;
+  height: 55px;
+  width: 55px;
   object-fit: cover;
-  border-radius: 3vh;
+  border-radius: 27.5px;
   border: solid 1px;
-  margin: 0.6vh 0;
   background-color: black;
 }
 
@@ -141,24 +142,24 @@ Overview Module
 .selectedCheck {
   color: white;
   background-color: black;
-  height: 1.7vh;
-  width: 1.7vh;
-  border-radius: 0.85vh;
+  height: 18px;
+  border-radius: 9px;
   z-index: 100;
   position: absolute;
-  bottom: 6vh;
-  left: 3.5vh;
+  bottom: 65px;
+  left: 40px;
 }
 
 /* Add To Cart */
 
 #overviewAddToCart {
   height: 10vh;
+  min-height: 100px;
   grid-row: 3;
   grid-column: 4;
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-template-rows: 6vh 6vh;
+  grid-template-rows: 60px 60px;
 }
 
 #overviewSizeSelector,
@@ -320,7 +321,7 @@ QuestionsModule
 */
 
 #questions-and-answers-container {
-  background-color: aqua;
+  background-color: white;
   font-family: Arial, sans-serif;
   font-size: 18pt;
   margin: auto;
@@ -338,8 +339,10 @@ QuestionsModule
 #question-search-field {
   width: 100%;
   background-color: white;
-  outline: 1px solid black;
+  border: 1px solid black;
   flex: auto;
+  margin-bottom: 4px;
+  border-radius: 2px;
 }
 
 #question-search-field-input {
@@ -361,7 +364,7 @@ QuestionsModule
 #question-search-submit-button {
   float: right;
   width: 10%;
-  padding-top: 5px;
+  padding-top: 8px;
   margin-right: 200px;
   position: absolute;
   z-index: 1;
@@ -374,10 +377,48 @@ QuestionsModule
 }
 
 #question-item-container {
-  background-color: lime;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: lightcyan;
   padding-left: 8px;
-  padding-top: 8px;
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 12px;
+  border: 3px solid black;
+  border-radius: 3px;
+}
+
+.question-response-options {
+  display: inline-flex;
+  width: 18%;
+  float: right;
+  margin-left: 90px;
+}
+
+.upvote-question-button {
+  width: 8%;
+  font-size: 10pt;
+  font-weight: 100;
+  padding-right: 45px;
+  padding-top: 6px;
+}
+
+.add-answer-button {
+  font-size: 10pt;
+  font-weight: 100;
+  padding-left: 10px;
+  padding-top: 6px;
+  width: 30%;
+  white-space: nowrap;
+}
+
+.small-divider {
+  font-size: 18pt;
+  font-weight: 200;
+  padding-bottom: 6px;
+}
+
+.question-text {
+  width: 88%;
 }
 
 #answers-container {
@@ -402,6 +443,11 @@ QuestionsModule
   text-align: center;
   background-color: lightcoral;
 }
+
+.post-question-container {
+  padding: 10px;
+}
+
 /*
 =====================
 Related Items Module

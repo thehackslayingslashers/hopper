@@ -7,10 +7,14 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    return (
+    let { selectedStyleIndex, currentItemStyles } = this.props;
+    // debugger;
+    return selectedStyleIndex >= 0 && currentItemStyles[selectedStyleIndex] ? (
       <div id="overviewImageGallery">
-        <p>ImageGallery is loading</p>
+        <img id="overviewBigImage" src={currentItemStyles[selectedStyleIndex].photos[0].url} />
       </div>
+    ) : (
+      <div id="overviewImageGallery">Loading</div>
     );
   }
 }
