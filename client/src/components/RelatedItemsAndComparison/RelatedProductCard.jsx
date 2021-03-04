@@ -9,21 +9,25 @@ class RelatedProductCard extends React.Component {
     };
   }
 
-  render () {
-
-    let product = this.props.relatedProduct;
+  render() {
+    const product = this.props.relatedProduct;
+    console.log(product.styles[0].photos[0].url);
     return (
       <div className="card productcard">
         <button className="icon">*</button>
-        <div className="cardimage"  onClick={() => this.props.handleCardClick(product.id)}></div>
+        <div
+          className="cardimage"
+          style={{ backgroundImage: `url(${product.styles[0].photos[0].url})`}}
+          onClick={() => this.props.handleCardClick(product.id)}>
+        </div>
         <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
-          {product.category.toUpperCase()}
-          <p>{product.name}</p>
-          {product.default_price}
+          {product.iteminfo.category.toUpperCase()}
+          <p>{product.iteminfo.name}</p>
+          {product.styles[0].original_price}
           <p>***** (stars)</p>
         </div>
       </div>
-    )
+    );
   }
 }
 

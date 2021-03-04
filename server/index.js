@@ -109,25 +109,41 @@ app.get('/products/:product_id/related', (req, res) => {
     .then((response) => {
       relatedLength = response.data.length;
       response.data.map((id) => {
-          outbound.fetchItemById(id)
+        outbound.fetchItemById(id)
           .then((response) => {
-            //before pushing each item
-            //will need to get more data for each item
-            relatedArray.push(response.data);
-          })
-          .then(() => {
-            if(relatedArray.length === relatedLength) {
-              res.send(relatedArray)
-            }
+            let item = {
+              id: id,
+              iteminfo: response.data
+            };
+            outbound.reviewInfoFetch(id)
+              .then((response) => {
+                item.metaReview = response.data;
+                outbound.fetchStyles(id)
+                  .then((response) => {
+                    item.styles = response.data.results;
+                    relatedArray.push(item);
+                  })
+                  .then(() => {
+                    if (relatedArray.length === relatedLength) {
+                      res.send(relatedArray);
+                    }
+                  })
+                  .catch((err) => {
+                    res.send(err);
+                  });
+              })
+              .catch((err) => {
+                res.send(err);
+              });
           })
           .catch((err) => {
             res.send(err);
-          })
+          });
       });
     })
     .catch((err) => {
       res.send(err);
-    })
+    });
 });
 
 app.listen(port, () => {

@@ -10,7 +10,7 @@ class RelatedProductsList extends React.Component {
     };
   }
 
-  render () {
+  render() {
     return (
       <div>
         <h2>Related Products</h2>
@@ -21,14 +21,12 @@ class RelatedProductsList extends React.Component {
               this.props.relatedProducts.map((relatedProduct) => {
                 return(
                   <RelatedProductCard
-                  relatedProduct={relatedProduct}
-                  handleCardClick={this.props.handleCardClick}
-                  key={relatedProduct.id}
+                    relatedProduct={relatedProduct}
+                    handleCardClick={this.props.handleCardClick}
+                    key={relatedProduct.id}
                   />
                 )
               })
-
-
             }
 
 
