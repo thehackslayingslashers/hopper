@@ -74,36 +74,11 @@ const postAnswer = (id, body, name, email, photos) => {
   );
 };
 
-const fetchRelated = (id, callback) => {
-  axios
-    .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
-    .then((response) => {
-      let relatedArray = [];
-      response.data.map((id) => {
-        relatedArray.push(
-          axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
-        );
-      });
-      axios
-        .all(relatedArray)
-        .then(
-          axios.spread((...responses) => {
-            let results = [];
-            responses.map((response) => {
-              results.push(response.data);
-            });
-            callback(null, results);
-          })
-        )
-        .catch((error) => {
-          console.log('erroring out of axios.all request in fetchRelated call');
-          callback(error);
-        });
-    })
-    .catch((error) => {
-      callback(error);
-    });
+const fetchRelatedArray = (id, callback) => {
+  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
 };
+
+// const fetchRelatedItems
 
 module.exports = {
   fetchItemById,
@@ -111,6 +86,6 @@ module.exports = {
   allReviewFetch,
   fetchStyles,
   fetchQuestions,
-  fetchRelated,
+  fetchRelatedArray,
   postQuestion,
 };

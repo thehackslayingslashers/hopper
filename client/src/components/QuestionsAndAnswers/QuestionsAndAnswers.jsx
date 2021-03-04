@@ -55,6 +55,7 @@ class QuestionsAndAnswers extends React.Component {
           getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
         <QuestionView
+          currentItemId={this.props.currentItemId}
           currentProductQuestions={this.state.currentProductQuestions}
           searchedQuestion={this.state.searchedQuestion}
         />

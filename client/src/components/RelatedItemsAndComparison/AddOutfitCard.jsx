@@ -9,7 +9,7 @@ class AddOutfitCard extends React.Component {
     };
   }
 
-  render () {
+  render() {
     return (
       <div className="card productcard">
         <div className="addtooutfit" onClick={this.props.handleAddClick}>
