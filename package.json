@@ -39,6 +39,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "react": "^17.0.1",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
   },
