@@ -18,6 +18,37 @@ class AddToCart extends React.Component {
     this.revertAddToCart = this.revertAddToCart.bind(this);
   }
 
+  selectQuantity(e) {
+    const quant = e.target.value;
+    this.setState({
+      selectedQuantity: quant,
+    });
+  }
+
+  handleAddToCart(e) {
+    if (this.state.selectedSizeIndex) {
+      // add to cart???????
+      this.setState(
+        {
+          addedToCart: true,
+        },
+        () => {
+          setTimeout(this.revertAddToCart, 1000);
+        }
+      );
+    } else {
+      // open select size drop down??????
+      this.setState(
+        {
+          wronglyclicked: true,
+        },
+        () => {
+          setTimeout(this.revertAddToCart, 1000);
+        }
+      );
+    }
+  }
+
   selectSize(e) {
     if (Number(e.currentTarget.value) >= 0) {
       this.setState({
@@ -33,37 +64,6 @@ class AddToCart extends React.Component {
     }
   }
 
-  selectQuantity(e) {
-    let quant = e.target.value;
-    this.setState({
-      selectedQuantity: quant,
-    });
-  }
-
-  handleAddToCart(e) {
-    if (this.state.selectedSizeIndex) {
-      //add to cart???????
-      this.setState(
-        {
-          addedToCart: true,
-        },
-        () => {
-          setTimeout(this.revertAddToCart, 1000);
-        }
-      );
-    } else {
-      //open select size drop down??????
-      this.setState(
-        {
-          wronglyclicked: true,
-        },
-        () => {
-          setTimeout(this.revertAddToCart, 1000);
-        }
-      );
-    }
-  }
-
   revertAddToCart() {
     this.setState({
       wronglyclicked: false,
@@ -72,11 +72,11 @@ class AddToCart extends React.Component {
   }
 
   render() {
-    let { currentItemStyles, selectedStyleIndex } = this.props;
+    const { currentItemStyles, selectedStyleIndex } = this.props;
 
     if (currentItemStyles[0]) {
-      let skus = currentItemStyles[selectedStyleIndex].skus;
-      let skuKeys = Object.keys(skus);
+      const { skus } = currentItemStyles[selectedStyleIndex];
+      const skuKeys = Object.keys(skus);
       let button = null;
 
       let available = false;
