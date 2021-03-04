@@ -14,7 +14,7 @@ class Question extends React.Component {
           <div className="question-text">Q: {this.props.question.question_body}</div>
           <div className="question-response-options">
             <div className="upvote-question-button">Helpful?</div>
-            <div>|</div>
+            <div className="small-divider">|</div>
             <div className="add-answer-button">Add Answer</div>
           </div>
         </div>

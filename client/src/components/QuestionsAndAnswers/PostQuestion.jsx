@@ -57,7 +57,7 @@ class PostQuestion extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="post-question-container">
         Post Question Body:
         <input
           className="post-question-field"
