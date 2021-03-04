@@ -6,24 +6,24 @@ class QuestionView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionsDisplayed: 2,
-      questionsCollapsed: true,
-      showMoreQuestionsButtonText: 'Show more questions',
+      questionsDisplayed: 4,
     };
 
     this.handleShowMoreQuestions = this.handleShowMoreQuestions.bind(this);
+    this.handleShowLessQuestions = this.handleShowLessQuestions.bind(this);
   }
 
   handleShowMoreQuestions() {
     const questionListLength = this.props.currentProductQuestions.length;
-    if (this.state.questionsCollapsed) {
-      this.setState({ questionsDisplayed: questionListLength });
-      this.setState({ questionsCollapsed: false });
-      this.setState({ showMoreQuestionsButtonText: 'Show less questions' });
-    } else {
-      this.setState({ questionsDisplayed: 2 });
-      this.setState({ questionsCollapsed: true });
-      this.setState({ showMoreQuestionsButtonText: 'Show more questions' });
+    if (this.state.questionsDisplayed < questionListLength) {
+      const plusTwoQuestionLength = this.state.questionsDisplayed + 2;
+      this.setState({ questionsDisplayed: plusTwoQuestionLength });
+    }
+  }
+  handleShowLessQuestions() {
+    const minusTwoQuestionLength = this.state.questionsDisplayed - 2;
+    if (this.state.questionsDisplayed > 3) {
+      this.setState({ questionsDisplayed: minusTwoQuestionLength });
     }
   }
 
@@ -36,9 +36,8 @@ class QuestionView extends React.Component {
             <Question question={question} currentItemId={this.props.currentItemId} />
           </div>
         ))}
-        <button onClick={this.handleShowMoreQuestions}>
-          {this.state.showMoreQuestionsButtonText}
-        </button>
+        <button onClick={this.handleShowMoreQuestions}>Show more questions</button>
+        <button onClick={this.handleShowLessQuestions}>Show less questions</button>
         <button>Refresh</button>
       </div>
     );
