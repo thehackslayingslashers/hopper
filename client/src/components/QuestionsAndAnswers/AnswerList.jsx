@@ -1,6 +1,5 @@
 import React from 'react';
 import Answer from './Answer.jsx';
-import PostAnswer from './PostAnswer.jsx';
 
 class AnswerList extends React.Component {
   constructor(props) {
@@ -44,7 +43,6 @@ class AnswerList extends React.Component {
           </div>
         ))}
         <button onClick={this.handleShowMoreAnswers}>{this.state.showMoreAnswersButtonText}</button>
-        <PostAnswer currentQuestionId={this.props.currentQuestion.question_id} />
       </div>
     );
   }

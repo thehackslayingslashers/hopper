@@ -40,7 +40,7 @@ class PostAnswer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="post-answer-container" style={this.props.postAnswerFieldDisplay}>
         Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
         Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
         Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
