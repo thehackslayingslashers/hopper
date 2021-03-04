@@ -28,7 +28,7 @@ class RelatedItemsAndComparison extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       })
   }
 
@@ -47,6 +47,7 @@ class RelatedItemsAndComparison extends React.Component {
         currentItemId={this.props.currentItemId}
         currentItemInfo={this.props.currentItemInfo}
         currentItemStyles={this.props.currentItemStyles}
+        handleCardClick={this.handleCardClick}
         />
       </div>
     );
