@@ -18,7 +18,7 @@ class Question extends React.Component {
             <div className="add-answer-button">Add Answer</div>
           </div>
         </div>
-        <AnswerList answers={this.props.question.answers} />
+        <AnswerList answers={this.props.question.answers} currentQuestion={this.props.question} />
       </div>
     );
   }
