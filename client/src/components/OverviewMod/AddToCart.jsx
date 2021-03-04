@@ -6,7 +6,6 @@ class AddToCart extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedSize: '',
       selectedSizeIndex: null,
       selectedQuantity: '',
       addedToCart: false,
@@ -18,15 +17,9 @@ class AddToCart extends React.Component {
     this.revertAddToCart = this.revertAddToCart.bind(this);
   }
 
-  selectQuantity(e) {
-    const quant = e.target.value;
-    this.setState({
-      selectedQuantity: quant,
-    });
-  }
-
-  handleAddToCart(e) {
-    if (this.state.selectedSizeIndex) {
+  handleAddToCart() {
+    const { selectedSizeIndex } = this.state;
+    if (selectedSizeIndex) {
       // add to cart???????
       this.setState(
         {
@@ -34,7 +27,7 @@ class AddToCart extends React.Component {
         },
         () => {
           setTimeout(this.revertAddToCart, 1000);
-        }
+        },
       );
     } else {
       // open select size drop down??????
@@ -44,20 +37,27 @@ class AddToCart extends React.Component {
         },
         () => {
           setTimeout(this.revertAddToCart, 1000);
-        }
+        },
       );
     }
   }
 
+  selectQuantity(e) {
+    const quant = e.target.value;
+    this.setState({
+      selectedQuantity: quant,
+    });
+  }
+
   selectSize(e) {
+    const { selectedQuantity } = this.state;
     if (Number(e.currentTarget.value) >= 0) {
       this.setState({
         selectedSizeIndex: e.currentTarget.value,
-        selectedQuantity: this.state.selectedQuantity || '1',
+        selectedQuantity: selectedQuantity || '1',
       });
     } else {
       this.setState({
-        selectedSize: '',
         selectedSizeIndex: null,
         selectedQuantity: '',
       });
@@ -73,6 +73,7 @@ class AddToCart extends React.Component {
 
   render() {
     const { currentItemStyles, selectedStyleIndex } = this.props;
+    const { wronglyclicked, selectedSizeIndex } = this.state;
 
     if (currentItemStyles[0]) {
       const { skus } = currentItemStyles[selectedStyleIndex];
@@ -87,23 +88,23 @@ class AddToCart extends React.Component {
       }
 
       if (available) {
-        if (this.state.wronglyclicked) {
+        if (wronglyclicked) {
           button = (
-            <button id="overviewAddToCartButton">
+            <button type="submit" id="overviewAddToCartButton">
               <span>PLEASE SELECT SIZE</span>
               <span id="addToCartPlus">+</span>
             </button>
           );
         } else if (this.state.addedToCart) {
           button = (
-            <button id="overviewAddToCartButton">
+            <button type="submit" id="overviewAddToCartButton">
               <span>ADDED TO BAG</span>
               <span id="addToCartPlus">+</span>
             </button>
           );
         } else {
           button = (
-            <button id="overviewAddToCartButton" onClick={this.handleAddToCart}>
+            <button type="submit" id="overviewAddToCartButton" onClick={this.handleAddToCart}>
               <span>ADD TO BAG</span>
               <span id="addToCartPlus">+</span>
             </button>
@@ -116,7 +117,7 @@ class AddToCart extends React.Component {
           <SizeSelector skus={skus} selectSize={this.selectSize} />
           <QuantitySelector
             skus={skus}
-            selectedSizeIndex={this.state.selectedSizeIndex}
+            selectedSizeIndex={selectedSizeIndex}
             selectQuantity={this.selectQuantity}
           />
           {button}
