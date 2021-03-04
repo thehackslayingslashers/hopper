@@ -7,7 +7,11 @@ class PostAnswer extends React.Component {
     this.state = {
       answerFieldValue: '',
     };
+
+    this.handleSubmitPostAnswer = this.handleSubmitPostAnswer.bind(this);
   }
+
+  handleSubmitPostAnswer(e) {}
 
   render() {
     return (

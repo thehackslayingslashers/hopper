@@ -52,12 +52,11 @@ const fetchQuestions = (id) => {
 const postQuestion = (obj) => {
   let localOptions = Object.assign(options);
   return axios({
-    url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
     method: 'post',
     headers: localOptions.headers,
-    data:obj
-  }
-  );
+    data: obj,
+  });
 };
 
 const postAnswer = (id, body, name, email, photos) => {

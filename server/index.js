@@ -76,6 +76,7 @@ app.post('/qa/questions/', (req, res) => {
   outbound
     .postQuestion(req.body)
     .then((response) => {
+      console.log(response.data);
       res.send(response.data);
     })
     .catch((error) => {

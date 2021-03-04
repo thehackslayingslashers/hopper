@@ -382,14 +382,30 @@ QuestionsModule
   padding-bottom: 20px;
 }
 
-.upvote-question-button {
-  width: 10%;
-  font-size: 10pt;
+.question-response-options {
+  display: inline-flex;
+  width: 20%;
   float: right;
+  margin-left: 70px;
+}
+
+.upvote-question-button {
+  width: 8%;
+  font-size: 10pt;
+  font-weight: 100;
+  padding-right: 40px;
+}
+
+.add-answer-button {
+  width: 8%;
+  font-size: 10pt;
+  font-weight: 100;
+  padding-left: 20px;
+  width: 30%;
 }
 
 .question-text {
-  width: 85%;
+  width: 75%;
 }
 
 #answers-container {
