@@ -13,41 +13,7 @@ class OutfitList extends React.Component {
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
-
-  handleAddClick () {
-    if (!this.state.outfitIds.includes(this.props.currentItemId)) {
-      this.setState((prevState) => {
-        prevState.outfitIds.push(this.props.currentItemId);
-        prevState.outfits.push(this.props.currentItemInfo);
-        return {
-          outfitIds: prevState.outfitIds,
-          outfits: prevState.outfits
-        }
-      }, () => {
-        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
-        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
-      });
-    }
-  }
-
-  handleDeleteClick (item) {
-    if (this.state.outfitIds.includes(item.id)) {
-      this.setState((prevState) => {
-        let indexToDelete = prevState.outfitIds.indexOf(item.id);
-        prevState.outfitIds.splice(indexToDelete, 1);
-        prevState.outfits.splice(indexToDelete, 1);
-        return {
-          outfitIds: prevState.outfitIds,
-          outfits: prevState.outfits
-        }
-      }, () => {
-        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
-        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
-      });
-    }
-  }
-
-  componentDidMount () {
+  componentDidMount() {
     let storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     let storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
     if (storedOutfits !== null) {
@@ -58,7 +24,42 @@ class OutfitList extends React.Component {
     }
   }
 
-  render () {
+  handleAddClick() {
+    if (!this.state.outfitIds.includes(this.props.currentItem.id)) {
+      this.setState((prevState) => {
+        prevState.outfitIds.push(this.props.currentItem.id);
+        prevState.outfits.push(this.props.currentItem);
+        console.log(prevState)
+        return {
+          outfitIds: prevState.outfitIds,
+          outfits: prevState.outfits,
+        };
+      }, () => {
+        console.log(this.state)
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+      });
+    }
+  }
+
+  handleDeleteClick(item) {
+    if (this.state.outfitIds.includes(item.id)) {
+      this.setState((prevState) => {
+        const indexToDelete = prevState.outfitIds.indexOf(item.id);
+        prevState.outfitIds.splice(indexToDelete, 1);
+        prevState.outfits.splice(indexToDelete, 1);
+        return {
+          outfitIds: prevState.outfitIds,
+          outfits: prevState.outfits,
+        };
+      }, () => {
+        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+      });
+    }
+  }
+
+  render() {
     let outfits = this.state.outfits;
     return (
       <div>
@@ -85,7 +86,7 @@ class OutfitList extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

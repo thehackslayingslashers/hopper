@@ -110,6 +110,7 @@ class App extends React.Component {
         <RelatedItemsAndComparison
           currentItemId={this.state.currentItemId}
           currentItemInfo={this.state.currentItemInfo}
+          currentItemRatingInfo={this.state.currentItemRatingInfo}
           currentItemStyles={this.state.currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
 

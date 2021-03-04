@@ -37,6 +37,12 @@ class RelatedItemsAndComparison extends React.Component {
   }
 
   render() {
+    let currentItem = {
+      id: this.props.currentItemId,
+      iteminfo: this.props.currentItemInfo,
+      metaReview: this.props.currentItemRatingInfo,
+      styles: this.props.currentItemStyles,
+    };
     return (
       <div>
         <RelatedProductsList
@@ -44,9 +50,7 @@ class RelatedItemsAndComparison extends React.Component {
           handleCardClick={this.handleCardClick}
         />
         <OutfitList
-          currentItemId={this.props.currentItemId}
-          currentItemInfo={this.props.currentItemInfo}
-          currentItemStyles={this.props.currentItemStyles}
+          currentItem={currentItem}
           handleCardClick={this.handleCardClick}
         />
       </div>
