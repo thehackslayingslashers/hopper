@@ -3,7 +3,6 @@ import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
 import PostQuestion from './PostQuestion';
 import PostAnswer from './PostAnswer';
-import App from '../App.jsx';
 import axios from 'axios';
 // import GARETHS_TOKEN from '../../config.js';
 

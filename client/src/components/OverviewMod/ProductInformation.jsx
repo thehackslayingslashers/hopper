@@ -29,9 +29,8 @@ class ProductInformation extends React.Component {
           <RiLinkedinLine className="smIcon" />
         </div>
       );
-    } else {
-      return <div id="overviewProductInformation">Loading</div>;
     }
+    return <div id="overviewProductInformation">Loading</div>;
   }
 }
 
