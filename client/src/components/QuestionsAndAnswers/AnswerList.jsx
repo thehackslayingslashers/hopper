@@ -39,11 +39,12 @@ class AnswerList extends React.Component {
               answerId={answerId}
               answers={this.props.answers}
               answersDisplayed={this.state.answersDisplayed}
+              currentQuestion={this.props.currentQuestion}
             />
           </div>
         ))}
         <button onClick={this.handleShowMoreAnswers}>{this.state.showMoreAnswersButtonText}</button>
-        <PostAnswer />
+        <PostAnswer currentQuestionId={this.props.currentQuestion.question_id} />
       </div>
     );
   }
