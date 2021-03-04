@@ -29,11 +29,9 @@ class RelatedProductsList extends React.Component {
     return (
       <div>
         <ProductComparison onClose={this.showModal} show={this.state.show}>
-        <div className="modal" id="modal">
+        <div className="comparisonmodal">
           <h2>Modal Window</h2>
           <div className="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis deserunt corrupti, ut fugit magni qui quasi nisi amet repellendus non fuga omnis a sed impedit explicabo accusantium nihil doloremque consequuntur.</div>
-          <div className="actions">
-          </div>
         </div>
         </ProductComparison>
         <h2>Related Products</h2>
