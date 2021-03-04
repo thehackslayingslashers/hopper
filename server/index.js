@@ -63,8 +63,9 @@ app.post('/reviewsList/', (req, res) => {
 
 app.get('/qa/questions/:id', (req, res) => {
   const id = req.params.id;
+  const count = req.query.count;
   outbound
-    .fetchQuestions(id)
+    .fetchQuestions(id, count)
     .then((response) => {
       res.send(response.data.results);
     })
@@ -110,16 +111,19 @@ app.get('/products/:product_id/related', (req, res) => {
     .then((response) => {
       relatedLength = response.data.length;
       response.data.map((id) => {
-        outbound.fetchItemById(id)
+        outbound
+          .fetchItemById(id)
           .then((response) => {
             let item = {
               id: id,
-              iteminfo: response.data
+              iteminfo: response.data,
             };
-            outbound.reviewInfoFetch(id)
+            outbound
+              .reviewInfoFetch(id)
               .then((response) => {
                 item.metaReview = response.data;
-                outbound.fetchStyles(id)
+                outbound
+                  .fetchStyles(id)
                   .then((response) => {
                     item.styles = response.data.results;
                     relatedArray.push(item);
