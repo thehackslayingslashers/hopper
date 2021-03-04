@@ -85,14 +85,33 @@ app.post('qa/questions/', (req, res) => {
 });
 
 app.get('/products/:product_id/related', (req, res) => {
-  let id = req.params.product_id;
-  outbound.fetchRelated(id, (err, relatedItems) => {
-    if (err) {
+  let currentid = req.params.product_id;
+  let relatedArray = [];
+  let relatedLength = 0;
+  outbound
+    .fetchRelatedArray(currentid)
+    .then((response) => {
+      relatedLength = response.data.length;
+      response.data.map((id) => {
+          outbound.fetchItemById(id)
+          .then((response) => {
+            //before pushing each item
+            //will need to get more data for each item
+            relatedArray.push(response.data);
+          })
+          .then(() => {
+            if(relatedArray.length === relatedLength) {
+              res.send(relatedArray)
+            }
+          })
+          .catch((err) => {
+            res.send(err);
+          })
+      });
+    })
+    .catch((err) => {
       res.send(err);
-    } else {
-      res.send(relatedItems);
-    }
-  });
+    })
 });
 
 app.listen(port, () => {
