@@ -18,6 +18,7 @@ class OutfitCard extends React.Component {
         <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
           {product.category.toUpperCase()}
           <p>{product.name}</p>
+          <p>{product.id}</p>
           {product.default_price}
           <p>***** (stars)</p>
         </div>

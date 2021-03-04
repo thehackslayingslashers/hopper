@@ -33,8 +33,9 @@ class OutfitList extends React.Component {
   handleDeleteClick (item) {
     if (this.state.outfitIds.includes(item.id)) {
       this.setState((prevState) => {
-        prevState.outfitIds.splice(prevState.outfitIds.indexOf(item.id), 1);
-        prevState.outfits.splice(prevState.outfitIds.indexOf(item), 1);
+        let indexToDelete = prevState.outfitIds.indexOf(item.id);
+        prevState.outfitIds.splice(indexToDelete, 1);
+        prevState.outfits.splice(indexToDelete, 1);
         return {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits
@@ -44,7 +45,6 @@ class OutfitList extends React.Component {
         window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
       });
     }
-
   }
 
   componentDidMount () {
