@@ -8,25 +8,33 @@ class LMod extends React.Component {
     super(props);
     this.state = {
       allReviews: [],
+      sortedBy: 'relevent',
     };
     this.getAllReviews = this.getAllReviews.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
   }
 
-  getAllReviews(id, count) {
-    let reviewObj = {id: id, count: count}
-    axios.post(`/reviewsList`, reviewObj).then((results) => {
+  componentDidUpdate(prevProps, prevState) {
+    const { currentItemId, numberOfReviews } = this.props;
+
+    if (this.props !== prevProps) {
+      this.getAllReviews(currentItemId, numberOfReviews, this.state.sortedBy);
+    }
+  }
+
+  getAllReviews(id, count, sort) {
+    const reviewObj = { id, count, sort };
+    axios.post('/reviewsList', reviewObj).then((results) => {
       this.setState({
         allReviews: results.data.results,
+        sortedBy: sort,
       });
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { currentItemId, currentItemRatingInfo, numberOfReviews } = this.props;
-
-    if (this.props !== prevProps) {
-      this.getAllReviews(currentItemId, numberOfReviews);
-    }
+  updateSortBy(sortBy) {
+    const { currentItemId, numberOfReviews } = this.props;
+    this.getAllReviews(currentItemId, numberOfReviews, sortBy);
   }
 
   render() {
@@ -35,7 +43,7 @@ class LMod extends React.Component {
     return (
       <div className="LModule" id="reviews">
         <RatingsMod avg={currentItemAverageRating} currentItemRatingInfo={currentItemRatingInfo} />
-        <ReviewsMod reviews={this.state.allReviews} />
+        <ReviewsMod reviews={this.state.allReviews} sortedBy={this.state.sortedBy} selectHandler={this.updateSortBy}/>
       </div>
     );
   }
