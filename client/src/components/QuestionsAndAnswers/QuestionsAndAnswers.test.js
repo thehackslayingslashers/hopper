@@ -8,9 +8,13 @@ import PostAnswer from './PostAnswer';
 import Question from './Question.jsx';
 
 describe('<QuestionsAndAnswers/>', () => {
-  it('should have a questionView component', () => {
+  it('should have a QuestionView component', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
     expect(wrapper.find(QuestionView)).toHaveLength(1);
+  });
+  it('should have a PostQuestion component', () => {
+    const wrapper = shallow(<QuestionsAndAnswers />);
+    expect(wrapper.find(PostQuestion)).toHaveLength(1);
   });
   it('should have a PostQuestion component', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
