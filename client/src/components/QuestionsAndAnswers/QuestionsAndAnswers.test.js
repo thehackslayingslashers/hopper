@@ -6,22 +6,14 @@ import PostQuestion from './PostQuestion';
 import QuestionView from './QuestionView';
 import PostAnswer from './PostAnswer';
 import Question from './Question.jsx';
-import {
-  RiTwitterLine,
-  RiFacebookCircleLine,
-  RiPinterestLine,
-  RiDiscordLine,
-  RiRedditLine,
-  RiLinkedinLine,
-} from 'react-icons/ri';
 
 describe('<QuestionsAndAnswers/>', () => {
   it('should have a questionView component', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
-    expect(wrapper.find(QuestionView).toHaveLength(1));
+    expect(wrapper.find(QuestionView)).toHaveLength(1);
   });
   it('should have a PostQuestion component', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
-    expect(wrapper.find(PostQuestion).toHaveLength(1));
+    expect(wrapper.find(PostQuestion)).toHaveLength(1);
   });
 });
