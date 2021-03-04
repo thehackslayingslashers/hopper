@@ -73,7 +73,7 @@ class AddToCart extends React.Component {
 
   render() {
     const { currentItemStyles, selectedStyleIndex } = this.props;
-    const { wronglyclicked, selectedSizeIndex } = this.state;
+    const { wronglyclicked, selectedSizeIndex, addedToCart } = this.state;
 
     if (currentItemStyles[0]) {
       const { skus } = currentItemStyles[selectedStyleIndex];
@@ -95,7 +95,7 @@ class AddToCart extends React.Component {
               <span id="addToCartPlus">+</span>
             </button>
           );
-        } else if (this.state.addedToCart) {
+        } else if (addedToCart) {
           button = (
             <button type="submit" id="overviewAddToCartButton">
               <span>ADDED TO BAG</span>
