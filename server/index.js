@@ -112,5 +112,5 @@ app.get('/products/:product_id/related', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server is live and happenin on ${port}`);
+  console.log(`Server is live and happenin on port ${port}`);
 });
