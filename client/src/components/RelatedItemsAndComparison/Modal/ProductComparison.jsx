@@ -7,12 +7,25 @@ class ProductComparison extends React.Component {
     this.state = {
 
     };
+    this.onClose = this.onClose.bind(this);
+  }
+
+  onClose() {
+    this.props.onClose();
   }
 
   render() {
+    if (!this.props.show) {
+      return null;
+    }
     return (
       <div>
-        compare
+        <div>{this.props.children}</div>
+        <div>
+          <button onClick={this.onClose}>
+            Close
+          </button>
+        </div>
       </div>
     )
   }

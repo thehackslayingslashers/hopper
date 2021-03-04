@@ -16,18 +16,21 @@ class RelatedProductsList extends React.Component {
   handleCompareClick(item) {
     console.log('clicked')
     console.log(item)
+    this.showModal()
   }
 
-  showModal(item) {
-    console.log(item)
+  showModal() {
     this.setState({
-      show: true
+      show: !this.state.show
     });
   }
 
   render() {
     return (
       <div>
+        <ProductComparison onClose={this.showModal} show={this.state.show}>
+          Modal message!!!!
+        </ProductComparison>
         <h2>Related Products</h2>
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
