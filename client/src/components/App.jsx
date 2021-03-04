@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import axios from 'axios';
 import helpers from './helpers';
@@ -27,8 +29,34 @@ class App extends React.Component {
     this.calculateAllReviews = this.calculateAllReviews.bind(this);
   }
 
+  componentDidMount() {
+    this.getInfoAboutCurrentItem();
+  }
+
+  handleStyleSelection(e) {
+    const { selectedStyleIndex } = this.state;
+    const index = Number(e.target.attributes.index.nodeValue);
+    if (selectedStyleIndex !== index) {
+      this.setState({
+        selectedStyleIndex: index,
+      });
+    }
+  }
+
+  handleCardClickIdChange(newId, cb) {
+    this.setState(
+      {
+        currentItemId: newId,
+      },
+      () => {
+        this.getInfoAboutCurrentItem(cb);
+      },
+    );
+  }
+
   getInfoAboutCurrentItem(cb = () => {}) {
-    let productId = this.state.currentItemId;
+    const { currentItemId } = this.state;
+    const productId = currentItemId;
 
     axios
       .get(`/product/${productId}`)
@@ -39,7 +67,7 @@ class App extends React.Component {
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
           },
-          this.calculateAverageCurrentItemRating
+          this.calculateAverageCurrentItemRating,
         );
         this.calculateAllReviews();
       })
@@ -47,12 +75,13 @@ class App extends React.Component {
         cb();
       })
       .catch((error) => {
-        console.log(error);
+        throw error;
       });
   }
 
   calculateAverageCurrentItemRating() {
-    helpers.calculateAverageRating(this.state.currentItemRatingInfo.ratings, (avg) => {
+    const { currentItemRatingInfo } = this.state;
+    helpers.calculateAverageRating(currentItemRatingInfo.ratings, (avg) => {
       this.setState({
         currentItemAverageRating: avg,
       });
@@ -60,10 +89,11 @@ class App extends React.Component {
   }
 
   calculateAllReviews() {
+    const { currentItemRatingInfo } = this.state;
     let total = 0;
-
-    for (let keys in this.state.currentItemRatingInfo.ratings) {
-      total += Number(this.state.currentItemRatingInfo.ratings[keys]);
+    const keys = Object.keys(currentItemRatingInfo.ratings);
+    for (let i = 0; i < keys.length; i++) {
+      total += Number(currentItemRatingInfo.ratings[keys[i]]);
     }
 
     this.setState({
@@ -71,56 +101,43 @@ class App extends React.Component {
     });
   }
 
-  handleStyleSelection(e) {
-    let index = Number(e.target.attributes.index.nodeValue);
-    if (this.state.selectedStyleIndex !== index)
-      this.setState({
-        selectedStyleIndex: index,
-      });
-  }
-
-  handleCardClickIdChange(newId, cb) {
-    this.setState(
-      {
-        currentItemId: newId,
-      },
-      () => {
-        this.getInfoAboutCurrentItem(cb);
-      }
-    );
-  }
-
-  componentDidMount() {
-    this.getInfoAboutCurrentItem();
-  }
-
   render() {
+    const { onClickAnywhere } = this.props;
+    const {
+      currentItemId,
+      currentItemInfo,
+      currentItemRatingInfo,
+      currentItemAverageRating,
+      currentItemStyles,
+      selectedStyleIndex,
+      numberOfReviews,
+    } = this.state;
     return (
-      <div onClick={this.props.onClickAnywhere}>
+      <div onClick={onClickAnywhere}>
         <Header />
         <OverviewMod
-          currentItemInfo={this.state.currentItemInfo}
-          currentItemRatingInfo={this.state.currentItemRatingInfo}
-          currentItemAverageRating={this.state.currentItemAverageRating}
-          currentItemStyles={this.state.currentItemStyles}
-          selectedStyleIndex={this.state.selectedStyleIndex}
-          numberOfReviews={this.state.numberOfReviews}
+          currentItemInfo={currentItemInfo}
+          currentItemRatingInfo={currentItemRatingInfo}
+          currentItemAverageRating={currentItemAverageRating}
+          currentItemStyles={currentItemStyles}
+          selectedStyleIndex={selectedStyleIndex}
+          numberOfReviews={numberOfReviews}
           handleStyleSelection={this.handleStyleSelection}
         />
         <RelatedItemsAndComparison
-          currentItemId={this.state.currentItemId}
-          currentItemInfo={this.state.currentItemInfo}
-          currentItemRatingInfo={this.state.currentItemRatingInfo}
-          currentItemStyles={this.state.currentItemStyles}
+          currentItemId={currentItemId}
+          currentItemInfo={currentItemInfo}
+          currentItemRatingInfo={currentItemRatingInfo}
+          currentItemStyles={currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
 
         />
-        <QuestionsAndAnswers currentItemId={this.state.currentItemId} />
+        <QuestionsAndAnswers currentItemId={currentItemId} />
         <LMod
-          currentItemId={this.state.currentItemId}
-          currentItemRatingInfo={this.state.currentItemRatingInfo}
-          currentItemAverageRating={this.state.currentItemAverageRating}
-          numberOfReviews={this.state.numberOfReviews}
+          currentItemId={currentItemId}
+          currentItemRatingInfo={currentItemRatingInfo}
+          currentItemAverageRating={currentItemAverageRating}
+          numberOfReviews={numberOfReviews}
         />
       </div>
     );
