@@ -33,7 +33,7 @@ class QuestionView extends React.Component {
       <div>
         {questionList.map((question, index) => (
           <div key={index}>
-            <Question question={question} />
+            <Question question={question} currentItemId={this.props.currentItemId} />
           </div>
         ))}
         <button onClick={this.handleShowMoreQuestions}>
