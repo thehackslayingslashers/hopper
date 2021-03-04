@@ -13,7 +13,11 @@ class RelatedProductCard extends React.Component {
     const product = this.props.relatedProduct;
     return (
       <div className="card productcard">
-        <button className="icon">*</button>
+        <button
+        className="icon"
+        onClick={() => this.props.handleCompareClick(product)}
+        >*
+        </button>
         <div
           className="cardimage"
           style={{ backgroundImage: `url(${product.styles[0].photos[0].url})`}}
