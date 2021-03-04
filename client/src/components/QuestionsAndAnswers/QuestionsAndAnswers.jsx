@@ -22,6 +22,11 @@ class QuestionsAndAnswers extends React.Component {
 
   getCurrentProductQuestionsAndAnswers() {
     let id = this.props.currentItemId;
+    // axios({
+    //   url: 'qa/questions',
+    //   method: 'get',
+    //   params: { product_id: id },
+    // })
     axios
       .get(`/qa/questions/${id}`)
       .then((results) => {
@@ -50,11 +55,11 @@ class QuestionsAndAnswers extends React.Component {
           getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
         <QuestionView
+          currentItemId={this.props.currentItemId}
           currentProductQuestions={this.state.currentProductQuestions}
           searchedQuestion={this.state.searchedQuestion}
         />
-        <PostQuestion />
-        <PostAnswer />
+        <PostQuestion currentItemId={this.props.currentItemId} />
       </div>
     );
   }

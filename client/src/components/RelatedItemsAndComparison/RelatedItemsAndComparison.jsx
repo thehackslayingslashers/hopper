@@ -1,7 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 import RelatedProductsList from './RelatedProductsList';
 import OutfitList from './OutfitList';
-import axios from 'axios';
 
 class RelatedItemsAndComparison extends React.Component {
   constructor(props) {
@@ -13,6 +13,10 @@ class RelatedItemsAndComparison extends React.Component {
 
     this.handleCardClick = this.handleCardClick.bind(this);
     this.getRelatedProductsToCurrent = this.getRelatedProductsToCurrent.bind(this);
+  }
+
+  componentDidMount() {
+    this.getRelatedProductsToCurrent();
   }
 
   handleCardClick(newId) {
@@ -29,25 +33,21 @@ class RelatedItemsAndComparison extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-      })
+      });
   }
 
-  componentDidMount() {
-    this.getRelatedProductsToCurrent();
-  }
-
-  render () {
+  render() {
     return (
       <div>
         <RelatedProductsList
-        relatedProducts={this.state.relatedProducts}
-        handleCardClick={this.handleCardClick}
+          relatedProducts={this.state.relatedProducts}
+          handleCardClick={this.handleCardClick}
         />
         <OutfitList
-        currentItemId={this.props.currentItemId}
-        currentItemInfo={this.props.currentItemInfo}
-        currentItemStyles={this.props.currentItemStyles}
-        handleCardClick={this.handleCardClick}
+          currentItemId={this.props.currentItemId}
+          currentItemInfo={this.props.currentItemInfo}
+          currentItemStyles={this.props.currentItemStyles}
+          handleCardClick={this.handleCardClick}
         />
       </div>
     );

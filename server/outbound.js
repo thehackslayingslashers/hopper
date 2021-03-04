@@ -25,7 +25,7 @@ const allReviewFetch = (id, count) => {
   let localOptions = Object.create(options);
   localOptions.params = {
     product_id: id,
-    count: count
+    count: count,
   };
 
   return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/`, localOptions);
@@ -49,50 +49,36 @@ const fetchQuestions = (id) => {
   );
 };
 
-const postQuestion = (id, body, name, email) => {
+const postQuestion = (obj) => {
+  let localOptions = Object.assign(options);
+  return axios({
+    url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    method: 'post',
+    headers: localOptions.headers,
+    data: obj,
+  });
+};
+
+const postAnswer = (id, body, name, email, photos) => {
   let localOptions = Object.create(options);
   localOptions.params = {
     body: body,
     name: name,
     email: email,
-    product_id: id,
+    question_id: id,
+    photos: photos,
   };
   return axios.post(
-    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions`,
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/answers`,
     localOptions
   );
 };
 
-const fetchRelated = (id, callback) => {
-  axios
-    .get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
-    .then((response) => {
-      let relatedArray = [];
-      response.data.map((id) => {
-        relatedArray.push(
-          axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}`, options)
-        );
-      });
-      axios
-        .all(relatedArray)
-        .then(
-          axios.spread((...responses) => {
-            let results = [];
-            responses.map((response) => {
-              results.push(response.data);
-            });
-            callback(null, results);
-          })
-        )
-        .catch((error) => {
-          console.log('erroring out of axios.all request in fetchRelated call');
-          callback(error);
-        });
-    })
-    .catch((error) => {
-      callback(error);
-    });
+const fetchRelatedArray = (id, callback) => {
+  return axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options)
 };
+
+// const fetchRelatedItems
 
 module.exports = {
   fetchItemById,
@@ -100,6 +86,6 @@ module.exports = {
   allReviewFetch,
   fetchStyles,
   fetchQuestions,
-  fetchRelated,
+  fetchRelatedArray,
   postQuestion,
 };
