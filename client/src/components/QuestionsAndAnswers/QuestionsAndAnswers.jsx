@@ -3,7 +3,6 @@ import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
 import PostQuestion from './PostQuestion';
 import PostAnswer from './PostAnswer';
-import App from '../App.jsx';
 import axios from 'axios';
 // import GARETHS_TOKEN from '../../config.js';
 
@@ -20,29 +19,30 @@ class QuestionsAndAnswers extends React.Component {
     this.setCurrentQuestionsToMatchSearch = this.setCurrentQuestionsToMatchSearch.bind(this);
   }
 
-  getCurrentProductQuestionsAndAnswers() {
-    let id = this.props.currentItemId;
-    // axios({
-    //   url: 'qa/questions',
-    //   method: 'get',
-    //   params: { product_id: id },
-    // })
-    axios
-      .get(`/qa/questions/${id}`)
-      .then((results) => {
-        this.setState({ currentProductQuestions: results.data });
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }
-
   setCurrentQuestionsToMatchSearch(newQuestionArray) {
     this.setState({ currentProductQuestions: newQuestionArray });
   }
 
   componentDidMount() {
     this.getCurrentProductQuestionsAndAnswers();
+  }
+
+  getCurrentProductQuestionsAndAnswers() {
+    let id = this.props.currentItemId;
+    let paramsObj = { params: { count: 10 } };
+    // axios({
+    //   url: '/qa/questions',
+    //   method: 'get',
+    //   params: { product_id: id },
+    // })
+    axios
+      .get(`/qa/questions/${id}`, paramsObj)
+      .then((results) => {
+        this.setState({ currentProductQuestions: results.data });
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   render() {

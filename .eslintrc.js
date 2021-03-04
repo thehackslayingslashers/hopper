@@ -18,5 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-plusplus': 'off',
+    'react/prop-types': 0,
   },
 };

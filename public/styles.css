@@ -152,10 +152,9 @@ Overview Module
 .overviewStyleItem {
   height: 60px;
   width: 60px;
-  object-fit: cover;
   border-radius: 30px;
   border: solid 1px;
-  background-color: black;
+  background-size: cover;
 }
 
 .overviewStyleItem:hover {

@@ -13,33 +13,29 @@ app.get('/', (req, res) => {
 });
 
 app.get('/product/:id', (req, res) => {
-  const id = req.params.id;
-  let data = [];
+  const { id } = req.params;
+  const data = [];
   outbound
     .fetchItemById(id)
     .then((response) => {
       data.push(response.data);
     })
     .catch((error) => {
-      data.push('failed to pull item data');
+      data.push(error);
     })
-    .then(() => {
-      return outbound.reviewInfoFetch(id);
-    })
+    .then(() => outbound.reviewInfoFetch(id))
     .then((response) => {
       data.push(response.data);
     })
     .catch((error) => {
-      data.push('failed to pull reviews');
+      data.push(error);
     })
-    .then(() => {
-      return outbound.fetchStyles(id);
-    })
+    .then(() => outbound.fetchStyles(id))
     .then((response) => {
       data.push(response.data);
     })
     .catch((error) => {
-      data.push('failed to pull styles');
+      data.push(error);
     })
     .then(() => {
       res.send(data);
@@ -47,9 +43,7 @@ app.get('/product/:id', (req, res) => {
 });
 
 app.post('/reviewsList/', (req, res) => {
-  const id = req.body.id;
-  const count = req.body.count;
-  const sort = req.body.sort;
+  const { id, count, sort } = req.body;
 
   outbound
     .allReviewFetch(id, count, sort)
@@ -62,7 +56,9 @@ app.post('/reviewsList/', (req, res) => {
 });
 
 app.get('/qa/questions/:id', (req, res) => {
-  const id = req.params.id;
+
+  const { id } = req.params;
+
   outbound
     .fetchQuestions(id)
     .then((response) => {
@@ -87,10 +83,10 @@ app.post('/qa/questions/', (req, res) => {
 
 app.post('qa/questions/:question_id/answers', (req, res) => {
   const id = req.body.question_id;
-  const body = req.body.body;
-  const email = req.body.email;
-  const name = req.body.name;
-  const photos = req.body.photos;
+  const { body } = req.body;
+  const { email } = req.body;
+  const { name } = req.body;
+  const { photos } = req.body;
   outbound
     .postQuestion(id, body, name, email, photos)
     .then((response) => {
@@ -102,8 +98,8 @@ app.post('qa/questions/:question_id/answers', (req, res) => {
 });
 
 app.get('/products/:product_id/related', (req, res) => {
-  let currentid = req.params.product_id;
-  let relatedArray = [];
+  const currentid = req.params.product_id;
+  const relatedArray = [];
   let relatedLength = 0;
   outbound
     .fetchRelatedArray(currentid)
@@ -112,9 +108,9 @@ app.get('/products/:product_id/related', (req, res) => {
       response.data.map((id) => {
         outbound.fetchItemById(id)
           .then((response) => {
-            let item = {
-              id: id,
-              iteminfo: response.data
+            const item = {
+              id,
+              iteminfo: response.data,
             };
             outbound.reviewInfoFetch(id)
               .then((response) => {

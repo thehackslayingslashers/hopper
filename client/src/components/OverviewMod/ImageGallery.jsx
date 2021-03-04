@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class ImageGallery extends React.Component {
   constructor() {
@@ -12,21 +12,24 @@ class ImageGallery extends React.Component {
     this.handleFullScreen = this.handleFullScreen.bind(this);
   }
 
-  handleFullScreen(e) {
+  handleFullScreen() {
+    const { fullScreen } = this.state;
     this.setState({
-      fullScreen: !this.state.fullScreen,
+      fullScreen: !fullScreen,
     });
   }
 
   render() {
-    let { selectedStyleIndex, currentItemStyles } = this.props;
+    const { selectedStyleIndex, currentItemStyles } = this.props;
+    const { fullScreen, selectedImageIndex } = this.state;
 
     return selectedStyleIndex >= 0 && currentItemStyles[selectedStyleIndex] ? (
       <div id="overviewImageGallery">
         <img
           id="overviewBigImage"
-          className={this.state.fullScreen ? 'full' : null}
-          src={currentItemStyles[selectedStyleIndex].photos[this.state.selectedImageIndex].url}
+          alt=""
+          className={fullScreen ? 'full' : null}
+          src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
       </div>

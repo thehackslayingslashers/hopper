@@ -8,49 +8,52 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    let { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
+    const { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
     let styleItems = 'Loading';
     let index = 0;
-    let selectedCheck = <MdCheckCircle className="selectedCheck" />;
 
     if (currentItemStyles && currentItemStyles[0]) {
       styleItems = [
         <div key="styleName" id="selectedStyleName">
-          <strong>STYLE ></strong> {currentItemStyles[selectedStyleIndex].name.toUpperCase()}
+          <strong>{'STYLE >'}</strong>
+          {' '}
+          {currentItemStyles[selectedStyleIndex].name.toUpperCase()}
         </div>,
       ];
+
       styleItems = styleItems.concat(
         currentItemStyles.map((style) => {
           let url = style.photos[0].thumbnail_url;
           if (url[0] !== 'h') {
             url = url.substr(1);
           }
-          let styleImage = (
+
+          const button = (
+            <button
+              type="submit"
+              index={index}
+              alt={style.name}
+              className="overviewStyleItem"
+              style={{ backgroundImage: `url(${url})` }}
+              // src={url}
+              onClick={handleStyleSelection}
+              onKeyDown={handleStyleSelection}
+            />
+          );
+          let selectedCheck = null;
+          if (selectedStyleIndex === index) {
+            selectedCheck = <MdCheckCircle className="selectedCheck" />;
+          }
+          const styleImage = (
             <div key={style.name + style.style_id} className="overviewStyleItemContainer">
-              <img
-                index={index}
-                className="overviewStyleItem"
-                src={url}
-                onClick={handleStyleSelection}
-              />
+              {button}
+              {selectedCheck}
             </div>
           );
-          if (selectedStyleIndex === index) {
-            styleImage = (
-              <div key={style.name + style.style_id} className="overviewStyleItemContainer">
-                <img
-                  index={index}
-                  className="overviewStyleItem"
-                  src={url}
-                  onClick={handleStyleSelection}
-                />
-                {selectedCheck}
-              </div>
-            );
-          }
+
           index++;
           return styleImage;
-        })
+        }),
       );
     }
     return <div id="overviewStyleSelector">{styleItems}</div>;
