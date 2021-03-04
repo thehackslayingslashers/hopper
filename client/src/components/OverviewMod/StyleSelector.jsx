@@ -34,7 +34,8 @@ class StyleSelector extends React.Component {
               index={index}
               alt={style.name}
               className="overviewStyleItem"
-              src={url}
+              style={{ backgroundImage: `url(${url})` }}
+              // src={url}
               onClick={handleStyleSelection}
               onKeyDown={handleStyleSelection}
             />
