@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class PostAnswer extends React.Component {
   constructor(props) {
@@ -34,6 +35,25 @@ class PostAnswer extends React.Component {
     var answerField = this.state.postAnswerFieldValue;
     if (usernameField.length > 3 && emailField.length > 3 && answerField.length > 3) {
       this.setState({ postAnswerErrorDisplay: { display: 'none' } });
+      const currentQuestionId = this.props.currentQuestionId;
+      var answerPostRequest = {
+        body: answerField,
+        name: usernameField,
+        email: emailField,
+        question_id: currentQuestionId,
+      };
+      axios({
+        method: 'post',
+        url: `/qa/questions/${currentQuestionId}/answers/`,
+        data: answerPostRequest,
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          throw error;
+        });
+
       console.log(currentQuestionId, usernameField, emailField, answerField);
     } else {
       this.setState({ postAnswerErrorDisplay: { display: 'flex' } });
