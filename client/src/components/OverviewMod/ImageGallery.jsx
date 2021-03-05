@@ -27,11 +27,11 @@ class ImageGallery extends React.Component {
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
-
+    let low = 0;
     let index = thumbnailIndex;
     const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
-      index++;
-      if (index - thumbnailIndex <= 7) {
+      if (index - thumbnailIndex < 7 && low++ >= thumbnailIndex) {
+        index++;
         return (
           <ImageGalleryThumbnail
             image={image}
