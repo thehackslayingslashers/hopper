@@ -97,6 +97,32 @@ app.post('/qa/questions/:question_id/answers/', (req, res) => {
     });
 });
 
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  const questionId = req.params.question_id;
+  outbound
+    .upvoteQuestion(questionId)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  const answerId = req.params.answer_id;
+  outbound
+    .upvoteAnswer(answerId)
+    .then((response) => {
+      debugger;
+      res.send(response.data);
+    })
+    .catch((error) => {
+      debugger;
+      res.send(error);
+    });
+});
+
 app.get('/products/:product_id/related', (req, res) => {
   const currentid = req.params.product_id;
   const relatedArray = [];
