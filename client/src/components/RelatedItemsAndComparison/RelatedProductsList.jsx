@@ -37,8 +37,8 @@ class RelatedProductsList extends React.Component {
         <ProductComparisonModal showModal={this.showModal} show={this.state.show}>
         <div className="comparisonmodal">
           <ProductComparisonTable
-          currentFeatures={this.props.currentItem}
-          comparedFeatures={this.state.comparedItem}
+          currentItem={this.props.currentItem}
+          comparedItem={this.state.comparedItem}
           showModal={this.showModal}
           />
         </div>

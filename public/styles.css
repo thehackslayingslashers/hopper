@@ -813,6 +813,20 @@ Related Items Module
   background: #eee;
   padding: 0.5rem 1rem;
 } */
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 15px;
+}
+th {
+  text-align: center;
+}
+
 .circle {
   border-radius: 50%;
   width: 150px;
