@@ -103,7 +103,7 @@ app.get('/products/:product_id/related', (req, res) => {
   outbound
     .fetchRelatedArray(currentid)
     .then((response) => {
-      let relatedIds = [...new Set(response.data)]
+      const relatedIds = [...new Set(response.data)];
       relatedLength = relatedIds.length;
       relatedIds.map((id) => {
         outbound

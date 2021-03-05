@@ -20,7 +20,9 @@ class RelatedProductCard extends React.Component {
         </button>
         <div
           className="cardimage"
-          style={{ backgroundImage: `url(${product.styles[0].photos[0].url})`}}
+          style={
+            { backgroundImage: `url(${product.styles[0].photos[0].url})`}
+          }
           onClick={() => this.props.handleCardClick(product.id)}>
         </div>
         <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
