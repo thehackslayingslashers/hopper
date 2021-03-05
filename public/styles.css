@@ -109,17 +109,7 @@ Overview Module
   grid-row-start: 1;
   grid-row-end: 11;
   z-index: 6;
-<<<<<<< HEAD
-  /* transition: width 200ms; */
-}
-
-.thumbnail .chosen {
-  box-shadow: 0px -2px 2px rgba(34, 34, 34, 0.6);
-}
-
-=======
   transition: width 200ms;
-
 }
 
 .thumbnail:hover {
@@ -132,10 +122,9 @@ Overview Module
   position: relative;
   top: 5px;
   left: 5px;
-  width:8vh;
+  width: 8vh;
 }
 
->>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
 #fullScreenButton {
   grid-row: 2;
   grid-column: 5;
@@ -159,12 +148,14 @@ Overview Module
   outline: none;
 }
 
-#overviewArrowLeft, #overviewArrowRight {
+#overviewArrowLeft,
+#overviewArrowRight {
   grid-row: 5;
   margin: auto;
 }
 
-#overviewArrowDown, #overviewArrowUp {
+#overviewArrowDown,
+#overviewArrowUp {
   grid-column: 2;
   margin: auto 30% auto auto;
 }
@@ -187,18 +178,20 @@ Overview Module
   grid-column: 5;
 }
 
-#overviewArrowDownIcon, #overviewArrowUpIcon {
+#overviewArrowDownIcon,
+#overviewArrowUpIcon {
   height: 20px;
   width: 20px;
   border-radius: 10px;
-  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent);
 }
 
-#overviewArrowLeftIcon, #overviewArrowRightIcon {
+#overviewArrowLeftIcon,
+#overviewArrowRightIcon {
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent);
 }
 
 /* Basic Info */
@@ -614,9 +607,9 @@ QuestionsModule
 }
 
 .small-divider-question {
-  font-size: 18pt;
+  font-size: 16pt;
   font-weight: 200;
-  padding-bottom: 6px;
+  padding-bottom: 8px;
 }
 
 .small-divider-answer {
@@ -678,9 +671,6 @@ QuestionsModule
   font-size: 18pt;
 }
 
-.post-answer-container {
-}
-
 #user-info-and-date {
   font-weight: 200;
   font-size: 12pt;
@@ -695,6 +685,7 @@ QuestionsModule
   font-size: 10pt;
   font-weight: 200;
   padding-left: 6px;
+  padding-right: 2px;
 }
 .report-answer-button {
   font-size: 10pt;
