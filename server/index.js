@@ -93,7 +93,6 @@ app.post('/qa/questions/:question_id/answers/', (req, res) => {
       res.send(response.data);
     })
     .catch((error) => {
-      debugger;
       res.send(error);
     });
 });
@@ -105,8 +104,14 @@ app.get('/products/:product_id/related', (req, res) => {
   outbound
     .fetchRelatedArray(currentid)
     .then((response) => {
-      relatedLength = response.data.length;
-      response.data.map((id) => {
+      const relatedIds = [...new Set(response.data)];
+      for (let i = 0; i < relatedIds.length; i++) {
+        if (relatedIds[i] === Number(currentid)) {
+          relatedIds.splice(i, 1);
+        }
+      }
+      relatedLength = relatedIds.length;
+      relatedIds.map((id) => {
         outbound
           .fetchItemById(id)
           .then((response) => {
