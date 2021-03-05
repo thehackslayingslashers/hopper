@@ -62,7 +62,7 @@ Overview Module
   min-height: 500px;
   max-height: 800px;
   display: grid;
-  grid-template-rows: 7% auto auto auto auto auto auto auto 7% auto;
+  grid-template-rows: 7% auto auto auto auto auto auto auto auto 7%;
   grid-template-columns: 7% 10% 10% auto 7%;
 }
 
@@ -134,8 +134,15 @@ Overview Module
 
 .overviewArrow {
   z-index: 7;
-  background: transparent;
+  background: none;
   border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.overviewArrow:hover {
+  cursor: pointer;
 }
 
 .overviewArrow:focus {
@@ -149,7 +156,7 @@ Overview Module
 
 #overviewArrowDown, #overviewArrowUp {
   grid-column: 2;
-  margin: auto 45% auto auto;
+  margin: auto 30% auto auto;
 }
 
 #overviewArrowUp {
@@ -157,7 +164,8 @@ Overview Module
 }
 
 #overviewArrowDown {
-  grid-row: 9;
+  grid-row: 10;
+  margin-top: 0;
 }
 
 #overviewArrowLeft {
@@ -167,6 +175,20 @@ Overview Module
 
 #overviewArrowRight {
   grid-column: 5;
+}
+
+#overviewArrowDownIcon, #overviewArrowUpIcon {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+}
+
+#overviewArrowLeftIcon, #overviewArrowRightIcon {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
 }
 
 /* Basic Info */

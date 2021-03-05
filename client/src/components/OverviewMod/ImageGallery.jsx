@@ -122,7 +122,8 @@ class ImageGallery extends React.Component {
           id="overviewArrowUp"
           dir="up"
         >
-          <IoIosArrowUp dir="up" />
+          <IoIosArrowUp
+            id="overviewArrowUpIcon" dir="up" />
         </button>
         <button
           type="submit"
@@ -131,7 +132,7 @@ class ImageGallery extends React.Component {
           id="overviewArrowDown"
           dir="down"
         >
-          <IoIosArrowDown dir="down" />
+          <IoIosArrowDown id="overviewArrowDownIcon" dir="down" />
         </button>
         <button
           type="submit"
@@ -140,7 +141,7 @@ class ImageGallery extends React.Component {
           id="overviewArrowLeft"
           dir="left"
         >
-          <IoIosArrowBack dir="left" />
+          <IoIosArrowBack id="overviewArrowLeftIcon" dir="left" />
         </button>
         <button
           type="submit"
@@ -149,7 +150,7 @@ class ImageGallery extends React.Component {
           id="overviewArrowRight"
           dir="right"
         >
-          <IoIosArrowForward dir="right" />
+          <IoIosArrowForward id="overviewArrowRightIcon" dir="right" />
         </button>
         {thumbnails}
       </div>
