@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class PostAnswer extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class PostAnswer extends React.Component {
       postAnswerFieldValue: '',
       postEmailFieldValue: '',
       postUsernameFieldValue: '',
+      postAnswerErrorDisplay: { display: 'none' },
     };
 
     this.handleSubmitPostAnswer = this.handleSubmitPostAnswer.bind(this);
@@ -32,19 +34,44 @@ class PostAnswer extends React.Component {
     var emailField = this.state.postEmailFieldValue;
     var answerField = this.state.postAnswerFieldValue;
     if (usernameField.length > 3 && emailField.length > 3 && answerField.length > 3) {
+      this.setState({ postAnswerErrorDisplay: { display: 'none' } });
+      const currentQuestionId = this.props.currentQuestionId;
+      var answerPostRequest = {
+        body: answerField,
+        name: usernameField,
+        email: emailField,
+        question_id: currentQuestionId,
+      };
+      axios({
+        method: 'post',
+        url: `/qa/questions/${currentQuestionId}/answers/`,
+        data: answerPostRequest,
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          throw error;
+        });
+
       console.log(currentQuestionId, usernameField, emailField, answerField);
     } else {
-      console.log('please fill out all fields');
+      this.setState({ postAnswerErrorDisplay: { display: 'flex' } });
     }
   }
 
   render() {
     return (
-      <div className="post-answer-container" style={this.props.postAnswerFieldDisplay}>
-        Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
-        Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
-        Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
-        <button onClick={this.handleSubmitPostAnswer}>Post Answer</button>
+      <div>
+        <div className="post-answer-container" style={this.props.postAnswerFieldDisplay}>
+          Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
+          Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
+          Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
+          <button onClick={this.handleSubmitPostAnswer}>Post Answer</button>
+        </div>
+        <div className="post-answer-error" style={this.state.postAnswerErrorDisplay}>
+          Please fill out all fields
+        </div>
       </div>
     );
   }
