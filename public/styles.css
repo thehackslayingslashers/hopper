@@ -127,13 +127,10 @@ Overview Module
   grid-row-end: 11;
   z-index: 6;
   transition: width 200ms;
-<<<<<<< HEAD
 }
 
 .thumbnail:focus {
   outline: none;
-=======
->>>>>>> 35c743c0ac2be4de037b097f6122dceaed88b967
 }
 
 .thumbnail:hover {
