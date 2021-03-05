@@ -75,6 +75,19 @@ Overview Module
   grid-column-end: 5;
 }
 
+#overviewImageGallery.errorr {
+  background-image: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
+  background-size: cover;
+}
+
+#errrrror {
+  object-fit: cover;
+  grid-column: 4;
+  grid-row: 3;
+  z-index: 5;
+  text-align: center;
+}
+
 #overviewBigImage {
   height: 100%;
   min-height: 500px;
