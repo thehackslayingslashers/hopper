@@ -410,7 +410,7 @@ LModule
 
 .LModule {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 article {
@@ -533,6 +533,22 @@ hr {
   color: #7b00ff;
 }
 
+<<<<<<< HEAD
+.reviewImg {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.reviewImg:hover {
+  transform: scale(1.25)
+}
+
+
+=======
+>>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
 /*
 =====================
 QuestionsModule
