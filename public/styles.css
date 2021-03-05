@@ -114,7 +114,6 @@ Overview Module
   grid-row-end: 11;
   z-index: 6;
   transition: width 200ms;
-
 }
 
 .thumbnail:hover {
@@ -127,7 +126,7 @@ Overview Module
   position: relative;
   top: 5px;
   left: 5px;
-  width:8vh;
+  width: 8vh;
 }
 
 #fullScreenButton {
@@ -153,12 +152,14 @@ Overview Module
   outline: none;
 }
 
-#overviewArrowLeft, #overviewArrowRight {
+#overviewArrowLeft,
+#overviewArrowRight {
   grid-row: 5;
   margin: auto;
 }
 
-#overviewArrowDown, #overviewArrowUp {
+#overviewArrowDown,
+#overviewArrowUp {
   grid-column: 2;
   margin: auto 30% auto auto;
 }
@@ -181,18 +182,20 @@ Overview Module
   grid-column: 5;
 }
 
-#overviewArrowDownIcon, #overviewArrowUpIcon {
+#overviewArrowDownIcon,
+#overviewArrowUpIcon {
   height: 20px;
   width: 20px;
   border-radius: 10px;
-  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent);
 }
 
-#overviewArrowLeftIcon, #overviewArrowRightIcon {
+#overviewArrowLeftIcon,
+#overviewArrowRightIcon {
   height: 30px;
   width: 30px;
   border-radius: 15px;
-  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent);
 }
 
 /* Basic Info */
@@ -581,8 +584,6 @@ QuestionsModule
   padding-left: 8px;
   padding-top: 20px;
   padding-bottom: 12px;
-  border: 3px solid black;
-  border-radius: 3px;
 }
 
 .question-response-options {
@@ -609,10 +610,16 @@ QuestionsModule
   white-space: nowrap;
 }
 
-.small-divider {
-  font-size: 18pt;
+.small-divider-question {
+  font-size: 16pt;
   font-weight: 200;
-  padding-bottom: 6px;
+  padding-bottom: 8px;
+}
+
+.small-divider-answer {
+  font-size: 16pt;
+  font-weight: 200;
+  transform: translateY(-8px);
 }
 
 .question-text {
@@ -620,19 +627,25 @@ QuestionsModule
 }
 
 #answers-container {
-  background-color: maroon;
+  background-color: seashell;
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
+}
+.answer-item {
+  padding-bottom: 10px;
 }
 
 .a-for-answer-and-answer-text {
   display: flex;
   flex-wrap: nowrap;
   gap: 10px;
+  padding-top: 6px;
 }
 .answer-text {
   font-weight: 200;
+  width: 80%;
+  padding-left: 5px;
 }
 
 #no-matching-queries-message {
@@ -662,7 +675,25 @@ QuestionsModule
   font-size: 18pt;
 }
 
-.post-answer-container {
+#user-info-and-date {
+  font-weight: 200;
+  font-size: 12pt;
+  padding-left: 36px;
+}
+
+.lower-answer-container {
+  padding-top: 10px;
+}
+
+.upvote-answer-button {
+  font-size: 10pt;
+  font-weight: 200;
+  padding-left: 6px;
+  padding-right: 2px;
+}
+.report-answer-button {
+  font-size: 10pt;
+  font-weight: 200;
 }
 
 .post-answer-error {
