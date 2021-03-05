@@ -32,17 +32,18 @@ class ImageGallery extends React.Component {
     const index = e.target.id;
     this.setState({
       selectedImageIndex: index,
+      // thumbnailIndex: index % 7
     });
   }
 
   handleArrowClick(e) {
     const { thumbnailIndex, selectedImageIndex } = this.state;
-    const { currentItemStyles, selectedStyleIndex} = this.props;
+    const { currentItemStyles, selectedStyleIndex } = this.props;
 
     const dir = e.target.attributes.dir.value;
-    const page = Math.floor(selectedImageIndex / 7);
+    const page = Math.floor(Number(selectedImageIndex) / 7);
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
-    // debugger;
+
     switch (dir) {
       case 'up':
         if (thumbnailIndex > 0) {
@@ -63,16 +64,16 @@ class ImageGallery extends React.Component {
       case 'left':
         if (selectedImageIndex > 0) {
           this.setState({
-            selectedImageIndex: selectedImageIndex - 1,
-            thumbnailIndex: selectedImageIndex % 7 === 0 ? (page - 1) * 7 : thumbnailIndex,
+            selectedImageIndex: Number(selectedImageIndex) - 1,
+            thumbnailIndex: Number(selectedImageIndex) % 7 === 0 ? (page - 1) * 7 : thumbnailIndex,
           });
         }
         break;
       case 'right':
         if (selectedImageIndex < totalImages) {
           this.setState({
-            selectedImageIndex: selectedImageIndex + 1,
-            thumbnailIndex: selectedImageIndex % 7 === 6 ? (page + 1) * 7 : thumbnailIndex,
+            selectedImageIndex: Number(selectedImageIndex) + 1,
+            thumbnailIndex: Number(selectedImageIndex) % 7 === 6 ? (page + 1) * 7 : thumbnailIndex,
           });
         }
         break;
@@ -81,13 +82,17 @@ class ImageGallery extends React.Component {
     }
   }
 
-
-
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
+
+    const page = Math.floor(selectedImageIndex / 7);
+    const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
+    const pageCount = Math.floor(totalImages / 7);
+
     let low = 0;
     let index = thumbnailIndex;
+
     const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
       if (index - thumbnailIndex < 7 && low++ >= thumbnailIndex) {
         index++;
@@ -115,43 +120,57 @@ class ImageGallery extends React.Component {
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-        <button
-          type="submit"
-          onClick={this.handleArrowClick}
-          className="overviewArrow"
-          id="overviewArrowUp"
-          dir="up"
-        >
-          <IoIosArrowUp
-            id="overviewArrowUpIcon" dir="up" />
-        </button>
-        <button
-          type="submit"
-          onClick={this.handleArrowClick}
-          className="overviewArrow"
-          id="overviewArrowDown"
-          dir="down"
-        >
-          <IoIosArrowDown id="overviewArrowDownIcon" dir="down" />
-        </button>
-        <button
-          type="submit"
-          onClick={this.handleArrowClick}
-          className="overviewArrow"
-          id="overviewArrowLeft"
-          dir="left"
-        >
-          <IoIosArrowBack id="overviewArrowLeftIcon" dir="left" />
-        </button>
-        <button
-          type="submit"
-          onClick={this.handleArrowClick}
-          className="overviewArrow"
-          id="overviewArrowRight"
-          dir="right"
-        >
-          <IoIosArrowForward id="overviewArrowRightIcon" dir="right" />
-        </button>
+        {page > 0 ? (
+          <button
+            type="submit"
+            onClick={this.handleArrowClick}
+            className="overviewArrow"
+            id="overviewArrowUp"
+            dir="up"
+          >
+            <IoIosArrowUp
+              id="overviewArrowUpIcon"
+              dir="up"
+              onClick={this.handleArrowClick}
+            />
+          </button>
+        ) : null}
+        {page < pageCount ? (
+          <button
+            type="submit"
+            onClick={this.handleArrowClick}
+            className="overviewArrow"
+            id="overviewArrowDown"
+            dir="down"
+          >
+            <IoIosArrowDown id="overviewArrowDownIcon" dir="down"
+            onClick={this.handleArrowClick} />
+          </button>
+        ) : null}
+        {selectedImageIndex > 0 ? (
+          <button
+            type="submit"
+            onClick={this.handleArrowClick}
+            className="overviewArrow"
+            id="overviewArrowLeft"
+            dir="left"
+          >
+            <IoIosArrowBack id="overviewArrowLeftIcon" dir="left"
+            onClick={this.handleArrowClick} />
+          </button>
+        ) : null}
+        {selectedImageIndex < totalImages - 1 ? (
+          <button
+            type="submit"
+            onClick={this.handleArrowClick}
+            className="overviewArrow"
+            id="overviewArrowRight"
+            dir="right"
+          >
+            <IoIosArrowForward id="overviewArrowRightIcon" dir="right"
+            onClick={this.handleArrowClick} />
+          </button>
+        ) : null}
         {thumbnails}
       </div>
     );
@@ -159,31 +178,3 @@ class ImageGallery extends React.Component {
 }
 
 export default ImageGallery;
-
-// render() {
-//   const { selectedStyleIndex, currentItemStyles } = this.props;
-//   const { fullScreen, selectedImageIndex } = this.state;
-
-//   return selectedStyleIndex >= 0 && currentItemStyles[selectedStyleIndex] ? (
-//     <div id="overviewImageGallery">
-//       {fullScreen
-//         ? (
-//           <ImageGalleryExpanded
-//             currentItemStyles={currentItemStyles}
-//             selectedStyleIndex={selectedStyleIndex}
-//             selectedImageIndex={selectedImageIndex}
-//           />
-//         )
-//         : (
-//           <ImageGalleryNonExpanded
-//             currentItemStyles={currentItemStyles}
-//             selectedStyleIndex={selectedStyleIndex}
-//             selectedImageIndex={selectedImageIndex}
-//           />
-//         )}
-//       <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-//     </div>
-//   ) : (
-//     <div id="overviewImageGallery">Loading</div>
-//   );
-// }
