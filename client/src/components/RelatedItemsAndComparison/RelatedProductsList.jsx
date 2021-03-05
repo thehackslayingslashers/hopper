@@ -34,12 +34,17 @@ class RelatedProductsList extends React.Component {
     // console.log(this.state.comparedItem)
     return (
       <div>
-        <ProductComparisonModal showModal={this.showModal} show={this.state.show}>
+        <ProductComparisonModal
+        showModal={this.showModal}
+        show={this.state.show}
+        key={'productComparisonModal'}
+        >
         <div className="comparisonmodal">
           <ProductComparisonTable
-          currentFeatures={this.props.currentItem}
-          comparedFeatures={this.state.comparedItem}
+          currentItem={this.props.currentItem}
+          comparedItem={this.state.comparedItem}
           showModal={this.showModal}
+          key={'ProductComparisonTable'}
           />
         </div>
         </ProductComparisonModal>

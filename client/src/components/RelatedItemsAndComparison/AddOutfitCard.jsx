@@ -13,11 +13,11 @@ class AddOutfitCard extends React.Component {
     return (
       <div className="card productcard">
         <div className="addtooutfit" onClick={this.props.handleAddClick}>
-          <div className="circle"></div>
+          <div className="circle" />
           <h3>Add Current Product To Outfits</h3>
         </div>
       </div>
-    )
+    );
   }
 }
 
