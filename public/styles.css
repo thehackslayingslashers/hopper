@@ -558,6 +558,12 @@ QuestionsModule
   font-size: 18pt;
 }
 
+.post-answer-container {
+}
+
+.post-answer-error {
+  background-color: lightcoral;
+}
 /*
 =====================
 Related Items Module
