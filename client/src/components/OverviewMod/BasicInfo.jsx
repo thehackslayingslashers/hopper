@@ -27,6 +27,7 @@ class BasicInfo extends React.Component {
             {' '}
             <a href="#reviews">
               Read all
+              {' '}
               {numberOfReviews}
               {' '}
               reviews

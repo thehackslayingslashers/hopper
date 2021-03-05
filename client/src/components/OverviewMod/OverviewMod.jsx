@@ -25,10 +25,12 @@ class OverviewMod extends React.Component {
 
     return (
       <div id="overview">
-        <ImageGallery
-          currentItemStyles={currentItemStyles}
-          selectedStyleIndex={selectedStyleIndex}
-        />
+        {currentItemStyles[selectedStyleIndex] ? (
+          <ImageGallery
+            currentItemStyles={currentItemStyles}
+            selectedStyleIndex={selectedStyleIndex}
+          />
+        ) : <div id="overviewImageGallery">Loading</div>}
         <BasicInfo
           currentItemInfo={currentItemInfo}
           currentItemRatingInfo={currentItemRatingInfo}
