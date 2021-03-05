@@ -65,7 +65,7 @@ class ImageGallery extends React.Component {
         if (selectedImageIndex > 0) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) - 1,
-            thumbnailIndex: Number(selectedImageIndex) % 7 === 0 ? (page - 1) * 7 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0 ? thumbnailIndex - 1 : thumbnailIndex,
           });
         }
         break;
@@ -73,7 +73,7 @@ class ImageGallery extends React.Component {
         if (selectedImageIndex < totalImages) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) + 1,
-            thumbnailIndex: Number(selectedImageIndex) % 7 === 6 ? (page + 1) * 7 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 6 ? thumbnailIndex + 1 : thumbnailIndex,
           });
         }
         break;
