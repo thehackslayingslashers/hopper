@@ -685,6 +685,14 @@ QuestionsModule
   padding-top: 10px;
 }
 
+.show-more-less-answers {
+  display: flex;
+  font-size: 10pt;
+  font-weight: 100;
+  margin-left: 35px;
+  gap: 10px;
+}
+
 .upvote-answer-button {
   font-size: 10pt;
   font-weight: 200;
