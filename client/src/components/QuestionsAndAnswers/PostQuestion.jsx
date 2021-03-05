@@ -55,7 +55,7 @@ class PostQuestion extends React.Component {
         data: questionPostRequest,
       })
         .then((response) => {
-          console.log('Post went through');
+          console.log(response);
         })
         .catch((error) => {
           throw error;

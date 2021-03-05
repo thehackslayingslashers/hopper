@@ -80,14 +80,15 @@ app.post('/qa/questions/', (req, res) => {
     });
 });
 
-app.post('qa/questions/:question_id/answers', (req, res) => {
-  const id = req.body.question_id;
-  const { body } = req.body;
-  const { email } = req.body;
-  const { name } = req.body;
-  const { photos } = req.body;
+app.post('/qa/questions/:question_id/answers/', (req, res) => {
+  const id = req.params.question_id;
+  const postAnswerObj = {
+    body: req.body.body,
+    name: req.body.name,
+    email: req.body.email,
+  };
   outbound
-    .postQuestion(id, body, name, email, photos)
+    .postAnswer(postAnswerObj, id)
     .then((response) => {
       res.send(response.data);
     })
