@@ -3,7 +3,9 @@
 
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
-import { IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import {
+  IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp,
+} from 'react-icons/io';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail';
 
 class ImageGallery extends React.Component {
@@ -40,7 +42,6 @@ class ImageGallery extends React.Component {
     const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
       if (index - thumbnailIndex < 7 && low++ >= thumbnailIndex) {
         index++;
-        // debugger;
         return (
           <ImageGalleryThumbnail
             handleImageSelect={this.handleImageSelect}
@@ -65,6 +66,34 @@ class ImageGallery extends React.Component {
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
+        <button
+          type="submit"
+          className="overviewArrow"
+          id="overviewArrowUp"
+        >
+          <IoIosArrowUp />
+        </button>
+        <button
+          type="submit"
+          className="overviewArrow"
+          id="overviewArrowDown"
+        >
+          <IoIosArrowDown />
+        </button>
+        <button
+          type="submit"
+          className="overviewArrow"
+          id="overviewArrowLeft"
+        >
+          <IoIosArrowBack />
+        </button>
+        <button
+          type="submit"
+          className="overviewArrow"
+          id="overviewArrowRight"
+        >
+          <IoIosArrowForward />
+        </button>
         {thumbnails}
       </div>
     );
