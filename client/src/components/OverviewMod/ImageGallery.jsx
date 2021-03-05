@@ -48,18 +48,17 @@ class ImageGallery extends React.Component {
       case 'up':
         if (thumbnailIndex > 0) {
           this.setState({
-            thumbnailIndex: thumbnailIndex - 7,
-            selectedImageIndex: page * 7 - 1,
+            selectedImageIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 1 : 6,
+            thumbnailIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 7 : 0,
           });
         }
         break;
       case 'down':
-        if ((page + 1) * 7 <= totalImages) {
-          this.setState({
-            thumbnailIndex: thumbnailIndex + 7,
-            selectedImageIndex: (page + 1) * 7,
-          });
-        }
+        this.setState({
+          thumbnailIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+          selectedImageIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+        });
+
         break;
       case 'left':
         if (selectedImageIndex > 0) {
@@ -120,7 +119,7 @@ class ImageGallery extends React.Component {
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-        {page > 0 ? (
+        {thumbnailIndex > 0 ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -135,7 +134,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {page < pageCount ? (
+        {thumbnailIndex + 7 < totalImages ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}

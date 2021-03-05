@@ -62,9 +62,7 @@ Overview Module
   grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 3;
-  height: 57vh;
-  min-height: 500px;
-  max-height: 800px;
+  min-height: 57vh;
   display: grid;
   grid-template-rows: 7% repeat(7, 1fr) 7%;
   grid-template-columns: 7% 10% 10% auto 7%;
