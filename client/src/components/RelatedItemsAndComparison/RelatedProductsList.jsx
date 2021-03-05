@@ -30,8 +30,8 @@ class RelatedProductsList extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentItem)
-    console.log(this.state.comparedItem)
+    // console.log(this.props.currentItem)
+    // console.log(this.state.comparedItem)
     return (
       <div>
         <ProductComparisonModal showModal={this.showModal} show={this.state.show}>
