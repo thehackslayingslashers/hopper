@@ -30,7 +30,9 @@ class ProductComparisonTable extends React.Component {
     return (
       <div>
         Let's compare these two products!
+        <div>
         <button onClick={this.props.showModal}>close</button>
+        </div>
       </div>
     )
   }
