@@ -24,9 +24,13 @@ class StyleSelector extends React.Component {
       styleItems = styleItems.concat(
         currentItemStyles.map((style) => {
           let url = style.photos[0].thumbnail_url;
-          if (url[0] !== 'h') {
+
+          if (url && url[0] !== 'h') {
             url = url.substr(1);
           }
+
+          let styles = { backgroundImage: `url(${url})` }
+
 
           const button = (
             <button
@@ -34,11 +38,11 @@ class StyleSelector extends React.Component {
               index={index}
               alt={style.name}
               className="overviewStyleItem"
-              style={{ backgroundImage: `url(${url})` }}
+              style={url ? styles : null}
               // src={url}
               onClick={handleStyleSelection}
               onKeyDown={handleStyleSelection}
-            />
+            >{url ? null : 'No Image'}</button>
           );
           let selectedCheck = null;
           if (selectedStyleIndex === index) {
