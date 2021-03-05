@@ -47,6 +47,7 @@ class RelatedItemsAndComparison extends React.Component {
       <div>
         <RelatedProductsList
           relatedProducts={this.state.relatedProducts}
+          currentItem={currentItem}
           handleCardClick={this.handleCardClick}
         />
         <OutfitList

@@ -1,22 +1,26 @@
 import React from 'react';
 import RelatedProductCard from './RelatedProductCard';
-import ProductComparison from './Modal/ProductComparison';
+import ProductComparisonModal from './Modal/ProductComparisonModal';
+import ProductComparisonTable from './Modal/ProductComparisonTable';
 
 class RelatedProductsList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      show: false
+      show: false,
+      comparedItem: {},
     };
     this.handleCompareClick = this.handleCompareClick.bind(this);
     this.showModal = this.showModal.bind(this);
   }
 
   handleCompareClick(item) {
-    console.log('clicked')
-    console.log(item)
-    this.showModal()
+    this.setState({
+      comparedItem: item,
+    }, () => {
+      this.showModal();
+    });
   }
 
   showModal() {
@@ -28,12 +32,14 @@ class RelatedProductsList extends React.Component {
   render() {
     return (
       <div>
-        <ProductComparison onClose={this.showModal} show={this.state.show}>
+        <ProductComparisonModal onClose={this.showModal} show={this.state.show}>
         <div className="comparisonmodal">
-          <h2>Modal Window</h2>
-          <div className="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis deserunt corrupti, ut fugit magni qui quasi nisi amet repellendus non fuga omnis a sed impedit explicabo accusantium nihil doloremque consequuntur.</div>
+          <ProductComparisonTable
+          currentItem={this.props.currentItem}
+          comparedItem={this.state.comparedItem}
+          />
         </div>
-        </ProductComparison>
+        </ProductComparisonModal>
         <h2>Related Products</h2>
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
