@@ -27,8 +27,17 @@ class RelatedItemsAndComparison extends React.Component {
     axios
       .get(`/products/${this.props.currentItemId}/related`)
       .then((data) => {
+        const receivedProducts = data.data;
+        receivedProducts.map((product) => {
+          const currentPhoto = product.styles[0].photos[0];
+          if (currentPhoto.url === null) {
+            currentPhoto.url = 'https://www.luvbat.com/uploads/happy_frog__9265232477.jpg';
+          } else if (currentPhoto.url[0] !== 'h') {
+            currentPhoto.url = currentPhoto.url.substr(1);
+          }
+        });
         this.setState({
-          relatedProducts: data.data
+          relatedProducts: receivedProducts,
         });
       })
       .catch((error) => {
@@ -47,6 +56,7 @@ class RelatedItemsAndComparison extends React.Component {
       <div>
         <RelatedProductsList
           relatedProducts={this.state.relatedProducts}
+          currentItem={currentItem}
           handleCardClick={this.handleCardClick}
         />
         <OutfitList
