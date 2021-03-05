@@ -3,8 +3,10 @@
 
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
+import {
+  IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp,
+} from 'react-icons/io';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail';
-// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class ImageGallery extends React.Component {
   constructor() {
@@ -15,6 +17,8 @@ class ImageGallery extends React.Component {
       thumbnailIndex: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
+    this.handleImageSelect = this.handleImageSelect.bind(this);
+    this.handleArrowClick = this.handleArrowClick.bind(this);
   }
 
   handleFullScreen() {
@@ -23,6 +27,61 @@ class ImageGallery extends React.Component {
       fullScreen: !fullScreen,
     });
   }
+
+  handleImageSelect(e) {
+    const index = e.target.id;
+    this.setState({
+      selectedImageIndex: index,
+    });
+  }
+
+  handleArrowClick(e) {
+    const { thumbnailIndex, selectedImageIndex } = this.state;
+    const { currentItemStyles, selectedStyleIndex} = this.props;
+
+    const dir = e.target.attributes.dir.value;
+    const page = Math.floor(selectedImageIndex / 7);
+    const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
+    // debugger;
+    switch (dir) {
+      case 'up':
+        if (thumbnailIndex > 0) {
+          this.setState({
+            thumbnailIndex: thumbnailIndex - 7,
+            selectedImageIndex: page * 7 - 1,
+          });
+        }
+        break;
+      case 'down':
+        if ((page + 1) * 7 <= totalImages) {
+          this.setState({
+            thumbnailIndex: thumbnailIndex + 7,
+            selectedImageIndex: (page + 1) * 7,
+          });
+        }
+        break;
+      case 'left':
+        if (selectedImageIndex > 0) {
+          this.setState({
+            selectedImageIndex: selectedImageIndex - 1,
+            thumbnailIndex: selectedImageIndex % 7 === 0 ? (page - 1) * 7 : thumbnailIndex,
+          });
+        }
+        break;
+      case 'right':
+        if (selectedImageIndex < totalImages) {
+          this.setState({
+            selectedImageIndex: selectedImageIndex + 1,
+            thumbnailIndex: selectedImageIndex % 7 === 6 ? (page + 1) * 7 : thumbnailIndex,
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+
 
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
@@ -34,7 +93,10 @@ class ImageGallery extends React.Component {
         index++;
         return (
           <ImageGalleryThumbnail
+            handleImageSelect={this.handleImageSelect}
             image={image}
+            trueIndex={low - 1}
+            chosen={index - 1 === Number(selectedImageIndex)}
             index={index - thumbnailIndex}
             key={image.url}
           />
@@ -53,6 +115,43 @@ class ImageGallery extends React.Component {
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
+        <button
+          type="submit"
+          onClick={this.handleArrowClick}
+          className="overviewArrow"
+          id="overviewArrowUp"
+          dir="up"
+        >
+          <IoIosArrowUp
+            id="overviewArrowUpIcon" dir="up" />
+        </button>
+        <button
+          type="submit"
+          onClick={this.handleArrowClick}
+          className="overviewArrow"
+          id="overviewArrowDown"
+          dir="down"
+        >
+          <IoIosArrowDown id="overviewArrowDownIcon" dir="down" />
+        </button>
+        <button
+          type="submit"
+          onClick={this.handleArrowClick}
+          className="overviewArrow"
+          id="overviewArrowLeft"
+          dir="left"
+        >
+          <IoIosArrowBack id="overviewArrowLeftIcon" dir="left" />
+        </button>
+        <button
+          type="submit"
+          onClick={this.handleArrowClick}
+          className="overviewArrow"
+          id="overviewArrowRight"
+          dir="right"
+        >
+          <IoIosArrowForward id="overviewArrowRightIcon" dir="right" />
+        </button>
         {thumbnails}
       </div>
     );

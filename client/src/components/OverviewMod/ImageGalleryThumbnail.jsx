@@ -1,8 +1,10 @@
 import React from 'react';
 
-const ImageGalleryThumbnail = ({ image, index }) => (
+const ImageGalleryThumbnail = ({ image, index, chosen, handleImageSelect, trueIndex }) => (
   <img
-    className={`thumbnail thumbnail${index}`}
+    onClick={handleImageSelect}
+    className={chosen ? 'thumbnail chosen' : 'thumbnail'}
+    id={trueIndex}
     alt="thumbnail"
     src={image.url}
     style={{ gridRow: index + 1 }}
