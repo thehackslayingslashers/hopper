@@ -12,6 +12,7 @@ class ImageGallery extends React.Component {
     this.state = {
       selectedImageIndex: 0,
       fullScreen: false,
+      thumbnailIndex: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
   }
@@ -25,18 +26,21 @@ class ImageGallery extends React.Component {
 
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
-    const { fullScreen, selectedImageIndex } = this.state;
+    const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
 
-    let index = 0;
+    let index = thumbnailIndex;
     const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
       index++;
-      return (
-        <ImageGalleryThumbnail
-          image={image}
-          index={index}
-          key={image.url}
-        />
-      );
+      if (index - thumbnailIndex <= 7) {
+        return (
+          <ImageGalleryThumbnail
+            image={image}
+            index={index - thumbnailIndex}
+            key={image.url}
+          />
+        );
+      }
+      return null;
     });
 
     return (
