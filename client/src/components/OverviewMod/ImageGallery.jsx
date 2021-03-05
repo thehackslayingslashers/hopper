@@ -3,8 +3,8 @@
 
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
+import { IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail';
-// import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class ImageGallery extends React.Component {
   constructor() {
@@ -15,12 +15,20 @@ class ImageGallery extends React.Component {
       thumbnailIndex: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
+    this.handleImageSelect = this.handleImageSelect.bind(this);
   }
 
   handleFullScreen() {
     const { fullScreen } = this.state;
     this.setState({
       fullScreen: !fullScreen,
+    });
+  }
+
+  handleImageSelect(e) {
+    const index = e.target.id;
+    this.setState({
+      selectedImageIndex: index,
     });
   }
 
@@ -32,9 +40,13 @@ class ImageGallery extends React.Component {
     const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
       if (index - thumbnailIndex < 7 && low++ >= thumbnailIndex) {
         index++;
+        // debugger;
         return (
           <ImageGalleryThumbnail
+            handleImageSelect={this.handleImageSelect}
             image={image}
+            trueIndex={low - 1}
+            chosen={index - 1 === Number(selectedImageIndex)}
             index={index - thumbnailIndex}
             key={image.url}
           />
