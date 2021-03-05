@@ -7,29 +7,35 @@ class AnswerList extends React.Component {
 
     this.state = {
       answersDisplayed: 2,
-      answersCollapsed: true,
-      showMoreAnswersButtonText: 'Show more Answers',
+      showLessAnswersButtonDisplay: { display: 'none' },
     };
 
     this.handleShowMoreAnswers = this.handleShowMoreAnswers.bind(this);
+    this.handleShowLessAnswers = this.handleShowLessAnswers.bind(this);
   }
 
-  handleShowMoreAnswers() {
-    const answerListLength = this.props.answers.length;
-    if (this.state.answersCollapsed) {
-      this.setState({ answersDisplayed: answerListLength });
-      this.setState({ answersCollapsed: false });
-      this.setState({ showMoreAnswersButtonText: 'Show less answers' });
-    } else {
-      this.setState({ answersDisplayed: 2 });
-      this.setState({ answersCollapsed: true });
-      this.setState({ showMoreAnswersButtonText: 'Show more answers' });
+  handleShowMoreAnswers(e) {
+    e.preventDefault();
+    if (this.state.answersDisplayed < 50) {
+      const plusTwoAnswerLength = this.state.answersDisplayed + 2;
+      this.setState({ answersDisplayed: plusTwoAnswerLength });
+      this.setState({ showLessAnswersButtonDisplay: { display: 'flex' } });
+    }
+  }
+
+  handleShowLessAnswers() {
+    if (this.state.answersDisplayed > 2) {
+      const minusTwoAnswerLength = this.state.answersDisplayed - 2;
+      this.setState({ answersDisplayed: minusTwoAnswerLength });
+      if (minusTwoAnswerLength < 3) {
+        this.setState({ showLessAnswersButtonDisplay: { display: 'none' } });
+      }
     }
   }
 
   render() {
     const keyArray = Object.keys(this.props.answers);
-    const slicedKeyArray = keyArray.slice(0, this.state.answersDisplayed);
+    var slicedKeyArray = keyArray.slice(0, this.state.answersDisplayed);
     return (
       <div id="answers-container">
         {slicedKeyArray.map((answerId, index) => (
@@ -42,7 +48,13 @@ class AnswerList extends React.Component {
             />
           </div>
         ))}
-        <button onClick={this.handleShowMoreAnswers}>{this.state.showMoreAnswersButtonText}</button>
+        <button onClick={this.handleShowMoreAnswers}>SHOW MORE ANSWERS</button>
+        <button
+          onClick={this.handleShowLessAnswers}
+          style={this.state.showLessAnswersButtonDisplay}
+        >
+          SHOW LESS ANSWERS
+        </button>
       </div>
     );
   }
