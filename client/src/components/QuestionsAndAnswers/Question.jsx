@@ -32,7 +32,7 @@ class Question extends React.Component {
             <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
               Helpful?
             </div>
-            <div className="small-divider">|</div>
+            <div className="small-divider-question">|</div>
             <div className="add-answer-button" onClick={this.handleClickAddAnswer}>
               Add Answer
             </div>

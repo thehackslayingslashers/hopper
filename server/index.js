@@ -93,7 +93,6 @@ app.post('/qa/questions/:question_id/answers/', (req, res) => {
       res.send(response.data);
     })
     .catch((error) => {
-      debugger;
       res.send(error);
     });
 });
