@@ -30,13 +30,16 @@ class RelatedProductsList extends React.Component {
   }
 
   render() {
+    console.log(this.props.currentItem)
+    console.log(this.state.comparedItem)
     return (
       <div>
-        <ProductComparisonModal onClose={this.showModal} show={this.state.show}>
+        <ProductComparisonModal showModal={this.showModal} show={this.state.show}>
         <div className="comparisonmodal">
           <ProductComparisonTable
-          currentItem={this.props.currentItem}
-          comparedItem={this.state.comparedItem}
+          currentFeatures={this.props.currentItem}
+          comparedFeatures={this.state.comparedItem}
+          showModal={this.showModal}
           />
         </div>
         </ProductComparisonModal>
@@ -45,24 +48,21 @@ class RelatedProductsList extends React.Component {
           <div className="productlistcontainer">
             <button>L</button>
             {
-              this.props.relatedProducts.map((relatedProduct) => {
-                return(
-                  <RelatedProductCard
-                    relatedProduct={relatedProduct}
-                    handleCardClick={this.props.handleCardClick}
-                    handleCompareClick={this.handleCompareClick}
-                    showModal={this.showModal}
-                    key={relatedProduct.id}
-                  />
-                )
-              })
+              this.props.relatedProducts.map((relatedProduct) => (
+                <RelatedProductCard
+                  relatedProduct={relatedProduct}
+                  handleCardClick={this.props.handleCardClick}
+                  handleCompareClick={this.handleCompareClick}
+                  showModal={this.showModal}
+                  key={relatedProduct.id}
+                />
+              ))
             }
-
             <button>R</button>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

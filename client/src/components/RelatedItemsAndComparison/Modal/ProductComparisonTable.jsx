@@ -5,31 +5,34 @@ class ProductComparisonTable extends React.Component {
     super(props);
 
     this.state = {
-
+      featuresList: [],
+      currentItemFeatures: [],
+      comparedItemFeatures: [],
     };
+    //here?
   }
 
-  getFeaturesList() {
-
-  }
+  // getFeaturesList(features) {
+  //   let featuresList =
+  //   for(let i = 0; i < features.length; i++) {
+  //     for(let j = 0; j < features[i].length; j++) {
+  //       //grab keys
+  //     }
+  //   }
+  // }
 
   renderTableData() {
 
   }
 
   render() {
+    // this.getFeaturesList([this.props.currentFeatures, this.props.comparedItem.Features]);
     return (
       <div>
         Let's compare these two products!
+        <button onClick={this.props.showModal}>close</button>
       </div>
     )
   }
 };
- /* Product Features
-
-  Lifetime Guarantee
-  Fabric: "Wool"
-  Green Leaf Certified
-  Non-GMO
- */
 export default ProductComparisonTable;

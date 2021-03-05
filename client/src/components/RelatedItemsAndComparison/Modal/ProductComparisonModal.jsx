@@ -7,12 +7,8 @@ class ProductComparisonModal extends React.Component {
     this.state = {
 
     };
-    this.onClose = this.onClose.bind(this);
   }
 
-  onClose() {
-    this.props.onClose();
-  }
 
   render() {
     if (!this.props.show) {
@@ -21,15 +17,9 @@ class ProductComparisonModal extends React.Component {
     return (
       <div>
         <div>{this.props.children}</div>
-        <div>
-          <button onClick={this.onClose}>
-            Close
-          </button>
-        </div>
       </div>
     )
   }
-
 }
 
 export default ProductComparisonModal;
