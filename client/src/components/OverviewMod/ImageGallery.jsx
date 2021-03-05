@@ -110,7 +110,7 @@ class ImageGallery extends React.Component {
       return null;
     });
 
-    return (
+    return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
       <div id="overviewImageGallery">
         <img
           onClick={this.handleFullScreen}
@@ -173,7 +173,13 @@ class ImageGallery extends React.Component {
         ) : null}
         {thumbnails}
       </div>
-    );
+    ) : (
+      <div id="overviewImageGallery" className={'errorr'}>
+        <div id="errrrror">
+          There are no images of this item, sorry
+        </div>
+      </div>
+    )
   }
 }
 

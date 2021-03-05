@@ -19,16 +19,26 @@ class RelatedItemsAndComparison extends React.Component {
     this.getRelatedProductsToCurrent();
   }
 
-  handleCardClick(newId) {
-    this.props.handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
+  handleCardClick(newId, { handleCardClickIdChange } = this.props) {
+    handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
   }
 
-  getRelatedProductsToCurrent() {
+  getRelatedProductsToCurrent({ currentItemId } = this.props) {
     axios
-      .get(`/products/${this.props.currentItemId}/related`)
+      .get(`/products/${currentItemId}/related`)
       .then((data) => {
+        const receivedProducts = data.data;
+        receivedProducts.map((product) => {
+          const currentPhoto = product.styles[0].photos[0];
+          if (currentPhoto.url === null) {
+            currentPhoto.url = 'https://www.luvbat.com/uploads/happy_frog__9265232477.jpg';
+          } else if (currentPhoto.url[0] !== 'h') {
+            currentPhoto.url = currentPhoto.url.substr(1);
+          }
+          return null;
+        });
         this.setState({
-          relatedProducts: data.data
+          relatedProducts: receivedProducts,
         });
       })
       .catch((error) => {
@@ -36,17 +46,23 @@ class RelatedItemsAndComparison extends React.Component {
       });
   }
 
-  render() {
-    let currentItem = {
-      id: this.props.currentItemId,
-      iteminfo: this.props.currentItemInfo,
-      metaReview: this.props.currentItemRatingInfo,
-      styles: this.props.currentItemStyles,
+  render({
+    currentItemId, currentItemInfo, currentItemRatingInfo, currentItemStyles,
+  } = this.props,
+  {
+    relatedProducts,
+  } = this.state) {
+    const currentItem = {
+      id: currentItemId,
+      iteminfo: currentItemInfo,
+      metaReview: currentItemRatingInfo,
+      styles: currentItemStyles,
     };
     return (
       <div>
         <RelatedProductsList
-          relatedProducts={this.state.relatedProducts}
+          relatedProducts={relatedProducts}
+          currentItem={currentItem}
           handleCardClick={this.handleCardClick}
         />
         <OutfitList

@@ -3,6 +3,7 @@ import React from 'react';
 const ImageGalleryThumbnail = ({ image, index, chosen, handleImageSelect, trueIndex }) => (
   <img
     onClick={handleImageSelect}
+    onKeyDown={handleImageSelect}
     className={chosen ? 'thumbnail chosen' : 'thumbnail'}
     id={trueIndex}
     alt="thumbnail"
