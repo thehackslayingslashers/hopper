@@ -1,5 +1,5 @@
 import React from 'react';
-import Stars from '../Stars.jsx';
+import Stars from '../Stars';
 
 class BasicInfo extends React.Component {
   constructor(props) {
@@ -25,7 +25,13 @@ class BasicInfo extends React.Component {
           <Stars rating={currentItemAverageRating} />
           <span id="readAllReviews">
             {' '}
-            <a href="#reviews">Read all {numberOfReviews} reviews</a>
+            <a href="#reviews">
+              Read all
+              {' '}
+              {numberOfReviews}
+              {' '}
+              reviews
+            </a>
           </span>
         </div>
       );
@@ -36,15 +42,15 @@ class BasicInfo extends React.Component {
         price = (
           <div>
             <span className="salePrice">
-              {'$' + currentItemStyles[selectedStyleIndex].sale_price}
+              {`$${currentItemStyles[selectedStyleIndex].sale_price}`}
             </span>
             <span className="strikethrough">
-              {'  $' + currentItemStyles[selectedStyleIndex].original_price}
+              {`  $${currentItemStyles[selectedStyleIndex].original_price}`}
             </span>
           </div>
         );
       } else {
-        price = <div>{'$' + currentItemStyles[selectedStyleIndex].original_price}</div>;
+        price = <div>{`$${currentItemStyles[selectedStyleIndex].original_price}`}</div>;
       }
     }
 
@@ -57,9 +63,8 @@ class BasicInfo extends React.Component {
           {price}
         </div>
       );
-    } else {
-      return <div id="overviewBasicInfo">Loading</div>;
     }
+    return <div id="overviewBasicInfo">Loading</div>;
   }
 }
 

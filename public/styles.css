@@ -62,7 +62,7 @@ Overview Module
   min-height: 500px;
   max-height: 800px;
   display: grid;
-  grid-template-rows: 5% auto auto auto auto auto auto auto 5% auto;
+  grid-template-rows: 7% auto auto auto auto auto auto auto auto 7%;
   grid-template-columns: 7% 10% 10% auto 7%;
 }
 
@@ -84,14 +84,111 @@ Overview Module
   transition: width 200ms;
 }
 
+#overviewBigImage:hover {
+  cursor: zoom-in;
+}
+
 #overviewBigImage.full {
   width: 1200px;
+}
+
+#overviewBigImage.full:hover {
+  cursor: zoom-out;
+}
+
+.thumbnail {
+  height: 5.7vh;
+  min-height: 50px;
+  max-height: 80px;
+  width: 5.7vh;
+  min-width: 50px;
+  max-width: 80px;
+  object-fit: cover;
+  border: black solid 1px;
+  grid-column: 2;
+  grid-row-start: 1;
+  grid-row-end: 11;
+  z-index: 6;
+  transition: width 200ms;
+
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+}
+
+.thumbnail.chosen {
+  box-shadow: -5px -5px 2px rgba(255, 255, 255, 1);
+  border-color: white;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  width:8vh;
 }
 
 #fullScreenButton {
   grid-row: 2;
   grid-column: 5;
   z-index: 6;
+}
+
+.overviewArrow {
+  z-index: 7;
+  background: none;
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.overviewArrow:hover {
+  cursor: pointer;
+}
+
+.overviewArrow:focus {
+  outline: none;
+}
+
+#overviewArrowLeft, #overviewArrowRight {
+  grid-row: 5;
+  margin: auto;
+}
+
+#overviewArrowDown, #overviewArrowUp {
+  grid-column: 2;
+  margin: auto 30% auto auto;
+}
+
+#overviewArrowUp {
+  grid-row: 1;
+}
+
+#overviewArrowDown {
+  grid-row: 10;
+  margin-top: 0;
+}
+
+#overviewArrowLeft {
+  grid-column: 3;
+  margin-left: 0;
+}
+
+#overviewArrowRight {
+  grid-column: 5;
+}
+
+#overviewArrowDownIcon, #overviewArrowUpIcon {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
+}
+
+#overviewArrowLeftIcon, #overviewArrowRightIcon {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background: radial-gradient(rgba(255, 255, 255, .3), transparent);
 }
 
 /* Basic Info */
@@ -135,7 +232,6 @@ Overview Module
   display: grid;
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: 30px repeat(auto, 60px);
-  /* min-height: 240px; */
 }
 
 #selectedStyleName {
@@ -152,16 +248,19 @@ Overview Module
 .overviewStyleItem {
   height: 60px;
   width: 60px;
-  object-fit: cover;
   border-radius: 30px;
   border: solid 1px;
-  background-color: black;
+  background-size: cover;
 }
 
 .overviewStyleItem:hover {
   border: solid 1px grey;
   background-color: grey;
   cursor: pointer;
+}
+
+.overviewStyleItem:focus {
+  outline: none;
 }
 
 .selectedCheck {
@@ -382,7 +481,7 @@ hr {
 
 .sortingList span::after {
   position: absolute;
-  content: "";
+  content: '';
   height: 5px;
   width: 0;
   left: 0;
@@ -410,6 +509,7 @@ hr {
   color: #7b00ff;
 }
 
+<<<<<<< HEAD
 .reviewImg {
   height: 60px;
   width: 60px;
@@ -423,6 +523,8 @@ hr {
 }
 
 
+=======
+>>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
 /*
 =====================
 QuestionsModule
@@ -553,9 +655,31 @@ QuestionsModule
 }
 
 .post-question-container {
-  padding: 10px;
+  display: flex;
 }
 
+.question-view-button-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding-top: 10px;
+  gap: 20px;
+}
+
+.add-a-question-button {
+  padding: 20px;
+  border: 1px solid black;
+  background-color: white;
+  font-weight: 500;
+  font-size: 18pt;
+}
+
+.post-answer-container {
+}
+
+.post-answer-error {
+  background-color: lightcoral;
+}
 /*
 =====================
 Related Items Module

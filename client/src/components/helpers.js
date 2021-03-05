@@ -8,16 +8,15 @@ const helpers = {
       });
     },
   ) => {
-    let ratingNumbers = Object.keys(ratings);
     let sum = 0;
     let totalRatings = 0;
-    for (let rating in ratings) {
+    Object.keys(ratings).forEach((rating) => {
       sum += Number(rating) * Number(ratings[rating]);
       totalRatings += Number(ratings[rating]);
-    }
+    });
 
     cb((sum / totalRatings).toFixed(2));
-  }
-}
+  },
+};
 
 export default helpers;

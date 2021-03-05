@@ -9,14 +9,22 @@ class PostQuestion extends React.Component {
       postQuestionFieldValue: '',
       postEmailFieldValue: '',
       postUsernameFieldValue: '',
+      postQuestionContainerDisplay: { display: 'none' },
+      addAQuestionButtonDisplay: { diplay: 'inline' },
     };
 
+    this.handleAddAQuestionButtonClick = this.handleAddAQuestionButtonClick.bind(this);
     this.handleGetQuestionBodyValue = this.handleGetQuestionBodyValue.bind(this);
     this.handleGetEmailValue = this.handleGetEmailValue.bind(this);
     this.handleGetUsernameValue = this.handleGetUsernameValue.bind(this);
     this.handleSubmitPostQuestion = this.handleSubmitPostQuestion.bind(this);
   }
 
+  handleAddAQuestionButtonClick(e) {
+    e.preventDefault();
+    this.setState({ postQuestionContainerDisplay: { display: 'flex' } });
+    this.setState({ addAQuestionButtonDisplay: { display: 'none' } });
+  }
   handleGetQuestionBodyValue(e) {
     this.setState({ postQuestionFieldValue: e.target.value });
   }
@@ -47,7 +55,7 @@ class PostQuestion extends React.Component {
         data: questionPostRequest,
       })
         .then((response) => {
-          console.log('Post went through');
+          console.log(response);
         })
         .catch((error) => {
           throw error;
@@ -58,17 +66,30 @@ class PostQuestion extends React.Component {
   render() {
     return (
       <div className="post-question-container">
-        Post Question Body:
-        <input
-          className="post-question-field"
-          type="text"
-          onChange={this.handleGetQuestionBodyValue}
-        />
-        Username:
-        <input className="post-username-field" type="text" onChange={this.handleGetUsernameValue} />
-        Email:
-        <input className="post-email-field" type="text" onChange={this.handleGetEmailValue} />
-        <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
+        <button
+          className="add-a-question-button"
+          onClick={this.handleAddAQuestionButtonClick}
+          style={this.state.addAQuestionButtonDisplay}
+        >
+          ADD A QUESTION +
+        </button>
+        <div style={this.state.postQuestionContainerDisplay}>
+          Post Question Body:
+          <input
+            className="post-question-field"
+            type="text"
+            onChange={this.handleGetQuestionBodyValue}
+          />
+          Username:
+          <input
+            className="post-username-field"
+            type="text"
+            onChange={this.handleGetUsernameValue}
+          />
+          Email:
+          <input className="post-email-field" type="text" onChange={this.handleGetEmailValue} />
+          <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
+        </div>
       </div>
     );
   }
