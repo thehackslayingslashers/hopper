@@ -410,6 +410,18 @@ hr {
   color: #7b00ff;
 }
 
+.reviewImg {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.reviewImg:hover {
+  transform: scale(1.25)
+}
+
 
 /*
 =====================
