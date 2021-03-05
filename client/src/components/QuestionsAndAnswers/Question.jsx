@@ -1,10 +1,26 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
+import PostAnswer from './PostAnswer.jsx';
 
 class Question extends React.Component {
   // { question, key, answersDisplayed }
   constructor(props) {
     super(props);
+
+    this.state = { postAnswerFieldDisplay: { display: 'none' } };
+
+    this.handleQuestionUpvote = this.handleQuestionUpvote.bind(this);
+    this.handleClickAddAnswer = this.handleClickAddAnswer.bind(this);
+  }
+
+  handleQuestionUpvote(e) {
+    e.preventDefault();
+    console.log('you upvoted this question');
+  }
+
+  handleClickAddAnswer(e) {
+    e.preventDefault();
+    this.setState({ postAnswerFieldDisplay: { display: 'flex' } });
   }
 
   render() {
@@ -13,12 +29,20 @@ class Question extends React.Component {
         <div id="question-item-container">
           <div className="question-text">Q: {this.props.question.question_body}</div>
           <div className="question-response-options">
-            <div className="upvote-question-button">Helpful?</div>
+            <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
+              Helpful?
+            </div>
             <div className="small-divider">|</div>
-            <div className="add-answer-button">Add Answer</div>
+            <div className="add-answer-button" onClick={this.handleClickAddAnswer}>
+              Add Answer
+            </div>
           </div>
         </div>
         <AnswerList answers={this.props.question.answers} currentQuestion={this.props.question} />
+        <PostAnswer
+          currentQuestionId={this.props.question.question_id}
+          postAnswerFieldDisplay={this.state.postAnswerFieldDisplay}
+        />
       </div>
     );
   }

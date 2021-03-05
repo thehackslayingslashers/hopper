@@ -29,14 +29,14 @@ class QuestionsAndAnswers extends React.Component {
 
   getCurrentProductQuestionsAndAnswers() {
     let id = this.props.currentItemId;
-    let paramsObj = { params: { count: 10 } };
+    let queryObj = { params: { count: 10 } };
     // axios({
     //   url: '/qa/questions',
     //   method: 'get',
     //   params: { product_id: id },
     // })
     axios
-      .get(`/qa/questions/${id}`, paramsObj)
+      .get(`/qa/questions/${id}`, queryObj)
       .then((results) => {
         this.setState({ currentProductQuestions: results.data });
       })
@@ -59,7 +59,6 @@ class QuestionsAndAnswers extends React.Component {
           currentProductQuestions={this.state.currentProductQuestions}
           searchedQuestion={this.state.searchedQuestion}
         />
-        <PostQuestion currentItemId={this.props.currentItemId} />
       </div>
     );
   }

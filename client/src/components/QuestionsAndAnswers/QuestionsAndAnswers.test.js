@@ -14,10 +14,6 @@ describe('<QuestionsAndAnswers/>', () => {
   });
   it('should have a PostQuestion component', () => {
     const wrapper = shallow(<QuestionsAndAnswers />);
-    expect(wrapper.find(PostQuestion)).toHaveLength(1);
-  });
-  it('should have a PostQuestion component', () => {
-    const wrapper = shallow(<QuestionsAndAnswers />);
-    expect(wrapper.find(PostQuestion)).toHaveLength(1);
+    expect(wrapper.find(PostQuestion)).toHaveLength(0);
   });
 });

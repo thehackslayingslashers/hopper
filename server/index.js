@@ -89,7 +89,7 @@ app.post('qa/questions/:question_id/answers', (req, res) => {
   outbound
     .postQuestion(id, body, name, email, photos)
     .then((response) => {
-      res.send('received question post');
+      res.send(response.data);
     })
     .catch((error) => {
       res.send(error);
@@ -105,16 +105,19 @@ app.get('/products/:product_id/related', (req, res) => {
     .then((response) => {
       relatedLength = response.data.length;
       response.data.map((id) => {
-        outbound.fetchItemById(id)
+        outbound
+          .fetchItemById(id)
           .then((response) => {
             const item = {
               id,
               iteminfo: response.data,
             };
-            outbound.reviewInfoFetch(id)
+            outbound
+              .reviewInfoFetch(id)
               .then((response) => {
                 item.metaReview = response.data;
-                outbound.fetchStyles(id)
+                outbound
+                  .fetchStyles(id)
                   .then((response) => {
                     item.styles = response.data.results;
                     relatedArray.push(item);

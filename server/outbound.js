@@ -38,7 +38,7 @@ const fetchQuestions = (id) => {
   const localOptions = Object.create(options);
   localOptions.params = {
     product_id: id,
-    count: 25,
+    count: 40,
     page: 1,
   };
   return axios.get(
