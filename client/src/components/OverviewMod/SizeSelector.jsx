@@ -5,8 +5,7 @@ const sizeSelector = ({ skus, selectSize }) => {
 
   let index = 0;
   const sizesSelector = skuKeys.map((sku) => {
-    // debugger;
-    if (skus[sku].quantity > 0) {
+    if (skus[sku] && skus[sku].quantity > 0) {
       return (
         <option key={index} value={index++}>
           {skus[sku].size}
@@ -16,7 +15,7 @@ const sizeSelector = ({ skus, selectSize }) => {
     index++;
     return null;
   });
-  return sizesSelector.length >= 1 ? (
+  return sizesSelector.length > 1 ? (
     <select id="overviewSizeSelector" onChange={selectSize}>
       <option value={null}>SELECT SIZE</option>
       {sizesSelector}

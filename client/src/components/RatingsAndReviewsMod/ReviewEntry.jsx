@@ -4,12 +4,16 @@ import Stars from '../Stars';
 
 const ReviewEntry = ({ review }) => {
   Moment.locale('en');
-  let timeStamp = review.date;
+  const timeStamp = review.date;
   return (
     <article className="reviewEntry" style={{ color: `grey` }}>
       <div className="TopMost">
-        <div className="stars"><Stars rating={review.rating} /></div>
-        <h4 className="DateandUser">{`${review.reviewer_name}, ${Moment(timeStamp).format('MMM DD, YYYY')}`}</h4>
+        <div className="stars">
+          <Stars rating={review.rating} />
+        </div>
+        <h4 className="DateandUser">{`${review.reviewer_name}, ${Moment(timeStamp).format(
+          'MMM DD, YYYY'
+        )}`}</h4>
       </div>
       <div id={review.review_id}>
         <h2 style={{ color: `black` }}>
@@ -17,6 +21,11 @@ const ReviewEntry = ({ review }) => {
         </h2>
         <h4>{review.body}</h4>
       </div>
+      {review.photos.length && (
+        <span className="reviewImgBlock">
+          {review.photos.map((image) => <img key={image.id} className="reviewImg" src={image.url} alt="review stuff" />)}
+        </span>
+      )}
       {review.recommend && (
         <ul className="recommended">
           <b>
