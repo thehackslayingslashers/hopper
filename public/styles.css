@@ -114,7 +114,10 @@ Overview Module
   grid-row-end: 11;
   z-index: 6;
   transition: width 200ms;
+}
 
+.thumbnail:focus {
+  outline: none;
 }
 
 .thumbnail:hover {
@@ -259,7 +262,7 @@ Overview Module
 
 .overviewStyleItem:hover {
   border: solid 1px grey;
-  background-color: grey;
+  /* background-color: grey; */
   cursor: pointer;
 }
 
