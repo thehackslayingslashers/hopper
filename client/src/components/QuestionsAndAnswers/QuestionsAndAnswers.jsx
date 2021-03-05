@@ -30,11 +30,7 @@ class QuestionsAndAnswers extends React.Component {
   getCurrentProductQuestionsAndAnswers() {
     let id = this.props.currentItemId;
     let queryObj = { params: { count: 10 } };
-    // axios({
-    //   url: '/qa/questions',
-    //   method: 'get',
-    //   params: { product_id: id },
-    // })
+
     axios
       .get(`/qa/questions/${id}`, queryObj)
       .then((results) => {
