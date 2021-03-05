@@ -9,8 +9,8 @@ class ProductComparisonTable extends React.Component {
     };
   }
 
-  getFeaturesList({currentItem, comparedItem} = this.props) {
-    let featuresList = [];
+  getFeaturesList({ currentItem, comparedItem } = this.props) {
+    const featuresList = [];
     const combinedFeatures = currentItem.iteminfo.features.concat(comparedItem.iteminfo.features);
     for (let i = 0; i < combinedFeatures.length; i++) {
       featuresList.push(combinedFeatures[i].feature);
@@ -18,10 +18,8 @@ class ProductComparisonTable extends React.Component {
     return [...new Set(featuresList)];
   }
 
-
-
   getItemFeatures(itemFeaturesArr) {
-    let itemFeatures = {};
+    const itemFeatures = {};
     for (let i = 0; i < itemFeaturesArr.length; i++) {
       let feature = itemFeaturesArr[i];
       itemFeatures[feature.feature] = feature.value;
@@ -49,13 +47,13 @@ class ProductComparisonTable extends React.Component {
           <table>
             <tbody>
               <tr>
-                <th>Currently Viewed Item</th>
+                <th>{currentItem.iteminfo.name}</th>
                 <th>Feature</th>
-                <th>comparedItem</th>
+                <th>{comparedItem.iteminfo.name}</th>
               </tr>
               {
-                this.state.featuresList.map((feature) => (
-                  this.renderTableData(feature, currentItemFeatures[feature], comparedItemFeatures[feature])
+                this.state.featuresList.map((feat) => (
+                  this.renderTableData(feat, currentItemFeatures[feat], comparedItemFeatures[feat])
                 ))
 
               }

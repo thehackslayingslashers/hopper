@@ -19,13 +19,13 @@ class RelatedItemsAndComparison extends React.Component {
     this.getRelatedProductsToCurrent();
   }
 
-  handleCardClick(newId) {
-    this.props.handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
+  handleCardClick(newId, { handleCardClickIdChange } = this.props) {
+    handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
   }
 
-  getRelatedProductsToCurrent() {
+  getRelatedProductsToCurrent({ currentItemId } = this.props) {
     axios
-      .get(`/products/${this.props.currentItemId}/related`)
+      .get(`/products/${currentItemId}/related`)
       .then((data) => {
         const receivedProducts = data.data;
         receivedProducts.map((product) => {
@@ -35,6 +35,7 @@ class RelatedItemsAndComparison extends React.Component {
           } else if (currentPhoto.url[0] !== 'h') {
             currentPhoto.url = currentPhoto.url.substr(1);
           }
+          return null;
         });
         this.setState({
           relatedProducts: receivedProducts,
@@ -45,17 +46,22 @@ class RelatedItemsAndComparison extends React.Component {
       });
   }
 
-  render() {
-    let currentItem = {
-      id: this.props.currentItemId,
-      iteminfo: this.props.currentItemInfo,
-      metaReview: this.props.currentItemRatingInfo,
-      styles: this.props.currentItemStyles,
+  render({
+    currentItemId, currentItemInfo, currentItemRatingInfo, currentItemStyles,
+  } = this.props,
+  {
+    relatedProducts,
+  } = this.state) {
+    const currentItem = {
+      id: currentItemId,
+      iteminfo: currentItemInfo,
+      metaReview: currentItemRatingInfo,
+      styles: currentItemStyles,
     };
     return (
       <div>
         <RelatedProductsList
-          relatedProducts={this.state.relatedProducts}
+          relatedProducts={relatedProducts}
           currentItem={currentItem}
           handleCardClick={this.handleCardClick}
         />
