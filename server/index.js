@@ -104,6 +104,11 @@ app.get('/products/:product_id/related', (req, res) => {
     .fetchRelatedArray(currentid)
     .then((response) => {
       const relatedIds = [...new Set(response.data)];
+      for (let i = 0; i < relatedIds.length; i++) {
+        if (relatedIds[i] === Number(currentid)) {
+          relatedIds.splice(i, 1);
+        }
+      }
       relatedLength = relatedIds.length;
       relatedIds.map((id) => {
         outbound
