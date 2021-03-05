@@ -28,7 +28,7 @@ Header
 */
 
 #pageHeader {
-  background-color: burlywood;
+  /* background-color: burlywood; */
 }
 
 #pageHeader h1 {
@@ -37,7 +37,7 @@ Header
 }
 
 #announcement {
-  background-color: coral;
+  /* background-color: coral; */
   height: 50px;
 }
 
