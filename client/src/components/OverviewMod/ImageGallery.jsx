@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { BiFullscreen } from 'react-icons/bi';
+import ImageGalleryThumbnail from './ImageGalleryThumbnail';
 // import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class ImageGallery extends React.Component {
@@ -26,7 +27,19 @@ class ImageGallery extends React.Component {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const { fullScreen, selectedImageIndex } = this.state;
 
-    return selectedStyleIndex >= 0 && currentItemStyles[selectedStyleIndex] ? (
+    let index = 0;
+    const thumbnails = currentItemStyles[selectedStyleIndex].photos.map((image) => {
+      index++;
+      return (
+        <ImageGalleryThumbnail
+          image={image}
+          index={index}
+          key={image.url}
+        />
+      );
+    });
+
+    return (
       <div id="overviewImageGallery">
         <img
           onClick={this.handleFullScreen}
@@ -36,9 +49,8 @@ class ImageGallery extends React.Component {
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
+        {thumbnails}
       </div>
-    ) : (
-      <div id="overviewImageGallery">Loading</div>
     );
   }
 }

@@ -8,7 +8,7 @@ const withClickTracker = (Component) => {
     }
 
     onClickAnywhere(e) {
-      console.log('The Government is watching you');
+      console.log('Your FBI agent says hi!');
     }
 
     render() {
