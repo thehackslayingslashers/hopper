@@ -30,17 +30,18 @@ class PostAnswer extends React.Component {
 
   handleSubmitPostAnswer(e) {
     e.preventDefault();
-    const currentQuestionId = this.props.currentQuestionId;
-    var usernameField = this.state.postUsernameFieldValue;
-    var emailField = this.state.postEmailFieldValue;
-    var answerField = this.state.postAnswerFieldValue;
-    if (usernameField.length > 3 && emailField.length > 3 && answerField.length > 3) {
+    const { currentQuestionId } = this.props;
+    const { postUsernameFieldValue, postEmailFieldValue, postAnswerFieldValue } = this.state;
+    if (
+      postUsernameFieldValue.length > 3 &&
+      postEmailFieldValue.length > 3 &&
+      postAnswerFieldValue.length > 3
+    ) {
       this.setState({ postAnswerErrorDisplay: { display: 'none' } });
-      const currentQuestionId = this.props.currentQuestionId;
-      var answerPostRequest = {
-        body: answerField,
-        name: usernameField,
-        email: emailField,
+      let answerPostRequest = {
+        body: postAnswerFieldValue,
+        name: postUsernameFieldValue,
+        email: postEmailFieldValue,
         question_id: currentQuestionId,
       };
       axios({
@@ -48,29 +49,27 @@ class PostAnswer extends React.Component {
         url: `/qa/questions/${currentQuestionId}/answers/`,
         data: answerPostRequest,
       })
-        .then((response) => {
-          console.log(response);
-        })
+        .then(() => {})
         .catch((error) => {
           throw error;
         });
-
-      console.log(currentQuestionId, usernameField, emailField, answerField);
     } else {
       this.setState({ postAnswerErrorDisplay: { display: 'flex' } });
     }
   }
 
   render() {
+    const { postAnswerFieldDisplay } = this.props;
+    const { postAnswerErrorDisplay } = this.state;
     return (
       <div>
-        <div className="post-answer-container" style={this.props.postAnswerFieldDisplay}>
+        <div className="post-answer-container" style={postAnswerFieldDisplay}>
           Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
           Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
           Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
           <button onClick={this.handleSubmitPostAnswer}>Post Answer</button>
         </div>
-        <div className="post-answer-error" style={this.state.postAnswerErrorDisplay}>
+        <div className="post-answer-error" style={postAnswerErrorDisplay}>
           Please fill out all fields
         </div>
       </div>

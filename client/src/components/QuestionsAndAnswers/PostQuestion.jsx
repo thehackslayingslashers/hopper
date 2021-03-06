@@ -22,8 +22,10 @@ class PostQuestion extends React.Component {
 
   handleAddAQuestionButtonClick(e) {
     e.preventDefault();
-    this.setState({ postQuestionContainerDisplay: { display: 'flex' } });
-    this.setState({ addAQuestionButtonDisplay: { display: 'none' } });
+    this.setState({
+      postQuestionContainerDisplay: { display: 'flex' },
+      addAQuestionButtonDisplay: { display: 'none' },
+    });
   }
   handleGetQuestionBodyValue(e) {
     this.setState({ postQuestionFieldValue: e.target.value });
@@ -37,26 +39,25 @@ class PostQuestion extends React.Component {
 
   handleSubmitPostQuestion(e) {
     e.preventDefault();
-    // console.log(this.state.postQuestionFieldValue);'
-    const productId = this.props.currentItemId;
-    var usernameField = this.state.postUsernameFieldValue;
-    var emailField = this.state.postEmailFieldValue;
-    var questionField = this.state.postQuestionFieldValue;
-    if (usernameField.length > 3 && emailField.length > 3 && questionField.length > 3) {
+    const currentItemId = this.props;
+    const { postUsernameFieldValue, postEmailFieldValue, postQuestionFieldValue } = this.state;
+    if (
+      postUsernameFieldValue.length > 3 &&
+      postEmailFieldValue.length > 3 &&
+      postQuestionFieldValue.length > 3
+    ) {
       var questionPostRequest = {
-        body: questionField,
-        name: usernameField,
-        email: emailField,
-        product_id: productId,
+        body: postQuestionFieldValue,
+        name: postUsernameFieldValue,
+        email: postEmailFieldValue,
+        product_id: currentItemId,
       };
       axios({
         method: 'post',
         url: '/qa/questions/',
         data: questionPostRequest,
       })
-        .then((response) => {
-          console.log(response);
-        })
+        .then(() => {})
         .catch((error) => {
           throw error;
         });
@@ -64,16 +65,17 @@ class PostQuestion extends React.Component {
   }
 
   render() {
+    const { addAQuestionButtonDisplay, postQuestionContainerDisplay } = this.state;
     return (
       <div className="post-question-container">
         <button
           className="add-a-question-button"
           onClick={this.handleAddAQuestionButtonClick}
-          style={this.state.addAQuestionButtonDisplay}
+          style={addAQuestionButtonDisplay}
         >
           ADD A QUESTION +
         </button>
-        <div style={this.state.postQuestionContainerDisplay}>
+        <div style={postQuestionContainerDisplay}>
           Post Question Body:
           <input
             className="post-question-field"

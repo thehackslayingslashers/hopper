@@ -1,8 +1,6 @@
 import React from 'react';
 import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
-import PostQuestion from './PostQuestion';
-import PostAnswer from './PostAnswer';
 import axios from 'axios';
 // import GARETHS_TOKEN from '../../config.js';
 
@@ -19,20 +17,21 @@ class QuestionsAndAnswers extends React.Component {
     this.setCurrentQuestionsToMatchSearch = this.setCurrentQuestionsToMatchSearch.bind(this);
   }
 
-  setCurrentQuestionsToMatchSearch(newQuestionArray) {
-    this.setState({ currentProductQuestions: newQuestionArray });
-  }
-
   componentDidMount() {
     this.getCurrentProductQuestionsAndAnswers();
   }
 
+  setCurrentQuestionsToMatchSearch(newQuestionArray) {
+    this.setState({ currentProductQuestions: newQuestionArray });
+  }
+
   getCurrentProductQuestionsAndAnswers() {
-    let id = this.props.currentItemId;
+    const { currentItemId } = this.props;
+    // let id = this.props.currentItemId;
     let queryObj = { params: { count: 10 } };
 
     axios
-      .get(`/qa/questions/${id}`, queryObj)
+      .get(`/qa/questions/${currentItemId}`, queryObj)
       .then((results) => {
         this.setState({ currentProductQuestions: results.data });
       })
@@ -42,18 +41,20 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
+    const { currentItemId } = this.props;
+    const { currentProductQuestions, searchedQuestion } = this.state;
     return (
       <div id="questions-and-answers-container">
         <div id="questions-and-answers-header">QUESTIONS & ANSWERS</div>
         <QuestionSearch
-          currentProductQuestions={this.state.currentProductQuestions}
+          currentProductQuestions={currentProductQuestions}
           setCurrentQuestionsToMatchSearch={this.setCurrentQuestionsToMatchSearch}
           getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
         <QuestionView
-          currentItemId={this.props.currentItemId}
-          currentProductQuestions={this.state.currentProductQuestions}
-          searchedQuestion={this.state.searchedQuestion}
+          currentItemId={currentItemId}
+          currentProductQuestions={currentProductQuestions}
+          searchedQuestion={searchedQuestion}
         />
       </div>
     );
