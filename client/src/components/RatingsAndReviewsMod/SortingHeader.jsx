@@ -14,7 +14,7 @@ class SortingHeader extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.setState({
-        sortedBy: this.props.sortedBy
+        sortedBy: this.props.sortedBy,
       });
     }
   }
@@ -41,7 +41,8 @@ class SortingHeader extends React.Component {
                 this.onSelect(event, false);
               }}
             >
-              {` ${this.state.sortedBy}`}&#9650;
+              {` ${this.state.sortedBy}`}
+              &#9650;
             </span>
           )}
           {this.state.displayList && (

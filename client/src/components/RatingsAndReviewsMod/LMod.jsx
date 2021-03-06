@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ReviewsMod from './ReviewsMod';
 import RatingsMod from './RatingsMod';
+import Modal from './Modal';
 
 class LMod extends React.Component {
   constructor(props) {
@@ -9,16 +10,20 @@ class LMod extends React.Component {
     this.state = {
       allReviews: [],
       sortedBy: 'relevent',
+      modalContent: [],
+      showModal: false,
     };
     this.getAllReviews = this.getAllReviews.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
+    this.modalHandler = this.modalHandler.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { currentItemId, numberOfReviews } = this.props;
+    const { sortedBy } = this.state;
 
     if (this.props !== prevProps) {
-      this.getAllReviews(currentItemId, numberOfReviews, this.state.sortedBy);
+      this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
     }
   }
 
@@ -37,14 +42,43 @@ class LMod extends React.Component {
     this.getAllReviews(currentItemId, numberOfReviews, sortBy);
   }
 
+  modalHandler(modalContent) {
+    const { showModal } = this.state;
+    this.setState({
+      modalContent,
+      showModal: !showModal,
+    });
+  }
+
   render() {
-    const { currentItemId, currentItemRatingInfo, currentItemAverageRating } = this.props;
+    const { currentItemRatingInfo, currentItemAverageRating } = this.props;
+    const {
+      sortedBy, allReviews, showModal, modalContent,
+    } = this.state;
 
     return (
-      <div className="LModule" id="reviews">
-        <RatingsMod avg={currentItemAverageRating} currentItemRatingInfo={currentItemRatingInfo} />
-        <ReviewsMod reviews={this.state.allReviews} sortedBy={this.state.sortedBy} selectHandler={this.updateSortBy}/>
-      </div>
+      <>
+        <h1>Ratings & Reviews</h1>
+        <div className="LModule" id="reviews">
+          <RatingsMod
+            avg={currentItemAverageRating}
+            currentItemRatingInfo={currentItemRatingInfo}
+          />
+          <ReviewsMod
+            reviews={allReviews}
+            sortedBy={sortedBy}
+            selectHandler={this.updateSortBy}
+            modalHandler={this.modalHandler}
+          />
+          {showModal && (
+          <Modal
+            content={modalContent}
+            modalType="close"
+            closeModal={this.modalHandler}
+          />
+          )}
+        </div>
+      </>
     );
   }
 }
