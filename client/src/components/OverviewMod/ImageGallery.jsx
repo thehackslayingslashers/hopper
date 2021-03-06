@@ -6,6 +6,7 @@ import { BiFullscreen } from 'react-icons/bi';
 import {
   IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp,
 } from 'react-icons/io';
+
 import ImageGalleryThumbnail from './ImageGalleryThumbnail';
 
 class ImageGallery extends React.Component {
@@ -48,24 +49,23 @@ class ImageGallery extends React.Component {
       case 'up':
         if (thumbnailIndex > 0) {
           this.setState({
-            thumbnailIndex: thumbnailIndex - 7,
-            selectedImageIndex: page * 7 - 1,
+            selectedImageIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 1 : 6,
+            thumbnailIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 7 : 0,
           });
         }
         break;
       case 'down':
-        if ((page + 1) * 7 <= totalImages) {
-          this.setState({
-            thumbnailIndex: thumbnailIndex + 7,
-            selectedImageIndex: (page + 1) * 7,
-          });
-        }
+        this.setState({
+          thumbnailIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+          selectedImageIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+        });
+
         break;
       case 'left':
         if (selectedImageIndex > 0) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) - 1,
-            thumbnailIndex: Number(selectedImageIndex) % 7 === 0 ? (page - 1) * 7 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0 ? thumbnailIndex - 1 : thumbnailIndex,
           });
         }
         break;
@@ -73,7 +73,7 @@ class ImageGallery extends React.Component {
         if (selectedImageIndex < totalImages) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) + 1,
-            thumbnailIndex: Number(selectedImageIndex) % 7 === 6 ? (page + 1) * 7 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 6 ? thumbnailIndex + 1 : thumbnailIndex,
           });
         }
         break;
@@ -104,6 +104,7 @@ class ImageGallery extends React.Component {
             chosen={index - 1 === Number(selectedImageIndex)}
             index={index - thumbnailIndex}
             key={image.url}
+            fullScreen={fullScreen}
           />
         );
       }
@@ -113,18 +114,18 @@ class ImageGallery extends React.Component {
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
       <div id="overviewImageGallery">
         <img
-          onClick={this.handleFullScreen}
+          onClick={fullScreen ? null : this.handleFullScreen}
           id="overviewBigImage"
           alt=""
           className={fullScreen ? 'full' : null}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
         <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-        {page > 0 ? (
+        {thumbnailIndex > 0 ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className="overviewArrow"
+            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
             id="overviewArrowUp"
             dir="up"
           >
@@ -135,11 +136,11 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {page < pageCount ? (
+        {thumbnailIndex + 7 < totalImages ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className="overviewArrow"
+            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
             id="overviewArrowDown"
             dir="down"
           >
