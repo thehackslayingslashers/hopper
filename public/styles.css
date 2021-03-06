@@ -579,7 +579,7 @@ hr {
 
 .modalImg {
   height: 100%;
-  width: 100%
+  width: 100%;
 }
 
 .reviewImg {
@@ -591,9 +591,8 @@ hr {
 }
 
 .reviewImg:hover {
-  transform: scale(1.25)
+  transform: scale(1.25);
 }
-
 
 .reviewModalOutter {
   position: fixed;
@@ -603,11 +602,11 @@ hr {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .reviewModalInner {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   margin: 100px auto;
   width: 40%;
   text-align: center;
@@ -629,7 +628,6 @@ hr {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 /*
 =====================
@@ -879,7 +877,7 @@ Related Items Module
 }
 
 .productcard {
-  line-height: 12px;
+  /* line-height: 12px; */
   /* padding-left: 10px; */
 }
 
@@ -892,7 +890,6 @@ Related Items Module
   border-radius: 10px;
 }
 .cardinfo {
-  line-height: 12px;
   padding: 10px;
 }
 
