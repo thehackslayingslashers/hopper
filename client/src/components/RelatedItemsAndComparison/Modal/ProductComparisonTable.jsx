@@ -63,7 +63,7 @@ class ProductComparisonTable extends React.Component {
           </table>
 
           <div>
-          <button onClick={showModal}>close</button>
+            <button onClick={showModal}>close</button>
           </div>
         </div>
       );
