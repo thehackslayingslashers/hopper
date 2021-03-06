@@ -10,25 +10,25 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
-    const product = this.props.relatedProduct;
+    const { relatedProduct, handleCompareClick, handleCardClick } = this.props;
     return (
       <div className="card productcard">
         <button
         className="icon"
-        onClick={() => this.props.handleCompareClick(product)}
+        onClick={() => handleCompareClick(relatedProduct)}
         >*
         </button>
         <div
           className="cardimage"
           style={
-            { backgroundImage: `url(${product.styles[0].photos[0].url})`}
+            { backgroundImage: `url(${relatedProduct.styles[0].photos[0].url})`}
           }
-          onClick={() => this.props.handleCardClick(product.id)}>
+          onClick={() => handleCardClick(relatedProduct.id)}>
         </div>
-        <div className="cardinfo"  onClick={() => this.props.handleCardClick(product.id)}>
-          {product.iteminfo.category.toUpperCase()}
-          <p>{product.iteminfo.name}</p>
-          {product.styles[0].original_price}
+        <div className="cardinfo"  onClick={() => handleCardClick(relatedProduct.id)}>
+          {relatedProduct.iteminfo.category.toUpperCase()}
+          <p>{relatedProduct.iteminfo.name}</p>
+          {relatedProduct.styles[0].original_price}
           <p>***** (stars)</p>
         </div>
       </div>

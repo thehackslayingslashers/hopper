@@ -24,8 +24,9 @@ class RelatedProductsList extends React.Component {
   }
 
   showModal() {
+    const { show } = this.state;
     this.setState({
-      show: !this.state.show
+      show: !show,
     });
   }
 
