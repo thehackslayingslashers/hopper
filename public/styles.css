@@ -445,7 +445,7 @@ LModule
 
 .LModule {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 article {
@@ -568,6 +568,22 @@ hr {
   color: #7b00ff;
 }
 
+<<<<<<< HEAD
+.reviewImg {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.reviewImg:hover {
+  transform: scale(1.25)
+}
+
+
+=======
+>>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
 /*
 =====================
 QuestionsModule
@@ -737,6 +753,14 @@ QuestionsModule
   padding-top: 10px;
 }
 
+.show-more-less-answers {
+  display: flex;
+  font-size: 10pt;
+  font-weight: 100;
+  margin-left: 35px;
+  gap: 10px;
+}
+
 .upvote-answer-button {
   font-size: 10pt;
   font-weight: 200;
@@ -865,6 +889,20 @@ Related Items Module
   background: #eee;
   padding: 0.5rem 1rem;
 } */
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 15px;
+}
+th {
+  text-align: center;
+}
+
 .circle {
   border-radius: 50%;
   width: 150px;
