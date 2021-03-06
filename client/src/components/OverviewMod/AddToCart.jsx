@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import SizeSelector from './SizeSelector';
 import QuantitySelector from './QuantitySelector';
 
@@ -18,17 +19,29 @@ class AddToCart extends React.Component {
   }
 
   handleAddToCart() {
-    const { selectedSizeIndex } = this.state;
+    const { selectedQuantity, selectedSizeIndex } = this.state;
+    const { currentItemStyles, selectedStyleIndex } = this.props;
+
+    const sku = Object.keys(currentItemStyles[selectedStyleIndex].skus)[selectedSizeIndex];
+
     if (selectedSizeIndex) {
-      // add to cart???????
-      this.setState(
-        {
-          addedToCart: true,
-        },
-        () => {
-          setTimeout(this.revertAddToCart, 1000);
-        },
-      );
+      axios
+        .post('/cart', {
+          body: {
+            sku,
+            quantity: selectedQuantity,
+          },
+        })
+        .then(() => {
+          this.setState(
+            {
+              addedToCart: true,
+            },
+            () => {
+              setTimeout(this.revertAddToCart, 1000);
+            },
+          );
+        });
     } else {
       // open select size drop down??????
       this.setState(
