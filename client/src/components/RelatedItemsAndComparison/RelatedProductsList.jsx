@@ -33,37 +33,53 @@ class RelatedProductsList extends React.Component {
   render() {
     // console.log(this.props.currentItem)
     // console.log(this.state.comparedItem)
+    if (this.props.relatedProducts.length > 0) {
+      return (
+        <div>
+          <ProductComparisonModal
+          showModal={this.showModal}
+          show={this.state.show}
+          key={'productComparisonModal'}
+          >
+          <div className="comparisonmodal">
+            <ProductComparisonTable
+            currentItem={this.props.currentItem}
+            comparedItem={this.state.comparedItem}
+            showModal={this.showModal}
+            key={'ProductComparisonTable'}
+            />
+          </div>
+          </ProductComparisonModal>
+          <h2>Related Products</h2>
+          <div className="productlistoutercontainer">
+            <div className="productlistcontainer">
+              <button>L</button>
+              {
+                this.props.relatedProducts.map((relatedProduct) => (
+                  <RelatedProductCard
+                    relatedProduct={relatedProduct}
+                    handleCardClick={this.props.handleCardClick}
+                    handleCompareClick={this.handleCompareClick}
+                    showModal={this.showModal}
+                    key={relatedProduct.id}
+                  />
+                ))
+              }
+              <button>R</button>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
       <div>
-        <ProductComparisonModal
-        showModal={this.showModal}
-        show={this.state.show}
-        key={'productComparisonModal'}
-        >
-        <div className="comparisonmodal">
-          <ProductComparisonTable
-          currentItem={this.props.currentItem}
-          comparedItem={this.state.comparedItem}
-          showModal={this.showModal}
-          key={'ProductComparisonTable'}
-          />
-        </div>
-        </ProductComparisonModal>
         <h2>Related Products</h2>
         <div className="productlistoutercontainer">
           <div className="productlistcontainer">
             <button>L</button>
-            {
-              this.props.relatedProducts.map((relatedProduct) => (
-                <RelatedProductCard
-                  relatedProduct={relatedProduct}
-                  handleCardClick={this.props.handleCardClick}
-                  handleCompareClick={this.handleCompareClick}
-                  showModal={this.showModal}
-                  key={relatedProduct.id}
-                />
-              ))
-            }
+            <RelatedProductCard />
+            <RelatedProductCard />
+            <RelatedProductCard />
             <button>R</button>
           </div>
         </div>
