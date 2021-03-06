@@ -18,6 +18,15 @@ class OutfitList extends React.Component {
     const storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     const storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
     if (storedOutfits !== null) {
+      storedOutfits.map((product) => {
+        const currentPhoto = product.styles[0].photos[0];
+        if (currentPhoto.url === null) {
+          currentPhoto.url = 'https://www.luvbat.com/uploads/happy_frog__9265232477.jpg';
+        } else if (currentPhoto.url[0] !== 'h') {
+          currentPhoto.url = currentPhoto.url.substr(1);
+        }
+        return null;
+      });
       this.setState({
         outfitIds: storedOutfitIds,
         outfits: storedOutfits,
@@ -26,18 +35,19 @@ class OutfitList extends React.Component {
   }
 
   handleAddClick() {
-    console.log(this.props.currentItem)
-    if (!this.state.outfitIds.includes(this.props.currentItem.id)) {
+    const { outfitIds, outfits } = this.state;
+    const { currentItem } = this.props;
+    if (!outfitIds.includes(currentItem.id)) {
       this.setState((prevState) => {
-        prevState.outfitIds.push(this.props.currentItem.id);
-        prevState.outfits.push(this.props.currentItem);
+        prevState.outfitIds.push(currentItem.id);
+        prevState.outfits.push(currentItem);
         return {
           outfitIds: prevState.outfitIds,
           outfits: prevState.outfits,
         };
       }, () => {
-        window.localStorage.setItem('outfitIds', JSON.stringify(this.state.outfitIds));
-        window.localStorage.setItem('outfits', JSON.stringify(this.state.outfits));
+        window.localStorage.setItem('outfitIds', JSON.stringify(outfitIds));
+        window.localStorage.setItem('outfits', JSON.stringify(outfits));
       });
     }
   }
