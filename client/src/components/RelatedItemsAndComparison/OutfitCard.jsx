@@ -19,21 +19,13 @@ class OutfitCard extends React.Component {
   calculateAverageCurrentItemRating() {
     const { outfitItem } = this.props;
     if (outfitItem.metaReview.ratings) {
-      // console.log(outfitItem.metaReview.ratings);
       helpers.calculateAverageRating(outfitItem.metaReview.ratings, (avg) => {
-        console.log(avg)
-        // return avg;
         this.setState({
           currentItemAverageRating: avg,
-        }, () => {
-          console.log(this.state)
-        })
-      }
-      );
+        });
+      });
     }
   }
-
-
 
   render() {
     const {
@@ -41,8 +33,6 @@ class OutfitCard extends React.Component {
     } = this.props;
     const { currentItemAverageRating } = this.state;
     if (outfitItem) {
-      // this.calculateAverageCurrentItemRating();
-
       let price = null;
       if (outfitItem.styles[0]) {
         if (outfitItem.styles[0].sale_price) {
@@ -62,11 +52,13 @@ class OutfitCard extends React.Component {
       }
 
       let rating = null;
-      rating = (
-        <div>
-          <Stars rating={currentItemAverageRating} />
-        </div>
-      );
+      if (currentItemAverageRating >= 0) {
+        rating = (
+          <div>
+            <Stars rating={currentItemAverageRating} />
+          </div>
+        );
+      }
 
       return (
         <div className="card productcard">
@@ -81,11 +73,11 @@ class OutfitCard extends React.Component {
             <p>{outfitItem.iteminfo.name}</p>
             {price}
             {rating}
-            {/* <p>***** (stars)</p> */}
           </div>
         </div>
       );
     }
+    return null;
   }
 }
 

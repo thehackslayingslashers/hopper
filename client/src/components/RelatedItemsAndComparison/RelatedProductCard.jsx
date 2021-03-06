@@ -12,17 +12,27 @@ class RelatedProductCard extends React.Component {
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
   }
 
+  componentDidMount() {
+    const { relatedProduct } = this.props;
+    if (relatedProduct) {
+      this.calculateAverageCurrentItemRating();
+    }
+  }
+
   calculateAverageCurrentItemRating() {
-    const { currentItemRatingInfo } = this.state;
-    helpers.calculateAverageRating(currentItemRatingInfo.ratings, (avg) => {
-      this.setState({
-        currentItemAverageRating: avg,
+    const { relatedProduct } = this.props;
+    if (relatedProduct.metaReview.ratings) {
+      helpers.calculateAverageRating(relatedProduct.metaReview.ratings, (avg) => {
+        this.setState({
+          currentItemAverageRating: avg,
+        });
       });
-    });
+    }
   }
 
   render() {
     const { relatedProduct, handleCompareClick, handleCardClick } = this.props;
+    const { currentItemAverageRating } = this.state;
     if (relatedProduct) {
       let price = null;
       if (relatedProduct.styles[0]) {
@@ -41,6 +51,16 @@ class RelatedProductCard extends React.Component {
           price = <div>{`$${relatedProduct.styles[0].original_price}`}</div>;
         }
       }
+
+      let rating = null;
+      if (currentItemAverageRating >= 0) {
+        rating = (
+          <div>
+            <Stars rating={currentItemAverageRating} />
+          </div>
+        );
+      }
+
       return (
         <div className="card productcard">
           <button
@@ -58,18 +78,18 @@ class RelatedProductCard extends React.Component {
           <div className="cardinfo"  onClick={() => handleCardClick(relatedProduct.id)}>
             {relatedProduct.iteminfo.category.toUpperCase()}
             <p>{relatedProduct.iteminfo.name}</p>
-            {/* {relatedProduct.styles[0].original_price} */}
             {price}
-            <p>***** (stars)</p>
+            {rating}
           </div>
         </div>
       );
     }
     return (
       <div className="card productcard">
-        <div className="cardimage" />
+        <div className="cardimage">
+          <h2> Now Loading... </h2>
+        </div>
         <div className="cardinfo">
-          <h1> Now Loading </h1>
           <h3> Please wait patiently, like this frog.</h3>
         </div>
       </div>
