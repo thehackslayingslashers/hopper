@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const Answer = ({ answerId, answers }) => {
   var parsedAnswerId = parseInt(answerId);
@@ -9,12 +10,24 @@ const Answer = ({ answerId, answers }) => {
     year: 'numeric',
   });
 
+  const handleAnswerUpvote = (e) => {
+    e.preventDefault();
+    axios
+      .put(`/qa/answers/${answerId}/helpful`)
+      .then(() => {})
+      .catch((error) => {
+        throw error;
+      });
+  };
+
   return (
     <div className="answer-item">
       <div className="a-for-answer-and-answer-text">
         <div>A: </div>
         <div className="answer-text">{currentAnswer.body}</div>
-        <div className="upvote-answer-button">Helpful?</div>
+        <div className="upvote-answer-button" onClick={handleAnswerUpvote}>
+          Helpful?
+        </div>
         <div className="small-divider-answer">|</div>
         <div className="report-answer-button">Report</div>
       </div>

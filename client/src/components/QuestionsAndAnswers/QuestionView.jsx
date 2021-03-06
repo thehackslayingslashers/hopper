@@ -35,6 +35,7 @@ class QuestionView extends React.Component {
   }
 
   render() {
+    //sort questions by helpfulness
     const questionList = this.props.currentProductQuestions.slice(0, this.state.questionsDisplayed);
     return (
       <div>

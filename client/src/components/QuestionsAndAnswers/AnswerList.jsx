@@ -48,13 +48,14 @@ class AnswerList extends React.Component {
             />
           </div>
         ))}
-        <button onClick={this.handleShowMoreAnswers}>SHOW MORE ANSWERS</button>
-        <button
-          onClick={this.handleShowLessAnswers}
-          style={this.state.showLessAnswersButtonDisplay}
-        >
-          SHOW LESS ANSWERS
-        </button>
+        <div className="show-more-less-answers">
+          <div onClick={this.handleShowMoreAnswers}>
+            <u>SHOW MORE ANSWERS</u>
+          </div>
+          <div onClick={this.handleShowLessAnswers} style={this.state.showLessAnswersButtonDisplay}>
+            <u>SHOW LESS ANSWERS</u>
+          </div>
+        </div>
       </div>
     );
   }

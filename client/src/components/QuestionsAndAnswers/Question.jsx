@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import AnswerList from './AnswerList.jsx';
 import PostAnswer from './PostAnswer.jsx';
 
@@ -14,8 +15,14 @@ class Question extends React.Component {
   }
 
   handleQuestionUpvote(e) {
+    const questionId = this.props.question.question_id;
     e.preventDefault();
-    console.log('you upvoted this question');
+    axios
+      .put(`/qa/questions/${questionId}/helpful`)
+      .then(() => {})
+      .catch((error) => {
+        throw error;
+      });
   }
 
   handleClickAddAnswer(e) {

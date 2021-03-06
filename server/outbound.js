@@ -59,7 +59,6 @@ const postQuestion = (obj) => {
 
 const postAnswer = (obj, id) => {
   const localOptions = Object.create(options);
-  debugger;
   return axios({
     url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/answers`,
     method: 'post',
@@ -68,6 +67,23 @@ const postAnswer = (obj, id) => {
   });
 };
 
+const upvoteQuestion = (id) => {
+  const localOptions = Object.create(options);
+  return axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/helpful`,
+    {},
+    localOptions
+  );
+};
+
+const upvoteAnswer = (id) => {
+  const localOptions = Object.create(options);
+  return axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${id}/helpful`,
+    {},
+    localOptions
+  );
+};
 const fetchRelatedArray = (id, callback) =>
   axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options);
 
@@ -82,4 +98,6 @@ module.exports = {
   fetchRelatedArray,
   postQuestion,
   postAnswer,
+  upvoteQuestion,
+  upvoteAnswer,
 };
