@@ -63,11 +63,11 @@ class AddToCart extends React.Component {
   }
 
   selectSize(e) {
-    const { selectedQuantity } = this.state;
+    // const { selectedQuantity } = this.state;
     if (Number(e.currentTarget.value) >= 0) {
       this.setState({
         selectedSizeIndex: e.currentTarget.value,
-        selectedQuantity: selectedQuantity || '1',
+        selectedQuantity: '1',
       });
     } else {
       this.setState({
@@ -86,7 +86,9 @@ class AddToCart extends React.Component {
 
   render() {
     const { currentItemStyles, selectedStyleIndex } = this.props;
-    const { wronglyclicked, selectedSizeIndex, addedToCart } = this.state;
+    const {
+      wronglyclicked, selectedSizeIndex, addedToCart, selectedQuantity,
+    } = this.state;
 
     if (currentItemStyles[0]) {
       const { skus } = currentItemStyles[selectedStyleIndex];
@@ -132,6 +134,7 @@ class AddToCart extends React.Component {
             skus={skus}
             selectedSizeIndex={selectedSizeIndex}
             selectQuantity={this.selectQuantity}
+            selectedQuantity={selectedQuantity}
           />
           {button}
         </div>

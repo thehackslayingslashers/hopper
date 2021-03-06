@@ -1,5 +1,5 @@
 const axios = require('axios');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 const options = {
   headers: {
