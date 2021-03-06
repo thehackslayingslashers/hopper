@@ -29,6 +29,7 @@ class OverviewMod extends React.Component {
           <ImageGallery
             currentItemStyles={currentItemStyles}
             selectedStyleIndex={selectedStyleIndex}
+            key={currentItemStyles[selectedStyleIndex].style_id}
           />
         ) : <div id="overviewImageGallery">Loading</div>}
         <BasicInfo
@@ -44,7 +45,13 @@ class OverviewMod extends React.Component {
           selectedStyleIndex={selectedStyleIndex}
           handleStyleSelection={handleStyleSelection}
         />
-        <AddToCart currentItemStyles={currentItemStyles} selectedStyleIndex={selectedStyleIndex} />
+        {currentItemStyles[selectedStyleIndex] ? (
+          <AddToCart
+            currentItemStyles={currentItemStyles}
+            key={`${currentItemStyles[selectedStyleIndex].style_id}1`}
+            selectedStyleIndex={selectedStyleIndex}
+          />
+        ) : <div id="overviewAddToCart">Loading</div>}
         <ProductInformation currentItemInfo={currentItemInfo} />
         <FeatureList features={currentItemInfo.features} />
       </div>

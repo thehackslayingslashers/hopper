@@ -66,6 +66,8 @@ Overview Module
   display: grid;
   grid-template-rows: 7% repeat(7, 1fr) 7%;
   grid-template-columns: 7% 10% 10% auto 7%;
+  height: 1em;
+  min-height: 650px;
 }
 
 #overviewImageGallery.full {
@@ -88,7 +90,6 @@ Overview Module
 
 #overviewBigImage {
   height: 100%;
-  min-height: 500px;
   width: 100%;
   object-fit: cover;
   grid-column-start: 1;
@@ -112,12 +113,8 @@ Overview Module
 }
 
 .thumbnail {
-  height: 5.7vh;
-  min-height: 50px;
-  max-height: 80px;
-  width: 5.7vh;
-  min-width: 50px;
-  max-width: 80px;
+  height: 3.8em;
+  width: 3.8em;
   object-fit: cover;
   border: black solid 1px;
   grid-column: 2;
@@ -141,7 +138,7 @@ Overview Module
   position: relative;
   top: 5px;
   left: 5px;
-  width: 8vh;
+  width: 5em;
 }
 
 .imageGalleryIcon {
@@ -175,7 +172,7 @@ Overview Module
   grid-row: 1;
   grid-column: 5;
   z-index: 6;
-  margin: auto auto 0 8px;
+  margin: auto auto 0 5px;
 }
 
 #fullScreenButton:hover {
@@ -445,7 +442,15 @@ LModule
 
 .LModule {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.reviewsList {
+  width: 70%;
+}
+
+.ratings {
+  width: 25%;
 }
 
 article {
@@ -473,6 +478,7 @@ hr {
   font-family: FontAwesome;
   top: 0;
   left: 0;
+  width: min-content;
 }
 
 .filledstars {
@@ -568,7 +574,11 @@ hr {
   color: #7b00ff;
 }
 
-<<<<<<< HEAD
+.modalImg {
+  height: 100%;
+  width: 100%
+}
+
 .reviewImg {
   height: 60px;
   width: 60px;
@@ -582,8 +592,42 @@ hr {
 }
 
 
-=======
->>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
+.reviewModalOutter {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.reviewModalInner {
+  background-color: rgba(0,0,0,0);
+  margin: 100px auto;
+  width: 40%;
+  text-align: center;
+}
+
+.modalButton {
+  background-color: white;
+  color: #aaa;
+  width: 100px;
+  border: 1px solid gray;
+  margin: 20px auto 0px auto;
+  padding: 5px;
+}
+
+.modalButton:hover,
+.modalButton:focus {
+  color: white;
+  background-color: gray;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 /*
 =====================
 QuestionsModule

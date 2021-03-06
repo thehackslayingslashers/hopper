@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = ({find}) => (
+const Header = () => (
   <div id="pageHeader">
     <h1>LOGO</h1>
     <div id="announcement">

@@ -33,7 +33,6 @@ class ImageGallery extends React.Component {
     const index = e.target.id;
     this.setState({
       selectedImageIndex: index,
-      // thumbnailIndex: index % 7
     });
   }
 
@@ -42,7 +41,6 @@ class ImageGallery extends React.Component {
     const { currentItemStyles, selectedStyleIndex } = this.props;
 
     const dir = e.target.attributes.dir.value;
-    const page = Math.floor(Number(selectedImageIndex) / 7);
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
 
     switch (dir) {
@@ -57,15 +55,18 @@ class ImageGallery extends React.Component {
       case 'down':
         this.setState({
           thumbnailIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
-          selectedImageIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+          selectedImageIndex: thumbnailIndex + 14 >= totalImages
+            ? totalImages - 7
+            : thumbnailIndex + 7,
         });
-
         break;
       case 'left':
         if (selectedImageIndex > 0) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) - 1,
-            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0 ? thumbnailIndex - 1 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0
+              ? thumbnailIndex - 1
+              : thumbnailIndex,
           });
         }
         break;
@@ -73,7 +74,9 @@ class ImageGallery extends React.Component {
         if (selectedImageIndex < totalImages) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) + 1,
-            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 6 ? thumbnailIndex + 1 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 6
+              ? thumbnailIndex + 1
+              : thumbnailIndex,
           });
         }
         break;
@@ -85,11 +88,7 @@ class ImageGallery extends React.Component {
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
-
-    const page = Math.floor(selectedImageIndex / 7);
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
-    const pageCount = Math.floor(totalImages / 7);
-
     let low = 0;
     let index = thumbnailIndex;
 
@@ -125,7 +124,7 @@ class ImageGallery extends React.Component {
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
+            className={fullScreen ? 'overviewArrow full' : 'overviewArrow'}
             id="overviewArrowUp"
             dir="up"
           >
@@ -140,12 +139,15 @@ class ImageGallery extends React.Component {
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
+            className={fullScreen ? 'overviewArrow full' : 'overviewArrow'}
             id="overviewArrowDown"
             dir="down"
           >
-            <IoIosArrowDown id="overviewArrowDownIcon" dir="down"
-            onClick={this.handleArrowClick} />
+            <IoIosArrowDown
+              id="overviewArrowDownIcon"
+              dir="down"
+              onClick={this.handleArrowClick}
+            />
           </button>
         ) : null}
         {selectedImageIndex > 0 ? (
@@ -156,8 +158,11 @@ class ImageGallery extends React.Component {
             id="overviewArrowLeft"
             dir="left"
           >
-            <IoIosArrowBack id="overviewArrowLeftIcon" dir="left"
-            onClick={this.handleArrowClick} />
+            <IoIosArrowBack
+              id="overviewArrowLeftIcon"
+              dir="left"
+              onClick={this.handleArrowClick}
+            />
           </button>
         ) : null}
         {selectedImageIndex < totalImages - 1 ? (
@@ -168,19 +173,22 @@ class ImageGallery extends React.Component {
             id="overviewArrowRight"
             dir="right"
           >
-            <IoIosArrowForward id="overviewArrowRightIcon" dir="right"
-            onClick={this.handleArrowClick} />
+            <IoIosArrowForward
+              id="overviewArrowRightIcon"
+              dir="right"
+              onClick={this.handleArrowClick}
+            />
           </button>
         ) : null}
         {thumbnails}
       </div>
     ) : (
-      <div id="overviewImageGallery" className={'errorr'}>
+      <div id="overviewImageGallery" className="errorr">
         <div id="errrrror">
           There are no images of this item, sorry
         </div>
       </div>
-    )
+    );
   }
 }
 

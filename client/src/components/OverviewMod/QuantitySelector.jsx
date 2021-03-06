@@ -1,6 +1,8 @@
 import React from 'react';
 
-const QuantitySelector = ({ skus, selectedSizeIndex, selectQuantity }) => {
+const QuantitySelector = ({
+  skus, selectedSizeIndex, selectQuantity, selectedQuantity,
+}) => {
   const quantitySelec = [];
   if (selectedSizeIndex !== null) {
     const skuKeys = Object.keys(skus);
@@ -13,7 +15,7 @@ const QuantitySelector = ({ skus, selectedSizeIndex, selectQuantity }) => {
       count++;
     }
     return (
-      <select key="quantselec" id="overviewQuantitySelector" onChange={selectQuantity}>
+      <select key="quantselec" id="overviewQuantitySelector" onChange={selectQuantity} value={selectedQuantity}>
         {quantitySelec}
       </select>
     );
