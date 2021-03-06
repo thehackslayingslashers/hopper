@@ -37,13 +37,15 @@ class ProductComparisonTable extends React.Component {
     )
   }
 
-  render({ currentItem, comparedItem } = this.props) {
+  render() {
+    const { currentItem, comparedItem, showModal } = this.props;
+    const { featuresList } = this.state;
     if (comparedItem !== {}) {
       const currentItemFeatures = this.getItemFeatures(currentItem.iteminfo.features);
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       return (
         <div>
-          Let's compare these two products!
+          Let&apos;s compare these two products!
           <table>
             <tbody>
               <tr>
@@ -52,7 +54,7 @@ class ProductComparisonTable extends React.Component {
                 <th>{comparedItem.iteminfo.name}</th>
               </tr>
               {
-                this.state.featuresList.map((feat) => (
+                featuresList.map((feat) => (
                   this.renderTableData(feat, currentItemFeatures[feat], comparedItemFeatures[feat])
                 ))
 
@@ -61,13 +63,12 @@ class ProductComparisonTable extends React.Component {
           </table>
 
           <div>
-          <button onClick={this.props.showModal}>close</button>
+          <button onClick={showModal}>close</button>
           </div>
         </div>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 };
 export default ProductComparisonTable;

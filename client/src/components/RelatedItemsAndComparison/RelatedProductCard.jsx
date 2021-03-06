@@ -15,17 +15,17 @@ class RelatedProductCard extends React.Component {
       return (
         <div className="card productcard">
           <button
-          className="icon"
-          onClick={() => handleCompareClick(relatedProduct)}
-          >*
+            className="icon"
+            onClick={() => handleCompareClick(relatedProduct)}
+            >*
           </button>
           <div
             className="cardimage"
             style={
               { backgroundImage: `url(${relatedProduct.styles[0].photos[0].url})`}
             }
-            onClick={() => handleCardClick(relatedProduct.id)}>
-          </div>
+            onClick={() => handleCardClick(relatedProduct.id)}
+          />
           <div className="cardinfo"  onClick={() => handleCardClick(relatedProduct.id)}>
             {relatedProduct.iteminfo.category.toUpperCase()}
             <p>{relatedProduct.iteminfo.name}</p>
@@ -34,18 +34,16 @@ class RelatedProductCard extends React.Component {
           </div>
         </div>
       );
-    } else {
-      return (
-        <div className="card productcard">
-          <div className="cardimage">
-          </div>
-          <div className="cardinfo">
-            <h1> Now Loading </h1>
-            <h2> Please Wait Patiently </h2>
-          </div>
-        </div>
-      )
     }
+    return (
+      <div className="card productcard">
+        <div className="cardimage" />
+        <div className="cardinfo">
+          <h1> Now Loading </h1>
+          <h3> Please wait patiently, like this frog.</h3>
+        </div>
+      </div>
+    );
   }
 }
 

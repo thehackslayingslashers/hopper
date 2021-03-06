@@ -34,7 +34,7 @@ class RelatedProductsList extends React.Component {
     const { relatedProducts, currentItem, handleCardClick } = this.props;
     const { show, comparedItem } = this.state;
 
-    if (this.props.relatedProducts.length > 0) {
+    if (relatedProducts.length > 0) {
       return (
         <div>
           <ProductComparisonModal

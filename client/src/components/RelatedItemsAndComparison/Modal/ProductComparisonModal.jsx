@@ -9,7 +9,6 @@ class ProductComparisonModal extends React.Component {
     };
   }
 
-
   render() {
     if (!this.props.show) {
       return null;
