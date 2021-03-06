@@ -161,7 +161,6 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
   outbound
     .reportAnswer(answerId)
     .then((response) => {
-      debugger;
       res.send(response.data);
     })
     .catch((error) => {
