@@ -23,7 +23,8 @@ class RelatedItemsAndComparison extends React.Component {
     handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
   }
 
-  getRelatedProductsToCurrent({ currentItemId } = this.props) {
+  getRelatedProductsToCurrent() {
+    const { currentItemId } = this.props;
     axios
       .get(`/products/${currentItemId}/related`)
       .then((data) => {

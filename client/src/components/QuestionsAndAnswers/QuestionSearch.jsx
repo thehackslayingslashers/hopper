@@ -19,32 +19,36 @@ class QuestionSearch extends React.Component {
   }
 
   handleSubmitQuestionSearch() {
-    const currentProductQuestions = this.props.currentProductQuestions;
+    const {
+      currentProductQuestions,
+      setCurrentQuestionsToMatchSearch,
+      getCurrentProductQuestionsAndAnswers,
+    } = this.props;
+    const { questionSearchFieldValue } = this.state;
     this.setState({ questionSearchFieldValue: '' });
-    if (this.state.questionSearchFieldValue.length < 4) {
-      this.setState({ errorMessageText: 'Please provide at least 3 characters' });
-      this.setState({ errorMessage: { display: 'flex' } });
+    if (questionSearchFieldValue.length < 1) {
+      this.setState({ errorMessage: { display: 'none' } });
+      getCurrentProductQuestionsAndAnswers();
     } else {
       const matchingQueries = [];
       for (let i = 0; i < currentProductQuestions.length; i++) {
-        if (
-          currentProductQuestions[i].question_body.includes(this.state.questionSearchFieldValue)
-        ) {
+        if (currentProductQuestions[i].question_body.includes(questionSearchFieldValue)) {
           matchingQueries.push(currentProductQuestions[i]);
         }
       }
       if (matchingQueries.length > 0) {
         this.setState({ errorMessage: { display: 'none' } });
-        this.props.setCurrentQuestionsToMatchSearch(matchingQueries);
-        // console.log(matchingQueries);
+        setCurrentQuestionsToMatchSearch(matchingQueries);
       } else {
-        this.setState({ errorMessage: { display: 'flex' } });
-        this.setState({ errorMessageText: 'We could not find any questions matching your query' });
+        this.setState({
+          errorMessage: { display: 'flex' },
+        });
       }
     }
   }
 
   render() {
+    const { errorMessage, errorMessageText } = this.state;
     return (
       <div id="question-search-field">
         <div>
@@ -60,8 +64,8 @@ class QuestionSearch extends React.Component {
             onClick={this.handleSubmitQuestionSearch}
           ></i>
         </div>
-        <div id="no-matching-queries-message" style={this.state.errorMessage}>
-          {this.state.errorMessageText}
+        <div id="no-matching-queries-message" style={errorMessage}>
+          {errorMessageText}
         </div>
       </div>
     );

@@ -9,14 +9,14 @@ class ProductComparisonModal extends React.Component {
     };
   }
 
-
   render() {
-    if (!this.props.show) {
+    const { show, children } = this.props;
+    if (!show) {
       return null;
     }
     return (
       <div>
-        <div>{this.props.children}</div>
+        <div>{children}</div>
       </div>
     )
   }
