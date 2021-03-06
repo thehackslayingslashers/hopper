@@ -76,10 +76,28 @@ const upvoteQuestion = (id) => {
   );
 };
 
+const reportQuestion = (id) => {
+  const localOptions = Object.create(options);
+  return axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/report`,
+    {},
+    localOptions
+  );
+};
+
 const upvoteAnswer = (id) => {
   const localOptions = Object.create(options);
   return axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${id}/helpful`,
+    {},
+    localOptions
+  );
+};
+
+const reportAnswer = (id) => {
+  const localOptions = Object.create(options);
+  return axios.put(
+    `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${id}/report`,
     {},
     localOptions
   );
@@ -100,4 +118,6 @@ module.exports = {
   postAnswer,
   upvoteQuestion,
   upvoteAnswer,
+  reportQuestion,
+  reportAnswer,
 };

@@ -10,6 +10,7 @@ class PostAnswer extends React.Component {
       postEmailFieldValue: '',
       postUsernameFieldValue: '',
       postAnswerErrorDisplay: { display: 'none' },
+      postAnswerFieldDisplay: { display: 'none' },
     };
 
     this.handleSubmitPostAnswer = this.handleSubmitPostAnswer.bind(this);

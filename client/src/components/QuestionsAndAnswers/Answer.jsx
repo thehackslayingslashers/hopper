@@ -20,6 +20,15 @@ const Answer = ({ answerId, answers }) => {
       });
   };
 
+  const handleReportAnswer = (e) => {
+    e.preventDefault();
+    axios
+      .put(`/qa/answers/${answerId}/report`)
+      .then(() => {})
+      .catch((error) => {
+        throw error;
+      });
+  };
   return (
     <div className="answer-item">
       <div className="a-for-answer-and-answer-text">
@@ -29,7 +38,7 @@ const Answer = ({ answerId, answers }) => {
           Helpful?
         </div>
         <div className="small-divider-answer">|</div>
-        <div className="report-answer-button">Report</div>
+        <div className="report-answer-button" onClick={handleReportAnswer}>Report</div>
       </div>
       <div className="lower-answer-container">
         <div id="user-info-and-date">
