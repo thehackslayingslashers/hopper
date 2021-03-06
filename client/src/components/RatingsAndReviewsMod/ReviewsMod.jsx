@@ -3,7 +3,7 @@ import ReviewEntry from './ReviewEntry';
 import SortingHeader from './SortingHeader';
 
 const ReviewsMod = ({
-  reviews, sortedBy, selectHandler, modalHandler,
+  reviews, sortedBy, selectHandler, modalHandler, numberOfReviews
 }) => (
   <section className="reviewsList">
     <h3>Reviews Module</h3>

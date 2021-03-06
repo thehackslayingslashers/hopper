@@ -56,7 +56,6 @@ app.post('/cart', (req, res) => {
 
 app.post('/reviewsList/', (req, res) => {
   const { id, count, sort } = req.body;
-
   outbound
     .allReviewFetch(id, count, sort)
     .then((response) => {

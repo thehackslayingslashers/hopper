@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 import Stars from '../Stars';
+import Helpful from './Helpful';
 
 const ReviewEntry = ({ review, modalHandler }) => {
   Moment.locale('en');
@@ -27,7 +28,7 @@ const ReviewEntry = ({ review, modalHandler }) => {
         <span
           className="reviewImgBlock"
           onClick={(event) => {
-            modalHandler([<img className="modalImg" src={event.target.src} />]);
+            modalHandler([<img className="modalImg" key="modal" src={event.target.src} />]);
           }}
         >
           {review.photos.map((image) => <img key={image.id} className="reviewImg" src={image.url} alt="review stuff" />)}
@@ -42,6 +43,7 @@ const ReviewEntry = ({ review, modalHandler }) => {
           </b>
         </ul>
       )}
+      <Helpful />
       <hr />
     </article>
   );

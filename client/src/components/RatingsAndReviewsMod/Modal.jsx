@@ -3,10 +3,10 @@ import React from 'react';
 const Modal = (props) => {
   const { content, closeModal } = props;
   return (
-    <div className="modal">
-      <div className="modal-box">
+    <div className="reviewModalOutter">
+      <div className="reviewModalInner">
           {content}
-          <div className="modal-button" onClick={closeModal}>Close</div>
+          <div className="modalButton" onClick={closeModal}>Close</div>
       </div>
     </div>
   );
