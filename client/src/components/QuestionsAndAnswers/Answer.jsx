@@ -38,7 +38,9 @@ const Answer = ({ answerId, answers }) => {
           Helpful?
         </div>
         <div className="small-divider-answer">|</div>
-        <div className="report-answer-button" onClick={handleReportAnswer}>Report</div>
+        <div className="report-answer-button" onClick={handleReportAnswer}>
+          Report
+        </div>
       </div>
       <div className="lower-answer-container">
         <div id="user-info-and-date">

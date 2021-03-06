@@ -15,7 +15,8 @@ class Question extends React.Component {
   }
 
   handleQuestionUpvote(e) {
-    const questionId = this.props.question.question_id;
+    const { question } = this.props;
+    const questionId = question.question_id;
     e.preventDefault();
     axios
       .put(`/qa/questions/${questionId}/helpful`)
@@ -31,10 +32,12 @@ class Question extends React.Component {
   }
 
   render() {
+    const { question } = this.props;
+    const { postAnswerFieldDisplay } = this.state;
     return (
       <div id="question-and-answer-item-container">
         <div id="question-item-container">
-          <div className="question-text">Q: {this.props.question.question_body}</div>
+          <div className="question-text">Q: {question.question_body}</div>
           <div className="question-response-options">
             <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
               Helpful?
@@ -45,10 +48,10 @@ class Question extends React.Component {
             </div>
           </div>
         </div>
-        <AnswerList answers={this.props.question.answers} currentQuestion={this.props.question} />
+        <AnswerList answers={question.answers} currentQuestion={question} />
         <PostAnswer
-          currentQuestionId={this.props.question.question_id}
-          postAnswerFieldDisplay={this.state.postAnswerFieldDisplay}
+          currentQuestionId={question.question_id}
+          postAnswerFieldDisplay={postAnswerFieldDisplay}
         />
       </div>
     );
