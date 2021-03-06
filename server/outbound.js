@@ -31,6 +31,11 @@ const allReviewFetch = (id, count, sort) => {
   return axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', localOptions);
 };
 
+const incrementHelpfulness = (id) => {
+  const localOptions = Object.create(options);
+  return axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/helpful`, {}, localOptions);
+};
+
 const fetchStyles = (id) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, options);
 
 const postCart = (sku, quantity) => {
@@ -95,7 +100,7 @@ const reportQuestion = (id) => {
   return axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${id}/report`,
     {},
-    localOptions
+    localOptions,
   );
 };
 
@@ -113,11 +118,11 @@ const reportAnswer = (id) => {
   return axios.put(
     `https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/answers/${id}/report`,
     {},
-    localOptions
+    localOptions,
   );
 };
-const fetchRelatedArray = (id, callback) =>
-  axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options);
+
+const fetchRelatedArray = (id, callback) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/related`, options);
 
 // const fetchRelatedItems
 
@@ -127,6 +132,7 @@ module.exports = {
   fetchStyles,
   postCart,
   allReviewFetch,
+  incrementHelpfulness,
   fetchQuestions,
   fetchRelatedArray,
   postQuestion,

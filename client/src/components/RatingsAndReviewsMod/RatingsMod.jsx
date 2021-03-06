@@ -4,7 +4,9 @@ import Stars from '../Stars';
 const RatingsMod = ({ avg, currentItemRatingInfo }) => (
   <section className="ratings">
     <h2>
-      {`${avg} `}
+      {(avg !== 'NaN') && (
+        `${avg} `
+      )}
     </h2>
     <Stars rating={avg} />
   </section>

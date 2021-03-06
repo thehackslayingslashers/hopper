@@ -66,6 +66,18 @@ app.post('/reviewsList/', (req, res) => {
     });
 });
 
+app.post('/helpful', (req, res) => {
+  const { id } = req.body;
+  outbound.incrementHelpfulness(id)
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(404).send('error');
+    });
+});
+
 app.get('/qa/questions/:id', (req, res) => {
   const { id } = req.params;
 
@@ -149,7 +161,6 @@ app.put('/qa/answers/:answer_id/report', (req, res) => {
   outbound
     .reportAnswer(answerId)
     .then((response) => {
-      debugger;
       res.send(response.data);
     })
     .catch((error) => {

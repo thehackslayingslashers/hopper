@@ -17,16 +17,21 @@ class QuestionView extends React.Component {
   }
 
   handleShowMoreQuestions() {
-    const questionListLength = this.props.currentProductQuestions.length;
-    if (this.state.questionsDisplayed < questionListLength) {
-      const plusTwoQuestionLength = this.state.questionsDisplayed + 2;
-      this.setState({ questionsDisplayed: plusTwoQuestionLength });
-      this.setState({ showLessQuestionsButtonDisplay: { display: 'flex' } });
+    const { questionsDisplayed } = this.state;
+    const { currentProductQuestions } = this.props;
+    const questionListLength = currentProductQuestions.length;
+    if (questionsDisplayed < questionListLength) {
+      const plusTwoQuestionLength = questionsDisplayed + 2;
+      this.setState({
+        questionsDisplayed: plusTwoQuestionLength,
+        showLessQuestionsButtonDisplay: { display: 'flex' },
+      });
     }
   }
   handleShowLessQuestions() {
-    const minusTwoQuestionLength = this.state.questionsDisplayed - 2;
-    if (this.state.questionsDisplayed > 5) {
+    const { questionsDisplayed } = this.state;
+    const minusTwoQuestionLength = questionsDisplayed - 2;
+    if (questionsDisplayed > 5) {
       this.setState({ questionsDisplayed: minusTwoQuestionLength });
     }
     if (minusTwoQuestionLength < 5) {
@@ -36,30 +41,36 @@ class QuestionView extends React.Component {
 
   render() {
     //sort questions by helpfulness
-    const questionList = this.props.currentProductQuestions.slice(0, this.state.questionsDisplayed);
+    const { currentProductQuestions, currentItemId } = this.props;
+    const {
+      questionsDisplayed,
+      showMoreQuestionsButtonDisplay,
+      showLessQuestionsButtonDisplay,
+    } = this.state;
+    const questionList = currentProductQuestions.slice(0, questionsDisplayed);
     return (
       <div>
         {questionList.map((question, index) => (
           <div key={index}>
-            <Question question={question} currentItemId={this.props.currentItemId} />
+            <Question question={question} currentItemId={currentItemId} />
           </div>
         ))}
         <div className="question-view-button-container">
           <button
             className="add-a-question-button"
             onClick={this.handleShowMoreQuestions}
-            style={this.state.showMoreQuestionsButtonDisplay}
+            style={showMoreQuestionsButtonDisplay}
           >
             MORE ANSWERED QUESTIONS
           </button>
           <button
             className="add-a-question-button"
             onClick={this.handleShowLessQuestions}
-            style={this.state.showLessQuestionsButtonDisplay}
+            style={showLessQuestionsButtonDisplay}
           >
             Show less questions
           </button>
-          <PostQuestion currentItemId={this.props.currentItemId} />
+          <PostQuestion currentItemId={currentItemId} />
         </div>
       </div>
     );
