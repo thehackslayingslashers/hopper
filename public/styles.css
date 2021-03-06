@@ -65,14 +65,19 @@ Overview Module
   min-height: 57vh;
   display: grid;
   grid-template-rows: 7% repeat(7, 1fr) 7%;
-  grid-template-columns: 7% 10% 10% auto 7%;
+  grid-template-columns: 45px 10% 10% auto 45px;
   height: 1em;
   min-height: 650px;
 }
 
 #overviewImageGallery.full {
-  grid-column-start: 1;
+  grid-column-end: 3;
+  overflow: inherit;
+}
+
+#overviewImageGallery.full.fullfull {
   grid-column-end: 5;
+  overflow: hidden;
 }
 
 #overviewImageGallery.errorr {
@@ -106,10 +111,22 @@ Overview Module
 
 #overviewBigImage.full {
   width: 1200px;
+  transform: scale(1);
+  transition: transform 200ms;
+  transition: width 200ms;
 }
 
 #overviewBigImage.full:hover {
-  cursor: crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text y="15">+</text></svg>'), crosshair;
+}
+
+#overviewBigImage.full.fullfull {
+  transform: scale(2.5);
+  transition: transform 200ms;
+}
+
+#overviewBigImage.full.fullfull:hover {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text y="15">-</text></svg>'), auto;
 }
 
 .thumbnail {
@@ -210,7 +227,7 @@ Overview Module
 
 #overviewArrowUp.full,
 #overviewArrowDown.full {
-  margin-left: 0;
+  margin-left: .2em;
 }
 
 #overviewArrowUp {
