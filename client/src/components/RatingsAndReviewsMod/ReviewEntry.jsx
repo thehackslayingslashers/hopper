@@ -43,7 +43,7 @@ const ReviewEntry = ({ review, modalHandler }) => {
           </b>
         </ul>
       )}
-      <Helpful />
+      <Helpful reviewId={review.review_id} helpfulness={review.helpfulness} />
       <hr />
     </article>
   );
