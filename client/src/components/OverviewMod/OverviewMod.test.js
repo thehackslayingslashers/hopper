@@ -6,13 +6,13 @@ import BasicInfo from './BasicInfo';
 import FeatureList from './FeatureList';
 import OverviewMod from './OverviewMod';
 import ProductInformation from './ProductInformation';
-import SizeSelector from './SizeSelector.jsx';
-import StyleSelector from './StyleSelector.jsx';
+import SizeSelector from './SizeSelector';
+import StyleSelector from './StyleSelector';
 
 describe('<OverviewMod/>', () => {
-  it('OverviewMod should have AddToCart component', () => {
+  it('OverviewMod should not have AddToCart component', () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find(AddToCart)).toHaveLength(1);
+    expect(wrapper.find(AddToCart)).toHaveLength(0);
   });
   it('OverviewMod should have BasicInfo component', () => {
     const wrapper = mount(<App />);
