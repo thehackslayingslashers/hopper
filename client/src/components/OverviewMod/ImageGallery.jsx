@@ -33,7 +33,6 @@ class ImageGallery extends React.Component {
     const index = e.target.id;
     this.setState({
       selectedImageIndex: index,
-      // thumbnailIndex: index % 7
     });
   }
 
@@ -42,7 +41,6 @@ class ImageGallery extends React.Component {
     const { currentItemStyles, selectedStyleIndex } = this.props;
 
     const dir = e.target.attributes.dir.value;
-    const page = Math.floor(Number(selectedImageIndex) / 7);
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
 
     switch (dir) {
@@ -57,15 +55,18 @@ class ImageGallery extends React.Component {
       case 'down':
         this.setState({
           thumbnailIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
-          selectedImageIndex: thumbnailIndex + 14 >= totalImages ? totalImages - 7 : thumbnailIndex + 7,
+          selectedImageIndex: thumbnailIndex + 14 >= totalImages
+            ? totalImages - 7
+            : thumbnailIndex + 7,
         });
-
         break;
       case 'left':
         if (selectedImageIndex > 0) {
           this.setState({
             selectedImageIndex: Number(selectedImageIndex) - 1,
-            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0 ? thumbnailIndex - 1 : thumbnailIndex,
+            thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0
+              ? thumbnailIndex - 1
+              : thumbnailIndex,
           });
         }
         break;
