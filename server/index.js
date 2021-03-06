@@ -42,9 +42,20 @@ app.get('/product/:id', (req, res) => {
     });
 });
 
+app.post('/cart', (req, res) => {
+  const { sku, quantity } = req.body.body;
+
+  outbound.postCart(sku, quantity)
+    .then(() => {
+      res.status(201).send('created');
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
 app.post('/reviewsList/', (req, res) => {
   const { id, count, sort } = req.body;
-
   outbound
     .allReviewFetch(id, count, sort)
     .then((response) => {
@@ -109,16 +120,39 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     });
 });
 
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  const questionId = req.params.question_id;
+  outbound
+    .reportQuestion(questionId)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   const answerId = req.params.answer_id;
   outbound
     .upvoteAnswer(answerId)
     .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  const answerId = req.params.answer_id;
+  outbound
+    .reportAnswer(answerId)
+    .then((response) => {
       debugger;
       res.send(response.data);
     })
     .catch((error) => {
-      debugger;
       res.send(error);
     });
 });

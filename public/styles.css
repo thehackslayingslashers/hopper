@@ -175,7 +175,7 @@ Overview Module
   grid-row: 1;
   grid-column: 5;
   z-index: 6;
-  margin: auto auto 0 8px;
+  margin: auto auto 0 5px;
 }
 
 #fullScreenButton:hover {
@@ -445,7 +445,15 @@ LModule
 
 .LModule {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.reviewsList {
+  width: 70%;
+}
+
+.ratings {
+  width: 25%;
 }
 
 article {
@@ -473,6 +481,7 @@ hr {
   font-family: FontAwesome;
   top: 0;
   left: 0;
+  width: min-content;
 }
 
 .filledstars {
@@ -568,7 +577,11 @@ hr {
   color: #7b00ff;
 }
 
-<<<<<<< HEAD
+.modalImg {
+  height: 100%;
+  width: 100%
+}
+
 .reviewImg {
   height: 60px;
   width: 60px;
@@ -582,8 +595,42 @@ hr {
 }
 
 
-=======
->>>>>>> 0f641e5d41e41fe2aa154ee8e18bfca970c10b8d
+.reviewModalOutter {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.reviewModalInner {
+  background-color: rgba(0,0,0,0);
+  margin: 100px auto;
+  width: 40%;
+  text-align: center;
+}
+
+.modalButton {
+  background-color: white;
+  color: #aaa;
+  width: 100px;
+  border: 1px solid gray;
+  margin: 20px auto 0px auto;
+  padding: 5px;
+}
+
+.modalButton:hover,
+.modalButton:focus {
+  color: white;
+  background-color: gray;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
 /*
 =====================
 QuestionsModule

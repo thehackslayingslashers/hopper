@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17072,
+      currentItemId: 17762,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -61,7 +61,6 @@ class App extends React.Component {
     axios
       .get(`/product/${productId}`)
       .then((data) => {
-        console.log(data.data)
         this.setState(
           {
             currentItemInfo: data.data[0],
