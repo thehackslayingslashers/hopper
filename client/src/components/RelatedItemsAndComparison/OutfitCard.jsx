@@ -26,7 +26,7 @@ class OutfitCard extends React.Component {
           <p>***** (stars)</p>
         </div>
       </div>
-    )
+    );
   }
 }
 
