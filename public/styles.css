@@ -481,6 +481,7 @@ hr {
   font-family: FontAwesome;
   top: 0;
   left: 0;
+  width: min-content;
 }
 
 .filledstars {
@@ -594,7 +595,7 @@ hr {
 }
 
 
-.modal {
+.reviewModalOutter {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -605,14 +606,14 @@ hr {
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-box {
+.reviewModalInner {
   background-color: rgba(0,0,0,0);
   margin: 100px auto;
   width: 40%;
   text-align: center;
 }
 
-.modal-button {
+.modalButton {
   background-color: white;
   color: #aaa;
   width: 100px;
@@ -621,8 +622,8 @@ hr {
   padding: 5px;
 }
 
-.modal-button:hover,
-.modal-button:focus {
+.modalButton:hover,
+.modalButton:focus {
   color: white;
   background-color: gray;
   text-decoration: none;

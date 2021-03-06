@@ -51,7 +51,7 @@ class LMod extends React.Component {
   }
 
   render() {
-    const { currentItemRatingInfo, currentItemAverageRating } = this.props;
+    const { currentItemRatingInfo, currentItemAverageRating, numberOfReviews } = this.props;
     const {
       sortedBy, allReviews, showModal, modalContent,
     } = this.state;
@@ -69,6 +69,7 @@ class LMod extends React.Component {
             sortedBy={sortedBy}
             selectHandler={this.updateSortBy}
             modalHandler={this.modalHandler}
+            numberOfReviews={numberOfReviews}
           />
           {showModal && (
           <Modal
