@@ -1,6 +1,7 @@
 import React from 'react';
 import Moment from 'moment';
 import Stars from '../Stars';
+import Helpful from './Helpful';
 
 const ReviewEntry = ({ review, modalHandler }) => {
   Moment.locale('en');
@@ -42,6 +43,7 @@ const ReviewEntry = ({ review, modalHandler }) => {
           </b>
         </ul>
       )}
+      <Helpful />
       <hr />
     </article>
   );

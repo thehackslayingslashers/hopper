@@ -3,8 +3,9 @@ import React from 'react';
 class SortingHeader extends React.Component {
   constructor(props) {
     super(props);
+    const { sortedBy } = this.props;
     this.state = {
-      sortedBy: this.props.sortedBy,
+      sortedBy,
       sortOptions: ['relevent', 'newest', 'helpful'],
       displayList: false,
     };
@@ -12,48 +13,53 @@ class SortingHeader extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { sortedBy } = this.props;
     if (this.props !== prevProps) {
       this.setState({
-        sortedBy: this.props.sortedBy,
+        sortedBy,
       });
     }
   }
 
   onSelect(e, listElementChosen) {
+    const { displayList } = this.state;
+    const { selectHandler } = this.props;
     if (listElementChosen) {
-      this.props.selectHandler(e.target.innerText);
+      selectHandler(e.target.innerText);
     }
     this.setState({
-      displayList: !this.state.displayList,
+      displayList: !displayList,
     });
   }
 
   render() {
+    const { sortedBy, sortOptions, displayList } = this.state;
+    const { reviewsLength } = this.props;
     return (
       <div className="Sorting">
         <h2>
-          {`${this.props.reviewsLength} `}
+          {`${reviewsLength} `}
           reviews, sorted by most
-          {!this.state.displayList && (
+          {!displayList && (
             <span
               className="currentSort"
               onClick={(event) => {
                 this.onSelect(event, false);
               }}
             >
-              {` ${this.state.sortedBy}`}
+              {` ${sortedBy}`}
               &#9650;
             </span>
           )}
-          {this.state.displayList && (
+          {displayList && (
             <ul
               className="sortingList"
               onClick={(event) => {
                 this.onSelect(event, true);
               }}
             >
-              {this.state.sortOptions.map((sortOp, index) => {
-                if (sortOp !== this.state.sortedBy) {
+              {sortOptions.map((sortOp, index) => {
+                if (sortOp !== sortedBy) {
                   return (
                     <li key={index}>
                       <span>{sortOp}</span>
@@ -62,7 +68,7 @@ class SortingHeader extends React.Component {
                 }
               })}
               <li>
-                <span>{this.state.sortedBy}</span>
+                <span>{sortedBy}</span>
               </li>
             </ul>
           )}
