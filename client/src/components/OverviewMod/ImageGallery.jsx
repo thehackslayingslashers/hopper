@@ -6,6 +6,7 @@ import { BiFullscreen } from 'react-icons/bi';
 import {
   IoIosArrowForward, IoIosArrowBack, IoIosArrowDown, IoIosArrowUp,
 } from 'react-icons/io';
+
 import ImageGalleryThumbnail from './ImageGalleryThumbnail';
 
 class ImageGallery extends React.Component {
@@ -103,6 +104,7 @@ class ImageGallery extends React.Component {
             chosen={index - 1 === Number(selectedImageIndex)}
             index={index - thumbnailIndex}
             key={image.url}
+            fullScreen={fullScreen}
           />
         );
       }
@@ -112,7 +114,7 @@ class ImageGallery extends React.Component {
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
       <div id="overviewImageGallery">
         <img
-          onClick={this.handleFullScreen}
+          onClick={fullScreen ? null : this.handleFullScreen}
           id="overviewBigImage"
           alt=""
           className={fullScreen ? 'full' : null}
@@ -123,7 +125,7 @@ class ImageGallery extends React.Component {
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className="overviewArrow"
+            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
             id="overviewArrowUp"
             dir="up"
           >
@@ -138,7 +140,7 @@ class ImageGallery extends React.Component {
           <button
             type="submit"
             onClick={this.handleArrowClick}
-            className="overviewArrow"
+            className={fullScreen ? "overviewArrow full" : "overviewArrow"}
             id="overviewArrowDown"
             dir="down"
           >
