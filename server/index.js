@@ -42,6 +42,18 @@ app.get('/product/:id', (req, res) => {
     });
 });
 
+app.post('/cart', (req, res) => {
+  const { sku, quantity } = req.body.body;
+
+  outbound.postCart(sku, quantity)
+    .then(() => {
+      res.status(201).send('created');
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    });
+});
+
 app.post('/reviewsList/', (req, res) => {
   const { id, count, sort } = req.body;
 
