@@ -50,6 +50,10 @@ class LMod extends React.Component {
     });
   }
 
+  submitHandler() {
+    console.log('it happened!!');
+  }
+
   render() {
     const { currentItemRatingInfo, currentItemAverageRating, numberOfReviews } = this.props;
     const {
@@ -70,6 +74,7 @@ class LMod extends React.Component {
             selectHandler={this.updateSortBy}
             modalHandler={this.modalHandler}
             numberOfReviews={numberOfReviews}
+            submitHandler={this.submitHandler}
           />
           {showModal && (
           <Modal

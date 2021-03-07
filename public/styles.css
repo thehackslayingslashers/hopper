@@ -643,6 +643,15 @@ hr {
   cursor: pointer;
 }
 
+.helpfulness:hover {
+  cursor: pointer;
+  color: #7b00ff;
+}
+
+.addReview {
+  background-color: white;
+}
+
 /*
 =====================
 QuestionsModule
