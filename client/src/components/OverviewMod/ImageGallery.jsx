@@ -15,9 +15,11 @@ class ImageGallery extends React.Component {
     this.state = {
       selectedImageIndex: 0,
       fullScreen: false,
+      fullfull: false,
       thumbnailIndex: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
+    this.handleImageClick = this.handleImageClick.bind(this);
     this.handleImageSelect = this.handleImageSelect.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
   }
@@ -26,6 +28,14 @@ class ImageGallery extends React.Component {
     const { fullScreen } = this.state;
     this.setState({
       fullScreen: !fullScreen,
+    });
+  }
+
+  handleImageClick() {
+    const { fullScreen, fullfull } = this.state;
+    this.setState({
+      fullScreen: true,
+      fullfull: fullfull ? false : !!fullScreen,
     });
   }
 
@@ -87,7 +97,9 @@ class ImageGallery extends React.Component {
 
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
-    const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
+    const {
+      fullScreen, selectedImageIndex, thumbnailIndex, fullfull,
+    } = this.state;
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
     let low = 0;
     let index = thumbnailIndex;
@@ -111,16 +123,21 @@ class ImageGallery extends React.Component {
     });
 
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
-      <div id="overviewImageGallery">
+      <div
+        id="overviewImageGallery"
+        // eslint-disable-next-line no-nested-ternary
+        className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
+      >
         <img
-          onClick={fullScreen ? null : this.handleFullScreen}
+          onClick={this.handleImageClick}
           id="overviewBigImage"
           alt=""
-          className={fullScreen ? 'full' : null}
+          // eslint-disable-next-line no-nested-ternary
+          className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
         />
-        <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-        {thumbnailIndex > 0 ? (
+        {fullfull ? null : <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />}
+        {thumbnailIndex > 0 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -135,7 +152,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {thumbnailIndex + 7 < totalImages ? (
+        {thumbnailIndex + 7 < totalImages && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -150,7 +167,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {selectedImageIndex > 0 ? (
+        {selectedImageIndex > 0 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -165,7 +182,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {selectedImageIndex < totalImages - 1 ? (
+        {selectedImageIndex < totalImages - 1 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -180,7 +197,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {thumbnails}
+        {fullfull ? null : thumbnails}
       </div>
     ) : (
       <div id="overviewImageGallery" className="errorr">
