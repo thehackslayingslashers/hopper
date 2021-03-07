@@ -11,12 +11,10 @@ const withClickTracker = (WrappedComponent) => {
     }
 
     onClickAnywhere(e) {
-      console.log('Your FBI agent says hi!');
-      console.log(WrappedComponent.name, new Date(), e.target);
       const data = {
         widget: WrappedComponent.name,
-        date: new Date(),
-        element: JSON.stringify(e.target),
+        time: new Date(),
+        element: e.target.nodeName,
       };
       axios({
         url: '/interactions',
