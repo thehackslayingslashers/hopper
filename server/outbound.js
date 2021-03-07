@@ -126,6 +126,13 @@ const fetchRelatedArray = (id, callback) => axios.get(`https://app-hrsei-api.her
 
 // const fetchRelatedItems
 
+const postInteractions = (data) => axios({
+  url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/interactions',
+  method: 'post',
+  data,
+  headers: options.headers,
+});
+
 module.exports = {
   fetchItemById,
   reviewInfoFetch,
@@ -141,4 +148,5 @@ module.exports = {
   upvoteAnswer,
   reportQuestion,
   reportAnswer,
+  postInteractions,
 };
