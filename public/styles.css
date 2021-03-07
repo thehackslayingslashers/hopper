@@ -656,10 +656,10 @@ hr {
   border-radius: 20px;
 }
 
-.question1 {
+.question1, .question2 {
   display: flex;
   justify-content: left;
-  margin: 25px;
+  margin: 0px 25px;
 }
 
 /*

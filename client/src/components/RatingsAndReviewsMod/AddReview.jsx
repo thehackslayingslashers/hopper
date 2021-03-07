@@ -6,6 +6,7 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       starWidth: 0,
+      recommend: 'maybe',
     };
   }
 
@@ -19,9 +20,26 @@ class AddReview extends React.Component {
     });
   }
 
+  recommendHandler(choice) {
+    this.setState({
+      recommend: choice,
+    });
+  }
+
   render() {
-    const { starWidth } = this.state;
+    const { starWidth, recommend } = this.state;
     const { submitHandler, itemName } = this.props;
+    let yesStyle;
+    let noStyle;
+    if (recommend === 'yes') {
+      yesStyle = {
+        backgroundColor: 'rgb(214, 182, 255)',
+      };
+    } else if (recommend === 'no') {
+      noStyle = {
+        backgroundColor: 'rgb(214, 182, 255)',
+      };
+    }
     return (
       <div className="addReview">
         <h1>Write Your Review</h1>
@@ -42,6 +60,15 @@ class AddReview extends React.Component {
             Overall Rating*
             <Stars rating={starWidth} />
           </pre>
+        </div>
+        <div className="question2"
+        onClick={(event) => {
+          this.recommendHandler(event.target.innerText);
+        }}>
+          Do you recommend this product?* &nbsp;
+          <button type="button" style={yesStyle}>yes</button>
+          &emsp;
+          <button type="button" style={noStyle}>no</button>
         </div>
         <div className="modalButton" onClick={submitHandler}>submit</div>
       </div>
