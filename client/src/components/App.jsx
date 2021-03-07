@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17072,
+      currentItemId: 17076,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -109,6 +109,7 @@ class App extends React.Component {
       selectedStyleIndex,
       numberOfReviews,
     } = this.state;
+    console.log(currentItemId);
     return (
       <div>
         <Header />
