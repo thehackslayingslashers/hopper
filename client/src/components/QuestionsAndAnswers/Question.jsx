@@ -12,6 +12,7 @@ class Question extends React.Component {
 
     this.handleQuestionUpvote = this.handleQuestionUpvote.bind(this);
     this.handleClickAddAnswer = this.handleClickAddAnswer.bind(this);
+    this.revertFieldDisplay = this.revertFieldDisplay.bind(this);
   }
 
   handleQuestionUpvote(e) {
@@ -29,6 +30,10 @@ class Question extends React.Component {
   handleClickAddAnswer(e) {
     e.preventDefault();
     this.setState({ postAnswerFieldDisplay: { display: 'flex' } });
+  }
+
+  revertFieldDisplay() {
+    this.setState({ postAnswerFieldDisplay: { display: 'none' } });
   }
 
   render() {
@@ -52,6 +57,7 @@ class Question extends React.Component {
         <PostAnswer
           currentQuestionId={question.question_id}
           postAnswerFieldDisplay={postAnswerFieldDisplay}
+          revertFieldDisplay={this.revertFieldDisplay}
         />
       </div>
     );

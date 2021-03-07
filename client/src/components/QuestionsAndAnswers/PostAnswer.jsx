@@ -49,7 +49,12 @@ class PostAnswer extends React.Component {
         url: `/qa/questions/${currentQuestionId}/answers/`,
         data: answerPostRequest,
       })
-        .then(() => {})
+        .then(() => {
+          this.props.revertFieldDisplay();
+          this.setState({
+            postAnswerErrorDisplay: { display: 'none' },
+          });
+        })
         .catch((error) => {
           throw error;
         });

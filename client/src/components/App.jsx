@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17067,
+      currentItemId: 17072,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -50,14 +50,13 @@ class App extends React.Component {
       },
       () => {
         this.getInfoAboutCurrentItem(cb);
-      },
+      }
     );
   }
 
   getInfoAboutCurrentItem(cb = () => {}) {
     const { currentItemId } = this.state;
     const productId = currentItemId;
-
     axios
       .get(`/product/${productId}`)
       .then((data) => {
@@ -67,7 +66,7 @@ class App extends React.Component {
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
           },
-          this.calculateAverageCurrentItemRating,
+          this.calculateAverageCurrentItemRating
         );
         this.calculateAllReviews();
       })
@@ -130,9 +129,8 @@ class App extends React.Component {
           currentItemRatingInfo={currentItemRatingInfo}
           currentItemStyles={currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
-
         />
-        <QuestionsAndAnswers currentItemId={currentItemId} />
+        <QuestionsAndAnswers key={currentItemId} currentItemId={currentItemId} />
         <LMod
           currentItemId={currentItemId}
           currentItemRatingInfo={currentItemRatingInfo}
