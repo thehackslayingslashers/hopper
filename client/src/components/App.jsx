@@ -3,7 +3,6 @@
 import React from 'react';
 import axios from 'axios';
 import helpers from './helpers';
-import withClickTracker from './withClickTracker';
 import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
@@ -50,7 +49,7 @@ class App extends React.Component {
       },
       () => {
         this.getInfoAboutCurrentItem(cb);
-      }
+      },
     );
   }
 
@@ -66,7 +65,7 @@ class App extends React.Component {
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
           },
-          this.calculateAverageCurrentItemRating
+          this.calculateAverageCurrentItemRating,
         );
         this.calculateAllReviews();
       })
@@ -101,7 +100,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { onClickAnywhere } = this.props;
     const {
       currentItemId,
       currentItemInfo,
@@ -112,7 +110,7 @@ class App extends React.Component {
       numberOfReviews,
     } = this.state;
     return (
-      <div onClick={onClickAnywhere}>
+      <div>
         <Header />
         <OverviewMod
           currentItemInfo={currentItemInfo}
@@ -143,4 +141,4 @@ class App extends React.Component {
   }
 }
 
-export default withClickTracker(App);
+export default App;
