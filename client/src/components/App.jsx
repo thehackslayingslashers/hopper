@@ -50,7 +50,7 @@ class App extends React.Component {
       },
       () => {
         this.getInfoAboutCurrentItem(cb);
-      }
+      },
     );
   }
 
@@ -66,7 +66,7 @@ class App extends React.Component {
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
           },
-          this.calculateAverageCurrentItemRating
+          this.calculateAverageCurrentItemRating,
         );
         this.calculateAllReviews();
       })
@@ -142,4 +142,4 @@ class App extends React.Component {
   }
 }
 
-export default withClickTracker(App);
+export default App;
