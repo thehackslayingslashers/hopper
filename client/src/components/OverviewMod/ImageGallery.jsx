@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
@@ -17,11 +18,14 @@ class ImageGallery extends React.Component {
       fullScreen: false,
       fullfull: false,
       thumbnailIndex: 0,
+      tx: 0,
+      ty: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
     this.handleImageSelect = this.handleImageSelect.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
+    this.hoverFullFull = this.hoverFullFull.bind(this);
   }
 
   handleFullScreen() {
@@ -95,10 +99,34 @@ class ImageGallery extends React.Component {
     }
   }
 
+  hoverFullFull(e) {
+    const { fullfull } = this.state;
+    if (fullfull) {
+      const { offsetTop, offsetLeft } = e.target;
+
+      const imageHeight = e.target.height;
+      const imageWidth = e.target.width;
+
+      const mouseWidth = e.pageX;
+      const mouseHeight = e.pageY;
+
+      const relativeHeight = mouseHeight - offsetTop;
+      const relativeWidth = mouseWidth - offsetLeft;
+
+      const tx = 1.25 * (relativeWidth - imageWidth / 2);
+      const ty = 1.25 * (relativeHeight - imageHeight / 2);
+
+      this.setState({
+        tx: -tx,
+        ty: -ty,
+      });
+    }
+  }
+
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const {
-      fullScreen, selectedImageIndex, thumbnailIndex, fullfull,
+      fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty,
     } = this.state;
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
     let low = 0;
@@ -134,7 +162,11 @@ class ImageGallery extends React.Component {
           alt=""
           // eslint-disable-next-line no-nested-ternary
           className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
+          onMouseMove={this.hoverFullFull}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
+          style={fullfull ? {
+            transform: `translate(${tx}px, ${ty}px) scale(2.5)`,
+          } : null}
         />
         {fullfull ? null : <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />}
         {thumbnailIndex > 0 && !fullfull ? (

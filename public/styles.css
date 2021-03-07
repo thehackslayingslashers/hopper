@@ -96,13 +96,14 @@ Overview Module
 #overviewBigImage {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end: 11;
   z-index: 5;
   transition: width 200ms;
+  background-color: lightgray;
 }
 
 #overviewBigImage:hover {
@@ -121,12 +122,15 @@ Overview Module
 }
 
 #overviewBigImage.full.fullfull {
-  transform: scale(2.5);
-  transition: transform 200ms;
+  /* transform: scale(2.5); */
+  /* transition: transform 200ms; */
+  /* object-fit: none; */
 }
 
 #overviewBigImage.full.fullfull:hover {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text y="15">-</text></svg>'), auto;
+
+
 }
 
 .thumbnail {
