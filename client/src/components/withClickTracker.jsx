@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 
-const withClickTracker = (Component) => {
-  class temp extends React.Component {
+const withClickTracker = (WrappedComponent) => {
+  class WithClickTracker extends React.Component {
     constructor() {
       super();
       this.state = {};
@@ -12,11 +13,11 @@ const withClickTracker = (Component) => {
     }
 
     render() {
-      return <Component onClickAnywhere={this.onClickAnywhere} />;
+      return <WrappedComponent onClickAnywhere={this.onClickAnywhere} {...this.props} />;
     }
   }
 
-  return temp;
+  return WithClickTracker;
 };
 
 export default withClickTracker;
