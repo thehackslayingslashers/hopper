@@ -26,7 +26,7 @@ const ReviewsMod = ({
       className="LModButton"
       type="button"
       onClick={() => {
-        modalHandler([<AddReview submitHandler={submitHandler} />]);
+        modalHandler([<AddReview submitHandler={submitHandler} key="form" />]);
       }}
     >
       Add Review

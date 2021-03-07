@@ -16,6 +16,7 @@ class LMod extends React.Component {
     this.getAllReviews = this.getAllReviews.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.modalHandler = this.modalHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -52,6 +53,7 @@ class LMod extends React.Component {
 
   submitHandler() {
     console.log('it happened!!');
+    this.modalHandler();
   }
 
   render() {
