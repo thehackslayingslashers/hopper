@@ -39,7 +39,7 @@ class PostQuestion extends React.Component {
 
   handleSubmitPostQuestion(e) {
     e.preventDefault();
-    const currentItemId = this.props;
+    const { currentItemId } = this.props;
     const { postUsernameFieldValue, postEmailFieldValue, postQuestionFieldValue } = this.state;
     if (
       postUsernameFieldValue.length > 3 &&
@@ -57,7 +57,13 @@ class PostQuestion extends React.Component {
         url: '/qa/questions/',
         data: questionPostRequest,
       })
-        .then(() => {})
+        .then(() => {
+          debugger;
+          this.setState({
+            postQuestionContainerDisplay: { display: 'none' },
+            addAQuestionButtonDisplay: { display: 'flex' },
+          });
+        })
         .catch((error) => {
           throw error;
         });
@@ -75,7 +81,7 @@ class PostQuestion extends React.Component {
         >
           ADD A QUESTION +
         </button>
-        <div style={postQuestionContainerDisplay}>
+        <div className="post-question-fields-container" style={postQuestionContainerDisplay}>
           Post Question Body:
           <input
             className="post-question-field"
