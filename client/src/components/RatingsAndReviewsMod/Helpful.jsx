@@ -7,13 +7,14 @@ class Helpful extends React.Component {
     const { helpfulness } = this.props;
     this.state = {
       numberHelpful: helpfulness,
+      allowClick: true,
     };
     this.incrementHelpfulCount = this.incrementHelpfulCount.bind(this);
   }
 
   incrementHelpfulCount() {
     const { reviewId } = this.props;
-    const { numberHelpful } = this.state;
+    const { numberHelpful, allowClick } = this.state;
 
     const body = {
       id: reviewId,
@@ -23,21 +24,33 @@ class Helpful extends React.Component {
       .then(() => {
         this.setState({
           numberHelpful: numberHelpful + 1,
+          allowClick: !allowClick,
         });
       });
   }
 
   render() {
-    const { numberHelpful } = this.state;
+    const { numberHelpful, allowClick } = this.state;
 
     return (
-      <div
-        className="helpfulness"
-        onClick={this.incrementHelpfulCount}
-      >
-        Helpful? Yes (
-        {numberHelpful}
-        )
+      <div>
+        {allowClick && (
+        <div
+          className="helpfulness"
+          onClick={this.incrementHelpfulCount}
+        >
+          Helpful? Yes (
+          {numberHelpful}
+          )
+        </div>
+        )}
+        {(!allowClick) && (
+        <div>
+          Helpful? Yes (
+          {numberHelpful}
+          )
+        </div>
+        )}
       </div>
     );
   }

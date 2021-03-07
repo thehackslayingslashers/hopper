@@ -86,7 +86,7 @@ class App extends React.Component {
     });
   }
 
-  calculateAllReviews() {
+  calculateAllReviews(number) {
     const { currentItemRatingInfo } = this.state;
     let total = 0;
     const keys = Object.keys(currentItemRatingInfo.ratings);
@@ -95,7 +95,7 @@ class App extends React.Component {
     }
 
     this.setState({
-      numberOfReviews: total,
+      numberOfReviews: number,
     });
   }
 
@@ -134,6 +134,7 @@ class App extends React.Component {
           currentItemRatingInfo={currentItemRatingInfo}
           currentItemAverageRating={currentItemAverageRating}
           numberOfReviews={numberOfReviews}
+          itemName={currentItemInfo.name}
         />
       </div>
     );

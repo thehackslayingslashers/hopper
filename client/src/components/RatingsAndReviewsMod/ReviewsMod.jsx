@@ -1,28 +1,74 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry';
 import SortingHeader from './SortingHeader';
+import AddReview from './AddReview';
 
-const ReviewsMod = ({
-  reviews, sortedBy, selectHandler, modalHandler, numberOfReviews
-}) => (
-  <section className="reviewsList">
-    <h3>Reviews Module</h3>
-    <SortingHeader
-      reviewsLength={reviews.length}
-      sortedBy={sortedBy}
-      selectHandler={selectHandler}
-    />
-    {reviews.map((oneReview) => (
-      <ReviewEntry
-        review={oneReview}
-        key={oneReview.review_id}
-        modalHandler={modalHandler}
-      />
-    ))}
+class ReviewsMod extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showMore: false,
+    };
+    this.showMoreHandler = this.showMoreHandler.bind(this);
+  }
 
-    <button className="LModButton" type="button">More Reviews</button>
-    <button className="LModButton" type="button">Add Review</button>
-  </section>
-);
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({
+        showMore: false,
+      });
+    }
+  }
+
+  showMoreHandler() {
+    const { showMore } = this.state;
+    this.setState({
+      showMore: !showMore,
+    });
+  }
+
+  render() {
+    const {
+      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName,
+    } = this.props;
+    const { showMore } = this.state;
+
+    return (
+      <section className="reviewsList">
+        <h3>Reviews Module</h3>
+        <SortingHeader
+          reviewsLength={reviews.length}
+          sortedBy={sortedBy}
+          selectHandler={selectHandler}
+        />
+        <div className="reviewsContainer">
+          {reviews.map((oneReview, index) => {
+            if ((index >= 2) && !showMore) {
+              return;
+            }
+            return (
+              <ReviewEntry
+                review={oneReview}
+                key={oneReview.review_id}
+                modalHandler={modalHandler}
+              />
+            );
+          })}
+        </div>
+
+        {!showMore && (<button className="LModButton" type="button" onClick={this.showMoreHandler}>More Reviews</button>)}
+        <button
+          className="LModButton"
+          type="button"
+          onClick={() => {
+            modalHandler([<AddReview submitHandler={submitHandler} itemName={itemName} key="form" />]);
+          }}
+        >
+          Add Review
+        </button>
+      </section>
+    );
+  }
+}
 
 export default ReviewsMod;

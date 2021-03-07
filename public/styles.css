@@ -466,7 +466,13 @@ LModule
 }
 
 .reviewsList {
+  position: relative;
   width: 70%;
+  height: 600px;
+}
+.reviewsContainer {
+  max-height:100%;
+  overflow:auto;
 }
 
 .ratings {
@@ -633,8 +639,8 @@ hr {
   background-color: white;
   color: #aaa;
   width: 100px;
-  border: 1px solid gray;
-  margin: 20px auto 0px auto;
+  border: 1px;
+  margin: 20px auto;
   padding: 5px;
 }
 
@@ -644,6 +650,22 @@ hr {
   background-color: gray;
   text-decoration: none;
   cursor: pointer;
+}
+
+.helpfulness:hover {
+  cursor: pointer;
+  color: #7b00ff;
+}
+
+.addReview {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.question1, .question2 {
+  display: flex;
+  justify-content: left;
+  margin: 0px 25px;
 }
 
 /*
