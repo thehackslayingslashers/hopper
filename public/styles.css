@@ -28,17 +28,19 @@ Header
 */
 
 #pageHeader {
-  /* background-color: burlywood; */
 }
 
 #pageHeader h1 {
-  margin: 0;
-  height: 80px;
+  font-size: xxx-large;
+  /* float: left; */
+}
+
+#headerSearch {
+  float: right;
 }
 
 #announcement {
-  /* background-color: coral; */
-  height: 50px;
+  text-align: center;
 }
 
 /*
