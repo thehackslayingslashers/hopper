@@ -40,7 +40,6 @@ class QuestionView extends React.Component {
   }
 
   render() {
-    //sort questions by helpfulness
     const { currentProductQuestions, currentItemId } = this.props;
     const {
       questionsDisplayed,
