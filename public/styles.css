@@ -466,7 +466,13 @@ LModule
 }
 
 .reviewsList {
+  position: relative;
   width: 70%;
+  height: 600px;
+}
+.reviewsContainer {
+  max-height:100%;
+  overflow:auto;
 }
 
 .ratings {

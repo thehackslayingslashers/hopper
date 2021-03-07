@@ -6,6 +6,7 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       starWidth: 0,
+      starDescription: 'Please Rate',
       recommend: 'maybe',
     };
   }
@@ -15,8 +16,29 @@ class AddReview extends React.Component {
       newWidth = 100;
     }
     newWidth = Math.ceil(newWidth / 20);
+    let starDescription;
+    switch (newWidth) {
+      case 1:
+        starDescription = 'Poor';
+        break;
+      case 2:
+        starDescription = 'Fair';
+        break;
+      case 3:
+        starDescription = 'Average';
+        break;
+      case 4:
+        starDescription = 'Good';
+        break;
+      case 5:
+        starDescription = 'Great';
+        break;
+      default:
+        break;
+    }
     this.setState({
       starWidth: newWidth,
+      starDescription,
     });
   }
 
@@ -27,7 +49,7 @@ class AddReview extends React.Component {
   }
 
   render() {
-    const { starWidth, recommend } = this.state;
+    const { starWidth, starDescription, recommend } = this.state;
     const { submitHandler, itemName } = this.props;
     let yesStyle;
     let noStyle;
@@ -59,12 +81,15 @@ class AddReview extends React.Component {
           <pre>
             Overall Rating*
             <Stars rating={starWidth} />
+            {starDescription}
           </pre>
         </div>
-        <div className="question2"
-        onClick={(event) => {
-          this.recommendHandler(event.target.innerText);
-        }}>
+        <div
+          className="question2"
+          onClick={(event) => {
+            this.recommendHandler(event.target.innerText);
+          }}
+        >
           Do you recommend this product?* &nbsp;
           <button type="button" style={yesStyle}>yes</button>
           &emsp;
