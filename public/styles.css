@@ -633,8 +633,8 @@ hr {
   background-color: white;
   color: #aaa;
   width: 100px;
-  border: 1px solid gray;
-  margin: 20px auto 0px auto;
+  border: 1px;
+  margin: 20px auto;
   padding: 5px;
 }
 
@@ -653,6 +653,13 @@ hr {
 
 .addReview {
   background-color: white;
+  border-radius: 20px;
+}
+
+.question1 {
+  display: flex;
+  justify-content: left;
+  margin: 25px;
 }
 
 /*

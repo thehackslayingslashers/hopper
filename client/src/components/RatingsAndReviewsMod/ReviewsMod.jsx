@@ -4,7 +4,7 @@ import SortingHeader from './SortingHeader';
 import AddReview from './AddReview';
 
 const ReviewsMod = ({
-  reviews, sortedBy, selectHandler, modalHandler, numberOfReviews, submitHandler,
+  reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName,
 }) => (
   <section className="reviewsList">
     <h3>Reviews Module</h3>
@@ -26,7 +26,7 @@ const ReviewsMod = ({
       className="LModButton"
       type="button"
       onClick={() => {
-        modalHandler([<AddReview submitHandler={submitHandler} key="form" />]);
+        modalHandler([<AddReview submitHandler={submitHandler} itemName={itemName} key="form" />]);
       }}
     >
       Add Review
