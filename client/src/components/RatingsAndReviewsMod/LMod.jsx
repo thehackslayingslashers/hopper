@@ -82,6 +82,7 @@ class LMod extends React.Component {
             modalHandler={this.modalHandler}
             submitHandler={this.submitHandler}
             itemName={itemName}
+            characteristics={currentItemRatingInfo.characteristics}
           />
           {showModal && (
           <Modal

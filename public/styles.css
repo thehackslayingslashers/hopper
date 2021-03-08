@@ -697,12 +697,23 @@ hr {
   border-radius: 20px;
 }
 
+<<<<<<< HEAD
+.question1, .question2, .question3Option {
+=======
 .question1,
 .question2 {
+>>>>>>> 66a1e6453cc57ec71330de335438cd09245b391f
   display: flex;
   justify-content: left;
+  margin: 5px 25px;
+}
+.question3 pre {
+  text-align: left;
   margin: 0px 25px;
 }
+
+
+
 
 /*
 =====================

@@ -1,5 +1,4 @@
 import React from 'react';
-import AddReview from './AddReview';
 
 const Modal = (props) => {
   const { content, closeModal } = props;
