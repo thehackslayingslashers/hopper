@@ -41,6 +41,7 @@ class App extends React.Component {
     });
   }
 
+
   handleStyleSelection(e) {
     const { selectedStyleIndex } = this.state;
     const index = Number(e.target.attributes.index.nodeValue);
@@ -85,6 +86,21 @@ class App extends React.Component {
       .catch((error) => {
         throw error;
       });
+  }
+
+  searchId(e) {
+    const { searchValue } = this.state;
+    e.preventDefault();
+    if (searchValue >= 17067 && searchValue <= 18077) {
+      this.setState({
+        currentItemId: searchValue,
+        searchValue: '',
+      }, this.getInfoAboutCurrentItem);
+    } else {
+      this.setState({
+        searchValue: '',
+      });
+    }
   }
 
   calculateAverageCurrentItemRating() {
