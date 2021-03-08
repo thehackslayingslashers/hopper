@@ -3,7 +3,6 @@
 import React from 'react';
 import axios from 'axios';
 import helpers from './helpers';
-import withClickTracker from './withClickTracker';
 import Header from './Header';
 import OverviewMod from './OverviewMod/OverviewMod';
 import RelatedItemsAndComparison from './RelatedItemsAndComparison/RelatedItemsAndComparison';
@@ -14,7 +13,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      currentItemId: 17067,
+      currentItemId: 17072,
       currentItemInfo: {},
       currentItemRatingInfo: {},
       currentItemAverageRating: 0,
@@ -50,7 +49,7 @@ class App extends React.Component {
       },
       () => {
         this.getInfoAboutCurrentItem(cb);
-      }
+      },
     );
   }
 
@@ -66,7 +65,7 @@ class App extends React.Component {
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
           },
-          this.calculateAverageCurrentItemRating
+          this.calculateAverageCurrentItemRating,
         );
         this.calculateAllReviews();
       })
@@ -87,7 +86,7 @@ class App extends React.Component {
     });
   }
 
-  calculateAllReviews() {
+  calculateAllReviews(number) {
     const { currentItemRatingInfo } = this.state;
     let total = 0;
     const keys = Object.keys(currentItemRatingInfo.ratings);
@@ -96,12 +95,11 @@ class App extends React.Component {
     }
 
     this.setState({
-      numberOfReviews: total,
+      numberOfReviews: number,
     });
   }
 
   render() {
-    const { onClickAnywhere } = this.props;
     const {
       currentItemId,
       currentItemInfo,
@@ -112,7 +110,7 @@ class App extends React.Component {
       numberOfReviews,
     } = this.state;
     return (
-      <div onClick={onClickAnywhere}>
+      <div>
         <Header />
         <OverviewMod
           currentItemInfo={currentItemInfo}
@@ -136,10 +134,11 @@ class App extends React.Component {
           currentItemRatingInfo={currentItemRatingInfo}
           currentItemAverageRating={currentItemAverageRating}
           numberOfReviews={numberOfReviews}
+          itemName={currentItemInfo.name}
         />
       </div>
     );
   }
 }
 
-export default withClickTracker(App);
+export default App;

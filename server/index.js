@@ -227,6 +227,16 @@ app.get('/products/:product_id/related', (req, res) => {
     });
 });
 
+app.post('/interactions', (req, res) => {
+  outbound.postInteractions(req.body)
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((error) => {
+      res.status(501).send(error);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Server is live and happenin on port ${port}`);
 });

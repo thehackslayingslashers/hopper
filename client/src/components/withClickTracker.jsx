@@ -1,22 +1,34 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import axios from 'axios';
 
-const withClickTracker = (Component) => {
-  class temp extends React.Component {
+const withClickTracker = (WrappedComponent) => {
+  class WithClickTracker extends React.Component {
     constructor() {
       super();
       this.state = {};
     }
 
     onClickAnywhere(e) {
-      console.log('Your FBI agent says hi!');
+      const data = {
+        widget: WrappedComponent.name,
+        time: new Date(),
+        element: e.target.nodeName,
+      };
+      axios({
+        url: '/interactions',
+        method: 'post',
+        data,
+      });
     }
 
     render() {
-      return <Component onClickAnywhere={this.onClickAnywhere} />;
+      return <WrappedComponent onClickAnywhere={this.onClickAnywhere} {...this.props} />;
     }
   }
 
-  return temp;
+  return WithClickTracker;
 };
 
 export default withClickTracker;
