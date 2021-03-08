@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import AnswerPhotos from './AnswerPhotos.jsx';
 
 const Answer = ({ answerId, answers }) => {
   var parsedAnswerId = parseInt(answerId);
@@ -46,6 +47,7 @@ const Answer = ({ answerId, answers }) => {
         <div id="user-info-and-date">
           by {currentAnswer.answerer_name}, {formattedDate}
         </div>
+        <AnswerPhotos currentAnswerPhotos={currentAnswer.photos} />
       </div>
     </div>
   );
