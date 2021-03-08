@@ -9,6 +9,7 @@ class PostAnswer extends React.Component {
       postAnswerFieldValue: '',
       postEmailFieldValue: '',
       postUsernameFieldValue: '',
+      postPhotosArray: [],
       postAnswerErrorDisplay: { display: 'none' },
       postAnswerFieldDisplay: { display: 'none' },
     };
@@ -43,6 +44,7 @@ class PostAnswer extends React.Component {
         name: postUsernameFieldValue,
         email: postEmailFieldValue,
         question_id: currentQuestionId,
+        photos: [],
       };
       axios({
         method: 'post',
@@ -72,6 +74,12 @@ class PostAnswer extends React.Component {
           Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
           Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
           Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
+          Photos:
+          <div className="post-photos-field">
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
+          </div>
           <button onClick={this.handleSubmitPostAnswer}>Post Answer</button>
         </div>
         <div className="post-answer-error" style={postAnswerErrorDisplay}>

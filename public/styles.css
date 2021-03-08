@@ -844,6 +844,17 @@ QuestionsModule
 .post-answer-error {
   background-color: lightcoral;
 }
+
+.post-photos-field {
+}
+
+.answerer-photos {
+  padding-top: 10px;
+}
+
+.answer-photo {
+  height: 200px;
+}
 /*
 =====================
 Related Items Module
