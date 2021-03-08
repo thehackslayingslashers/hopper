@@ -1,6 +1,6 @@
 import React from 'react';
 
-const sizeSelector = ({ skus, selectSize }) => {
+const sizeSelector = ({ skus, selectSize, forceDropDown }) => {
   const skuKeys = Object.keys(skus);
 
   let index = 0;
@@ -16,7 +16,12 @@ const sizeSelector = ({ skus, selectSize }) => {
     return null;
   });
   return sizesSelector.length > 1 ? (
-    <select id="overviewSizeSelector" onChange={selectSize}>
+    <select
+      id="overviewSizeSelector"
+      onChange={selectSize}
+      style={forceDropDown ? { height: '200px' } : null}
+      size={forceDropDown ? '10' : null}
+    >
       <option value={null}>SELECT SIZE</option>
       {sizesSelector}
     </select>
