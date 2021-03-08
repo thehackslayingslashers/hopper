@@ -306,7 +306,6 @@ Overview Module
   grid-row: 1;
   grid-column: 4;
   margin-top: 10%;
-  min-height: 10vh;
 }
 
 #overviewBasicInfo p {
@@ -383,9 +382,14 @@ Overview Module
 
 /* Add To Cart */
 
+#wronglyClickedContainer {
+  grid-row: 3;
+  grid-column: 4;
+  /* margin: auto; */
+  height: auto;
+}
+
 #overviewAddToCart {
-  /* height: 10vh;
-  min-height: 100px; */
   grid-row: 4;
   grid-column: 4;
   display: grid;

@@ -29,8 +29,7 @@ class StyleSelector extends React.Component {
             url = url.substr(1);
           }
 
-          let styles = { backgroundImage: `url(${url})` }
-
+          const styles = { backgroundImage: `url(${url})` };
 
           const button = (
             <button
@@ -42,7 +41,9 @@ class StyleSelector extends React.Component {
               // src={url}
               onClick={handleStyleSelection}
               onKeyDown={handleStyleSelection}
-            >{url ? null : 'No Image'}</button>
+            >
+              {url ? null : 'No Image'}
+            </button>
           );
           let selectedCheck = null;
           if (selectedStyleIndex === index) {

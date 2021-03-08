@@ -41,6 +41,7 @@ class App extends React.Component {
     });
   }
 
+
   handleStyleSelection(e) {
     const { selectedStyleIndex } = this.state;
     const index = Number(e.target.attributes.index.nodeValue);
@@ -94,11 +95,11 @@ class App extends React.Component {
       this.setState({
         currentItemId: searchValue,
         searchValue: '',
-      }, this.getInfoAboutCurrentItem)
+      }, this.getInfoAboutCurrentItem);
     } else {
       this.setState({
         searchValue: '',
-      })
+      });
     }
   }
 
