@@ -1,5 +1,6 @@
 import React from 'react';
 import Stars from '../Stars';
+import Characteristics from './Characteristics';
 
 class AddReview extends React.Component {
   constructor(props) {
@@ -16,29 +17,16 @@ class AddReview extends React.Component {
       newWidth = 100;
     }
     newWidth = Math.ceil(newWidth / 20);
-    let starDescription;
-    switch (newWidth) {
-      case 1:
-        starDescription = 'Poor';
-        break;
-      case 2:
-        starDescription = 'Fair';
-        break;
-      case 3:
-        starDescription = 'Average';
-        break;
-      case 4:
-        starDescription = 'Good';
-        break;
-      case 5:
-        starDescription = 'Great';
-        break;
-      default:
-        break;
-    }
+    const starWidthDescription = {
+      1: 'Poor',
+      2: 'Fair',
+      3: 'Average',
+      4: 'Good',
+      5: 'Great',
+    };
     this.setState({
       starWidth: newWidth,
-      starDescription,
+      starDescription: starWidthDescription[newWidth],
     });
   }
 
@@ -46,6 +34,23 @@ class AddReview extends React.Component {
     this.setState({
       recommend: choice,
     });
+  }
+
+  characteristicsHandler() {
+    const { characteristics } = this.props;
+    const characteristicsRatingsDescription = {
+      Size: ['A size too small', '½ a size too small', 'Perfect', '½ a size too big', 'A size too wide'],
+      Width: ['Too narrow', 'Slightly narrow', 'Perfect', 'Slighty Wide', 'Too Wide'],
+      Comfort: ['Uncomfortable', 'Slightly uncomfortable', 'Ok', 'Comfortable', 'Perfect'],
+      Quality: ['Poor', 'Below average', 'Waht I expected', 'Pretty great', 'Perfect'],
+      Length: ['Runs short', 'Runs slightly short', 'Perfect', 'Runs slightly long', 'Runs long'],
+      Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long'],
+    };
+    const characteristicsArr = [];
+    for (const keys in characteristics) {
+      characteristicsArr.push(<Characteristics characteristic={keys} description={characteristicsRatingsDescription[keys]} key={keys} />);
+    }
+    return characteristicsArr;
   }
 
   render() {
@@ -78,8 +83,8 @@ class AddReview extends React.Component {
           }}
 
         >
-          <pre>
-            Overall Rating*
+          <pre style={{'margin': '0px'}}>
+            <strong style={{'fontSize': '20px'}}>Overall Rating*</strong>
             <Stars rating={starWidth} />
             {starDescription}
           </pre>
@@ -90,12 +95,18 @@ class AddReview extends React.Component {
             this.recommendHandler(event.target.innerText);
           }}
         >
-          Do you recommend this product?* &nbsp;
+           <strong style={{'fontSize': '20px'}}>Do you recommend this product?* &nbsp;</strong>
           <button type="button" style={yesStyle}>yes</button>
           &emsp;
           <button type="button" style={noStyle}>no</button>
         </div>
-        <div className="modalButton" onClick={submitHandler}>submit</div>
+        <div className="question3">
+          <pre>
+            <strong style={{'fontSize': '20px'}}>Characteristics*</strong>
+            {this.characteristicsHandler()}
+          </pre>
+        </div>
+        <div className="modalButton" onClick={submitHandler} role="button">submit</div>
       </div>
     );
   }

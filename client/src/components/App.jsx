@@ -109,7 +109,6 @@ class App extends React.Component {
       selectedStyleIndex,
       numberOfReviews,
     } = this.state;
-    console.log(currentItemId);
     return (
       <div>
         <Header />
