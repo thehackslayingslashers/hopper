@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import withClickTracker from '../withClickTracker';
 import AddToCart from './AddToCart';
 import ImageGallery from './ImageGallery';
 import ProductInformation from './ProductInformation';
@@ -13,6 +16,7 @@ class OverviewMod extends React.Component {
   }
 
   render() {
+    const { onClickAnywhere } = this.props;
     const {
       currentItemInfo,
       currentItemRatingInfo,
@@ -24,8 +28,8 @@ class OverviewMod extends React.Component {
     } = this.props;
 
     return (
-      <div id="overview">
-        {currentItemStyles[selectedStyleIndex] ? (
+      <div id="overview" onClick={onClickAnywhere}>
+        {currentItemStyles && currentItemStyles[selectedStyleIndex] ? (
           <ImageGallery
             currentItemStyles={currentItemStyles}
             selectedStyleIndex={selectedStyleIndex}
@@ -45,7 +49,7 @@ class OverviewMod extends React.Component {
           selectedStyleIndex={selectedStyleIndex}
           handleStyleSelection={handleStyleSelection}
         />
-        {currentItemStyles[selectedStyleIndex] ? (
+        {currentItemStyles && currentItemStyles[selectedStyleIndex] ? (
           <AddToCart
             currentItemStyles={currentItemStyles}
             key={`${currentItemStyles[selectedStyleIndex].style_id}1`}
@@ -59,4 +63,4 @@ class OverviewMod extends React.Component {
   }
 }
 
-export default OverviewMod;
+export default withClickTracker(OverviewMod);

@@ -28,17 +28,19 @@ Header
 */
 
 #pageHeader {
-  /* background-color: burlywood; */
 }
 
 #pageHeader h1 {
-  margin: 0;
-  height: 80px;
+  font-size: xxx-large;
+  /* float: left; */
+}
+
+#headerSearch {
+  float: right;
 }
 
 #announcement {
-  /* background-color: coral; */
-  height: 50px;
+  text-align: center;
 }
 
 /*
@@ -65,14 +67,19 @@ Overview Module
   min-height: 57vh;
   display: grid;
   grid-template-rows: 7% repeat(7, 1fr) 7%;
-  grid-template-columns: 7% 10% 10% auto 7%;
+  grid-template-columns: 45px 10% 10% auto 45px;
   height: 1em;
   min-height: 650px;
 }
 
 #overviewImageGallery.full {
-  grid-column-start: 1;
+  grid-column-end: 3;
+  overflow: inherit;
+}
+
+#overviewImageGallery.full.fullfull {
   grid-column-end: 5;
+  overflow: hidden;
 }
 
 #overviewImageGallery.errorr {
@@ -91,13 +98,14 @@ Overview Module
 #overviewBigImage {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   grid-column-start: 1;
   grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end: 11;
   z-index: 5;
   transition: width 200ms;
+  background-color: rgb(240, 240, 240);
 }
 
 #overviewBigImage:hover {
@@ -106,10 +114,24 @@ Overview Module
 
 #overviewBigImage.full {
   width: 1200px;
+  transform: scale(1);
+  transition: transform 200ms;
+  transition: width 200ms;
 }
 
 #overviewBigImage.full:hover {
-  cursor: crosshair;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text y="15">+</text></svg>'),
+    crosshair;
+}
+
+#overviewBigImage.full.fullfull {
+  /* transform: scale(2.5); */
+  /* transition: transform 200ms; */
+  /* object-fit: none; */
+}
+
+#overviewBigImage.full.fullfull:hover {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text y="15">-</text></svg>'), auto;
 }
 
 .thumbnail {
@@ -154,6 +176,7 @@ Overview Module
   z-index: 6;
   transition: width 200ms;
   margin: auto auto auto 10px;
+  /* background-color: rgba(129, 129, 129, 0.5); */
 }
 
 .imageGalleryIcon:focus {
@@ -165,7 +188,7 @@ Overview Module
 }
 
 .imageGalleryIcon.chosen {
-  color: white;
+  color: rgb(139, 139, 139);
 }
 
 #fullScreenButton {
@@ -210,7 +233,7 @@ Overview Module
 
 #overviewArrowUp.full,
 #overviewArrowDown.full {
-  margin-left: 0;
+  margin-left: 0.2em;
 }
 
 #overviewArrowUp {
@@ -446,7 +469,13 @@ LModule
 }
 
 .reviewsList {
+  position: relative;
   width: 70%;
+  height: 600px;
+}
+.reviewsContainer {
+  max-height:100%;
+  overflow:auto;
 }
 
 .ratings {
@@ -613,8 +642,8 @@ hr {
   background-color: white;
   color: #aaa;
   width: 100px;
-  border: 1px solid gray;
-  margin: 20px auto 0px auto;
+  border: 1px;
+  margin: 20px auto;
   padding: 5px;
 }
 
@@ -624,6 +653,22 @@ hr {
   background-color: gray;
   text-decoration: none;
   cursor: pointer;
+}
+
+.helpfulness:hover {
+  cursor: pointer;
+  color: #7b00ff;
+}
+
+.addReview {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.question1, .question2 {
+  display: flex;
+  justify-content: left;
+  margin: 0px 25px;
 }
 
 /*
@@ -766,7 +811,15 @@ QuestionsModule
 }
 
 .post-question-container {
+  display: inline;
+}
+
+.post-question-fields-container {
   display: flex;
+  flex-wrap: nowrap;
+  font-size: 12pt;
+  padding: 2px;
+  border: 1px solid black;
 }
 
 .question-view-button-container {

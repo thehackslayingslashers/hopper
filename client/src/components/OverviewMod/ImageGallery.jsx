@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
@@ -15,17 +16,30 @@ class ImageGallery extends React.Component {
     this.state = {
       selectedImageIndex: 0,
       fullScreen: false,
+      fullfull: false,
       thumbnailIndex: 0,
+      tx: 0,
+      ty: 0,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
+    this.handleImageClick = this.handleImageClick.bind(this);
     this.handleImageSelect = this.handleImageSelect.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
+    this.hoverFullFull = this.hoverFullFull.bind(this);
   }
 
   handleFullScreen() {
     const { fullScreen } = this.state;
     this.setState({
       fullScreen: !fullScreen,
+    });
+  }
+
+  handleImageClick() {
+    const { fullScreen, fullfull } = this.state;
+    this.setState({
+      fullScreen: true,
+      fullfull: fullfull ? false : !!fullScreen,
     });
   }
 
@@ -85,9 +99,35 @@ class ImageGallery extends React.Component {
     }
   }
 
+  hoverFullFull(e) {
+    const { fullfull } = this.state;
+    if (fullfull) {
+      const { offsetTop, offsetLeft } = e.target;
+
+      const imageHeight = e.target.height;
+      const imageWidth = e.target.width;
+
+      const mouseWidth = e.pageX;
+      const mouseHeight = e.pageY;
+
+      const relativeHeight = mouseHeight - offsetTop;
+      const relativeWidth = mouseWidth - offsetLeft;
+
+      const tx = 1.25 * (relativeWidth - imageWidth / 2);
+      const ty = 1.25 * (relativeHeight - imageHeight / 2);
+
+      this.setState({
+        tx: -tx,
+        ty: -ty,
+      });
+    }
+  }
+
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
-    const { fullScreen, selectedImageIndex, thumbnailIndex } = this.state;
+    const {
+      fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty,
+    } = this.state;
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
     let low = 0;
     let index = thumbnailIndex;
@@ -111,16 +151,25 @@ class ImageGallery extends React.Component {
     });
 
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
-      <div id="overviewImageGallery">
+      <div
+        id="overviewImageGallery"
+        // eslint-disable-next-line no-nested-ternary
+        className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
+      >
         <img
-          onClick={fullScreen ? null : this.handleFullScreen}
+          onClick={this.handleImageClick}
           id="overviewBigImage"
           alt=""
-          className={fullScreen ? 'full' : null}
+          // eslint-disable-next-line no-nested-ternary
+          className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
+          onMouseMove={this.hoverFullFull}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
+          style={fullfull ? {
+            transform: `translate(${tx}px, ${ty}px) scale(2.5)`,
+          } : null}
         />
-        <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />
-        {thumbnailIndex > 0 ? (
+        {fullfull ? null : <BiFullscreen id="fullScreenButton" onClick={this.handleFullScreen} />}
+        {thumbnailIndex > 0 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -135,7 +184,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {thumbnailIndex + 7 < totalImages ? (
+        {thumbnailIndex + 7 < totalImages && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -150,7 +199,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {selectedImageIndex > 0 ? (
+        {selectedImageIndex > 0 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -165,7 +214,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {selectedImageIndex < totalImages - 1 ? (
+        {selectedImageIndex < totalImages - 1 && !fullfull ? (
           <button
             type="submit"
             onClick={this.handleArrowClick}
@@ -180,7 +229,7 @@ class ImageGallery extends React.Component {
             />
           </button>
         ) : null}
-        {thumbnails}
+        {fullfull ? null : thumbnails}
       </div>
     ) : (
       <div id="overviewImageGallery" className="errorr">
