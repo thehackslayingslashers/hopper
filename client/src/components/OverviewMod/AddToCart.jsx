@@ -44,13 +44,10 @@ class AddToCart extends React.Component {
           );
         });
     } else {
-      // let szslctr = document.getElementById('overviewSizeSelector');
-      // szslctr.setAttribute('size','10')
-      // szslctr.style.height = '200px'
       this.setState(
         {
           wronglyclicked: true,
-          forceDropDown: true
+          forceDropDown: true,
         },
         () => {
           setTimeout(this.revertAddToCart, 1000);
@@ -133,16 +130,21 @@ class AddToCart extends React.Component {
       }
 
       return (
-        <div id="overviewAddToCart">
-          <SizeSelector skus={skus} selectSize={this.selectSize} forceDropDown={forceDropDown} />
-          <QuantitySelector
-            skus={skus}
-            selectedSizeIndex={selectedSizeIndex}
-            selectQuantity={this.selectQuantity}
-            selectedQuantity={selectedQuantity}
-          />
-          {button}
-        </div>
+        <>
+          {/* <div id="wronglyClickedContainer">
+            {wronglyclicked ? <div id="wronglyClicked">Please Select Size</div> : null}
+          </div> */}
+          <div id="overviewAddToCart">
+            <SizeSelector skus={skus} selectSize={this.selectSize} forceDropDown={forceDropDown} />
+            <QuantitySelector
+              skus={skus}
+              selectedSizeIndex={selectedSizeIndex}
+              selectQuantity={this.selectQuantity}
+              selectedQuantity={selectedQuantity}
+            />
+            {button}
+          </div>
+        </>
       );
     }
     return <div id="overviewAddToCart">Loading</div>;

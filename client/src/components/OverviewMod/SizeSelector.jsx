@@ -19,7 +19,10 @@ const sizeSelector = ({ skus, selectSize, forceDropDown }) => {
     <select
       id="overviewSizeSelector"
       onChange={selectSize}
-      style={forceDropDown ? { height: '200px' } : null}
+      style={forceDropDown ? {
+        height: `${1.25 + 1.25 * sizesSelector.length}em`,
+        zIndex: 50,
+      } : null}
       size={forceDropDown ? '10' : null}
     >
       <option value={null}>SELECT SIZE</option>

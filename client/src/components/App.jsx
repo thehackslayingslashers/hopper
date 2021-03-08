@@ -86,21 +86,6 @@ class App extends React.Component {
       });
   }
 
-  searchId(e) {
-    const { searchValue } = this.state;
-    e.preventDefault();
-    if (searchValue >= 17067 && searchValue <= 18077) {
-      this.setState({
-        currentItemId: searchValue,
-        searchValue: '',
-      }, this.getInfoAboutCurrentItem)
-    } else {
-      this.setState({
-        searchValue: '',
-      })
-    }
-  }
-
   calculateAverageCurrentItemRating() {
     const { currentItemRatingInfo } = this.state;
     helpers.calculateAverageRating(currentItemRatingInfo.ratings, (avg) => {
