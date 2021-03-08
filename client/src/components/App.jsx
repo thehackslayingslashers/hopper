@@ -20,7 +20,10 @@ class App extends React.Component {
       currentItemStyles: [],
       selectedStyleIndex: 0,
       numberOfReviews: 0,
+      searchValue: '',
     };
+    this.searchId = this.searchId.bind(this);
+    this.handleSearchIdChange = this.handleSearchIdChange.bind(this);
     this.getInfoAboutCurrentItem = this.getInfoAboutCurrentItem.bind(this);
     this.calculateAverageCurrentItemRating = this.calculateAverageCurrentItemRating.bind(this);
     this.handleStyleSelection = this.handleStyleSelection.bind(this);
@@ -30,6 +33,12 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getInfoAboutCurrentItem();
+  }
+
+  handleSearchIdChange(e) {
+    this.setState({
+      searchValue: e.target.value,
+    });
   }
 
   handleStyleSelection(e) {
@@ -64,6 +73,7 @@ class App extends React.Component {
             currentItemInfo: data.data[0],
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
+            selectedStyleIndex: 0,
           },
           this.calculateAverageCurrentItemRating,
         );
@@ -75,6 +85,21 @@ class App extends React.Component {
       .catch((error) => {
         throw error;
       });
+  }
+
+  searchId(e) {
+    const { searchValue } = this.state;
+    e.preventDefault();
+    if (searchValue >= 17067 && searchValue <= 18077) {
+      this.setState({
+        currentItemId: searchValue,
+        searchValue: '',
+      }, this.getInfoAboutCurrentItem)
+    } else {
+      this.setState({
+        searchValue: '',
+      })
+    }
   }
 
   calculateAverageCurrentItemRating() {
@@ -108,10 +133,15 @@ class App extends React.Component {
       currentItemStyles,
       selectedStyleIndex,
       numberOfReviews,
+      searchValue,
     } = this.state;
     return (
       <div>
-        <Header />
+        <Header
+          searchId={this.searchId}
+          searchValue={searchValue}
+          handleSearchIdChange={this.handleSearchIdChange}
+        />
         <OverviewMod
           currentItemInfo={currentItemInfo}
           currentItemRatingInfo={currentItemRatingInfo}

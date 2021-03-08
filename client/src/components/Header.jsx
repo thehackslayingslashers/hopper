@@ -1,10 +1,23 @@
 import React from 'react';
+import { BiSearchAlt2 } from 'react-icons/bi';
 
-const Header = () => (
+const Header = ({ searchValue, searchId, handleSearchIdChange }) => (
   <>
     <div id="pageHeader">
       <h1>LOGO</h1>
-      {/* <span id="headerSearch">Search______</span> */}
+      <form
+        onSubmit={searchId}
+        id="headerSearch"
+      >
+        <input
+          type="text"
+          onChange={handleSearchIdChange}
+          value={searchValue}
+        />
+        <BiSearchAlt2
+          onClick={searchId}
+        />
+      </form>
     </div>
     <div>
       <h4 id="announcement">
