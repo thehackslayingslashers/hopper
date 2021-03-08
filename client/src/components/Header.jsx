@@ -5,8 +5,7 @@ const Header = ({ searchValue, searchId, handleSearchIdChange }) => (
   <>
     <div id="pageHeader">
       <h1>LOGO</h1>
-      {/* <img
-        src="public/HOPR.png"></img> */}
+      {/* <img src="../public/HOPR.png"></img> */}
       <form
         onSubmit={searchId}
         id="headerSearch"
