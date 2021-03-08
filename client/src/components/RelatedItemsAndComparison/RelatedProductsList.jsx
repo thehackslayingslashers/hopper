@@ -53,8 +53,8 @@ class RelatedProductsList extends React.Component {
           </ProductComparisonModal>
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
+              <button className="carousel-left-button">L</button>
             <div className="carousel-slider">
-              <button>L</button>
               {
                 relatedProducts.map((relatedProduct) => (
                   <RelatedProductCard
@@ -66,8 +66,8 @@ class RelatedProductsList extends React.Component {
                   />
                 ))
               }
-              <button>R</button>
             </div>
+              <button className="carousel-right-button">R</button>
           </div>
         </div>
       );
@@ -76,13 +76,13 @@ class RelatedProductsList extends React.Component {
       <div>
         <h2>Related Products</h2>
         <div className="carousel-wrapper">
-            <button>L</button>
+            <button className="carousel-left-button">L</button>
           <div className="carousel-slider">
             <RelatedProductCard />
             <RelatedProductCard />
             <RelatedProductCard />
           </div>
-            <button>R</button>
+            <button className="carousel-right-button">R</button>
         </div>
       </div>
     );

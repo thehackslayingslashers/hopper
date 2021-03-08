@@ -74,8 +74,8 @@ class OutfitList extends React.Component {
       <div>
         <h2>Your Outfit</h2>
         <div className="carousel-wrapper">
+          <button className="carousel-left-button">L</button>
           <div className="carousel-slider">
-          <button>L</button>
             <AddOutfitCard
               handleAddClick={this.handleAddClick}
             />
@@ -89,8 +89,8 @@ class OutfitList extends React.Component {
                 />
               ))
             }
-            <button>R</button>
           </div>
+            <button className="carousel-right-button">R</button>
         </div>
       </div>
     );
