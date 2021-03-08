@@ -52,8 +52,8 @@ class RelatedProductsList extends React.Component {
             </div>
           </ProductComparisonModal>
           <h2>Related Products</h2>
-          <div className="productlistoutercontainer">
-            <div className="productlistcontainer">
+          <div className="carousel-wrapper">
+            <div className="carousel-slider">
               <button>L</button>
               {
                 relatedProducts.map((relatedProduct) => (
@@ -75,14 +75,14 @@ class RelatedProductsList extends React.Component {
     return (
       <div>
         <h2>Related Products</h2>
-        <div className="productlistoutercontainer">
-          <div className="productlistcontainer">
+        <div className="carousel-wrapper">
             <button>L</button>
+          <div className="carousel-slider">
             <RelatedProductCard />
             <RelatedProductCard />
             <RelatedProductCard />
-            <button>R</button>
           </div>
+            <button>R</button>
         </div>
       </div>
     );

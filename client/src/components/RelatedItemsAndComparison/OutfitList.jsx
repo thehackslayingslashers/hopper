@@ -73,9 +73,9 @@ class OutfitList extends React.Component {
     return (
       <div>
         <h2>Your Outfit</h2>
-        <div className="productlistoutercontainer">
-          <div className="productlistcontainer">
-            <button>L</button>
+        <div className="carousel-wrapper">
+          <div className="carousel-slider">
+          <button>L</button>
             <AddOutfitCard
               handleAddClick={this.handleAddClick}
             />

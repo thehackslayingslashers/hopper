@@ -822,31 +822,55 @@ QuestionsModule
 Related Items Module
 =====================
 */
+.carousel-wrapper {
+  /* height: 100vh; */
+  width: 100%;
+  /* display: flex;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: 10% 1fr 3.33%;
+  /* align-items: center; */
 
-.productlistoutercontainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: grey;
-  padding-bottom: 10px;
-  padding-top: 5px;
-  border-width: 1px;
-  border: red;
+  /* grid-template-rows: auto auto auto auto auto 60px auto auto 60px; */
+  font-size: large;
 }
 
-.productlistcontainer {
+.carousel-slider {
+  /* grid-row-start: 1;
+  grid-row-end: 6; */
+  grid-column-start: 2;
+  grid-column-end: 3;
+  width: 100%;
+  height: 21em;
+  padding: 20px;
+  margin: auto;
   display: flex;
+  justify-content: space-between;
   justify-content: flex-start;
   align-items: center;
-  background-color: aquamarine;
+  position: relative;
+  /* background: pink; */
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
+.carousel-slide {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+/* .slide img {
+  height: 70px;
+  padding: 0 30px 0 30px;
+} */
 
 .card {
-  width: 22vh;
-  height: 33vh;
+  width: 300px;
+  min-width: 300px;
+  height: 350px;
+  min-height: 350px;
   position: relative;
   background: white;
-  margin: 1.5vh;
+  margin: 10px;
   overflow: auto;
   word-wrap: break-word;
   contain: strict;
@@ -874,12 +898,14 @@ Related Items Module
 }
 
 .productcard {
+  /* width: 300px;
+  height: 350px; */
   /* line-height: 12px; */
   /* padding-left: 10px; */
 }
 
 .cardimage {
-  height: 58%;
+  height: 66%;
   width: 100%;
   background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
   overflow: hidden;
@@ -887,7 +913,8 @@ Related Items Module
   border-radius: 10px;
 }
 .cardinfo {
-  padding: 10px;
+  font-size: 16px;
+  padding: 12px;
 }
 
 .addtooutfit {
@@ -946,12 +973,13 @@ th {
 
 .circle {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   background-color: rgb(44, 108, 128);
   position: relative;
   margin: auto;
 }
+
 .circle::after {
   content: ' ';
   position: absolute;
@@ -964,6 +992,7 @@ th {
   right: 5px;
   z-index: 9;
 }
+
 .circle::before {
   content: ' ';
   position: absolute;
