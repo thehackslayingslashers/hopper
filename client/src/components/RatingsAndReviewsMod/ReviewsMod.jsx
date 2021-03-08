@@ -29,7 +29,7 @@ class ReviewsMod extends React.Component {
 
   render() {
     const {
-      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName,
+      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics
     } = this.props;
     const { showMore } = this.state;
 
@@ -61,7 +61,7 @@ class ReviewsMod extends React.Component {
           className="LModButton"
           type="button"
           onClick={() => {
-            modalHandler([<AddReview submitHandler={submitHandler} itemName={itemName} key="form" />]);
+            modalHandler([<AddReview submitHandler={submitHandler} itemName={itemName} characteristics={characteristics} key="form" />]);
           }}
         >
           Add Review
