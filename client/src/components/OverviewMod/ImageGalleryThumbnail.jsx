@@ -33,7 +33,7 @@ const ImageGalleryThumbnail = ({
       className={chosen ? 'thumbnail chosen' : 'thumbnail'}
       id={trueIndex}
       alt="thumbnail"
-      src={image.thumbnail_url}
+      src={image.thumbnail_url[0] === 'h' ? image.thumbnail_url : image.thumbnail_url.substr(1)}
       style={{ gridRow: index + 1 }}
     />
 ));

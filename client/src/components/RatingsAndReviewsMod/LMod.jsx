@@ -16,6 +16,7 @@ class LMod extends React.Component {
     this.getAllReviews = this.getAllReviews.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.modalHandler = this.modalHandler.bind(this);
+    this.submitHandler = this.submitHandler.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -50,8 +51,18 @@ class LMod extends React.Component {
     });
   }
 
+  submitHandler() {
+    console.log('it happened!!');
+    this.modalHandler();
+  }
+
   render() {
-    const { currentItemRatingInfo, currentItemAverageRating, numberOfReviews } = this.props;
+    const {
+      currentItemRatingInfo,
+      currentItemAverageRating,
+      itemName,
+    } = this.props;
+
     const {
       sortedBy, allReviews, showModal, modalContent,
     } = this.state;
@@ -69,7 +80,8 @@ class LMod extends React.Component {
             sortedBy={sortedBy}
             selectHandler={this.updateSortBy}
             modalHandler={this.modalHandler}
-            numberOfReviews={numberOfReviews}
+            submitHandler={this.submitHandler}
+            itemName={itemName}
           />
           {showModal && (
           <Modal

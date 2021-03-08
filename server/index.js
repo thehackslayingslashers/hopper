@@ -45,7 +45,8 @@ app.get('/product/:id', (req, res) => {
 app.post('/cart', (req, res) => {
   const { sku, quantity } = req.body.body;
 
-  outbound.postCart(sku, quantity)
+  outbound
+    .postCart(sku, quantity)
     .then(() => {
       res.status(201).send('created');
     })
@@ -68,7 +69,8 @@ app.post('/reviewsList/', (req, res) => {
 
 app.post('/helpful', (req, res) => {
   const { id } = req.body;
-  outbound.incrementHelpfulness(id)
+  outbound
+    .incrementHelpfulness(id)
     .then(() => {
       res.status(204).send();
     })
@@ -109,7 +111,9 @@ app.post('/qa/questions/:question_id/answers/', (req, res) => {
     body: req.body.body,
     name: req.body.name,
     email: req.body.email,
+    photos: req.body.photos,
   };
+  debugger;
   outbound
     .postAnswer(postAnswerObj, id)
     .then((response) => {
@@ -220,6 +224,16 @@ app.get('/products/:product_id/related', (req, res) => {
     })
     .catch((err) => {
       res.send(err);
+    });
+});
+
+app.post('/interactions', (req, res) => {
+  outbound.postInteractions(req.body)
+    .then((response) => {
+      res.status(201).send(response.data);
+    })
+    .catch((error) => {
+      res.status(501).send(error);
     });
 });
 
