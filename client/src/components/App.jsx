@@ -73,6 +73,7 @@ class App extends React.Component {
             currentItemInfo: data.data[0],
             currentItemRatingInfo: data.data[1],
             currentItemStyles: data.data[2].results,
+            selectedStyleIndex: 0,
           },
           this.calculateAverageCurrentItemRating,
         );
