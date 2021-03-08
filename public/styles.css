@@ -946,6 +946,7 @@ Related Items Module
   /* background: pink; */
   box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
   overflow: scroll;
+  /* overflow: hidden; */
   white-space: nowrap;
 }
 /* .carousel-slide {
@@ -1015,7 +1016,7 @@ Related Items Module
 }
 
 .cardimage {
-  height: 66%;
+  height: 60%;
   width: 100%;
   background: url(https://www.luvbat.com/uploads/happy_frog__9265232477.jpg);
   overflow: hidden;
