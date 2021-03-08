@@ -4,7 +4,7 @@ import { BiSearchAlt2 } from 'react-icons/bi';
 const Header = ({ searchValue, searchId, handleSearchIdChange }) => (
   <>
     <div id="pageHeader">
-      <h1>LOGO</h1>
+      <h1>HOPR</h1>
       {/* <img src="../public/HOPR.png"></img> */}
       <form
         onSubmit={searchId}
