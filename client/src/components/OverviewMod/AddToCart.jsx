@@ -11,6 +11,7 @@ class AddToCart extends React.Component {
       selectedQuantity: '',
       addedToCart: false,
       wronglyclicked: false,
+      forceDropDown: false,
     };
     this.selectSize = this.selectSize.bind(this);
     this.selectQuantity = this.selectQuantity.bind(this);
@@ -43,10 +44,13 @@ class AddToCart extends React.Component {
           );
         });
     } else {
-      // open select size drop down??????
+      // let szslctr = document.getElementById('overviewSizeSelector');
+      // szslctr.setAttribute('size','10')
+      // szslctr.style.height = '200px'
       this.setState(
         {
           wronglyclicked: true,
+          forceDropDown: true
         },
         () => {
           setTimeout(this.revertAddToCart, 1000);
@@ -63,16 +67,17 @@ class AddToCart extends React.Component {
   }
 
   selectSize(e) {
-    // const { selectedQuantity } = this.state;
     if (Number(e.currentTarget.value) >= 0) {
       this.setState({
         selectedSizeIndex: e.currentTarget.value,
         selectedQuantity: '1',
+        forceDropDown: false,
       });
     } else {
       this.setState({
         selectedSizeIndex: null,
         selectedQuantity: '',
+        forceDropDown: false,
       });
     }
   }
@@ -87,7 +92,7 @@ class AddToCart extends React.Component {
   render() {
     const { currentItemStyles, selectedStyleIndex } = this.props;
     const {
-      wronglyclicked, selectedSizeIndex, addedToCart, selectedQuantity,
+      wronglyclicked, selectedSizeIndex, addedToCart, selectedQuantity, forceDropDown,
     } = this.state;
 
     if (currentItemStyles[0]) {
@@ -129,7 +134,7 @@ class AddToCart extends React.Component {
 
       return (
         <div id="overviewAddToCart">
-          <SizeSelector skus={skus} selectSize={this.selectSize} />
+          <SizeSelector skus={skus} selectSize={this.selectSize} forceDropDown={forceDropDown} />
           <QuantitySelector
             skus={skus}
             selectedSizeIndex={selectedSizeIndex}

@@ -176,6 +176,7 @@ Overview Module
   z-index: 6;
   transition: width 200ms;
   margin: auto auto auto 10px;
+  /* background-color: rgba(129, 129, 129, 0.5); */
 }
 
 .imageGalleryIcon:focus {
@@ -187,7 +188,7 @@ Overview Module
 }
 
 .imageGalleryIcon.chosen {
-  color: white;
+  color: rgb(139, 139, 139);
 }
 
 #fullScreenButton {
