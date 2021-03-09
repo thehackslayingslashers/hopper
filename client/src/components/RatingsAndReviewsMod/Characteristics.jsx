@@ -19,10 +19,12 @@ class Characteristics extends React.Component {
   }
 
   chosenUpdater(number) {
+    const { characteristicUpdater, characteristic } = this.props;
     number = Number(number);
     this.setState({
       ratingChosen: number,
     });
+    characteristicUpdater(characteristic, number);
   }
 
   render() {
