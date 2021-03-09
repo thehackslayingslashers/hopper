@@ -51,7 +51,7 @@ class ImageGallery extends React.Component {
       selectedImageIndex: index,
       fadeIn: true,
     }, () => {
-      setTimeout(this.unFadeIn, 500);
+      setTimeout(this.unFadeIn, 1000);
     });
   }
 
@@ -106,7 +106,7 @@ class ImageGallery extends React.Component {
       default:
         break;
     }
-    setTimeout(this.unFadeIn, 500);
+    setTimeout(this.unFadeIn, 1000);
   }
 
   unFadeIn() {
