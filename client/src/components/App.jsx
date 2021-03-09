@@ -21,6 +21,7 @@ class App extends React.Component {
       selectedStyleIndex: 0,
       numberOfReviews: 0,
       searchValue: '',
+      darkMode: false,
     };
     this.searchId = this.searchId.bind(this);
     this.handleSearchIdChange = this.handleSearchIdChange.bind(this);
@@ -29,6 +30,7 @@ class App extends React.Component {
     this.handleStyleSelection = this.handleStyleSelection.bind(this);
     this.handleCardClickIdChange = this.handleCardClickIdChange.bind(this);
     this.calculateAllReviews = this.calculateAllReviews.bind(this);
+    this.handleDarkMode = this.handleDarkMode.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +63,13 @@ class App extends React.Component {
         this.getInfoAboutCurrentItem(cb);
       },
     );
+  }
+
+  handleDarkMode() {
+    const { darkMode }= this.state;
+    this.setState({
+      darkMode: !darkMode,
+    });
   }
 
   getInfoAboutCurrentItem(cb = () => {}) {
@@ -135,6 +144,7 @@ class App extends React.Component {
       selectedStyleIndex,
       numberOfReviews,
       searchValue,
+      darkMode,
     } = this.state;
     return (
       <div>
@@ -142,6 +152,8 @@ class App extends React.Component {
           searchId={this.searchId}
           searchValue={searchValue}
           handleSearchIdChange={this.handleSearchIdChange}
+          darkMode={darkMode}
+          handleDarkMode={this.handleDarkMode}
         />
         <OverviewMod
           currentItemInfo={currentItemInfo}

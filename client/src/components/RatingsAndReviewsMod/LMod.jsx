@@ -51,8 +51,8 @@ class LMod extends React.Component {
     });
   }
 
-  submitHandler() {
-    console.log('it happened!!');
+  submitHandler(obj) {
+    console.log(obj);
     this.modalHandler();
   }
 

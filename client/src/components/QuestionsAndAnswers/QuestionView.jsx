@@ -10,10 +10,13 @@ class QuestionView extends React.Component {
       questionsDisplayed: 4,
       showMoreQuestionsButtonDisplay: { display: 'flex' },
       showLessQuestionsButtonDisplay: { display: 'none' },
+      showPostQuestionModal: false,
+      addAQuestionButtonDisplay: true,
     };
 
     this.handleShowMoreQuestions = this.handleShowMoreQuestions.bind(this);
     this.handleShowLessQuestions = this.handleShowLessQuestions.bind(this);
+    this.handleAddAQuestionButtonClick = this.handleAddAQuestionButtonClick.bind(this);
   }
 
   handleShowMoreQuestions() {
@@ -39,12 +42,19 @@ class QuestionView extends React.Component {
     }
   }
 
+  handleAddAQuestionButtonClick() {
+    this.setState({
+      showPostQuestionModal: !this.state.showPostQuestionModal,
+    });
+  }
+
   render() {
     const { currentProductQuestions, currentItemId } = this.props;
     const {
       questionsDisplayed,
       showMoreQuestionsButtonDisplay,
       showLessQuestionsButtonDisplay,
+      showPostQuestionModal,
     } = this.state;
     const questionList = currentProductQuestions.slice(0, questionsDisplayed);
     return (
@@ -67,10 +77,18 @@ class QuestionView extends React.Component {
             onClick={this.handleShowLessQuestions}
             style={showLessQuestionsButtonDisplay}
           >
-            Show less questions
+            SHOW LESS QUESTIONS
           </button>
-          <PostQuestion currentItemId={currentItemId} />
+          <button className="add-a-question-button" onClick={this.handleAddAQuestionButtonClick}>
+            ADD A QUESTION +
+          </button>
         </div>
+        {showPostQuestionModal && (
+          <PostQuestion
+            currentItemId={currentItemId}
+            onHandleAddAQuestionButtonClick={this.handleAddAQuestionButtonClick}
+          />
+        )}
       </div>
     );
   }
