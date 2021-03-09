@@ -11,9 +11,14 @@ class AddReview extends React.Component {
       recommend: 'maybe',
       summary: '',
       body: '',
+      nickname: '',
+      email: '',
+      photos: [],
+      characteristicsObj: {},
     };
     this.updateSummary = this.updateSummary.bind(this);
     this.updateBody = this.updateBody.bind(this);
+    this.characteristicUpdater = this.characteristicUpdater.bind(this);
   }
 
   calculateStarWidth(newWidth) {
@@ -52,7 +57,7 @@ class AddReview extends React.Component {
     };
     const characteristicsArr = [];
     for (const keys in characteristics) {
-      characteristicsArr.push(<Characteristics characteristic={keys} description={characteristicsRatingsDescription[keys]} key={keys} />);
+      characteristicsArr.push(<Characteristics characteristic={keys} description={characteristicsRatingsDescription[keys]} key={keys} characteristicUpdater={this.characteristicUpdater} />);
     }
     return characteristicsArr;
   }
@@ -83,9 +88,45 @@ class AddReview extends React.Component {
     }
   }
 
+  updateNickname(event) {
+    let { nickname } = this.state;
+    if (event.nativeEvent.inputType === 'deleteContentBackward') {
+      this.setState({
+        nickname: nickname.slice(0, nickname.length - 1),
+      });
+    } else {
+      this.setState({
+        nickname: nickname += event.nativeEvent.data,
+      });
+    }
+  }
+
+  updateEmail(event) {
+    let { email } = this.state;
+    if (event.nativeEvent.inputType === 'deleteContentBackward') {
+      this.setState({
+        email: email.slice(0, email.length - 1),
+      });
+    } else {
+      this.setState({
+        email: email += event.nativeEvent.data,
+      });
+    }
+  }
+
+  characteristicUpdater(characteristic, number) {
+    const { characteristicsObj } = this.state;
+    let newObj = { ...characteristicsObj };
+    newObj[characteristic] = number;
+    this.setState({
+      characteristicsObj: newObj,
+    });
+    console.log(newObj);
+  }
+
   render() {
     const {
-      starWidth, starDescription, recommend, summary, body,
+      starWidth, starDescription, recommend, body,
     } = this.state;
     const { submitHandler, itemName } = this.props;
     let yesStyle;
@@ -153,16 +194,40 @@ class AddReview extends React.Component {
           Review Body: &nbsp;
           <input
             type="text"
-            placeholder="Ex. Best purchase ever!"
+            placeholder="Why did you like the product or not?"
             maxLength="1000"
             minLength="50"
             onChange={(event) => {
               this.updateBody(event);
             }}
           />
-          {(body.length < 50) && (`Minimum required characters left: ${50 - body.length}`)}
         </div>
-        <div className="modalButton" onClick={submitHandler} role="button">submit</div>
+        {(body.length < 50) && (`Minimum required characters left: ${50 - body.length}`)}
+        <div className="question4" style={{ fontSize: '20px' }}>
+          Your Nickname*: &nbsp;
+          <input
+            type="text"
+            placeholder="Ex. jackson11!"
+            maxLength="60"
+            onChange={(event) => {
+              this.updateNickname(event);
+            }}
+          />
+        </div>
+        For privacy reasons, do not use your full name or email address
+        <div className="question4" style={{ fontSize: '20px' }}>
+          Your Email*: &nbsp;
+          <input
+            type="text"
+            placeholder="Ex. jackson11@email.com"
+            maxLength="60"
+            onChange={(event) => {
+              this.updateEmail(event);
+            }}
+          />
+        </div>
+        For authentication reasons, you will not be emailed
+        <div className="modalButton" onClick={() => {submitHandler(this.state)}} role="button">submit</div>
       </div>
     );
   }
