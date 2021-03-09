@@ -36,6 +36,16 @@ const incrementHelpfulness = (id) => {
   return axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${id}/helpful`, {}, localOptions);
 };
 
+const addReview = (obj) => {
+  const localOptions = Object.create(options);
+  return axios({
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews',
+    method: 'post',
+    headers: localOptions.headers,
+    data: obj,
+  });
+};
+
 const fetchStyles = (id) => axios.get(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/${id}/styles`, options);
 
 const postCart = (sku, quantity) => {
@@ -140,6 +150,7 @@ module.exports = {
   postCart,
   allReviewFetch,
   incrementHelpfulness,
+  addReview,
   fetchQuestions,
   fetchRelatedArray,
   postQuestion,
