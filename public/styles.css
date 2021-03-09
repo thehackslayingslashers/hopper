@@ -3,6 +3,12 @@ body {
   margin: auto;
 }
 
+body.darkMode {
+  background-color: black;
+  /* filter: invert(1) */
+  color: white;
+}
+
 /*
 =====================
 General Use
