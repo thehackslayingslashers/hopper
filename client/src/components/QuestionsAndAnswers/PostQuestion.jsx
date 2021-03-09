@@ -46,7 +46,9 @@ class PostQuestion extends React.Component {
         url: '/qa/questions/',
         data: questionPostRequest,
       })
-        .then(() => {})
+        .then((response) => {
+          console.log(response);
+        })
         .catch((error) => {
           throw error;
         });
