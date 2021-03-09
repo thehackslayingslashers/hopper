@@ -847,9 +847,11 @@ QuestionsModule
 }
 
 .post-question-container {
-  display: absolute;
+  margin-left: 20%;
+  margin-top: 10%;
+  position: fixed;
   z-index: 1;
-  transform: translate(100%, -200%);
+  top: 0;
   background-color: blueviolet;
 
   text-align: center;
