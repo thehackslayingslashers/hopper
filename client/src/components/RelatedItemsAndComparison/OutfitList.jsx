@@ -9,12 +9,20 @@ class OutfitList extends React.Component {
     this.state = {
       outfitIds: [],
       outfits: [],
+      // track: '',
+      // slides: [],
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   componentDidMount() {
+
+    const track = document.querySelector('.carousel_slide');
+    const slides = Array.from(track.children);
+    console.log(track)
+    console.log(slides)
+
     const storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     const storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
     if (storedOutfits !== null) {
@@ -32,6 +40,7 @@ class OutfitList extends React.Component {
         outfits: storedOutfits,
       });
     }
+
   }
 
   handleAddClick() {
@@ -75,20 +84,22 @@ class OutfitList extends React.Component {
         <h2>Your Outfit</h2>
         <div className="carousel-wrapper">
           <button className="carousel-left-button">L</button>
-          <div className="carousel-slider">
-            <AddOutfitCard
-              handleAddClick={this.handleAddClick}
-            />
-            {
-              outfits.map((outfitItem) => (
-                <OutfitCard
-                  outfitItem={outfitItem}
-                  handleDeleteClick={this.handleDeleteClick}
-                  handleCardClick={handleCardClick}
-                  key={'outfit' + outfitItem.id}
-                />
-              ))
-            }
+          <div className="carousel-track">
+            <div className="carousel_slide">
+              <AddOutfitCard
+                handleAddClick={this.handleAddClick}
+              />
+              {
+                outfits.map((outfitItem) => (
+                  <OutfitCard
+                    outfitItem={outfitItem}
+                    handleDeleteClick={this.handleDeleteClick}
+                    handleCardClick={handleCardClick}
+                    key={'outfit' + outfitItem.id}
+                  />
+                ))
+              }
+            </div>
           </div>
             <button className="carousel-right-button">R</button>
         </div>

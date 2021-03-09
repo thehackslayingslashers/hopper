@@ -54,20 +54,22 @@ class RelatedProductsList extends React.Component {
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
               <button className="carousel-left-button">L</button>
-            <div className="carousel-slider">
-              {
-                relatedProducts.map((relatedProduct) => (
-                  <RelatedProductCard
-                    relatedProduct={relatedProduct}
-                    handleCardClick={handleCardClick}
-                    handleCompareClick={this.handleCompareClick}
-                    showModal={this.showModal}
-                    key={relatedProduct.id}
-                  />
-                ))
-              }
+            <div className="carousel-track">
+              <div className="carousel_slide">
+                {
+                  relatedProducts.map((relatedProduct) => (
+                    <RelatedProductCard
+                      relatedProduct={relatedProduct}
+                      handleCardClick={handleCardClick}
+                      handleCompareClick={this.handleCompareClick}
+                      showModal={this.showModal}
+                      key={relatedProduct.id}
+                    />
+                  ))
+                }
+              </div>
             </div>
-              <button className="carousel-right-button">R</button>
+            <button className="carousel-right-button">R</button>
           </div>
         </div>
       );
@@ -77,11 +79,13 @@ class RelatedProductsList extends React.Component {
         <h2>Related Products</h2>
         <div className="carousel-wrapper">
             <button className="carousel-left-button">L</button>
-          <div className="carousel-slider">
-            <RelatedProductCard />
-            <RelatedProductCard />
-            <RelatedProductCard />
-          </div>
+            <div className="carousel-track">
+              <div className="carousel_slide">
+                <RelatedProductCard />
+                <RelatedProductCard />
+                <RelatedProductCard />
+              </div>
+            </div>
             <button className="carousel-right-button">R</button>
         </div>
       </div>
