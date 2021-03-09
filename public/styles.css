@@ -529,7 +529,7 @@ article {
 
 hr {
   height: 1px;
-  background-color: rgb(0, 0, 0);
+  background-color: #0083a8;
 }
 
 .stars {
@@ -554,16 +554,12 @@ hr {
   left: 0;
   white-space: nowrap;
   overflow: hidden;
+  color: #0083a8;
   width: 0%;
 }
 
 .emptystars::before {
   content: '\f006 \f006 \f006 \f006 \f006';
-}
-
-.filledstars::before {
-  content: '\f005 \f005 \f005 \f005 \f005';
-  color: #f7d200;
 }
 
 .recommended {
@@ -589,9 +585,9 @@ hr {
 }
 
 .LModButton:hover {
-  background: #8a068f;
+  background: #0083a8;
   color: #fff;
-  border: 2px solid #8a068f;
+  border: 2px solid #0083a8;
 }
 
 .sortingList {
@@ -607,7 +603,7 @@ hr {
 
 .sortingList span {
   transition: all 1s;
-  color: #7b00ff;
+  color: #0083a8;
   position: relative;
 }
 
@@ -617,7 +613,7 @@ hr {
   height: 5px;
   width: 0;
   left: 0;
-  background-color: purple;
+  background-color: #006aa8;
   bottom: 0;
   transition: all 0.5s ease-out;
 }
@@ -628,7 +624,7 @@ hr {
 
 .sortingList span:hover {
   cursor: pointer;
-  color: purple;
+  color: #006aa8;
 }
 
 .currentSort {
@@ -638,7 +634,7 @@ hr {
 }
 
 .currentSort:hover {
-  color: #7b00ff;
+  color: #0083a8;
 }
 
 .modalImg {
@@ -688,14 +684,14 @@ hr {
 .modalButton:hover,
 .modalButton:focus {
   color: white;
-  background-color: gray;
+  background-color: #0083a8;
   text-decoration: none;
   cursor: pointer;
 }
 
 .helpfulness:hover {
   cursor: pointer;
-  color: #7b00ff;
+  color: #0083a8;
 }
 
 .addReview {
