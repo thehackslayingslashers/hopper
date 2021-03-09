@@ -700,18 +700,24 @@ hr {
   border-radius: 20px;
 }
 
-.question1, .question2, .question3Option {
+.question1,
+.question2,
+.question3Option,
+.question4 {
   display: flex;
   justify-content: left;
   margin: 5px 25px;
 }
+
 .question3 pre {
   text-align: left;
   margin: 0px 25px;
 }
 
-
-
+.question4 input {
+  border: 0px;
+  border-bottom: 2px solid black;
+}
 
 /*
 =====================
@@ -777,7 +783,6 @@ QuestionsModule
 #question-item-container {
   display: flex;
   flex-wrap: nowrap;
-  background-color: lightcyan;
   padding-left: 8px;
   padding-top: 20px;
   padding-bottom: 12px;
@@ -824,7 +829,6 @@ QuestionsModule
 }
 
 #answers-container {
-  background-color: seashell;
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
@@ -853,15 +857,45 @@ QuestionsModule
 }
 
 .post-question-container {
-  display: inline;
+  display: absolute;
+  z-index: 1;
+  transform: translate(100%, -200%);
+  background-color: blueviolet;
+
+  text-align: center;
+  padding: 20px;
+  height: 350px;
+  width: 350px;
+  border: 1px solid black;
+}
+
+.post-question-header {
+  text-align: center;
+  margin-bottom: 8px;
+  padding-top: 20px;
+}
+
+.close-post-question-container {
+  display: relative;
+  transform: translate(180px, -280px);
+  z-index: 1;
 }
 
 .post-question-fields-container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 12pt;
+  padding: 8px;
+}
+
+.post-question-field,
+.post-username-field,
+.post-email-field {
   display: flex;
   flex-wrap: nowrap;
-  font-size: 12pt;
-  padding: 2px;
-  border: 1px solid black;
+  padding: 10px;
+  margin-left: 20%;
 }
 
 .question-view-button-container {
