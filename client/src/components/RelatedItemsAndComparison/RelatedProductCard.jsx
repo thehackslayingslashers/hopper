@@ -31,7 +31,12 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
-    const { relatedProduct, handleCompareClick, handleCardClick } = this.props;
+    const {
+      relatedProduct,
+      handleCompareClick,
+      handleCardClick,
+      handleResetCarousel,
+    } = this.props;
     const { currentItemAverageRating } = this.state;
     if (relatedProduct) {
       let price = null;
@@ -73,9 +78,15 @@ class RelatedProductCard extends React.Component {
             style={
               { backgroundImage: `url(${relatedProduct.styles[0].photos[0].url})`}
             }
-            onClick={() => handleCardClick(relatedProduct.id)}
+            onClick={() => {
+              handleResetCarousel();
+              handleCardClick(relatedProduct.id);
+            }}
           />
-          <div className="cardinfo"  onClick={() => handleCardClick(relatedProduct.id)}>
+          <div className="cardinfo"  onClick={() => {
+              handleResetCarousel();
+              handleCardClick(relatedProduct.id);
+            }}>
             {relatedProduct.iteminfo.category.toUpperCase()}
             <p>{relatedProduct.iteminfo.name}</p>
             {price}

@@ -16,6 +16,7 @@ class OutfitList extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
+    this.handleResetCarousel = this.handleResetCarousel.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,17 @@ class OutfitList extends React.Component {
         outfits: storedOutfits,
       }, () => {
         console.log(this.state)
+      });
+    }
+  }
+
+  handleResetCarousel() {
+    const { slidePosition } = this.state;
+    if (slidePosition > 0) {
+      const track = document.querySelector('.outfit-slide');
+      track.style.transform = 'translateX(-' + 0 + 'px' + ')';
+      this.setState({
+        slidePosition: 0,
       });
     }
   }
@@ -107,7 +119,9 @@ class OutfitList extends React.Component {
     }
   }
 
-  render({ outfits } = this.state, { handleCardClick } = this.props) {
+  render() {
+    const { outfits } = this.state;
+    const { handleCardClick } = this.props;
     return (
       <div>
         <h2>Your Outfit</h2>
@@ -124,6 +138,7 @@ class OutfitList extends React.Component {
                     outfitItem={outfitItem}
                     handleDeleteClick={this.handleDeleteClick}
                     handleCardClick={handleCardClick}
+                    handleResetCarousel={this.handleResetCarousel}
                     key={'outfit' + outfitItem.id}
                   />
                 ))

@@ -29,7 +29,10 @@ class OutfitCard extends React.Component {
 
   render() {
     const {
-      outfitItem, handleDeleteClick, handleCardClick,
+      outfitItem,
+      handleDeleteClick,
+      handleCardClick,
+      handleResetCarousel,
     } = this.props;
     const { currentItemAverageRating } = this.state;
     if (outfitItem) {
@@ -66,9 +69,15 @@ class OutfitCard extends React.Component {
           <div
             className="cardimage"
             style={{ backgroundImage: `url(${outfitItem.styles[0].photos[0].url})`}}
-            onClick={() => handleCardClick(outfitItem.id)}
+            onClick={() => {
+              handleResetCarousel();
+              handleCardClick(outfitItem.id);
+            }}
           />
-          <div className="cardinfo" onClick={() => handleCardClick(outfitItem.id)}>
+          <div className="cardinfo" onClick={() => {
+              handleResetCarousel();
+              handleCardClick(outfitItem.id);
+            }}>
             {outfitItem.iteminfo.category.toUpperCase()}
             <p>{outfitItem.iteminfo.name}</p>
             {price}
