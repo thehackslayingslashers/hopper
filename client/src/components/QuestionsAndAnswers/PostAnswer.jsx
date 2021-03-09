@@ -12,9 +12,12 @@ class PostAnswer extends React.Component {
       photoInput1: '',
       photoInput2: '',
       photoInput3: '',
+      photoInput4: '',
+      photoInput5: '',
       postPhotosArray: [],
       postAnswerErrorDisplay: { display: 'none' },
-      postAnswerFieldDisplay: { display: 'none' },
+      postAnswerFieldDisplay: false,
+      photoUploadInputsDisplayed: 1,
     };
 
     this.handleSubmitPostAnswer = this.handleSubmitPostAnswer.bind(this);
@@ -24,6 +27,9 @@ class PostAnswer extends React.Component {
     this.handleGetPhotoInput1 = this.handleGetPhotoInput1.bind(this);
     this.handleGetPhotoInput2 = this.handleGetPhotoInput2.bind(this);
     this.handleGetPhotoInput3 = this.handleGetPhotoInput3.bind(this);
+    this.handleGetPhotoInput4 = this.handleGetPhotoInput4.bind(this);
+    this.handleGetPhotoInput5 = this.handleGetPhotoInput5.bind(this);
+    this.handleAddPhotoInput = this.handleAddPhotoInput.bind(this);
   }
   handleGetAnswerFieldValue(e) {
     this.setState({ postAnswerFieldValue: e.target.value });
@@ -42,6 +48,12 @@ class PostAnswer extends React.Component {
   }
   handleGetPhotoInput3(e) {
     this.setState({ photoInput3: e.target.value });
+  }
+  handleGetPhotoInput4(e) {
+    this.setState({ photoInput4: e.target.value });
+  }
+  handleGetPhotoInput5(e) {
+    this.setState({ photoInput5: e.target.value });
   }
 
   handleSubmitPostAnswer(e) {
@@ -71,6 +83,12 @@ class PostAnswer extends React.Component {
       if (photoInput3 !== '') {
         postPhotosArray.push(photoInput3);
       }
+      if (photoInput4 !== '') {
+        postPhotosArray.push(photoInput3);
+      }
+      if (photoInput5 !== '') {
+        postPhotosArray.push(photoInput3);
+      }
 
       let answerPostRequest = {
         body: postAnswerFieldValue,
@@ -98,15 +116,38 @@ class PostAnswer extends React.Component {
     }
   }
 
+  handleAddPhotoInput() {
+    const { photoUploadInputsDisplayed } = this.state;
+    if (photoUploadInputsDisplayed < 6) {
+      this.setState({ photoUploadInputsDisplayed: photoUploadInputsDisplayed + 1 });
+    }
+  }
   render() {
-    const { postAnswerFieldDisplay } = this.props;
-    const { postAnswerErrorDisplay } = this.state;
+    // const { postAnswerFieldDisplay } = this.props;
+    const { postAnswerErrorDisplay, photoUploadInputsDisplayed } = this.state;
     return (
       <div>
-        <div className="post-answer-container" style={postAnswerFieldDisplay}>
-          Post Answer Here: <input type="text" onChange={this.handleGetAnswerFieldValue} />
-          Username: <input type="text" onChange={this.handleGetUsernameFieldValue} />
-          Email: <input type="text" onChange={this.handleGetEmailFieldValue} />
+        <div className="post-answer-container">
+          <div className="post-answer-text-fields">
+            Post Answer Here:{' '}
+            <input
+              className="post-answer-body"
+              type="text"
+              onChange={this.handleGetAnswerFieldValue}
+            />
+            Username:{' '}
+            <input
+              className="post-answer-username"
+              type="text"
+              onChange={this.handleGetUsernameFieldValue}
+            />
+            Email:{' '}
+            <input
+              className="post-answer-email"
+              type="text"
+              onChange={this.handleGetEmailFieldValue}
+            />
+          </div>
           Photos:
           <div className="post-photos-field">
             <input
@@ -115,23 +156,56 @@ class PostAnswer extends React.Component {
               placeholder="photo-url-here!"
               onChange={this.handleGetPhotoInput1}
             />
-            <input
-              className="answer-photo-input"
-              type="text"
-              placeholder="photo-url-here!"
-              onChange={this.handleGetPhotoInput2}
-            />
-            <input
-              className="answer-photo-input"
-              type="text"
-              placeholder="photo-url-here!"
-              onChange={this.handleGetPhotoInput3}
-            />
+            {photoUploadInputsDisplayed > 1 && (
+              <input
+                className="answer-photo-input"
+                type="text"
+                placeholder="photo-url-here!"
+                onChange={this.handleGetPhotoInput2}
+              />
+            )}
+            {photoUploadInputsDisplayed > 2 && (
+              <input
+                className="answer-photo-input"
+                type="text"
+                placeholder="photo-url-here!"
+                onChange={this.handleGetPhotoInput3}
+              />
+            )}
+            {photoUploadInputsDisplayed > 3 && (
+              <input
+                className="answer-photo-input"
+                type="text"
+                placeholder="photo-url-here!"
+                onChange={this.handleGetPhotoInput4}
+              />
+            )}
+            {photoUploadInputsDisplayed > 4 && (
+              <input
+                className="answer-photo-input"
+                type="text"
+                placeholder="photo-url-here!"
+                onChange={this.handleGetPhotoInput5}
+              />
+            )}
           </div>
-          <button onClick={this.handleSubmitPostAnswer}>Post Answer</button>
-        </div>
-        <div className="post-answer-error" style={postAnswerErrorDisplay}>
-          Please fill out all fields
+          <button className="post-photo-button" onClick={this.handleAddPhotoInput}>
+            Upload another photo
+          </button>
+          <button className="post-answer-button" onClick={this.handleSubmitPostAnswer}>
+            Post Answer
+          </button>
+          <div
+            className="close-post-answer-container"
+            onClick={() => {
+              this.props.revertFieldDisplay();
+            }}
+          >
+            X
+          </div>
+          <div className="post-answer-error" style={postAnswerErrorDisplay}>
+            Please fill out all fields
+          </div>
         </div>
       </div>
     );
