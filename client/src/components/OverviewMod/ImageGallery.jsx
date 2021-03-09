@@ -20,7 +20,7 @@ class ImageGallery extends React.Component {
       thumbnailIndex: 0,
       tx: 0,
       ty: 0,
-      fadeIn: true,
+      fadeIn: false,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
@@ -110,6 +110,7 @@ class ImageGallery extends React.Component {
   }
 
   unFadeIn() {
+
     this.setState({
       fadeIn: false,
     });
@@ -165,7 +166,7 @@ class ImageGallery extends React.Component {
       }
       return null;
     });
-    setTimeout(this.unFadeIn, 500);
+
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
       <div
         id="overviewImageGallery"
