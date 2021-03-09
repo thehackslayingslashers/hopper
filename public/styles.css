@@ -860,14 +860,12 @@ QuestionsModule
 }
 
 .post-question-container {
-  margin-left: 20%;
   margin-top: 10%;
+  margin-left: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
   background-color: blueviolet;
-  /* background-color: rgba(0, 0, 0, 0.4); */
-  text-align: center;
   padding: 20px;
   height: 350px;
   width: 350px;
@@ -882,22 +880,22 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(180px, -280px);
+  transform: translate(340px, -350px);
   z-index: 1;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(300px, -290px);
+  transform: translate(400px, -290px);
   z-index: 1;
   width: 20px;
   height: 20px;
 }
 
 .post-question-fields-container {
-  text-align: center;
+  /* text-align: center;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   font-size: 12pt;
   padding: 8px;
 }
@@ -908,7 +906,6 @@ QuestionsModule
   display: flex;
   flex-wrap: nowrap;
   padding: 10px;
-  margin-left: 20%;
 }
 
 .question-view-button-container {
