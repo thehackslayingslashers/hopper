@@ -121,7 +121,6 @@ class AddReview extends React.Component {
     this.setState({
       characteristicsObj: newObj,
     });
-    console.log(newObj);
   }
 
   render() {
