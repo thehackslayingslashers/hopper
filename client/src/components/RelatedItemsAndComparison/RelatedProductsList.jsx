@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import RelatedProductCard from './RelatedProductCard';
 import ProductComparisonModal from './Modal/ProductComparisonModal';
 import ProductComparisonTable from './Modal/ProductComparisonTable';
@@ -53,9 +54,9 @@ class RelatedProductsList extends React.Component {
           </ProductComparisonModal>
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
-              <button className="carousel-left-button">L</button>
+              <p className="carousel-left-button"><BiLeftArrow /></p>
             <div className="carousel-track">
-              <div className="carousel_slide">
+              <div className="carousel-slide">
                 {
                   relatedProducts.map((relatedProduct) => (
                     <RelatedProductCard
@@ -69,7 +70,7 @@ class RelatedProductsList extends React.Component {
                 }
               </div>
             </div>
-            <button className="carousel-right-button">R</button>
+            <p className="carousel-right-button"><BiRightArrow /></p>
           </div>
         </div>
       );
@@ -78,15 +79,15 @@ class RelatedProductsList extends React.Component {
       <div>
         <h2>Related Products</h2>
         <div className="carousel-wrapper">
-            <button className="carousel-left-button">L</button>
+            <p className="carousel-left-button"><BiLeftArrow /></p>
             <div className="carousel-track">
-              <div className="carousel_slide">
+              <div className="carousel-slide">
                 <RelatedProductCard />
                 <RelatedProductCard />
                 <RelatedProductCard />
               </div>
             </div>
-            <button className="carousel-right-button">R</button>
+            <p className="carousel-right-button"><BiRightArrow /></p>
         </div>
       </div>
     );

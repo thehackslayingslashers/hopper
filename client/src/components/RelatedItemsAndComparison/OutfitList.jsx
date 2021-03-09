@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import OutfitCard from './OutfitCard';
 import AddOutfitCard from './AddOutfitCard';
 
@@ -9,20 +10,18 @@ class OutfitList extends React.Component {
     this.state = {
       outfitIds: [],
       outfits: [],
-      // track: '',
-      // slides: [],
+      track: '',
+      slides: [],
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   componentDidMount() {
-
-    const track = document.querySelector('.carousel_slide');
+    const track = document.querySelector('.carousel-slide');
     const slides = Array.from(track.children);
     console.log(track)
     console.log(slides)
-
     const storedOutfitIds = JSON.parse(window.localStorage.getItem('outfitIds'));
     const storedOutfits = JSON.parse(window.localStorage.getItem('outfits'));
     if (storedOutfits !== null) {
@@ -83,9 +82,9 @@ class OutfitList extends React.Component {
       <div>
         <h2>Your Outfit</h2>
         <div className="carousel-wrapper">
-          <button className="carousel-left-button">L</button>
+          <p className="carousel-left-button"><BiLeftArrow /></p>
           <div className="carousel-track">
-            <div className="carousel_slide">
+            <div className="carousel-slide">
               <AddOutfitCard
                 handleAddClick={this.handleAddClick}
               />
@@ -101,7 +100,7 @@ class OutfitList extends React.Component {
               }
             </div>
           </div>
-            <button className="carousel-right-button">R</button>
+            <p className="carousel-right-button"><BiRightArrow /></p>
         </div>
       </div>
     );
