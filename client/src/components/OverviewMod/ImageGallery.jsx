@@ -20,12 +20,14 @@ class ImageGallery extends React.Component {
       thumbnailIndex: 0,
       tx: 0,
       ty: 0,
+      fadeIn: true,
     };
     this.handleFullScreen = this.handleFullScreen.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
     this.handleImageSelect = this.handleImageSelect.bind(this);
     this.handleArrowClick = this.handleArrowClick.bind(this);
     this.hoverFullFull = this.hoverFullFull.bind(this);
+    this.unFadeIn = this.unFadeIn.bind(this);
   }
 
   handleFullScreen() {
@@ -47,6 +49,9 @@ class ImageGallery extends React.Component {
     const index = e.target.id;
     this.setState({
       selectedImageIndex: index,
+      fadeIn: true,
+    }, () => {
+      setTimeout(this.unFadeIn, 500);
     });
   }
 
@@ -63,6 +68,7 @@ class ImageGallery extends React.Component {
           this.setState({
             selectedImageIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 1 : 6,
             thumbnailIndex: thumbnailIndex - 7 >= 0 ? thumbnailIndex - 7 : 0,
+            fadeIn: true,
           });
         }
         break;
@@ -72,6 +78,7 @@ class ImageGallery extends React.Component {
           selectedImageIndex: thumbnailIndex + 14 >= totalImages
             ? totalImages - 7
             : thumbnailIndex + 7,
+          fadeIn: true,
         });
         break;
       case 'left':
@@ -81,6 +88,7 @@ class ImageGallery extends React.Component {
             thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 0
               ? thumbnailIndex - 1
               : thumbnailIndex,
+            fadeIn: true,
           });
         }
         break;
@@ -91,12 +99,20 @@ class ImageGallery extends React.Component {
             thumbnailIndex: Number(selectedImageIndex - thumbnailIndex) % 7 === 6
               ? thumbnailIndex + 1
               : thumbnailIndex,
+            fadeIn: true,
           });
         }
         break;
       default:
         break;
     }
+    setTimeout(this.unFadeIn, 500);
+  }
+
+  unFadeIn() {
+    this.setState({
+      fadeIn: false,
+    });
   }
 
   hoverFullFull(e) {
@@ -126,7 +142,7 @@ class ImageGallery extends React.Component {
   render() {
     const { selectedStyleIndex, currentItemStyles } = this.props;
     const {
-      fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty,
+      fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty, fadeIn,
     } = this.state;
     const totalImages = currentItemStyles[selectedStyleIndex].photos.length;
     let low = 0;
@@ -149,7 +165,7 @@ class ImageGallery extends React.Component {
       }
       return null;
     });
-
+    setTimeout(this.unFadeIn, 500);
     return currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url ? (
       <div
         id="overviewImageGallery"
@@ -161,7 +177,7 @@ class ImageGallery extends React.Component {
           id="overviewBigImage"
           alt=""
           // eslint-disable-next-line no-nested-ternary
-          className={fullScreen ? fullfull ? 'full fullfull' : 'full' : null}
+          className={fullScreen ? (fullfull ? 'full fullfull' : (fadeIn ? 'fade-in full' : 'full')) : (fadeIn ? 'fade-in' : null)}
           onMouseMove={this.hoverFullFull}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
           style={fullfull ? {
