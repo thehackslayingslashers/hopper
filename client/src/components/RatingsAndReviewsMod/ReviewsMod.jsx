@@ -29,7 +29,7 @@ class ReviewsMod extends React.Component {
 
   render() {
     const {
-      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics
+      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics,
     } = this.props;
     const { showMore } = this.state;
 

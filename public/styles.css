@@ -699,14 +699,21 @@ hr {
 
 .question1,
 .question2,
-.question3Option {
+.question3Option,
+.question4 {
   display: flex;
   justify-content: left;
   margin: 5px 25px;
 }
+
 .question3 pre {
   text-align: left;
   margin: 0px 25px;
+}
+
+.question4 input {
+  border: 0px;
+  border-bottom: 2px solid black;
 }
 
 /*
