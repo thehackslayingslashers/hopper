@@ -1,4 +1,5 @@
 import React from 'react';
+import PostQuestion from './PostQuestion.jsx';
 import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
 import axios from 'axios';
