@@ -8,7 +8,7 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { postAnswerFieldDisplay: { display: 'none' } };
+    this.state = { postAnswerFieldDisplay: false };
 
     this.handleQuestionUpvote = this.handleQuestionUpvote.bind(this);
     this.handleClickAddAnswer = this.handleClickAddAnswer.bind(this);
@@ -29,11 +29,11 @@ class Question extends React.Component {
 
   handleClickAddAnswer(e) {
     e.preventDefault();
-    this.setState({ postAnswerFieldDisplay: { display: 'flex' } });
+    this.setState({ postAnswerFieldDisplay: true });
   }
 
   revertFieldDisplay() {
-    this.setState({ postAnswerFieldDisplay: { display: 'none' } });
+    this.setState({ postAnswerFieldDisplay: false });
   }
 
   render() {
@@ -54,11 +54,13 @@ class Question extends React.Component {
           </div>
         </div>
         <AnswerList answers={question.answers} currentQuestion={question} />
-        <PostAnswer
-          currentQuestionId={question.question_id}
-          postAnswerFieldDisplay={postAnswerFieldDisplay}
-          revertFieldDisplay={this.revertFieldDisplay}
-        />
+        {postAnswerFieldDisplay && (
+          <PostAnswer
+            currentQuestionId={question.question_id}
+            postAnswerFieldDisplay={postAnswerFieldDisplay}
+            revertFieldDisplay={this.revertFieldDisplay}
+          />
+        )}
       </div>
     );
   }

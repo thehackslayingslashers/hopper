@@ -923,11 +923,13 @@ QuestionsModule
 }
 
 .post-question-container {
-  display: absolute;
+  margin-left: 20%;
+  margin-top: 10%;
+  position: fixed;
   z-index: 1;
-  transform: translate(100%, -200%);
+  top: 0;
   background-color: blueviolet;
-
+  /* background-color: rgba(0, 0, 0, 0.4); */
   text-align: center;
   padding: 20px;
   height: 350px;
@@ -945,6 +947,14 @@ QuestionsModule
   display: relative;
   transform: translate(180px, -280px);
   z-index: 1;
+}
+
+.close-post-answer-container {
+  display: relative;
+  transform: translate(300px, -290px);
+  z-index: 1;
+  width: 20px;
+  height: 20px;
 }
 
 .post-question-fields-container {
@@ -1013,7 +1023,50 @@ QuestionsModule
   background-color: lightcoral;
 }
 
-.post-photos-field {
+.post-answer-container {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  transform: translate(400px, 300px);
+  border: 2px solid white;
+  padding: 35px;
+  text-align: center;
+  width: 300px;
+  height: 350px;
+}
+
+.post-answer-body,
+.post-answer-username,
+.post-answer-email {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 20%;
+  padding: 10px, 10px;
+}
+
+.answer-photo-input {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.post-answer-button {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 34%;
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
+}
+
+.post-photo-button {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 25%;
+  margin-top: 10px;
+  text-align: center;
+  padding: 10px;
 }
 
 .answerer-photos {
