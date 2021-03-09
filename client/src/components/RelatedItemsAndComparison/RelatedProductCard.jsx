@@ -79,12 +79,10 @@ class RelatedProductCard extends React.Component {
               { backgroundImage: `url(${relatedProduct.styles[0].photos[0].url})`}
             }
             onClick={() => {
-              handleResetCarousel();
               handleCardClick(relatedProduct.id);
             }}
           />
           <div className="cardinfo"  onClick={() => {
-              handleResetCarousel();
               handleCardClick(relatedProduct.id);
             }}>
             {relatedProduct.iteminfo.category.toUpperCase()}

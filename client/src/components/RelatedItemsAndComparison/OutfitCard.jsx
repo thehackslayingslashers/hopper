@@ -70,12 +70,10 @@ class OutfitCard extends React.Component {
             className="cardimage"
             style={{ backgroundImage: `url(${outfitItem.styles[0].photos[0].url})`}}
             onClick={() => {
-              handleResetCarousel();
               handleCardClick(outfitItem.id);
             }}
           />
           <div className="cardinfo" onClick={() => {
-              handleResetCarousel();
               handleCardClick(outfitItem.id);
             }}>
             {outfitItem.iteminfo.category.toUpperCase()}
