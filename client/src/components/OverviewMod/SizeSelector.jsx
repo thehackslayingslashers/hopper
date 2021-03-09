@@ -22,6 +22,9 @@ const sizeSelector = ({ skus, selectSize, forceDropDown }) => {
       style={forceDropDown ? {
         height: `${1.25 + 1.25 * sizesSelector.length}em`,
         zIndex: 50,
+        color: '#f8f6f5',
+        backgroundColor: '#0083a8',
+        overflow: 'hidden',
       } : null}
       size={forceDropDown ? '10' : null}
     >
