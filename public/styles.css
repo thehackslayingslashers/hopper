@@ -310,36 +310,56 @@ Overview Module
 }
 
 .fade-in {
-  animation: fadeIn ease .5s;
-  -webkit-animation: fadeIn ease .5s;
-  -moz-animation: fadeIn ease .5s;
-  -o-animation: fadeIn ease .5s;
-  -ms-animation: fadeIn ease .5s;
+  animation: fadeIn ease 0.5s;
+  -webkit-animation: fadeIn ease 0.5s;
+  -moz-animation: fadeIn ease 0.5s;
+  -o-animation: fadeIn ease 0.5s;
+  -ms-animation: fadeIn ease 0.5s;
 }
 
 @keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Basic Info */
@@ -475,7 +495,6 @@ Overview Module
   color: #f8f6f5;
   background-color: #0083a8;
 }
-
 
 #overviewQuantitySelector:disabled:hover {
   border: solid #0083a8 1px;
@@ -928,11 +947,13 @@ QuestionsModule
   position: fixed;
   z-index: 1;
   top: 0;
-  background-color: blueviolet;
+  color: black;
+  background-color: #48b9d8;
   padding: 20px;
   height: 350px;
   width: 350px;
-  border: 1px solid black;
+  border: px solid black;
+  border-radius: 4px;
 }
 
 .post-question-header {
@@ -945,6 +966,7 @@ QuestionsModule
   display: relative;
   transform: translate(340px, -350px);
   z-index: 1;
+  cursor: pointer;
 }
 
 .close-post-answer-container {

@@ -67,6 +67,7 @@ class PostQuestion extends React.Component {
             type="text"
             cols="40"
             rows="6"
+            maxlength="1000"
             onChange={this.handleGetQuestionBodyValue}
           />
           Username:

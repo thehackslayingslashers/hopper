@@ -6,49 +6,37 @@ class QuestionSearch extends React.Component {
 
     this.state = {
       questionSearchFieldValue: '',
-      errorMessage: { display: 'none' },
+      displayErrorMessage: false,
       errorMessageText: 'We could not find any questions matching your query',
     };
 
     this.handleGetQuestionSearchFieldValue = this.handleGetQuestionSearchFieldValue.bind(this);
-    this.handleSubmitQuestionSearch = this.handleSubmitQuestionSearch.bind(this);
   }
 
   handleGetQuestionSearchFieldValue(e) {
-    this.setState({ questionSearchFieldValue: e.target.value });
-  }
-
-  handleSubmitQuestionSearch() {
     const {
       currentProductQuestions,
       setCurrentQuestionsToMatchSearch,
       getCurrentProductQuestionsAndAnswers,
     } = this.props;
     const { questionSearchFieldValue } = this.state;
-    this.setState({ questionSearchFieldValue: '' });
-    if (questionSearchFieldValue.length < 1) {
-      this.setState({ errorMessage: { display: 'none' } });
-      getCurrentProductQuestionsAndAnswers();
-    } else {
+    this.setState({ questionSearchFieldValue: e.target.value });
+    if (questionSearchFieldValue.length > 3) {
+      for (let i = 0; i < currentProductQuestions.length; i++) {}
       const matchingQueries = [];
       for (let i = 0; i < currentProductQuestions.length; i++) {
         if (currentProductQuestions[i].question_body.includes(questionSearchFieldValue)) {
           matchingQueries.push(currentProductQuestions[i]);
         }
-      }
-      if (matchingQueries.length > 0) {
-        this.setState({ errorMessage: { display: 'none' } });
         setCurrentQuestionsToMatchSearch(matchingQueries);
-      } else {
-        this.setState({
-          errorMessage: { display: 'flex' },
-        });
       }
+    } else {
+      getCurrentProductQuestionsAndAnswers();
     }
   }
 
   render() {
-    const { errorMessage, errorMessageText } = this.state;
+    const { displayErrorMessage, errorMessageText } = this.state;
     return (
       <div id="question-search-field">
         <div>
@@ -58,15 +46,11 @@ class QuestionSearch extends React.Component {
             onChange={this.handleGetQuestionSearchFieldValue}
             placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
           />
-          <i
-            className="fas fa-search fa-2x"
-            id="question-search-submit-button"
-            onClick={this.handleSubmitQuestionSearch}
-          ></i>
+          <i className="fas fa-search fa-2x" id="question-search-submit-button"></i>
         </div>
-        <div id="no-matching-queries-message" style={errorMessage}>
-          {errorMessageText}
-        </div>
+        {this.state.displayErrorMessage && (
+          <div id="no-matching-queries-message">{errorMessageText}</div>
+        )}
       </div>
     );
   }
