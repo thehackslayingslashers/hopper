@@ -54,8 +54,12 @@ class PostQuestion extends React.Component {
   }
 
   render() {
+    const { onHandleAddAQuestionButtonClick } = this.props;
     return (
       <div className="post-question-container">
+        <div className="post-question-header">
+          <u>Post Your Question Here!</u>
+        </div>
         <div className="post-question-fields-container">
           Post Question Body:
           <input
@@ -72,6 +76,14 @@ class PostQuestion extends React.Component {
           Email:
           <input className="post-email-field" type="text" onChange={this.handleGetEmailValue} />
           <button onClick={this.handleSubmitPostQuestion}>Post Question</button>
+        </div>
+        <div
+          className="close-post-question-container"
+          onClick={() => {
+            onHandleAddAQuestionButtonClick();
+          }}
+        >
+          X
         </div>
       </div>
     );
