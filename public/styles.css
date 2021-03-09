@@ -941,8 +941,15 @@ Related Items Module
   align-items: center;
   position: relative;
   box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.2);
-  overflow-x: scroll;
+  overflow: hidden;
+  /* overflow-x: scroll; */
   /* scroll-snap-type: mandatory; */
+  transition: transform 250ms ease-in;
+}
+
+.carousel-track .related-carousel {
+}
+.carousel-track .outfit-carousel {
 }
 
 .carousel-slide {
@@ -951,6 +958,13 @@ Related Items Module
   align-items: center;
   position: absolute;
   /* overflow-x: scroll; */
+  transition: transform 250ms ease-in;
+}
+
+.carousel-slide .related-slide {
+}
+
+.carousel-slide .outfit-slide {
 }
 
 .carousel-left-button {
@@ -972,16 +986,22 @@ Related Items Module
   position: absolute;
   z-index: 2;
 }
+.carousel-left-button:hover {
+  cursor: pointer;
+}
+.carousel-right-button:hover {
+  cursor: pointer;
+}
 
 .card {
-  width: 240px;
-  min-width: 240px;
+  width: 264px;
+  min-width: 264px;
   height: 300px;
   min-height: 300px;
   position: relative;
   background: white;
-  margin-left: 8px;
-  margin-right: 8px;
+  /* margin-left: 8px;
+  margin-right: 8px; */
   overflow-wrap: break-word;
   word-wrap: break-word;
   contain: strict;
@@ -995,6 +1015,7 @@ Related Items Module
   transform: scale(1);
   transition: 0.5s;
   box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 .icon {
   position: absolute;
@@ -1007,6 +1028,7 @@ Related Items Module
 .icon:hover {
   transform: scale(1.3);
   transition: 0.5s;
+  cursor: help;
 }
 
 .productcard {
@@ -1053,7 +1075,7 @@ Related Items Module
   transform: scale(1);
   opacity: 1;
   visibility: visible;
-  z-index: 2;
+  z-index: 3;
 }
 table,
 th,
