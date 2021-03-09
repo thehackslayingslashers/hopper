@@ -9,7 +9,11 @@ class AddReview extends React.Component {
       starWidth: 0,
       starDescription: 'Please Rate',
       recommend: 'maybe',
+      summary: '',
+      body: '',
     };
+    this.updateSummary = this.updateSummary.bind(this);
+    this.updateBody = this.updateBody.bind(this);
   }
 
   calculateStarWidth(newWidth) {
@@ -53,8 +57,36 @@ class AddReview extends React.Component {
     return characteristicsArr;
   }
 
+  updateSummary(event) {
+    let { summary } = this.state;
+    if (event.nativeEvent.inputType === 'deleteContentBackward') {
+      this.setState({
+        summary: summary.slice(0, summary.length - 1),
+      });
+    } else {
+      this.setState({
+        summary: summary += event.nativeEvent.data,
+      });
+    }
+  }
+
+  updateBody(event) {
+    let { body } = this.state;
+    if (event.nativeEvent.inputType === 'deleteContentBackward') {
+      this.setState({
+        body: body.slice(0, body.length - 1),
+      });
+    } else {
+      this.setState({
+        body: body += event.nativeEvent.data,
+      });
+    }
+  }
+
   render() {
-    const { starWidth, starDescription, recommend } = this.state;
+    const {
+      starWidth, starDescription, recommend, summary, body,
+    } = this.state;
     const { submitHandler, itemName } = this.props;
     let yesStyle;
     let noStyle;
@@ -81,10 +113,9 @@ class AddReview extends React.Component {
             const mouseX = event.clientX;
             this.calculateStarWidth(mouseX - event.target.getBoundingClientRect().left + 5);
           }}
-
         >
-          <pre style={{'margin': '0px'}}>
-            <strong style={{'fontSize': '20px'}}>Overall Rating*</strong>
+          <pre style={{ margin: '0px' }}>
+            <strong style={{ fontSize: '20px' }}>Overall Rating*</strong>
             <Stars rating={starWidth} />
             {starDescription}
           </pre>
@@ -94,17 +125,42 @@ class AddReview extends React.Component {
           onClick={(event) => {
             this.recommendHandler(event.target.innerText);
           }}
+          style={{ fontSize: '20px' }}
         >
-           <strong style={{'fontSize': '20px'}}>Do you recommend this product?* &nbsp;</strong>
+          Do you recommend this product?* &nbsp;
           <button type="button" style={yesStyle}>yes</button>
           &emsp;
           <button type="button" style={noStyle}>no</button>
         </div>
         <div className="question3">
           <pre>
-            <strong style={{'fontSize': '20px'}}>Characteristics*</strong>
+            <strong style={{ fontSize: '20px' }}>Characteristics*</strong>
             {this.characteristicsHandler()}
           </pre>
+        </div>
+        <div className="question4" style={{ fontSize: '20px' }}>
+          Review Summary: &nbsp;
+          <input
+            type="text"
+            placeholder="Ex. Best purchase ever!"
+            maxLength="60"
+            onChange={(event) => {
+              this.updateSummary(event);
+            }}
+          />
+        </div>
+        <div className="question4" style={{ fontSize: '20px' }}>
+          Review Body: &nbsp;
+          <input
+            type="text"
+            placeholder="Ex. Best purchase ever!"
+            maxLength="1000"
+            minLength="50"
+            onChange={(event) => {
+              this.updateBody(event);
+            }}
+          />
+          {(body.length < 50) && (`Minimum required characters left: ${50 - body.length}`)}
         </div>
         <div className="modalButton" onClick={submitHandler} role="button">submit</div>
       </div>
