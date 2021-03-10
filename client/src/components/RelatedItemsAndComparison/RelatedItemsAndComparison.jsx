@@ -8,19 +8,52 @@ class RelatedItemsAndComparison extends React.Component {
     super(props);
 
     this.state = {
-      relatedProducts: []
+      relatedProducts: [],
+      relatedSlidePosition: 0,
+      outfitSlidePosition: 0,
     };
 
     this.handleCardClick = this.handleCardClick.bind(this);
     this.getRelatedProductsToCurrent = this.getRelatedProductsToCurrent.bind(this);
+    this.handleResetCarousels = this.handleResetCarousels.bind(this);
+    this.handleRelatedSlideState = this.handleRelatedSlideState.bind(this);
+    this.handleOutfitSlideState = this.handleOutfitSlideState.bind(this);
   }
 
   componentDidMount() {
     this.getRelatedProductsToCurrent();
   }
 
-  handleCardClick(newId, { handleCardClickIdChange } = this.props) {
+  handleCardClick(newId) {
+    const { handleCardClickIdChange } = this.props;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     handleCardClickIdChange(newId, this.getRelatedProductsToCurrent);
+    this.handleResetCarousels();
+  }
+
+  handleResetCarousels() {
+    const track1 = document.querySelector('.related-slide');
+    track1.style.transform = 'translateX(-' + 0 + 'px' + ')';
+
+    const track2 = document.querySelector('.outfit-slide');
+    track2.style.transform = 'translateX(-' + 0 + 'px' + ')';
+
+    this.setState({
+      relatedSlidePosition: 0,
+      outfitSlidePosition: 0,
+    });
+  }
+
+  handleRelatedSlideState(newPosition) {
+    this.setState({
+      relatedSlidePosition: newPosition,
+    });
+  }
+
+  handleOutfitSlideState(newPosition) {
+    this.setState({
+      outfitSlidePosition: newPosition,
+    });
   }
 
   getRelatedProductsToCurrent() {
@@ -47,12 +80,18 @@ class RelatedItemsAndComparison extends React.Component {
       });
   }
 
-  render({
-    currentItemId, currentItemInfo, currentItemRatingInfo, currentItemStyles,
-  } = this.props,
-  {
-    relatedProducts,
-  } = this.state) {
+  render() {
+    const {
+      currentItemId,
+      currentItemInfo,
+      currentItemRatingInfo,
+      currentItemStyles,
+    } = this.props;
+    const {
+      relatedProducts,
+      relatedSlidePosition,
+      outfitSlidePosition,
+    } = this.state;
     const currentItem = {
       id: currentItemId,
       iteminfo: currentItemInfo,
@@ -65,10 +104,14 @@ class RelatedItemsAndComparison extends React.Component {
           relatedProducts={relatedProducts}
           currentItem={currentItem}
           handleCardClick={this.handleCardClick}
+          relatedSlidePosition={relatedSlidePosition}
+          handleRelatedSlideState={this.handleRelatedSlideState}
         />
         <OutfitList
           currentItem={currentItem}
           handleCardClick={this.handleCardClick}
+          outfitSlidePosition={outfitSlidePosition}
+          handleOutfitSlideState={this.handleOutfitSlideState}
         />
       </div>
     );

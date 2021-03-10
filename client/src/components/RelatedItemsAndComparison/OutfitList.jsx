@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import OutfitCard from './OutfitCard';
 import AddOutfitCard from './AddOutfitCard';
 
@@ -12,6 +13,8 @@ class OutfitList extends React.Component {
     };
     this.handleAddClick = this.handleAddClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleLeftClick = this.handleLeftClick.bind(this);
+    this.handleRightClick = this.handleRightClick.bind(this);
   }
 
   componentDidMount() {
@@ -69,28 +72,77 @@ class OutfitList extends React.Component {
     }
   }
 
-  render({ outfits } = this.state, { handleCardClick } = this.props) {
+  handleLeftClick() {
+    const {
+      outfitSlidePosition,
+      handleOutfitSlideState,
+    } = this.props;
+    const track = document.querySelector('.outfit-slide');
+    if (outfitSlidePosition - 264 >= 0) {
+      const newPosition = outfitSlidePosition - 264;
+      track.style.transform = 'translateX(-' + newPosition + 'px' + ')';
+      handleOutfitSlideState(newPosition);
+    }
+  }
+
+  handleRightClick() {
+    const { outfits } = this.state;
+    const {
+      outfitSlidePosition,
+      handleOutfitSlideState,
+    } = this.props;
+    const track = document.querySelector('.outfit-slide');
+    const numberOfCards = outfits.length + 1;
+    if (outfitSlidePosition + 264 <= (numberOfCards - 4) * 264) {
+      const newPosition = outfitSlidePosition + 264;
+      track.style.transform = 'translateX(-' + newPosition + 'px' + ')';
+      handleOutfitSlideState(newPosition);
+    }
+  }
+
+  render() {
+    const { outfits } = this.state;
+    const {
+      handleCardClick,
+      outfitSlidePosition,
+    } = this.props;
+
+    let leftArrow = null;
+    if (outfitSlidePosition !== 0) {
+      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}>
+      <BiLeftArrow size={24} /></i>;
+    }
+
+    let rightArrow = null;
+    const numberOfCards = outfits.length + 1;
+    if (outfitSlidePosition + (4 * 264) < numberOfCards * 264) {
+      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}>
+      <BiRightArrow size={24} /></i>;
+    }
+
     return (
       <div>
         <h2>Your Outfit</h2>
         <div className="carousel-wrapper">
-          <button className="carousel-left-button">L</button>
-          <div className="carousel-slider">
-            <AddOutfitCard
-              handleAddClick={this.handleAddClick}
-            />
-            {
-              outfits.map((outfitItem) => (
-                <OutfitCard
-                  outfitItem={outfitItem}
-                  handleDeleteClick={this.handleDeleteClick}
-                  handleCardClick={handleCardClick}
-                  key={'outfit' + outfitItem.id}
-                />
-              ))
-            }
+          {leftArrow}
+          <div className="carousel-track outfit-carousel">
+            <div className="carousel-slide outfit-slide">
+              <AddOutfitCard
+                handleAddClick={this.handleAddClick}
+              />
+              {
+                outfits.map((outfitItem) => (
+                  <OutfitCard
+                    outfitItem={outfitItem}
+                    handleDeleteClick={this.handleDeleteClick}
+                    handleCardClick={handleCardClick}
+                    key={'outfit' + outfitItem.id}
+                  />
+                ))
+              }
+            </div>
           </div>
-            <button className="carousel-right-button">R</button>
+            {rightArrow}
         </div>
       </div>
     );
