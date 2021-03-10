@@ -7,12 +7,11 @@
     "node": "14.x"
   },
   "scripts": {
-    "test": "jest --collectCoverage",
+    "test": "jest",
     "start": "node server/index.js",
     "watch": "webpack -w",
     "start-dev": "nodemon server/index.js",
-    "lint": "./node_modules/.bin/eslint",
-    "coverage": "jest --coverage"
+    "lint": "./node_modules/.bin/eslint"
   },
   "repository": {
     "type": "git",
