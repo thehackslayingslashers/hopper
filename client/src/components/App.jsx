@@ -20,6 +20,7 @@ class App extends React.Component {
       currentItemStyles: [],
       selectedStyleIndex: 0,
       numberOfReviews: 0,
+      numberOfReviewsForTarrin: 0,
       searchValue: '',
       darkMode: false,
     };
@@ -123,7 +124,7 @@ class App extends React.Component {
   calculateAllReviews(number) {
     if (number) {
       this.setState({
-        numberOfReviews: number,
+        numberOfReviewsForTarrin: number,
       });
     } else {
       const { currentItemRatingInfo } = this.state;
@@ -147,6 +148,7 @@ class App extends React.Component {
       currentItemStyles,
       selectedStyleIndex,
       numberOfReviews,
+      numberOfReviewsForTarrin,
       searchValue,
       darkMode,
     } = this.state;
@@ -165,7 +167,7 @@ class App extends React.Component {
           currentItemAverageRating={currentItemAverageRating}
           currentItemStyles={currentItemStyles}
           selectedStyleIndex={selectedStyleIndex}
-          numberOfReviews={numberOfReviews}
+          numberOfReviews={numberOfReviewsForTarrin}
           handleStyleSelection={this.handleStyleSelection}
         />
         <RelatedItemsAndComparison
@@ -182,6 +184,7 @@ class App extends React.Component {
           currentItemAverageRating={currentItemAverageRating}
           numberOfReviews={numberOfReviews}
           itemName={currentItemInfo.name}
+          numberOfReviewsForTarrinUpdater={this.calculateAllReviews}
         />
       </div>
     );

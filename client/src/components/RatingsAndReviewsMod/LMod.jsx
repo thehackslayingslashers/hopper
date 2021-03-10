@@ -29,13 +29,19 @@ class LMod extends React.Component {
   }
 
   getAllReviews(id, count, sort) {
+    const { numberOfReviewsForTarrinUpdater } = this.props;
+    const { allReviews } = this.state;
     const reviewObj = { id, count, sort };
+
     axios.post('/reviewsList', reviewObj).then((results) => {
       this.setState({
         allReviews: results.data.results,
         sortedBy: sort,
       });
-    });
+    })
+      .then(() => {
+        numberOfReviewsForTarrinUpdater(allReviews.length);
+      });
   }
 
   updateSortBy(sortBy) {
@@ -70,9 +76,9 @@ class LMod extends React.Component {
     } else {
       newAddObj.recommend = false;
     }
-    for (let key in currentItemRatingInfo.characteristics) {
-      let id = currentItemRatingInfo.characteristics[key].id;
-      let value = addObj.characteristicsObj[key];
+    for (const key in currentItemRatingInfo.characteristics) {
+      const { id } = currentItemRatingInfo.characteristics[key];
+      const value = addObj.characteristicsObj[key];
       newAddObj.characteristics[id] = value;
     }
 

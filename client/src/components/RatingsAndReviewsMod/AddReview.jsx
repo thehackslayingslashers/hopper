@@ -251,7 +251,7 @@ class AddReview extends React.Component {
           />
         </div>
         For authentication reasons, you will not be emailed
-        <div className="modalButton" onClick={() => { this.submitChecker(this.state); }} role="button">submit</div>
+        <div className="modalButton" onClick={() => { this.submitChecker(this.state); }} role="button" style={{ fontSize: '30px', color: '#124a5a' }}>submit</div>
       </div>
     );
   }
