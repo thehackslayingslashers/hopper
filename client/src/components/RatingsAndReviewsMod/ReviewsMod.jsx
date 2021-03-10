@@ -13,6 +13,7 @@ class ReviewsMod extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    debugger;
     if (prevProps !== this.props) {
       this.setState({
         showMore: false,
