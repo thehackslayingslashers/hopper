@@ -51,9 +51,34 @@ class LMod extends React.Component {
     });
   }
 
-  submitHandler(obj) {
-    console.log(obj);
-    this.modalHandler();
+  submitHandler(addObj) {
+    const { currentItemRatingInfo } = this.props;
+    const newAddObj = {};
+    newAddObj.product_id = Number(currentItemRatingInfo.product_id);
+    newAddObj.rating = addObj.starWidth;
+    newAddObj.summary = addObj.summary;
+    newAddObj.body = addObj.body;
+    newAddObj.name = addObj.nickname;
+    newAddObj.email = addObj.email;
+    newAddObj.photos = [];
+    newAddObj.characteristics = {};
+
+    if (addObj.recommend === 'yes') {
+      newAddObj.recommend = true;
+    } else {
+      newAddObj.recommend = false;
+    }
+    for (let key in currentItemRatingInfo.characteristics) {
+      let id = currentItemRatingInfo.characteristics[key].id;
+      let value = addObj.characteristicsObj[key];
+      newAddObj.characteristics[id] = value;
+    }
+
+    axios.post('/reviews/add', newAddObj)
+      .then((res) => {
+        console.log(res);
+        this.modalHandler();
+      });
   }
 
   render() {

@@ -43,7 +43,6 @@ class App extends React.Component {
     });
   }
 
-
   handleStyleSelection(e) {
     const { selectedStyleIndex } = this.state;
     const index = Number(e.target.attributes.index.nodeValue);
@@ -66,7 +65,7 @@ class App extends React.Component {
   }
 
   handleDarkMode() {
-    const { darkMode }= this.state;
+    const { darkMode } = this.state;
     this.setState({
       darkMode: !darkMode,
     });
@@ -122,16 +121,21 @@ class App extends React.Component {
   }
 
   calculateAllReviews(number) {
-    const { currentItemRatingInfo } = this.state;
-    let total = 0;
-    const keys = Object.keys(currentItemRatingInfo.ratings);
-    for (let i = 0; i < keys.length; i++) {
-      total += Number(currentItemRatingInfo.ratings[keys[i]]);
+    if (number) {
+      this.setState({
+        numberOfReviews: number,
+      });
+    } else {
+      const { currentItemRatingInfo } = this.state;
+      let total = 0;
+      const keys = Object.keys(currentItemRatingInfo.ratings);
+      for (let i = 0; i < keys.length; i++) {
+        total += Number(currentItemRatingInfo.ratings[keys[i]]);
+      }
+      this.setState({
+        numberOfReviews: total,
+      });
     }
-
-    this.setState({
-      numberOfReviews: number,
-    });
   }
 
   render() {
