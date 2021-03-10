@@ -105,7 +105,7 @@ class LMod extends React.Component {
     const {
       currentItemRatingInfo,
       currentItemAverageRating,
-      itemName, clickTracker,
+      itemName, withClickTracker,
     } = this.props;
 
     const {
@@ -115,7 +115,7 @@ class LMod extends React.Component {
     return (
       <>
         <h1>Ratings & Reviews</h1>
-        <div className="LModule" id="reviews" onClick={clickTracker}>
+        <div className="LModule" id="reviews" onClick={withClickTracker}>
           <RatingsMod
             avg={currentItemAverageRating}
             currentItemRatingInfo={currentItemRatingInfo}
