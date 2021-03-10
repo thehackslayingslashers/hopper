@@ -102,12 +102,29 @@ class OutfitList extends React.Component {
 
   render() {
     const { outfits } = this.state;
-    const { handleCardClick } = this.props;
+    const {
+      handleCardClick,
+      outfitSlidePosition,
+    } = this.props;
+
+    let leftArrow = null;
+    if (outfitSlidePosition !== 0) {
+      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}>
+      <BiLeftArrow size={24} /></i>;
+    }
+
+    let rightArrow = null;
+    const numberOfCards = outfits.length + 1;
+    if (outfitSlidePosition + (4 * 264) < numberOfCards * 264) {
+      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}>
+      <BiRightArrow size={24} /></i>;
+    }
+
     return (
       <div>
         <h2>Your Outfit</h2>
         <div className="carousel-wrapper">
-          <p className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow /></p>
+          {leftArrow}
           <div className="carousel-track outfit-carousel">
             <div className="carousel-slide outfit-slide">
               <AddOutfitCard
@@ -125,7 +142,7 @@ class OutfitList extends React.Component {
               }
             </div>
           </div>
-            <p className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow /></p>
+            {rightArrow}
         </div>
       </div>
     );

@@ -1113,7 +1113,6 @@ Related Items Module
   display: flex;
   align-items: center;
   position: absolute;
-  /* overflow-x: scroll; */
   transition: transform 250ms ease-in;
 }
 
@@ -1156,8 +1155,6 @@ Related Items Module
   min-height: 300px;
   position: relative;
   background: white;
-  /* margin-left: 8px;
-  margin-right: 8px; */
   overflow-wrap: break-word;
   word-wrap: break-word;
   contain: strict;
@@ -1173,18 +1170,25 @@ Related Items Module
   box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
-.icon {
+.cardIcon {
   position: absolute;
-  right: 9px;
-  top: 9px;
-  color: red;
-  background-color: blue;
+  right: 7px;
+  top: 7px;
+  color: #0083a8;
   opacity: 1;
 }
-.icon:hover {
-  transform: scale(1.3);
-  transition: 0.5s;
+
+.compareIcon:hover {
   cursor: help;
+}
+
+.deleteIcon:hover {
+  cursor: crosshair;
+}
+
+.cardIcon:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
 }
 
 .productcard {
@@ -1201,6 +1205,7 @@ Related Items Module
   background-size: cover;
   border-radius: 10px;
 }
+
 .cardinfo {
   font-size: 16px;
   padding: 12px;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { GiRoundStar } from 'react-icons/gi';
 import helpers from '../helpers';
 import Stars from '../Stars';
 
@@ -68,11 +69,12 @@ class RelatedProductCard extends React.Component {
 
       return (
         <div className="card productcard">
-          <button
-            className="icon"
+          <i
+            className="cardIcon compareIcon"
             onClick={() => handleCompareClick(relatedProduct)}
-            >*
-          </button>
+            >
+            <GiRoundStar size={36}/>
+          </i>
           <div
             className="cardimage"
             style={

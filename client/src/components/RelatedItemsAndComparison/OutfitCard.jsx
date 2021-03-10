@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdCloseCircle } from 'react-icons/io';
 import helpers from '../helpers';
 import Stars from '../Stars';
 
@@ -65,7 +66,9 @@ class OutfitCard extends React.Component {
 
       return (
         <div className="card productcard">
-          <button className="icon" onClick={()=> (handleDeleteClick(outfitItem))}>X</button>
+          <i className="cardIcon deleteIcon" onClick={()=> (handleDeleteClick(outfitItem))}>
+            <IoMdCloseCircle size={36}/>
+          </i>
           <div
             className="cardimage"
             style={{ backgroundImage: `url(${outfitItem.styles[0].photos[0].url})`}}

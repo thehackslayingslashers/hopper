@@ -62,8 +62,19 @@ class RelatedProductsList extends React.Component {
   }
 
   render() {
-    const { relatedProducts, currentItem, handleCardClick } = this.props;
+    const { relatedProducts, currentItem, handleCardClick, relatedSlidePosition } = this.props;
     const { show, comparedItem } = this.state;
+
+    let leftArrow = null;
+    if (relatedSlidePosition !== 0) {
+      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow /></i>;
+    }
+
+    let rightArrow = null;
+    const numberOfCards = relatedProducts.length;
+    if (relatedSlidePosition + (4 * 264) < numberOfCards * 264) {
+      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow /></i>;
+    }
 
     if (relatedProducts.length > 0) {
       return (
@@ -84,7 +95,7 @@ class RelatedProductsList extends React.Component {
           </ProductComparisonModal>
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
-              <p className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow /></p>
+              {leftArrow}
             <div className="carousel-track">
               <div className="carousel-slide related-slide">
                 {
@@ -100,7 +111,7 @@ class RelatedProductsList extends React.Component {
                 }
               </div>
             </div>
-            <p className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow /></p>
+            {rightArrow}
           </div>
         </div>
       );
@@ -109,7 +120,7 @@ class RelatedProductsList extends React.Component {
       <div>
         <h2>Related Products</h2>
         <div className="carousel-wrapper">
-            <p className="carousel-left-button"><BiLeftArrow /></p>
+            {leftArrow}
             <div className="carousel-track">
               <div className="carousel-slide related-slide">
                 <RelatedProductCard />
@@ -117,7 +128,7 @@ class RelatedProductsList extends React.Component {
                 <RelatedProductCard />
               </div>
             </div>
-            <p className="carousel-right-button" ><BiRightArrow /></p>
+            {rightArrow}
         </div>
       </div>
     );
