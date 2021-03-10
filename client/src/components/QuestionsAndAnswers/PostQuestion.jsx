@@ -67,7 +67,7 @@ class PostQuestion extends React.Component {
             type="text"
             cols="40"
             rows="6"
-            maxlength="1000"
+            maxLength="1000"
             onChange={this.handleGetQuestionBodyValue}
           />
           Username:
@@ -86,7 +86,7 @@ class PostQuestion extends React.Component {
             onHandleAddAQuestionButtonClick();
           }}
         >
-          X
+          <i className="fas fa-window-close" />
         </div>
       </div>
     );

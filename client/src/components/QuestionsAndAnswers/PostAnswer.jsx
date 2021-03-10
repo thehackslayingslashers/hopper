@@ -128,6 +128,14 @@ class PostAnswer extends React.Component {
     return (
       <div>
         <div className="post-answer-container">
+          <div
+            className="close-post-answer-container"
+            onClick={() => {
+              this.props.revertFieldDisplay();
+            }}
+          >
+            <i className="fas fa-window-close" />
+          </div>
           <div className="post-answer-text-fields">
             Post Answer Here:{' '}
             <input
@@ -195,14 +203,6 @@ class PostAnswer extends React.Component {
           <button className="post-answer-button" onClick={this.handleSubmitPostAnswer}>
             Post Answer
           </button>
-          <div
-            className="close-post-answer-container"
-            onClick={() => {
-              this.props.revertFieldDisplay();
-            }}
-          >
-            X
-          </div>
           <div className="post-answer-error" style={postAnswerErrorDisplay}>
             Please fill out all fields
           </div>

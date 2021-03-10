@@ -10,19 +10,22 @@ class Answer extends React.Component {
       reported: false,
       helpful: false,
       reportButtonText: 'Report',
-      helpfulButtonText: 'Helpful?',
+      helpfulButtonText: `Yes(${this.props.answers[this.props.answerId].helpfulness})`,
     };
     this.handleAnswerUpvote = this.handleAnswerUpvote.bind(this);
     this.handleReportAnswer = this.handleReportAnswer.bind(this);
   }
 
   handleAnswerUpvote() {
-    const { answerId } = this.props;
+    const { answerId, answers } = this.props;
     const { helpful, helpfulButtonText } = this.state;
     axios
       .put(`/qa/answers/${answerId}/helpful`)
       .then(() => {
-        this.setState({ helpful: true, helpfulButtonText: 'Thanks!' });
+        this.setState({
+          helpful: true,
+          helpfulButtonText: `Yes(${this.props.answers[this.props.answerId].helpfulness + 1})`,
+        });
       })
       .catch((error) => {
         throw error;
@@ -59,7 +62,7 @@ class Answer extends React.Component {
           <div>A: </div>
           <div className="answer-text">{currentAnswer.body}</div>
           <div className="upvote-answer-button" onClick={this.handleAnswerUpvote}>
-            {helpfulButtonText}
+            Helpful? {helpfulButtonText}
           </div>
           <div className="small-divider-answer">|</div>
           <div className="report-answer-button" onClick={this.handleReportAnswer}>
