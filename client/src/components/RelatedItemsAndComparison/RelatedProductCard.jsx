@@ -1,4 +1,5 @@
 import React from 'react';
+import { GiRoundStar } from 'react-icons/gi';
 import helpers from '../helpers';
 import Stars from '../Stars';
 
@@ -31,7 +32,12 @@ class RelatedProductCard extends React.Component {
   }
 
   render() {
-    const { relatedProduct, handleCompareClick, handleCardClick } = this.props;
+    const {
+      relatedProduct,
+      handleCompareClick,
+      handleCardClick,
+      handleResetCarousel,
+    } = this.props;
     const { currentItemAverageRating } = this.state;
     if (relatedProduct) {
       let price = null;
@@ -63,19 +69,24 @@ class RelatedProductCard extends React.Component {
 
       return (
         <div className="card productcard">
-          <button
-            className="icon"
+          <i
+            className="cardIcon compareIcon"
             onClick={() => handleCompareClick(relatedProduct)}
-            >*
-          </button>
+            >
+            <GiRoundStar size={36}/>
+          </i>
           <div
             className="cardimage"
             style={
               { backgroundImage: `url(${relatedProduct.styles[0].photos[0].url})`}
             }
-            onClick={() => handleCardClick(relatedProduct.id)}
+            onClick={() => {
+              handleCardClick(relatedProduct.id);
+            }}
           />
-          <div className="cardinfo"  onClick={() => handleCardClick(relatedProduct.id)}>
+          <div className="cardinfo"  onClick={() => {
+              handleCardClick(relatedProduct.id);
+            }}>
             {relatedProduct.iteminfo.category.toUpperCase()}
             <p>{relatedProduct.iteminfo.name}</p>
             {price}

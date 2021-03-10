@@ -18,7 +18,7 @@ class ProductComparisonModal extends React.Component {
       <div>
         <div>{children}</div>
       </div>
-    )
+    );
   }
 }
 
