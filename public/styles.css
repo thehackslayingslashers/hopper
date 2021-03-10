@@ -1009,7 +1009,8 @@ QuestionsModule
 }
 
 .add-a-question-button:hover {
-  background-color: ;
+  background-color: #48b9d8;
+  color: white;
 }
 
 #user-info-and-date {
