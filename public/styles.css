@@ -1161,7 +1161,7 @@ Related Items Module
   background: white;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  /* contain: strict; */
+  contain: strict;
   border-radius: 10px;
   box-shadow: 0;
   transform: scale(0.95);
@@ -1279,7 +1279,7 @@ th {
   top: 50%;
   left: 5px;
   right: 5px;
-  z-index: 9;
+  z-index: 3;
 }
 
 .circle::before {
@@ -1292,5 +1292,5 @@ th {
   left: 50%;
   top: 5px;
   bottom: 5px;
-  z-index: 9;
+  z-index: 3;
 }
