@@ -777,7 +777,8 @@ hr {
 
 .question1,
 .question2,
-.question3Option {
+.question3Option,
+.question4 {
   display: flex;
   justify-content: left;
   margin: 5px 25px;
