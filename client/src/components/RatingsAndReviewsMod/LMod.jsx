@@ -20,28 +20,37 @@ class LMod extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { currentItemId, numberOfReviews } = this.props;
+    const {
+      currentItemId,
+      numberOfReviews,
+      currentItemRatingInfo,
+      currentItemAverageRating,
+      itemName,
+    } = this.props;
     const { sortedBy } = this.state;
 
-    if (this.props !== prevProps) {
+    if (
+      currentItemId !== prevProps.currentItemId
+      || numberOfReviews !== prevProps.numberOfReviews
+      || currentItemRatingInfo !== prevProps.currentItemRatingInfo
+      || currentItemAverageRating !== prevProps.currentItemAverageRating
+      || itemName !== prevProps.itemName) {
       this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
     }
   }
 
   getAllReviews(id, count, sort) {
     const { numberOfReviewsForTarrinUpdater } = this.props;
-    const { allReviews } = this.state;
     const reviewObj = { id, count, sort };
 
     axios.post('/reviewsList', reviewObj).then((results) => {
       this.setState({
         allReviews: results.data.results,
         sortedBy: sort,
+      }, () => {
+        numberOfReviewsForTarrinUpdater(results.data.results.length);
       });
-    })
-      .then(() => {
-        numberOfReviewsForTarrinUpdater(allReviews.length);
-      });
+    });
   }
 
   updateSortBy(sortBy) {
@@ -83,8 +92,7 @@ class LMod extends React.Component {
     }
 
     axios.post('/reviews/add', newAddObj)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         this.modalHandler();
       })
       .then(() => {
