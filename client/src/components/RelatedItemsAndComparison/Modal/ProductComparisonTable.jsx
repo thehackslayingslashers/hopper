@@ -28,6 +28,12 @@ class ProductComparisonTable extends React.Component {
   }
 
   renderTableData(feature, currentFeature, comparedFeature) {
+    if(currentFeature === null) {
+      currentFeature = '✓';
+    }
+    if(comparedFeature === null) {
+      comparedFeature = '✓';
+    }
     return (
       <tr>
         <td>{currentFeature}</td>
