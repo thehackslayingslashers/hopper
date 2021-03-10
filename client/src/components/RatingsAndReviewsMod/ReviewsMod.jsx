@@ -56,7 +56,7 @@ class ReviewsMod extends React.Component {
           })}
         </div>
 
-        {!showMore && (<button className="LModButton" type="button" onClick={this.showMoreHandler}>More Reviews</button>)}
+        {!showMore && (reviews.length > 2) && (<button className="LModButton" type="button" onClick={this.showMoreHandler}>More Reviews</button>)}
         <button
           className="LModButton"
           type="button"
