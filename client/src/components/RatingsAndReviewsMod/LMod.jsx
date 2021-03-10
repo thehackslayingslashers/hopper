@@ -52,7 +52,9 @@ class LMod extends React.Component {
   }
 
   submitHandler(addObj) {
-    const { currentItemRatingInfo } = this.props;
+    const { currentItemRatingInfo, numberOfReviews } = this.props;
+    const { sortedBy } = this.state;
+
     const newAddObj = {};
     newAddObj.product_id = Number(currentItemRatingInfo.product_id);
     newAddObj.rating = addObj.starWidth;
@@ -78,6 +80,9 @@ class LMod extends React.Component {
       .then((res) => {
         console.log(res);
         this.modalHandler();
+      })
+      .then(() => {
+        this.getAllReviews(currentItemRatingInfo.product_id, numberOfReviews + 1, sortedBy);
       });
   }
 
