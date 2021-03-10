@@ -8,7 +8,11 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { postAnswerFieldDisplay: false, helpful: false, helpfulButtonText: 'Helpful?' };
+    this.state = {
+      postAnswerFieldDisplay: false,
+      helpful: false,
+      helpfulButtonText: `Yes(${this.props.question.question_helpfulness})`,
+    };
 
     this.handleQuestionUpvote = this.handleQuestionUpvote.bind(this);
     this.handleClickAddAnswer = this.handleClickAddAnswer.bind(this);
@@ -24,7 +28,10 @@ class Question extends React.Component {
       axios
         .put(`/qa/questions/${questionId}/helpful`)
         .then(() => {
-          this.setState({ helpful: true, helpfulButtonText: 'Thanks!' });
+          this.setState({
+            helpful: true,
+            helpfulButtonText: `Yes(${question.question_helpfulness + 1})`,
+          });
         })
         .catch((error) => {
           throw error;
@@ -50,7 +57,7 @@ class Question extends React.Component {
           <div className="question-text">Q: {question.question_body}</div>
           <div className="question-response-options">
             <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
-              {helpfulButtonText}
+              Helpful? {helpfulButtonText}
             </div>
             <div className="small-divider-question">|</div>
             <div className="add-answer-button" onClick={this.handleClickAddAnswer}>
