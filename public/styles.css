@@ -810,7 +810,7 @@ QuestionsModule
 */
 
 #questions-and-answers-container {
-  background-color: white;
+  background-color: #f8f6f5;
   font-family: Arial, sans-serif;
   font-size: 18pt;
   margin: auto;
@@ -818,7 +818,6 @@ QuestionsModule
 }
 
 #questions-and-answers-header {
-  background-color: white;
   font-weight: 200;
   padding-top: 60px;
   padding-left: 2px;
@@ -1004,7 +1003,7 @@ QuestionsModule
 .add-a-question-button {
   padding: 20px;
   border: 1px solid black;
-  background-color: white;
+  background-color: #f8f6f5;
   font-weight: 500;
   font-size: 18pt;
 }
