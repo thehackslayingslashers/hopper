@@ -20,20 +20,35 @@ class LMod extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { currentItemId, numberOfReviews } = this.props;
+    const {
+      currentItemId,
+      numberOfReviews,
+      currentItemRatingInfo,
+      currentItemAverageRating,
+      itemName,
+    } = this.props;
     const { sortedBy } = this.state;
 
-    if (this.props !== prevProps) {
+    if (
+      currentItemId !== prevProps.currentItemId
+      || numberOfReviews !== prevProps.numberOfReviews
+      || currentItemRatingInfo !== prevProps.currentItemRatingInfo
+      || currentItemAverageRating !== prevProps.currentItemAverageRating
+      || itemName !== prevProps.itemName) {
       this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
     }
   }
 
   getAllReviews(id, count, sort) {
+    const { numberOfReviewsForTarrinUpdater } = this.props;
     const reviewObj = { id, count, sort };
+
     axios.post('/reviewsList', reviewObj).then((results) => {
       this.setState({
         allReviews: results.data.results,
         sortedBy: sort,
+      }, () => {
+        numberOfReviewsForTarrinUpdater(results.data.results.length);
       });
     });
   }
@@ -51,9 +66,38 @@ class LMod extends React.Component {
     });
   }
 
-  submitHandler(obj) {
-    console.log(obj);
-    this.modalHandler();
+  submitHandler(addObj) {
+    const { currentItemRatingInfo, numberOfReviews } = this.props;
+    const { sortedBy } = this.state;
+
+    const newAddObj = {};
+    newAddObj.product_id = Number(currentItemRatingInfo.product_id);
+    newAddObj.rating = addObj.starWidth;
+    newAddObj.summary = addObj.summary;
+    newAddObj.body = addObj.body;
+    newAddObj.name = addObj.nickname;
+    newAddObj.email = addObj.email;
+    newAddObj.photos = [];
+    newAddObj.characteristics = {};
+
+    if (addObj.recommend === 'yes') {
+      newAddObj.recommend = true;
+    } else {
+      newAddObj.recommend = false;
+    }
+    for (const key in currentItemRatingInfo.characteristics) {
+      const { id } = currentItemRatingInfo.characteristics[key];
+      const value = addObj.characteristicsObj[key];
+      newAddObj.characteristics[id] = value;
+    }
+
+    axios.post('/reviews/add', newAddObj)
+      .then(() => {
+        this.modalHandler();
+      })
+      .then(() => {
+        this.getAllReviews(currentItemRatingInfo.product_id, numberOfReviews + 1, sortedBy);
+      });
   }
 
   render() {

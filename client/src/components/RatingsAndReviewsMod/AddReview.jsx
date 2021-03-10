@@ -8,7 +8,7 @@ class AddReview extends React.Component {
     this.state = {
       starWidth: 0,
       starDescription: 'Please Rate',
-      recommend: 'maybe',
+      recommend: '',
       summary: '',
       body: '',
       nickname: '',
@@ -116,19 +116,43 @@ class AddReview extends React.Component {
 
   characteristicUpdater(characteristic, number) {
     const { characteristicsObj } = this.state;
-    let newObj = { ...characteristicsObj };
+    const newObj = { ...characteristicsObj };
     newObj[characteristic] = number;
     this.setState({
       characteristicsObj: newObj,
     });
-    console.log(newObj);
+  }
+
+  submitChecker(stateObj) {
+    const { submitHandler, characteristics } = this.props;
+    const emailRegex = /^[a-z0-9]+@+[a-z]+\.[a-z]/i.test(stateObj.email);
+    if (stateObj.starWidth === 0) {
+      alert('Please Give Overall Rating');
+      return;
+    } if (stateObj.recommend === '') {
+      alert('Please Choose Recomendation');
+      return;
+    } if (Object.keys(stateObj.characteristicsObj).length !== Object.keys(characteristics).length) {
+      alert('Please Rate Characteristics');
+      return;
+    } if (stateObj.body.length < 50) {
+      alert('Must Reach Minimum Review Body Length');
+      return;
+    } if (stateObj.nickname === '') {
+      alert('Please Input A Nickname');
+      return;
+    } if (!emailRegex) {
+      alert('Please Input Valid Email');
+    } else {
+      submitHandler(stateObj);
+    }
   }
 
   render() {
     const {
       starWidth, starDescription, recommend, body,
     } = this.state;
-    const { submitHandler, itemName } = this.props;
+    const { itemName } = this.props;
     let yesStyle;
     let noStyle;
     if (recommend === 'yes') {
@@ -227,7 +251,7 @@ class AddReview extends React.Component {
           />
         </div>
         For authentication reasons, you will not be emailed
-        <div className="modalButton" onClick={() => {submitHandler(this.state)}} role="button">submit</div>
+        <div className="modalButton" onClick={() => { this.submitChecker(this.state); }} role="button" style={{ fontSize: '30px', color: '#124a5a' }}>submit</div>
       </div>
     );
   }

@@ -16,7 +16,6 @@ class OverviewMod extends React.Component {
   }
 
   render() {
-    const { onClickAnywhere } = this.props;
     const {
       currentItemInfo,
       currentItemRatingInfo,
@@ -25,6 +24,7 @@ class OverviewMod extends React.Component {
       selectedStyleIndex,
       handleStyleSelection,
       numberOfReviews,
+      onClickAnywhere,
     } = this.props;
 
     return (

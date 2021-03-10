@@ -110,7 +110,6 @@ class ImageGallery extends React.Component {
   }
 
   unFadeIn() {
-
     this.setState({
       fadeIn: false,
     });
