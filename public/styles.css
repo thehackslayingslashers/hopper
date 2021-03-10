@@ -310,36 +310,56 @@ Overview Module
 }
 
 .fade-in {
-  animation: fadeIn ease .5s;
-  -webkit-animation: fadeIn ease .5s;
-  -moz-animation: fadeIn ease .5s;
-  -o-animation: fadeIn ease .5s;
-  -ms-animation: fadeIn ease .5s;
+  animation: fadeIn ease 0.5s;
+  -webkit-animation: fadeIn ease 0.5s;
+  -moz-animation: fadeIn ease 0.5s;
+  -o-animation: fadeIn ease 0.5s;
+  -ms-animation: fadeIn ease 0.5s;
 }
 
 @keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Basic Info */
@@ -475,7 +495,6 @@ Overview Module
   color: #f8f6f5;
   background-color: #0083a8;
 }
-
 
 #overviewQuantitySelector:disabled:hover {
   border: solid #0083a8 1px;
@@ -923,18 +942,18 @@ QuestionsModule
 }
 
 .post-question-container {
-  margin-left: 20%;
   margin-top: 10%;
+  margin-left: 20%;
   position: fixed;
   z-index: 1;
   top: 0;
-  background-color: blueviolet;
-  /* background-color: rgba(0, 0, 0, 0.4); */
-  text-align: center;
+  color: black;
+  background-color: #48b9d8;
   padding: 20px;
   height: 350px;
   width: 350px;
-  border: 1px solid black;
+  border: px solid black;
+  border-radius: 4px;
 }
 
 .post-question-header {
@@ -945,22 +964,23 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(180px, -280px);
+  transform: translate(340px, -350px);
   z-index: 1;
+  cursor: pointer;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(300px, -290px);
+  transform: translate(400px, -290px);
   z-index: 1;
   width: 20px;
   height: 20px;
 }
 
 .post-question-fields-container {
-  text-align: center;
+  /* text-align: center;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   font-size: 12pt;
   padding: 8px;
 }
@@ -971,7 +991,6 @@ QuestionsModule
   display: flex;
   flex-wrap: nowrap;
   padding: 10px;
-  margin-left: 20%;
 }
 
 .question-view-button-container {
