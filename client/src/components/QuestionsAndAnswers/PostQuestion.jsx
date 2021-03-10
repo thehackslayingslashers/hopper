@@ -62,9 +62,12 @@ class PostQuestion extends React.Component {
         </div>
         <div className="post-question-fields-container">
           Post Question Body:
-          <input
+          <textarea
             className="post-question-field"
             type="text"
+            cols="40"
+            rows="6"
+            maxlength="1000"
             onChange={this.handleGetQuestionBodyValue}
           />
           Username:
