@@ -80,6 +80,17 @@ app.post('/helpful', (req, res) => {
     });
 });
 
+app.post('/reviews/add/', (req, res) => {
+  outbound
+    .addReview(req.body)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
 app.get('/qa/questions/:id', (req, res) => {
   const { id } = req.params;
 

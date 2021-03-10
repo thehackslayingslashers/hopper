@@ -7,7 +7,9 @@ const Stars = ({ rating }) => {
   };
   return (
     <div className="emptystars">
-      <div className="filledstars" style={newWidth} />
+      <div className="filledstars" style={newWidth}>
+        <i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" /><i className="fas fa-star" />
+      </div>
     </div>
   );
 };
