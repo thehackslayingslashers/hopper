@@ -66,6 +66,8 @@ class PostAnswer extends React.Component {
       photoInput1,
       photoInput2,
       photoInput3,
+      photoInput4,
+      photoInput5,
       postPhotosArray,
     } = this.state;
     if (
@@ -84,10 +86,10 @@ class PostAnswer extends React.Component {
         postPhotosArray.push(photoInput3);
       }
       if (photoInput4 !== '') {
-        postPhotosArray.push(photoInput3);
+        postPhotosArray.push(photoInput4);
       }
       if (photoInput5 !== '') {
-        postPhotosArray.push(photoInput3);
+        postPhotosArray.push(photoInput5);
       }
 
       let answerPostRequest = {
