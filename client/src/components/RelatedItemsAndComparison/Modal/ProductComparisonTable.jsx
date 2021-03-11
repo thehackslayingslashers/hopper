@@ -37,7 +37,7 @@ class ProductComparisonTable extends React.Component {
     return (
       <tr>
         <td>{currentFeature}</td>
-        <td>{feature}</td>
+        <td><u><b>{feature}</b></u></td>
         <td>{comparedFeature}</td>
       </tr>
     )
@@ -51,13 +51,15 @@ class ProductComparisonTable extends React.Component {
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       return (
         <div className="comparisonmodal-inner">
-          Let&apos;s compare these two products!
+          <h2>
+            Let&apos;s compare these two products!
+          </h2>
           <table>
             <tbody>
               <tr>
-                <th>{currentItem.iteminfo.name}</th>
-                <th>Feature</th>
-                <th>{comparedItem.iteminfo.name}</th>
+                <th><u><b>{currentItem.iteminfo.name}</b></u></th>
+                <th>                        </th>
+                <th><u><b>{comparedItem.iteminfo.name}</b></u></th>
               </tr>
               {
                 featuresList.map((feat) => (
@@ -67,7 +69,7 @@ class ProductComparisonTable extends React.Component {
               }
             </tbody>
           </table>
-
+          <br />
           <div>
             <button onClick={showModal}>close</button>
           </div>
