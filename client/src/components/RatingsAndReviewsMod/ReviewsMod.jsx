@@ -8,6 +8,7 @@ class ReviewsMod extends React.Component {
     super(props);
     this.state = {
       showMore: false,
+      filtered: 5,
     };
     this.showMoreHandler = this.showMoreHandler.bind(this);
   }
@@ -31,7 +32,7 @@ class ReviewsMod extends React.Component {
     const {
       reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics,
     } = this.props;
-    const { showMore } = this.state;
+    const { showMore, filtered } = this.state;
 
     return (
       <section className="reviewsList">
@@ -45,14 +46,25 @@ class ReviewsMod extends React.Component {
           {reviews.map((oneReview, index) => {
             if ((index >= 2) && !showMore) {
               return;
+            } else if (filtered) {
+              if (oneReview.rating === filtered) {
+                return (
+                  <ReviewEntry
+                    review={oneReview}
+                    key={oneReview.review_id}
+                    modalHandler={modalHandler}
+                  />
+                );
+              }
+            } else {
+              return (
+                <ReviewEntry
+                  review={oneReview}
+                  key={oneReview.review_id}
+                  modalHandler={modalHandler}
+                />
+              );
             }
-            return (
-              <ReviewEntry
-                review={oneReview}
-                key={oneReview.review_id}
-                modalHandler={modalHandler}
-              />
-            );
           })}
         </div>
 
