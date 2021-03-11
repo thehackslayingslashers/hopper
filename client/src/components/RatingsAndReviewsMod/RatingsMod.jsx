@@ -10,7 +10,7 @@ const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
   }
 
   return (
-    <section className="ratings" onClick={(event) => { filteredUpdater(Number(event.target.innerText[0])) }}>
+    <section className="ratings" onClick={(event) => { filteredUpdater(Number(event.target.innerText[0])); }}>
       <div className="AvgStar" style={{ margin: '5px 0px' }}>
         <div style={{ fontSize: '60px', fontWeight: 'bold' }}>
           {(avg !== 'NaN') && (
@@ -24,11 +24,13 @@ const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
         {percent}
         % of reviews recommend this product
       </h3>
-      <div className="starFilter">5 stars</div>
-      <div className="starFilter">4 stars</div>
-      <div className="starFilter">3 stars</div>
-      <div className="starFilter">2 stars</div>
-      <div className="starFilter">1 stars</div>
+      <div style={{ fontSize: '25px' }}>
+        <div className="starFilter">5 stars</div>
+        <div className="starFilter">4 stars</div>
+        <div className="starFilter">3 stars</div>
+        <div className="starFilter">2 stars</div>
+        <div className="starFilter">1 stars</div>
+      </div>
     </section>
   );
 };
