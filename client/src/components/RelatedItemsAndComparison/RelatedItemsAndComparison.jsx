@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import withClickTracker from '../withClickTracker';
 import RelatedProductsList from './RelatedProductsList';
 import OutfitList from './OutfitList';
 
@@ -86,6 +87,7 @@ class RelatedItemsAndComparison extends React.Component {
       currentItemInfo,
       currentItemRatingInfo,
       currentItemStyles,
+      onClickAnywhere,
     } = this.props;
     const {
       relatedProducts,
@@ -99,7 +101,7 @@ class RelatedItemsAndComparison extends React.Component {
       styles: currentItemStyles,
     };
     return (
-      <div>
+      <div onClick={onClickAnywhere}>
         <RelatedProductsList
           relatedProducts={relatedProducts}
           currentItem={currentItem}
@@ -118,4 +120,4 @@ class RelatedItemsAndComparison extends React.Component {
   }
 }
 
-export default RelatedItemsAndComparison;
+export default withClickTracker(RelatedItemsAndComparison);
