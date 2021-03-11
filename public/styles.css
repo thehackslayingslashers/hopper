@@ -590,6 +590,12 @@ Overview Module
   font-size: medium;
 }
 
+
+
+
+
+
+
 /*
 =====================
 LModule
@@ -612,7 +618,7 @@ LModule
 }
 
 .ratings {
-  width: 25%;
+  width: 28%;
 }
 
 article {
@@ -705,7 +711,7 @@ hr {
 .sortingList span::after {
   position: absolute;
   content: '';
-  height: 5px;
+  height: 3px;
   width: 0;
   left: 0;
   background-color: #006aa8;
@@ -751,7 +757,7 @@ hr {
 
 .reviewModalOutter {
   position: fixed;
-  z-index: 1;
+  z-index: 7;
   left: 0;
   top: 0;
   width: 100%;
@@ -797,7 +803,8 @@ hr {
 .question1,
 .question2,
 .question3Option,
-.question4 {
+.question4,
+.AvgStar {
   display: flex;
   justify-content: left;
   margin: 5px 25px;
@@ -805,6 +812,31 @@ hr {
 .question3 pre {
   text-align: left;
   margin: 0px 25px;
+}
+
+.starFilter {
+  transition: all 1s;
+  position: relative;
+}
+
+.starFilter::after {
+  position: absolute;
+  content: '';
+  height: 3px;
+  width: 0;
+  left: 0;
+  background-color: #006aa8;
+  bottom: 0;
+  transition: all 0.5s ease-out;
+}
+
+.starFilter:hover::after {
+  width: 100%;
+}
+
+.starFilter:hover {
+  cursor: pointer;
+  color: #08344e;
 }
 
 /*
