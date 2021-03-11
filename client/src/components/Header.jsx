@@ -1,12 +1,14 @@
 import React from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
 
-const Header = ({ searchValue, searchId, handleSearchIdChange, darkMode, handleDarkMode }) => (
+const Header = ({
+  searchValue, searchId, handleSearchIdChange, darkMode, handleDarkMode,
+}) => (
   <>
     <div id="pageHeader">
       <img
         id="logo"
-        src={darkMode ? "./hopr2invert.png" : "./hopr2.png"}
+        src={darkMode ? './hopr2invert.png' : './hopr2.png'}
         onClick={handleDarkMode}
       />
       <form

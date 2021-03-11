@@ -3,6 +3,7 @@ import axios from 'axios';
 import ReviewsMod from './ReviewsMod';
 import RatingsMod from './RatingsMod';
 import Modal from './Modal';
+import withClickTracker from '../withClickTracker';
 
 class LMod extends React.Component {
   constructor(props) {
@@ -104,7 +105,7 @@ class LMod extends React.Component {
     const {
       currentItemRatingInfo,
       currentItemAverageRating,
-      itemName,
+      itemName, withClickTracker,
     } = this.props;
 
     const {
@@ -114,7 +115,7 @@ class LMod extends React.Component {
     return (
       <>
         <h1>Ratings & Reviews</h1>
-        <div className="LModule" id="reviews">
+        <div className="LModule" id="reviews" onClick={withClickTracker}>
           <RatingsMod
             avg={currentItemAverageRating}
             currentItemRatingInfo={currentItemRatingInfo}
@@ -141,4 +142,4 @@ class LMod extends React.Component {
   }
 }
 
-export default LMod;
+export default withClickTracker(LMod);

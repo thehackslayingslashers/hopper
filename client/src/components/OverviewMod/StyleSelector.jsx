@@ -9,7 +9,7 @@ class StyleSelector extends React.Component {
 
   render() {
     const { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
-    let styleItems = 'Loading';
+    let styleItems = '';
     let index = 0;
 
     if (currentItemStyles && currentItemStyles[0]) {
