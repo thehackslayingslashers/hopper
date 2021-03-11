@@ -11,7 +11,7 @@ const FeatureList = ({ features }) => {
     });
     return <ul id="overviewFeatureList">{listItems}</ul>;
   }
-  return <div id="overviewFeatureList">Loading</div>;
+  return <div id="overviewFeatureList"></div>;
 };
 
 export default FeatureList;

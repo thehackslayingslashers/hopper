@@ -35,7 +35,17 @@ class OverviewMod extends React.Component {
             selectedStyleIndex={selectedStyleIndex}
             key={currentItemStyles[selectedStyleIndex].style_id}
           />
-        ) : <div id="overviewImageGallery">Loading</div>}
+        ) : (
+          <div
+            id="overviewImageGallery"
+          >
+            <div id="loadingVideo">
+              <video autoPlay muted loop>
+                <source src="/hoprjump.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        )}
         <BasicInfo
           currentItemInfo={currentItemInfo}
           currentItemRatingInfo={currentItemRatingInfo}
@@ -55,7 +65,7 @@ class OverviewMod extends React.Component {
             key={`${currentItemStyles[selectedStyleIndex].style_id}1`}
             selectedStyleIndex={selectedStyleIndex}
           />
-        ) : <div id="overviewAddToCart">Loading</div>}
+        ) : <div id="overviewAddToCart"></div>}
         <ProductInformation currentItemInfo={currentItemInfo} />
         <FeatureList features={currentItemInfo.features} />
       </div>

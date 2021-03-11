@@ -29,34 +29,47 @@ class ReviewsMod extends React.Component {
 
   render() {
     const {
-      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics,
+      reviews, sortedBy, selectHandler, modalHandler, submitHandler, itemName, characteristics, filtered,
     } = this.props;
     const { showMore } = this.state;
+    let counter = 0;
 
     return (
       <section className="reviewsList">
-        <h3>Reviews Module</h3>
         <SortingHeader
           reviewsLength={reviews.length}
           sortedBy={sortedBy}
           selectHandler={selectHandler}
         />
         <div className="reviewsContainer">
-          {reviews.map((oneReview, index) => {
-            if ((index >= 2) && !showMore) {
+          {reviews.map((oneReview) => {
+            if ((counter >= 2) && !showMore) {
               return;
+            } else if (filtered) {
+              if (oneReview.rating === filtered) {
+                counter++;
+                return (
+                  <ReviewEntry
+                    review={oneReview}
+                    key={oneReview.review_id}
+                    modalHandler={modalHandler}
+                  />
+                );
+              }
+            } else {
+              counter++;
+              return (
+                <ReviewEntry
+                  review={oneReview}
+                  key={oneReview.review_id}
+                  modalHandler={modalHandler}
+                />
+              );
             }
-            return (
-              <ReviewEntry
-                review={oneReview}
-                key={oneReview.review_id}
-                modalHandler={modalHandler}
-              />
-            );
           })}
         </div>
 
-        {!showMore && (reviews.length > 2) && (<button className="LModButton" type="button" onClick={this.showMoreHandler}>More Reviews</button>)}
+        {!showMore && (reviews.length > 2) && (counter >= 2) && (<button className="LModButton" type="button" onClick={this.showMoreHandler}>More Reviews</button>)}
         <button
           className="LModButton"
           type="button"

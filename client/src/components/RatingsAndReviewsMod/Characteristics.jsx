@@ -12,7 +12,7 @@ class Characteristics extends React.Component {
     const { ratingChosen } = this.state;
     if (number === ratingChosen) {
       return ({
-        backgroundColor: 'rgb(214, 182, 255)',
+        backgroundColor: '#0083a8',
       });
     }
     this.chosenUpdater = this.chosenUpdater.bind(this);
