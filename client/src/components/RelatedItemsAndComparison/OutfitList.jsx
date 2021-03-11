@@ -41,6 +41,12 @@ class OutfitList extends React.Component {
     const { outfitIds, outfits } = this.state;
     const { currentItem } = this.props;
     if (!outfitIds.includes(currentItem.id)) {
+      let currentPhoto = currentItem.styles[0].photos[0];
+      if (currentPhoto.url === null) {
+        currentPhoto.url = 'https://www.luvbat.com/uploads/happy_frog__9265232477.jpg';
+      } else if (currentPhoto.url[0] !== 'h') {
+        currentPhoto.url = currentPhoto.url.substr(1);
+      }
       this.setState((prevState) => {
         prevState.outfitIds.push(currentItem.id);
         prevState.outfits.push(currentItem);

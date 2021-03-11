@@ -28,6 +28,12 @@ class ProductComparisonTable extends React.Component {
   }
 
   renderTableData(feature, currentFeature, comparedFeature) {
+    if(currentFeature === null) {
+      currentFeature = '✓';
+    }
+    if(comparedFeature === null) {
+      comparedFeature = '✓';
+    }
     return (
       <tr>
         <td>{currentFeature}</td>
@@ -44,7 +50,7 @@ class ProductComparisonTable extends React.Component {
       const currentItemFeatures = this.getItemFeatures(currentItem.iteminfo.features);
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       return (
-        <div>
+        <div className="comparisonmodal-inner">
           Let&apos;s compare these two products!
           <table>
             <tbody>
