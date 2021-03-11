@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiSearchAlt2 } from 'react-icons/bi';
 
 class QuestionSearch extends React.Component {
   constructor(props) {
@@ -39,18 +40,15 @@ class QuestionSearch extends React.Component {
     const { displayErrorMessage, errorMessageText } = this.state;
     return (
       <div id="question-search-field">
-        <div>
-          <input
-            id="question-search-field-input"
-            type="text"
-            onChange={this.handleGetQuestionSearchFieldValue}
-            placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-          />
-          <i className="fas fa-search fa-2x" id="question-search-submit-button"></i>
-        </div>
-        {this.state.displayErrorMessage && (
-          <div id="no-matching-queries-message">{errorMessageText}</div>
-        )}
+        <input
+          id="question-search-field-input"
+          type="text"
+          onChange={this.handleGetQuestionSearchFieldValue}
+          placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        />
+        {/* <i className="fas fa-search fa-2x" id="question-search-submit-button"></i> */}
+        <BiSearchAlt2 size="80px" />
+        {displayErrorMessage && <div id="no-matching-queries-message">{errorMessageText}</div>}
       </div>
     );
   }
