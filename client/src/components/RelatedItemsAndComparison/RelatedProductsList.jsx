@@ -67,13 +67,13 @@ class RelatedProductsList extends React.Component {
 
     let leftArrow = null;
     if (relatedSlidePosition !== 0) {
-      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow /></i>;
+      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow size={24} /></i>;
     }
 
     let rightArrow = null;
     const numberOfCards = relatedProducts.length;
     if (relatedSlidePosition + (4 * 264) < numberOfCards * 264) {
-      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow /></i>;
+      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow size={24} /></i>;
     }
 
     if (relatedProducts.length > 0) {
