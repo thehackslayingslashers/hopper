@@ -64,7 +64,7 @@ class BasicInfo extends React.Component {
         </div>
       );
     }
-    return <div id="overviewBasicInfo">Loading</div>;
+    return <div id="overviewBasicInfo" className="loadin">Loading...</div>;
   }
 }
 

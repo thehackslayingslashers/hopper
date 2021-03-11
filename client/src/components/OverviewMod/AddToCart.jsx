@@ -147,7 +147,7 @@ class AddToCart extends React.Component {
         </>
       );
     }
-    return <div id="overviewAddToCart">Loading</div>;
+    return <div id="overviewAddToCart"></div>;
   }
 }
 

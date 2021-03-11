@@ -1,40 +1,43 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
-import { BsImageFill, BsImage } from 'react-icons/bs';
+import { GoPrimitiveDot } from 'react-icons/go';
+import { FaDotCircle } from 'react-icons/fa';
 
 const ImageGalleryThumbnail = ({
   image, index, chosen, handleImageSelect, trueIndex, fullScreen,
 }) => (fullScreen ? (
   chosen ? (
-    <BsImage
+    <FaDotCircle
       onClick={handleImageSelect}
       onKeyDown={handleImageSelect}
       className="imageGalleryIcon chosen"
       id={trueIndex}
       alt="thumbnail"
-      src={image.url}
       style={{ gridRow: index + 1 }}
     />
   ) : (
-    <BsImageFill
+    <GoPrimitiveDot
       onClick={handleImageSelect}
       onKeyDown={handleImageSelect}
       className="imageGalleryIcon"
       id={trueIndex}
       alt="thumbnail"
-      src={image.url}
       style={{ gridRow: index + 1 }}
     />
   )) : (
-    <img
+    <button
+      type="submit"
       onClick={handleImageSelect}
       onKeyDown={handleImageSelect}
       className={chosen ? 'thumbnail chosen' : 'thumbnail'}
       id={trueIndex}
       alt="thumbnail"
-      src={image.thumbnail_url[0] === 'h' ? image.thumbnail_url : image.thumbnail_url.substr(1)}
-      style={{ gridRow: index + 1 }}
+      style={{
+        gridRow: index + 1,
+        background: `url(${image.thumbnail_url[0] === 'h' ? image.thumbnail_url : image.thumbnail_url.substr(1)})`,
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover',
+      }}
     />
 ));
 
