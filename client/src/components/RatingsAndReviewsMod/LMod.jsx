@@ -122,7 +122,7 @@ class LMod extends React.Component {
 
     return (
       <>
-        <h1>Ratings & Reviews</h1>
+        <h2 style={{ fontFamily: 'Arial, sans-serif' }}>Ratings & Reviews</h2>
         <div className="LModule" id="reviews" onClick={withClickTracker}>
           <RatingsMod
             avg={currentItemAverageRating}
