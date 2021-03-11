@@ -157,11 +157,11 @@ class AddReview extends React.Component {
     let noStyle;
     if (recommend === 'yes') {
       yesStyle = {
-        backgroundColor: 'rgb(214, 182, 255)',
+        backgroundColor: '#0083a8',
       };
     } else if (recommend === 'no') {
       noStyle = {
-        backgroundColor: 'rgb(214, 182, 255)',
+        backgroundColor: '#0083a8',
       };
     }
     return (
