@@ -41,7 +41,7 @@ class OverviewMod extends React.Component {
           >
             <div id="loadingVideo">
               <video autoPlay muted loop>
-                <source src="/bR2-ySf5MEUrBxOyU4wjRVsJ-lustsj8dThja4WLsX8.mp4" type="video/mp4" />
+                <source src="/hoprjump.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
