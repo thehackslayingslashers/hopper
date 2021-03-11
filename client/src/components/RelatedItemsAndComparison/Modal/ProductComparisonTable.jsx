@@ -21,7 +21,7 @@ class ProductComparisonTable extends React.Component {
   getItemFeatures(itemFeaturesArr) {
     const itemFeatures = {};
     for (let i = 0; i < itemFeaturesArr.length; i++) {
-      let feature = itemFeaturesArr[i];
+      const feature = itemFeaturesArr[i];
       itemFeatures[feature.feature] = feature.value;
     }
     return itemFeatures;

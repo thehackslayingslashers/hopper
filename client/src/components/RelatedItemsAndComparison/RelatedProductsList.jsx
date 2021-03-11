@@ -26,12 +26,6 @@ class RelatedProductsList extends React.Component {
     });
   }
 
-  showModal() {
-    const { show } = this.state;
-    this.setState({
-      show: !show,
-    });
-  }
 
   handleLeftClick() {
     const {
@@ -61,6 +55,18 @@ class RelatedProductsList extends React.Component {
     }
   }
 
+  showModal() {
+    const { show } = this.state;
+    if (show) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    this.setState({
+      show: !show,
+    });
+  }
+
   render() {
     const { relatedProducts, currentItem, handleCardClick, relatedSlidePosition } = this.props;
     const { show, comparedItem } = this.state;
@@ -82,20 +88,13 @@ class RelatedProductsList extends React.Component {
           <ProductComparisonModal
             showModal={this.showModal}
             show={show}
+            currentItem={currentItem}
+            comparedItem={comparedItem}
             key="productComparisonModal"
-          >
-            <div className="comparisonmodal">
-              <ProductComparisonTable
-                currentItem={currentItem}
-                comparedItem={comparedItem}
-                showModal={this.showModal}
-                key="ProductComparisonTable"
-              />
-            </div>
-          </ProductComparisonModal>
+          />
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
-              {leftArrow}
+            {leftArrow}
             <div className="carousel-track">
               <div className="carousel-slide related-slide">
                 {
