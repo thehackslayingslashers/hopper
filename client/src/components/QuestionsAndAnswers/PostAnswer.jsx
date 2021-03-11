@@ -58,7 +58,7 @@ class PostAnswer extends React.Component {
 
   handleSubmitPostAnswer(e) {
     e.preventDefault();
-    const { currentQuestionId } = this.props;
+    const { currentQuestionId, getCurrentProductQuestionsAndAnswers } = this.props;
     const {
       postUsernameFieldValue,
       postEmailFieldValue,
@@ -109,6 +109,7 @@ class PostAnswer extends React.Component {
           this.setState({
             postAnswerErrorDisplay: { display: 'none' },
           });
+          getCurrentProductQuestionsAndAnswers();
         })
         .catch((error) => {
           throw error;

@@ -27,7 +27,11 @@ class PostQuestion extends React.Component {
 
   handleSubmitPostQuestion(e) {
     e.preventDefault();
-    const { currentItemId, onHandleAddAQuestionButtonClick } = this.props;
+    const {
+      currentItemId,
+      onHandleAddAQuestionButtonClick,
+      getCurrentProductQuestionsAndAnswers,
+    } = this.props;
     const { postUsernameFieldValue, postEmailFieldValue, postQuestionFieldValue } = this.state;
     if (
       postUsernameFieldValue.length > 3 &&
@@ -46,7 +50,9 @@ class PostQuestion extends React.Component {
         url: '/qa/questions/',
         data: questionPostRequest,
       })
-        .then(() => {})
+        .then(() => {
+          getCurrentProductQuestionsAndAnswers();
+        })
         .catch((error) => {
           throw error;
         });

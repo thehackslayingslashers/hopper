@@ -56,6 +56,7 @@ class QuestionsAndAnswers extends React.Component {
           currentItemId={currentItemId}
           currentProductQuestions={currentProductQuestions}
           searchedQuestion={searchedQuestion}
+          getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
         />
       </div>
     );
