@@ -50,7 +50,7 @@ class ProductComparisonTable extends React.Component {
       const currentItemFeatures = this.getItemFeatures(currentItem.iteminfo.features);
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       return (
-        <div>
+        <div className="comparisonmodal-inner">
           Let&apos;s compare these two products!
           <table>
             <tbody>

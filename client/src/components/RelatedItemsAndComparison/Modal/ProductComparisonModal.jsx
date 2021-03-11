@@ -16,7 +16,7 @@ class ProductComparisonModal extends React.Component {
     }
     return (
       <div>
-        <div>{children}</div>
+        {children}
       </div>
     );
   }
