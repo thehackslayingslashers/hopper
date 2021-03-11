@@ -8,6 +8,7 @@ class AnswerList extends React.Component {
     this.state = {
       answersDisplayed: 2,
       showLessAnswersButtonDisplay: { display: 'none' },
+      answerDisplay: { display: 'flex' },
     };
 
     this.handleShowMoreAnswers = this.handleShowMoreAnswers.bind(this);
@@ -17,9 +18,9 @@ class AnswerList extends React.Component {
   handleShowMoreAnswers(e) {
     const { answersDisplayed } = this.state;
     e.preventDefault();
-    if (answersDisplayed < 50) {
-      const plusTwoAnswerLength = answersDisplayed + 2;
-      this.setState({ answersDisplayed: plusTwoAnswerLength });
+    if (answersDisplayed < 50 || answersDisplayed > 2) {
+      // const plusTwoAnswerLength = answersDisplayed + 2;
+      this.setState({ answersDisplayed: 50 });
       this.setState({ showLessAnswersButtonDisplay: { display: 'flex' } });
     }
   }
@@ -27,9 +28,9 @@ class AnswerList extends React.Component {
   handleShowLessAnswers() {
     const { answersDisplayed } = this.state;
     if (answersDisplayed > 2) {
-      const minusTwoAnswerLength = answersDisplayed - 2;
-      this.setState({ answersDisplayed: minusTwoAnswerLength });
-      if (minusTwoAnswerLength < 3) {
+      // const minusTwoAnswerLength = answersDisplayed - 2;
+      this.setState({ answersDisplayed: 2 });
+      if (answersDisplayed < 3) {
         this.setState({ showLessAnswersButtonDisplay: { display: 'none' } });
       }
     }
