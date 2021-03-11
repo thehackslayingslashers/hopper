@@ -30,7 +30,7 @@ class ProductInformation extends React.Component {
         </div>
       );
     }
-    return <div id="overviewProductInformation">Loading</div>;
+    return <div id="overviewProductInformation"></div>;
   }
 }
 

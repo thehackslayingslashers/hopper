@@ -177,7 +177,10 @@ class App extends React.Component {
           currentItemStyles={currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
         />
-        <QuestionsAndAnswers key={currentItemId} currentItemId={currentItemId} />
+        <QuestionsAndAnswers
+          key={currentItemId}
+          currentItemId={currentItemId}
+        />
         <LMod
           currentItemId={currentItemId}
           currentItemRatingInfo={currentItemRatingInfo}
