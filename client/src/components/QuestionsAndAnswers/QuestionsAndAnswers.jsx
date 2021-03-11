@@ -1,8 +1,8 @@
 import React from 'react';
-import PostQuestion from './PostQuestion.jsx';
 import QuestionView from './QuestionView';
 import QuestionSearch from './QuestionSearch';
 import axios from 'axios';
+import withClickTracker from '../withClickTracker';
 // import GARETHS_TOKEN from '../../config.js';
 
 class QuestionsAndAnswers extends React.Component {
@@ -42,7 +42,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    const { currentItemId } = this.props;
+    const { currentItemId, onClickAnywhere } = this.props;
     const { currentProductQuestions, searchedQuestion } = this.state;
     return (
       <div id="questions-and-answers-container">
@@ -62,4 +62,4 @@ class QuestionsAndAnswers extends React.Component {
   }
 }
 
-export default QuestionsAndAnswers;
+export default withClickTracker(QuestionsAndAnswers);

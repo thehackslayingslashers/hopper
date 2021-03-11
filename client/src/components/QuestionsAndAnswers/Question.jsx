@@ -8,7 +8,11 @@ class Question extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { postAnswerFieldDisplay: false };
+    this.state = {
+      postAnswerFieldDisplay: false,
+      helpful: false,
+      helpfulButtonText: `Yes(${this.props.question.question_helpfulness})`,
+    };
 
     this.handleQuestionUpvote = this.handleQuestionUpvote.bind(this);
     this.handleClickAddAnswer = this.handleClickAddAnswer.bind(this);
@@ -17,14 +21,22 @@ class Question extends React.Component {
 
   handleQuestionUpvote(e) {
     const { question } = this.props;
+    const { helpful, helpfulButtonText } = this.state;
     const questionId = question.question_id;
     e.preventDefault();
-    axios
-      .put(`/qa/questions/${questionId}/helpful`)
-      .then(() => {})
-      .catch((error) => {
-        throw error;
-      });
+    if (!helpful) {
+      axios
+        .put(`/qa/questions/${questionId}/helpful`)
+        .then(() => {
+          this.setState({
+            helpful: true,
+            helpfulButtonText: `Yes(${question.question_helpfulness + 1})`,
+          });
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
   }
 
   handleClickAddAnswer(e) {
@@ -38,14 +50,14 @@ class Question extends React.Component {
 
   render() {
     const { question } = this.props;
-    const { postAnswerFieldDisplay } = this.state;
+    const { postAnswerFieldDisplay, helpful, helpfulButtonText } = this.state;
     return (
       <div id="question-and-answer-item-container">
         <div id="question-item-container">
           <div className="question-text">Q: {question.question_body}</div>
           <div className="question-response-options">
             <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
-              Helpful?
+              Helpful? {helpfulButtonText}
             </div>
             <div className="small-divider-question">|</div>
             <div className="add-answer-button" onClick={this.handleClickAddAnswer}>

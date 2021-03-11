@@ -813,7 +813,7 @@ QuestionsModule
 */
 
 #questions-and-answers-container {
-  background-color: white;
+  background-color: #f8f6f5;
   font-family: Arial, sans-serif;
   font-size: 18pt;
   margin: auto;
@@ -821,7 +821,6 @@ QuestionsModule
 }
 
 #questions-and-answers-header {
-  background-color: white;
   font-weight: 200;
   padding-top: 60px;
   padding-left: 2px;
@@ -885,11 +884,11 @@ QuestionsModule
 }
 
 .upvote-question-button {
-  width: 8%;
+  display: flex;
   font-size: 10pt;
   font-weight: 100;
-  padding-right: 45px;
   padding-top: 6px;
+  padding-right: 10px;
 }
 
 .add-answer-button {
@@ -914,7 +913,7 @@ QuestionsModule
 }
 
 .question-text {
-  width: 88%;
+  width: 85%;
 }
 
 #answers-container {
@@ -935,7 +934,7 @@ QuestionsModule
 }
 .answer-text {
   font-weight: 200;
-  width: 80%;
+  width: 79.5%;
   padding-left: 5px;
 }
 
@@ -957,7 +956,7 @@ QuestionsModule
   padding: 20px;
   height: 350px;
   width: 350px;
-  border: px solid black;
+  border: 1px solid black;
   border-radius: 4px;
 }
 
@@ -969,14 +968,14 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(340px, -350px);
+  transform: translate(330px, -350px);
   z-index: 1;
   cursor: pointer;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(400px, -290px);
+  transform: translate(300px, -20px);
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -1009,9 +1008,14 @@ QuestionsModule
 .add-a-question-button {
   padding: 20px;
   border: 1px solid black;
-  background-color: white;
+  background-color: #f8f6f5;
   font-weight: 500;
   font-size: 18pt;
+}
+
+.add-a-question-button:hover {
+  background-color: #48b9d8;
+  color: white;
 }
 
 #user-info-and-date {
@@ -1029,7 +1033,16 @@ QuestionsModule
   font-size: 10pt;
   font-weight: 100;
   margin-left: 35px;
+  max-width: 400px;
   gap: 10px;
+}
+
+.show-more-less-answers-button:hover,
+.upvote-question-button:hover,
+.upvote-answer-button:hover,
+.add-answer-button:hover {
+  color: #2dafd3;
+  cursor: pointer;
 }
 
 .upvote-answer-button {
@@ -1052,11 +1065,14 @@ QuestionsModule
   top: 0;
   z-index: 1;
   transform: translate(400px, 300px);
-  border: 2px solid white;
+  color: black;
+  background-color: #48b9d8;
   padding: 35px;
   text-align: center;
   width: 300px;
-  height: 350px;
+  height: 380px;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .post-answer-body,
