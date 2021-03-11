@@ -590,6 +590,12 @@ Overview Module
   font-size: medium;
 }
 
+
+
+
+
+
+
 /*
 =====================
 LModule
@@ -705,7 +711,7 @@ hr {
 .sortingList span::after {
   position: absolute;
   content: '';
-  height: 5px;
+  height: 3px;
   width: 0;
   left: 0;
   background-color: #006aa8;
@@ -806,6 +812,31 @@ hr {
 .question3 pre {
   text-align: left;
   margin: 0px 25px;
+}
+
+.starFilter {
+  transition: all 1s;
+  position: relative;
+}
+
+.starFilter::after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  width: 0;
+  left: 0;
+  background-color: #006aa8;
+  bottom: 0;
+  transition: all 0.5s ease-out;
+}
+
+.starFilter:hover::after {
+  width: 100%;
+}
+
+.starFilter:hover {
+  cursor: pointer;
+  color: #08344e;
 }
 
 /*

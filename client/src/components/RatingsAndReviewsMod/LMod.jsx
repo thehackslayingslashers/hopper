@@ -13,11 +13,13 @@ class LMod extends React.Component {
       sortedBy: 'relevent',
       modalContent: [],
       showModal: false,
+      filtered: null,
     };
     this.getAllReviews = this.getAllReviews.bind(this);
     this.updateSortBy = this.updateSortBy.bind(this);
     this.modalHandler = this.modalHandler.bind(this);
     this.submitHandler = this.submitHandler.bind(this);
+    this.filteredUpdater = this.filteredUpdater.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -101,6 +103,12 @@ class LMod extends React.Component {
       });
   }
 
+  filteredUpdater(value) {
+    this.setState({
+      filtered: value,
+    });
+  }
+
   render() {
     const {
       currentItemRatingInfo,
@@ -109,7 +117,7 @@ class LMod extends React.Component {
     } = this.props;
 
     const {
-      sortedBy, allReviews, showModal, modalContent,
+      sortedBy, allReviews, showModal, modalContent, filtered,
     } = this.state;
 
     return (
@@ -119,6 +127,7 @@ class LMod extends React.Component {
           <RatingsMod
             avg={currentItemAverageRating}
             currentItemRatingInfo={currentItemRatingInfo}
+            filteredUpdater={this.filteredUpdater}
           />
           <ReviewsMod
             reviews={allReviews}
@@ -128,6 +137,7 @@ class LMod extends React.Component {
             submitHandler={this.submitHandler}
             itemName={itemName}
             characteristics={currentItemRatingInfo.characteristics}
+            filtered={filtered}
           />
           {showModal && (
           <Modal

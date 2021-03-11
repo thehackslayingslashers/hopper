@@ -1,7 +1,7 @@
 import React from 'react';
 import Stars from '../Stars';
 
-const RatingsMod = ({ avg, currentItemRatingInfo }) => {
+const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
   let percent;
   if (currentItemRatingInfo.recommended) {
     percent = Math.ceil((Number(currentItemRatingInfo.recommended.true) / (Number(currentItemRatingInfo.recommended.true) + Number(currentItemRatingInfo.recommended.false))) * 100);
@@ -10,7 +10,7 @@ const RatingsMod = ({ avg, currentItemRatingInfo }) => {
   }
 
   return (
-    <section className="ratings">
+    <section className="ratings" onClick={(event) => { filteredUpdater(Number(event.target.innerText[0])) }}>
       <div className="AvgStar" style={{ margin: '5px 0px' }}>
         <div style={{ fontSize: '60px', fontWeight: 'bold' }}>
           {(avg !== 'NaN') && (
@@ -24,11 +24,11 @@ const RatingsMod = ({ avg, currentItemRatingInfo }) => {
         {percent}
         % of reviews recommend this product
       </h3>
-      <div>5 stars</div>
-      <div>4 stars</div>
-      <div>3 stars</div>
-      <div>2 stars</div>
-      <div>1 stars</div>
+      <div className="starFilter">5 stars</div>
+      <div className="starFilter">4 stars</div>
+      <div className="starFilter">3 stars</div>
+      <div className="starFilter">2 stars</div>
+      <div className="starFilter">1 stars</div>
     </section>
   );
 };
