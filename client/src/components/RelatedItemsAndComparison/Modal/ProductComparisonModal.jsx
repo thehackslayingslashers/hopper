@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductComparisonTable from './ProductComparisonTable';
 
 class ProductComparisonModal extends React.Component {
   constructor(props) {
@@ -10,13 +11,23 @@ class ProductComparisonModal extends React.Component {
   }
 
   render() {
-    const { show, children } = this.props;
+    const {
+      show,
+      currentItem,
+      comparedItem,
+      showModal,
+    } = this.props;
     if (!show) {
       return null;
     }
     return (
-      <div>
-        {children}
+      <div className="comparisonmodal">
+        <ProductComparisonTable
+          currentItem={currentItem}
+          comparedItem={comparedItem}
+          showModal={showModal}
+          key="ProductComparisonTable"
+        />
       </div>
     );
   }
