@@ -192,7 +192,8 @@ class AddReview extends React.Component {
           }}
           style={{ fontSize: '20px' }}
         >
-          Do you recommend this product?* &nbsp;
+          <strong>Do you recommend this product?*</strong>
+          &nbsp;
           <button type="button" style={yesStyle}>yes</button>
           &emsp;
           <button type="button" style={noStyle}>no</button>
@@ -204,7 +205,8 @@ class AddReview extends React.Component {
           </pre>
         </div>
         <div className="question4" style={{ fontSize: '20px' }}>
-          Review Summary: &nbsp;
+          <strong>Review Summary:</strong>
+          &nbsp;
           <input
             type="text"
             placeholder="Ex. Best purchase ever!"
@@ -215,7 +217,8 @@ class AddReview extends React.Component {
           />
         </div>
         <div className="question4" style={{ fontSize: '20px' }}>
-          Review Body: &nbsp;
+          <strong>Review Body:</strong>
+            &nbsp;
           <input
             type="text"
             placeholder="Why did you like the product or not?"
@@ -228,7 +231,8 @@ class AddReview extends React.Component {
         </div>
         {(body.length < 50) && (`Minimum required characters left: ${50 - body.length}`)}
         <div className="question4" style={{ fontSize: '20px' }}>
-          Your Nickname*: &nbsp;
+          <strong>Your Nickname*:</strong>
+          &nbsp;
           <input
             type="text"
             placeholder="Ex. jackson11!"
@@ -240,7 +244,8 @@ class AddReview extends React.Component {
         </div>
         For privacy reasons, do not use your full name or email address
         <div className="question4" style={{ fontSize: '20px' }}>
-          Your Email*: &nbsp;
+          <strong>Your Email*:</strong>
+          &nbsp;
           <input
             type="text"
             placeholder="Ex. jackson11@email.com"
