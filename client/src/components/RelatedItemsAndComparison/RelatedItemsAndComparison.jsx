@@ -96,6 +96,7 @@ class RelatedItemsAndComparison extends React.Component {
       currentItemRatingInfo,
       currentItemStyles,
       onClickAnywhere,
+      darkMode,
     } = this.props;
     const {
       relatedProducts,
@@ -116,12 +117,14 @@ class RelatedItemsAndComparison extends React.Component {
           handleCardClick={this.handleCardClick}
           relatedSlidePosition={relatedSlidePosition}
           handleRelatedSlideState={this.handleRelatedSlideState}
+          darkMode={darkMode}
         />
         <OutfitList
           currentItem={currentItem}
           handleCardClick={this.handleCardClick}
           outfitSlidePosition={outfitSlidePosition}
           handleOutfitSlideState={this.handleOutfitSlideState}
+          darkMode={darkMode}
         />
       </div>
     );

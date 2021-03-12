@@ -45,14 +45,14 @@ class ProductComparisonTable extends React.Component {
   }
 
   render() {
-    const { currentItem, comparedItem, showModal } = this.props;
+    const { currentItem, comparedItem, showModal, darkMode } = this.props;
     const { featuresList } = this.state;
     if (comparedItem !== {}) {
       const currentItemFeatures = this.getItemFeatures(currentItem.iteminfo.features);
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       let counter = 50;
       return (
-        <div className="comparisonmodal-inner">
+        <div className={darkMode ? "comparisonmodal-inner darkMode" : "comparisonmodal-inner"}>
           <i className="cardIcon" onClick={showModal} >
             <IoMdCloseCircle size={36} />
           </i>

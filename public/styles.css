@@ -1277,6 +1277,10 @@ Related Items Module
   transition: box-shadow 0.5s, transform 0.5s;
 }
 
+.card.darkMode {
+  background-color: rgb(68, 68, 68);
+}
+
 .card:hover {
   transform: scale(1);
   transition: 0.5s;
