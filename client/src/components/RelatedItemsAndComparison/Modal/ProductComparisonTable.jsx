@@ -78,5 +78,5 @@ class ProductComparisonTable extends React.Component {
     }
     return null;
   }
-};
+}
 export default ProductComparisonTable;
