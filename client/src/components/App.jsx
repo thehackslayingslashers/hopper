@@ -67,6 +67,11 @@ class App extends React.Component {
 
   handleDarkMode() {
     const { darkMode } = this.state;
+    if (darkMode) {
+      document.body.classList.remove('darkMode');
+    } else {
+      document.body.classList.add('darkMode');
+    }
     this.setState({
       darkMode: !darkMode,
     });
@@ -169,6 +174,7 @@ class App extends React.Component {
           selectedStyleIndex={selectedStyleIndex}
           numberOfReviews={numberOfReviewsForTarrin}
           handleStyleSelection={this.handleStyleSelection}
+          darkMode={darkMode}
         />
         <RelatedItemsAndComparison
           currentItemId={currentItemId}

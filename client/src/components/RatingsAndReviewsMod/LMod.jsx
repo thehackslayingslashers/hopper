@@ -32,12 +32,12 @@ class LMod extends React.Component {
     } = this.props;
     const { sortedBy } = this.state;
 
-    if (
-      currentItemId !== prevProps.currentItemId
+    if (numberOfReviews > 0
+      && (currentItemId !== prevProps.currentItemId
       || numberOfReviews !== prevProps.numberOfReviews
       || currentItemRatingInfo !== prevProps.currentItemRatingInfo
       || currentItemAverageRating !== prevProps.currentItemAverageRating
-      || itemName !== prevProps.itemName) {
+      || itemName !== prevProps.itemName)) {
       this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
     }
   }

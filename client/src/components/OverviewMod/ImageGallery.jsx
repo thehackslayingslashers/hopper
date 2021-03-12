@@ -14,7 +14,7 @@ class ImageGallery extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedImageIndex: 0,
+      selectedImageIndex: '0',
       fullScreen: false,
       fullfull: false,
       thumbnailIndex: 0,
@@ -46,13 +46,16 @@ class ImageGallery extends React.Component {
   }
 
   handleImageSelect(e) {
+    const { selectedImageIndex } = this.state;
     const index = e.target.id;
-    this.setState({
-      selectedImageIndex: index,
-      fadeIn: true,
-    }, () => {
-      setTimeout(this.unFadeIn, 500);
-    });
+    if (index !== selectedImageIndex) {
+      this.setState({
+        selectedImageIndex: index,
+        fadeIn: true,
+      }, () => {
+        setTimeout(this.unFadeIn, 500);
+      });
+    }
   }
 
   handleArrowClick(e) {
@@ -140,7 +143,7 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    const { selectedStyleIndex, currentItemStyles } = this.props;
+    const { selectedStyleIndex, currentItemStyles, darkMode } = this.props;
     const {
       fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty, fadeIn,
     } = this.state;
@@ -177,7 +180,7 @@ class ImageGallery extends React.Component {
           id="overviewBigImage"
           alt=""
           // eslint-disable-next-line no-nested-ternary
-          className={fullScreen ? (fullfull ? 'full fullfull' : (fadeIn ? 'fade-in full' : 'full')) : (fadeIn ? 'fade-in' : null)}
+          className={`${fullScreen ? 'full' : ''} ${fullfull ? 'fullfull' : ''} ${fadeIn ? 'fade-in' : ''} ${darkMode ? 'darkMode' : ''}`}
           onMouseMove={this.hoverFullFull}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
           style={fullfull ? {

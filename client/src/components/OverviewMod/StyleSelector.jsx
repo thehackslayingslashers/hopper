@@ -8,7 +8,7 @@ class StyleSelector extends React.Component {
   }
 
   render() {
-    const { currentItemStyles, selectedStyleIndex, handleStyleSelection } = this.props;
+    const { currentItemStyles, selectedStyleIndex, handleStyleSelection, darkMode } = this.props;
     let styleItems = '';
     let index = 0;
 
@@ -36,7 +36,7 @@ class StyleSelector extends React.Component {
               type="submit"
               index={index}
               alt={style.name}
-              className="overviewStyleItem"
+              className={darkMode ? "overviewStyleItem darkMode" : "overviewStyleItem"}
               style={url ? styles : null}
               // src={url}
               onClick={handleStyleSelection}
@@ -47,7 +47,7 @@ class StyleSelector extends React.Component {
           );
           let selectedCheck = null;
           if (selectedStyleIndex === index) {
-            selectedCheck = <MdCheckCircle className="selectedCheck" />;
+            selectedCheck = <MdCheckCircle className={darkMode ? "selectedCheck darkMode" : "selectedCheck"} />;
           }
           const styleImage = (
             <div key={style.name + style.style_id} className="overviewStyleItemContainer">
