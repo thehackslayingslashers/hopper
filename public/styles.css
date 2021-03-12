@@ -261,6 +261,7 @@ Overview Module
   grid-column: 5;
   z-index: 6;
   margin: auto auto 0 5px;
+  transition: scale 300ms;
 }
 
 #fullScreenButton:hover {
@@ -802,7 +803,7 @@ hr {
 }
 
 .modalButton {
-  background-color: #f8f6f5;;
+  background-color: #f8f6f5;
   color: #0083a8;
   width: 100px;
   border: 1px solid #0083a8;
@@ -1021,7 +1022,10 @@ QuestionsModule
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
+  max-height: 350px;
+  overflow-y: auto;
 }
+
 .answer-item {
   padding-bottom: 10px;
 }
@@ -1071,14 +1075,14 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(330px, -350px);
+  transform: translate(320px, -336px);
   z-index: 1;
   cursor: pointer;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(300px, -20px);
+  transform: translate(285px, -25px);
   z-index: 1;
   width: 20px;
   height: 20px;
@@ -1379,15 +1383,15 @@ Related Items Module
   background: white;
   margin: 100px auto;
   width: 400px;
-  height: 400px;
+  height: auto;
   padding: 25px 50px 50px 50px;
   text-align: center;
   opacity: 1;
   z-index: 7;
   contain: strict;
-  border: 1px solid black;
-  border-radius: 6px;
-  overflow-y: scroll;
+  border: 3px solid;
+  border-radius: 20px;
+  /* overflow-y: scroll; */
 }
 
 table,

@@ -26,7 +26,6 @@ class RelatedProductsList extends React.Component {
     });
   }
 
-
   handleLeftClick() {
     const {
       relatedSlidePosition,

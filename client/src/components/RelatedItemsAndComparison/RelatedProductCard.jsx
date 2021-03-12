@@ -101,7 +101,7 @@ class RelatedProductCard extends React.Component {
           <h2> Now Loading... </h2>
         </div>
         <div className="cardinfo">
-          <h3> Please wait patiently, like this frog.</h3>
+          <h3> or there are no related products. These frogs humbly apologize.</h3>
         </div>
       </div>
     );
