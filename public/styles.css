@@ -802,7 +802,7 @@ hr {
 }
 
 .modalButton {
-  background-color: #f8f6f5;;
+  background-color: #f8f6f5;
   color: #0083a8;
   width: 100px;
   border: 1px solid #0083a8;
@@ -984,6 +984,8 @@ QuestionsModule
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 .answer-item {
   padding-bottom: 10px;
