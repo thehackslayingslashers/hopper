@@ -39,6 +39,9 @@ class LMod extends React.Component {
       || currentItemAverageRating !== prevProps.currentItemAverageRating
       || itemName !== prevProps.itemName)) {
       this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
+      this.setState({
+        filtered: null,
+      });
     }
   }
 
