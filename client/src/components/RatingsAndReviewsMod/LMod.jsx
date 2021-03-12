@@ -39,6 +39,9 @@ class LMod extends React.Component {
       || currentItemAverageRating !== prevProps.currentItemAverageRating
       || itemName !== prevProps.itemName)) {
       this.getAllReviews(currentItemId, numberOfReviews, sortedBy);
+      this.setState({
+        filtered: null,
+      });
     }
   }
 
@@ -63,6 +66,11 @@ class LMod extends React.Component {
 
   modalHandler(modalContent) {
     const { showModal } = this.state;
+    if (showModal) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
     this.setState({
       modalContent,
       showModal: !showModal,

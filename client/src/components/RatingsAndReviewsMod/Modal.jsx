@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 const Modal = (props) => {
   const { content, closeModal } = props;
