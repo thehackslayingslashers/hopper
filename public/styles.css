@@ -1031,14 +1031,14 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(330px, -350px);
+  transform: translate(320px, -336px);
   z-index: 1;
   cursor: pointer;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(300px, -20px);
+  transform: translate(285px, -25px);
   z-index: 1;
   width: 20px;
   height: 20px;
