@@ -5,7 +5,7 @@ const Header = ({
   searchValue, searchId, handleSearchIdChange, darkMode, handleDarkMode,
 }) => (
   <>
-    <div id="pageHeader">
+    <div id="pageHeader" className={darkMode ? 'darkMode' : null}>
       <img
         id="logo"
         src={darkMode ? './hopr2invert.png' : './hopr2.png'}

@@ -126,11 +126,11 @@ class PostAnswer extends React.Component {
     }
   }
   render() {
-    // const { postAnswerFieldDisplay } = this.props;
+    const { postAnswerFieldDisplay, darkMode } = this.props;
     const { postAnswerErrorDisplay, photoUploadInputsDisplayed } = this.state;
     return (
       <div>
-        <div className="post-answer-container">
+        <div className={darkMode ? 'post-answer-container darkMode' : 'post-answer-container'}>
           <div
             className="close-post-answer-container"
             onClick={() => {
