@@ -14,7 +14,7 @@ class ImageGallery extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedImageIndex: 0,
+      selectedImageIndex: '0',
       fullScreen: false,
       fullfull: false,
       thumbnailIndex: 0,
@@ -46,13 +46,16 @@ class ImageGallery extends React.Component {
   }
 
   handleImageSelect(e) {
+    const { selectedImageIndex } = this.state;
     const index = e.target.id;
-    this.setState({
-      selectedImageIndex: index,
-      fadeIn: true,
-    }, () => {
-      setTimeout(this.unFadeIn, 500);
-    });
+    if (index !== selectedImageIndex) {
+      this.setState({
+        selectedImageIndex: index,
+        fadeIn: true,
+      }, () => {
+        setTimeout(this.unFadeIn, 500);
+      });
+    }
   }
 
   handleArrowClick(e) {
