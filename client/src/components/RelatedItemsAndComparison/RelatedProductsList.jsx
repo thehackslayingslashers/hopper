@@ -26,12 +26,6 @@ class RelatedProductsList extends React.Component {
     });
   }
 
-  showModal() {
-    const { show } = this.state;
-    this.setState({
-      show: !show,
-    });
-  }
 
   handleLeftClick() {
     const {
@@ -61,19 +55,31 @@ class RelatedProductsList extends React.Component {
     }
   }
 
+  showModal() {
+    const { show } = this.state;
+    if (show) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
+    this.setState({
+      show: !show,
+    });
+  }
+
   render() {
     const { relatedProducts, currentItem, handleCardClick, relatedSlidePosition } = this.props;
     const { show, comparedItem } = this.state;
 
     let leftArrow = null;
     if (relatedSlidePosition !== 0) {
-      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow /></i>;
+      leftArrow = <i className="carousel-left-button" onClick={this.handleLeftClick}><BiLeftArrow size={24} /></i>;
     }
 
     let rightArrow = null;
     const numberOfCards = relatedProducts.length;
     if (relatedSlidePosition + (4 * 264) < numberOfCards * 264) {
-      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow /></i>;
+      rightArrow = <i className="carousel-right-button" onClick={this.handleRightClick}><BiRightArrow size={24} /></i>;
     }
 
     if (relatedProducts.length > 0) {
@@ -82,20 +88,13 @@ class RelatedProductsList extends React.Component {
           <ProductComparisonModal
             showModal={this.showModal}
             show={show}
+            currentItem={currentItem}
+            comparedItem={comparedItem}
             key="productComparisonModal"
-          >
-            <div className="comparisonmodal">
-              <ProductComparisonTable
-                currentItem={currentItem}
-                comparedItem={comparedItem}
-                showModal={this.showModal}
-                key="ProductComparisonTable"
-              />
-            </div>
-          </ProductComparisonModal>
+          />
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
-              {leftArrow}
+            {leftArrow}
             <div className="carousel-track">
               <div className="carousel-slide related-slide">
                 {
