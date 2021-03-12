@@ -69,6 +69,8 @@ class App extends React.Component {
     const { darkMode } = this.state;
     this.setState({
       darkMode: !darkMode,
+    }, () => {
+      document.body.classList.add('darkMode');
     });
   }
 
