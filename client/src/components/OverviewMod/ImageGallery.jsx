@@ -140,7 +140,7 @@ class ImageGallery extends React.Component {
   }
 
   render() {
-    const { selectedStyleIndex, currentItemStyles } = this.props;
+    const { selectedStyleIndex, currentItemStyles, darkMode } = this.props;
     const {
       fullScreen, selectedImageIndex, thumbnailIndex, fullfull, tx, ty, fadeIn,
     } = this.state;
@@ -177,7 +177,7 @@ class ImageGallery extends React.Component {
           id="overviewBigImage"
           alt=""
           // eslint-disable-next-line no-nested-ternary
-          className={fullScreen ? (fullfull ? 'full fullfull' : (fadeIn ? 'fade-in full' : 'full')) : (fadeIn ? 'fade-in' : null)}
+          className={`${fullScreen ? 'full' : ''} ${fullfull ? 'fullfull' : ''} ${fadeIn ? 'fade-in' : ''} ${darkMode ? 'darkMode' : ''}`}
           onMouseMove={this.hoverFullFull}
           src={currentItemStyles[selectedStyleIndex].photos[selectedImageIndex].url}
           style={fullfull ? {

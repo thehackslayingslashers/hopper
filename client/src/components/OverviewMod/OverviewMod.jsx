@@ -25,6 +25,7 @@ class OverviewMod extends React.Component {
       handleStyleSelection,
       numberOfReviews,
       onClickAnywhere,
+      darkMode,
     } = this.props;
 
     return (
@@ -34,6 +35,7 @@ class OverviewMod extends React.Component {
             currentItemStyles={currentItemStyles}
             selectedStyleIndex={selectedStyleIndex}
             key={currentItemStyles[selectedStyleIndex].style_id}
+            darkMode={darkMode}
           />
         ) : (
           <div
@@ -58,6 +60,7 @@ class OverviewMod extends React.Component {
           currentItemStyles={currentItemStyles}
           selectedStyleIndex={selectedStyleIndex}
           handleStyleSelection={handleStyleSelection}
+          darkMode={darkMode}
         />
         {currentItemStyles && currentItemStyles[selectedStyleIndex] ? (
           <AddToCart

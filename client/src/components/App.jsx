@@ -174,6 +174,7 @@ class App extends React.Component {
           selectedStyleIndex={selectedStyleIndex}
           numberOfReviews={numberOfReviewsForTarrin}
           handleStyleSelection={this.handleStyleSelection}
+          darkMode={darkMode}
         />
         <RelatedItemsAndComparison
           currentItemId={currentItemId}
