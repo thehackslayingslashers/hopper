@@ -49,7 +49,7 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question, darkMode } = this.props;
+    const { question, darkMode, getCurrentProductQuestionsAndAnswers } = this.props;
     const { postAnswerFieldDisplay, helpful, helpfulButtonText } = this.state;
     return (
       <div id="question-and-answer-item-container">
@@ -68,6 +68,7 @@ class Question extends React.Component {
         <AnswerList answers={question.answers} currentQuestion={question} />
         {postAnswerFieldDisplay && (
           <PostAnswer
+            getCurrentProductQuestionsAndAnswers={getCurrentProductQuestionsAndAnswers}
             currentQuestionId={question.question_id}
             postAnswerFieldDisplay={postAnswerFieldDisplay}
             revertFieldDisplay={this.revertFieldDisplay}

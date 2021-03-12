@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {IoMdCloseCircle} from 'react-icons/io';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 class PostAnswer extends React.Component {
   constructor(props) {
@@ -138,7 +138,7 @@ class PostAnswer extends React.Component {
               this.props.revertFieldDisplay();
             }}
           >
-            <IoMdCloseCircle size={36}/>
+            <IoMdCloseCircle size={36} />
           </div>
           <div className="post-answer-text-fields">
             Post Answer Here:{' '}
