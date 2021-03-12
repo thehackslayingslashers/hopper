@@ -124,7 +124,6 @@ app.post('/qa/questions/:question_id/answers/', (req, res) => {
     email: req.body.email,
     photos: req.body.photos,
   };
-  debugger;
   outbound
     .postAnswer(postAnswerObj, id)
     .then((response) => {
@@ -197,6 +196,9 @@ app.get('/products/:product_id/related', (req, res) => {
         }
       }
       relatedLength = relatedIds.length;
+      if (relatedLength === 0) {
+        res.send([]);
+      }
       relatedIds.map((id) => {
         outbound
           .fetchItemById(id)

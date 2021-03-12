@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 class ProductComparisonTable extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class ProductComparisonTable extends React.Component {
     return itemFeatures;
   }
 
-  renderTableData(feature, currentFeature, comparedFeature) {
+  renderTableData(feature, currentFeature, comparedFeature, counter) {
     if(currentFeature === null) {
       currentFeature = '✓';
     }
@@ -35,10 +36,10 @@ class ProductComparisonTable extends React.Component {
       comparedFeature = '✓';
     }
     return (
-      <tr>
-        <td>{currentFeature}</td>
-        <td><u><b>{feature}</b></u></td>
-        <td>{comparedFeature}</td>
+      <tr key={counter++}>
+        <td key={currentFeature + counter++}>{currentFeature}</td>
+        <td key={feature + counter++}><u><b>{feature}</b></u></td>
+        <td key={comparedFeature + counter++}>{comparedFeature}</td>
       </tr>
     )
   }
@@ -49,10 +50,12 @@ class ProductComparisonTable extends React.Component {
     if (comparedItem !== {}) {
       const currentItemFeatures = this.getItemFeatures(currentItem.iteminfo.features);
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
+      let counter = 50;
       return (
         <div className="comparisonmodal-inner">
-
-          <i className="fas fa-window-close fa-2x cardIcon" onClick={showModal}/>
+          <i className="cardIcon" onClick={showModal} >
+            <IoMdCloseCircle size={36} />
+          </i>
 
           <h2>
             Let&apos;s compare these two products!
@@ -60,14 +63,17 @@ class ProductComparisonTable extends React.Component {
           <table>
             <tbody>
               <tr>
-                <th><u><b>{currentItem.iteminfo.name}</b></u></th>
-                <th>                        </th>
-                <th><u><b>{comparedItem.iteminfo.name}</b></u></th>
+                <th key={currentItem.iteminfo.name}><u><b>{currentItem.iteminfo.name}</b></u></th>
+                <th key="comparedFeatures">                        </th>
+                <th key={comparedItem.iteminfo.name}><u><b>{comparedItem.iteminfo.name}</b></u></th>
               </tr>
               {
-                featuresList.map((feat) => (
-                  this.renderTableData(feat, currentItemFeatures[feat], comparedItemFeatures[feat])
-                ))
+                featuresList.map((feat) => {
+                  counter += 5;
+                  return (
+                    this.renderTableData(feat, currentItemFeatures[feat], comparedItemFeatures[feat], counter)
+                  );
+                })
 
               }
             </tbody>
