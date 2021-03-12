@@ -51,6 +51,9 @@ class ProductComparisonTable extends React.Component {
       const comparedItemFeatures = this.getItemFeatures(comparedItem.iteminfo.features);
       return (
         <div className="comparisonmodal-inner">
+
+          <i className="fas fa-window-close fa-2x cardIcon" onClick={showModal}/>
+
           <h2>
             Let&apos;s compare these two products!
           </h2>
@@ -70,9 +73,6 @@ class ProductComparisonTable extends React.Component {
             </tbody>
           </table>
           <br />
-          <div>
-            <button onClick={showModal}>close</button>
-          </div>
         </div>
       );
     }
