@@ -63,6 +63,11 @@ class LMod extends React.Component {
 
   modalHandler(modalContent) {
     const { showModal } = this.state;
+    if (showModal) {
+      document.body.style.overflow = 'auto';
+    } else {
+      document.body.style.overflow = 'hidden';
+    }
     this.setState({
       modalContent,
       showModal: !showModal,
