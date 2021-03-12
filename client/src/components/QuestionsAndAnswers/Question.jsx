@@ -54,7 +54,7 @@ class Question extends React.Component {
     return (
       <div id="question-and-answer-item-container">
         <div id="question-item-container">
-          <div className="question-text">Q: {question.question_body}</div>
+          <h3 className="question-text">Q: {question.question_body}</h3>
           <div className="question-response-options">
             <div className="upvote-question-button" onClick={this.handleQuestionUpvote}>
               Helpful? {helpfulButtonText}

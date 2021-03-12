@@ -19,7 +19,7 @@ const ReviewEntry = ({ review, modalHandler }) => {
         </h4>
       </div>
       <div id={review.review_id}>
-        <h2 style={{ color: 'black' }}>
+        <h2 style={{ color: '#0083a8' }}>
           <b>{review.summary}</b>
         </h2>
         <h4>{review.body}</h4>
