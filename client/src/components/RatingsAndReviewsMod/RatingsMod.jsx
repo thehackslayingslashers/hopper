@@ -2,6 +2,7 @@ import React from 'react';
 import Stars from '../Stars';
 
 const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
+
   let recommendedPercent;
   if (currentItemRatingInfo.recommended) {
     recommendedPercent = Math.ceil((Number(currentItemRatingInfo.recommended.true) / (Number(currentItemRatingInfo.recommended.true) + Number(currentItemRatingInfo.recommended.false))) * 100);
