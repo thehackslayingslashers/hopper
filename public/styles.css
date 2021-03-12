@@ -263,6 +263,7 @@ Overview Module
   grid-column: 5;
   z-index: 6;
   margin: auto auto 0 5px;
+  transition: scale 300ms;
 }
 
 #fullScreenButton:hover {
