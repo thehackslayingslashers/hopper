@@ -46,7 +46,7 @@ class QuestionsAndAnswers extends React.Component {
     const { currentProductQuestions, searchedQuestion } = this.state;
     return (
       <div id="questions-and-answers-container" onClick={withClickTracker}>
-        <header id="questions-and-answers-header">QUESTIONS & ANSWERS</header>
+        <h2 id="questions-and-answers-header">QUESTIONS & ANSWERS</h2>
         <QuestionSearch
           currentProductQuestions={currentProductQuestions}
           setCurrentQuestionsToMatchSearch={this.setCurrentQuestionsToMatchSearch}

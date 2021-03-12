@@ -59,8 +59,8 @@ class Answer extends React.Component {
     return (
       <div className="answer-item">
         <div className="a-for-answer-and-answer-text">
-          <header>A: </header>
-          <header className="answer-text">{currentAnswer.body}</header>
+          <div>A: </div>
+          <div className="answer-text">{currentAnswer.body}</div>
           <div className="upvote-answer-button" onClick={this.handleAnswerUpvote}>
             Helpful? {helpfulButtonText}
           </div>
