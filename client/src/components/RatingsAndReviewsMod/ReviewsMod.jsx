@@ -33,7 +33,7 @@ class ReviewsMod extends React.Component {
     } = this.props;
     const { showMore } = this.state;
     let counter = 0;
-    console.log(reviews)
+
     return (
       <section className="reviewsList">
         <SortingHeader
