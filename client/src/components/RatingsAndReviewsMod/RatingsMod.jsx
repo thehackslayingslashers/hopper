@@ -1,8 +1,8 @@
 import React from 'react';
 import Stars from '../Stars';
+import RatingStarBar from './RatingStarBar';
 
 const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
-
   let recommendedPercent;
   if (currentItemRatingInfo.recommended) {
     recommendedPercent = Math.ceil((Number(currentItemRatingInfo.recommended.true) / (Number(currentItemRatingInfo.recommended.true) + Number(currentItemRatingInfo.recommended.false))) * 100);
@@ -41,26 +41,26 @@ const RatingsMod = ({ avg, currentItemRatingInfo, filteredUpdater }) => {
         {recommendedPercent}
         % of reviews recommend this product
       </h4>
-      <div className="filterContainer" style={{ fontSize: '25px' }}>
+      <div className="filterContainer" style={{ fontSize: '18px' }}>
         <div className="starFilter">
-          5 stars:&nbsp;
-          {ratingPercent(5)}
+          <div style={{ minWidth: '65px' }}>5 stars:</div>
+          <RatingStarBar percent={ratingPercent(5)} />
         </div>
         <div className="starFilter">
-          4 stars:&nbsp;
-          {ratingPercent(4)}
+          <div style={{ minWidth: '65px' }}>4 stars:</div>
+          <RatingStarBar percent={ratingPercent(4)} />
         </div>
         <div className="starFilter">
-          3 stars:&nbsp;
-          {ratingPercent(3)}
+          <div style={{ minWidth: '65px' }}>3 stars:</div>
+          <RatingStarBar percent={ratingPercent(3)} />
         </div>
         <div className="starFilter">
-          2 stars:&nbsp;
-          {ratingPercent(2)}
+          <div style={{ minWidth: '65px' }}>2 stars:</div>
+          <RatingStarBar percent={ratingPercent(2)} />
         </div>
         <div className="starFilter">
-          1 stars:&nbsp;
-          {ratingPercent(1)}
+          <div style={{ minWidth: '65px' }}>1 stars:</div>
+          <RatingStarBar percent={ratingPercent(1)} />
         </div>
       </div>
     </section>
