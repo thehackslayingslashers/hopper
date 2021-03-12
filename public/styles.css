@@ -32,7 +32,8 @@ h6 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-button, select {
+button,
+select {
   transition: all 0.3s;
 }
 
@@ -50,7 +51,7 @@ Header
   background-color: white;
 }
 
-#pageHeader.darkMode{
+#pageHeader.darkMode {
   background-color: black;
 }
 
@@ -1003,8 +1004,8 @@ QuestionsModule
   padding: 20px;
   height: 350px;
   width: 350px;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: 3px solid #0083a8;
+  border-radius: 20px;
 }
 
 .post-question-container.darkMode {
@@ -1046,6 +1047,8 @@ QuestionsModule
   display: flex;
   flex-wrap: nowrap;
   padding: 10px;
+  max-width: 85%;
+  resize: none;
 }
 
 .question-view-button-container {
@@ -1067,6 +1070,7 @@ QuestionsModule
 .add-a-question-button:hover {
   background-color: #0083a8;
   border: 1px solid #0083a8;
+  cursor: pointer;
   color: white;
 }
 
@@ -1092,7 +1096,8 @@ QuestionsModule
 .show-more-less-answers-button:hover,
 .upvote-question-button:hover,
 .upvote-answer-button:hover,
-.add-answer-button:hover {
+.add-answer-button:hover,
+.report-answer-button:hover {
   color: #2dafd3;
   cursor: pointer;
 }
@@ -1122,8 +1127,8 @@ QuestionsModule
   text-align: center;
   width: 300px;
   height: 380px;
-  border: 1px solid black;
-  border-radius: 4px;
+  border: 3px solid #0083a8;
+  border-radius: 20px;
 }
 
 .post-answer-body,

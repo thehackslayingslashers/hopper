@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {IoMdCloseCircle} from 'react-icons/io';
 
 class PostAnswer extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class PostAnswer extends React.Component {
 
   handleSubmitPostAnswer(e) {
     e.preventDefault();
-    const { currentQuestionId } = this.props;
+    const { currentQuestionId, getCurrentProductQuestionsAndAnswers } = this.props;
     const {
       postUsernameFieldValue,
       postEmailFieldValue,
@@ -109,6 +110,7 @@ class PostAnswer extends React.Component {
           this.setState({
             postAnswerErrorDisplay: { display: 'none' },
           });
+          getCurrentProductQuestionsAndAnswers();
         })
         .catch((error) => {
           throw error;
@@ -129,14 +131,14 @@ class PostAnswer extends React.Component {
     const { postAnswerErrorDisplay, photoUploadInputsDisplayed } = this.state;
     return (
       <div>
-        <div className={darkMode ? "post-answer-container darkMode" : "post-answer-container"}>
+        <div className={darkMode ? 'post-answer-container darkMode' : 'post-answer-container'}>
           <div
             className="close-post-answer-container"
             onClick={() => {
               this.props.revertFieldDisplay();
             }}
           >
-            <i className="fas fa-window-close" />
+            <IoMdCloseCircle size={36}/>
           </div>
           <div className="post-answer-text-fields">
             Post Answer Here:{' '}
