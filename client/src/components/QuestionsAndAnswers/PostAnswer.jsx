@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {IoMdCloseCircle} from 'react-icons/io';
 
 class PostAnswer extends React.Component {
   constructor(props) {
@@ -137,7 +138,7 @@ class PostAnswer extends React.Component {
               this.props.revertFieldDisplay();
             }}
           >
-            <i className="fas fa-window-close" />
+            <IoMdCloseCircle size={36}/>
           </div>
           <div className="post-answer-text-fields">
             Post Answer Here:{' '}

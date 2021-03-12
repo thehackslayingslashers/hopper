@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 class PostQuestion extends React.Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class PostQuestion extends React.Component {
   render() {
     const { onHandleAddAQuestionButtonClick, darkMode } = this.props;
     return (
-      <div className={darkMode ? "post-question-container darkMode" : "post-question-container"}>
+      <div className={darkMode ? 'post-question-container darkMode' : 'post-question-container'}>
         <div className="post-question-header">
           <u>Post Your Question Here!</u>
         </div>
@@ -92,7 +93,7 @@ class PostQuestion extends React.Component {
             onHandleAddAQuestionButtonClick();
           }}
         >
-          <i className="fas fa-window-close" />
+          <IoMdCloseCircle size={36} />
         </div>
       </div>
     );
