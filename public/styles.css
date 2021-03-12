@@ -802,7 +802,7 @@ hr {
 }
 
 .modalButton {
-  background-color: #f8f6f5;;
+  background-color: #f8f6f5;
   color: #0083a8;
   width: 100px;
   border: 1px solid #0083a8;
@@ -984,6 +984,8 @@ QuestionsModule
   padding-left: 8px;
   padding-top: 8px;
   padding-bottom: 20px;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 .answer-item {
   padding-bottom: 10px;
@@ -1034,14 +1036,14 @@ QuestionsModule
 
 .close-post-question-container {
   display: relative;
-  transform: translate(330px, -350px);
+  transform: translate(320px, -336px);
   z-index: 1;
   cursor: pointer;
 }
 
 .close-post-answer-container {
   display: relative;
-  transform: translate(300px, -20px);
+  transform: translate(285px, -25px);
   z-index: 1;
   width: 20px;
   height: 20px;
