@@ -27,7 +27,7 @@ const Header = ({
     </div>
     <div>
       <h4 id="announcement">
-        SITE-WIDE ANNOUNCMENT MESSAGE! -- SALE/DISCOUNT OFFER -- NEW PRODUCT HIGHLIGHT
+        SITE-WIDE ANNOUNCEMENT MESSAGE! -- SALE/DISCOUNT OFFER -- NEW PRODUCT HIGHLIGHT
       </h4>
     </div>
   </>

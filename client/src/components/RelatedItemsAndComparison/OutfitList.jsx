@@ -111,6 +111,7 @@ class OutfitList extends React.Component {
     const {
       handleCardClick,
       outfitSlidePosition,
+      darkMode,
     } = this.props;
 
     let leftArrow = null;
@@ -135,6 +136,7 @@ class OutfitList extends React.Component {
             <div className="carousel-slide outfit-slide">
               <AddOutfitCard
                 handleAddClick={this.handleAddClick}
+                darkMode={darkMode}
               />
               {
                 outfits.map((outfitItem) => (
@@ -143,6 +145,7 @@ class OutfitList extends React.Component {
                     handleDeleteClick={this.handleDeleteClick}
                     handleCardClick={handleCardClick}
                     key={'outfit' + outfitItem.id}
+                    darkMode={darkMode}
                   />
                 ))
               }

@@ -182,6 +182,7 @@ class App extends React.Component {
           currentItemRatingInfo={currentItemRatingInfo}
           currentItemStyles={currentItemStyles}
           handleCardClickIdChange={this.handleCardClickIdChange}
+          darkMode={darkMode}
         />
         <QuestionsAndAnswers
           key={currentItemId}

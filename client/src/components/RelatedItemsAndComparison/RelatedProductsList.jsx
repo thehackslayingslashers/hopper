@@ -67,7 +67,7 @@ class RelatedProductsList extends React.Component {
   }
 
   render() {
-    const { relatedProducts, currentItem, handleCardClick, relatedSlidePosition } = this.props;
+    const { relatedProducts, currentItem, handleCardClick, relatedSlidePosition, darkMode } = this.props;
     const { show, comparedItem } = this.state;
 
     let leftArrow = null;
@@ -90,6 +90,7 @@ class RelatedProductsList extends React.Component {
             currentItem={currentItem}
             comparedItem={comparedItem}
             key="productComparisonModal"
+            darkMode={darkMode}
           />
           <h2>Related Products</h2>
           <div className="carousel-wrapper">
@@ -104,6 +105,7 @@ class RelatedProductsList extends React.Component {
                       handleCompareClick={this.handleCompareClick}
                       showModal={this.showModal}
                       key={relatedProduct.id}
+                      darkMode={darkMode}
                     />
                   ))
                 }
@@ -121,9 +123,9 @@ class RelatedProductsList extends React.Component {
             {leftArrow}
             <div className="carousel-track">
               <div className="carousel-slide related-slide">
-                <RelatedProductCard />
-                <RelatedProductCard />
-                <RelatedProductCard />
+                <RelatedProductCard darkMode={darkMode} />
+                <RelatedProductCard darkMode={darkMode} />
+                <RelatedProductCard darkMode={darkMode} />
               </div>
             </div>
             {rightArrow}
