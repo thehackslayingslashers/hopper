@@ -25,6 +25,13 @@ class RelatedItemsAndComparison extends React.Component {
     this.getRelatedProductsToCurrent();
   }
 
+  componentDidUpdate(prevProps) {
+    const { currentItemId } = this.props;
+    if (prevProps.currentItemId !== currentItemId) {
+      this.getRelatedProductsToCurrent();
+    }
+  }
+
   handleCardClick(newId) {
     const { handleCardClickIdChange } = this.props;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -72,6 +79,7 @@ class RelatedItemsAndComparison extends React.Component {
           }
           return null;
         });
+
         this.setState({
           relatedProducts: receivedProducts,
         });
