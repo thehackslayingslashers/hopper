@@ -10,8 +10,9 @@ class AddOutfitCard extends React.Component {
   }
 
   render() {
+    const { darkMode } = this.props;
     return (
-      <div className="card productcard">
+      <div className={darkMode ? "card productcard darkMode" : "card productcard"}>
         <div className="addtooutfit" onClick={this.props.handleAddClick}>
           <div className="circle" />
           <h3>Add Current Product To Outfits</h3>

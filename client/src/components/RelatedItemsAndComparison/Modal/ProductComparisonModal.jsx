@@ -16,6 +16,7 @@ class ProductComparisonModal extends React.Component {
       currentItem,
       comparedItem,
       showModal,
+      darkMode
     } = this.props;
     if (!show) {
       return null;
@@ -27,6 +28,7 @@ class ProductComparisonModal extends React.Component {
           comparedItem={comparedItem}
           showModal={showModal}
           key="ProductComparisonTable"
+          darkMode={darkMode}
         />
       </div>
     );

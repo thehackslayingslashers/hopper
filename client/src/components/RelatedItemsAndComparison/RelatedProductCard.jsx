@@ -37,6 +37,7 @@ class RelatedProductCard extends React.Component {
       handleCompareClick,
       handleCardClick,
       handleResetCarousel,
+      darkMode,
     } = this.props;
     const { currentItemAverageRating } = this.state;
     if (relatedProduct) {
@@ -68,7 +69,7 @@ class RelatedProductCard extends React.Component {
       }
 
       return (
-        <div className="card productcard">
+        <div className={darkMode ? "card productcard darkMode" : "card productcard"}>
           <i
             className="cardIcon compareIcon"
             onClick={() => handleCompareClick(relatedProduct)}
@@ -96,7 +97,7 @@ class RelatedProductCard extends React.Component {
       );
     }
     return (
-      <div className="card productcard">
+      <div className={darkMode ? "card productcard darkMode" : "card productcard"}>
         <div className="cardimage">
           <h2> Now Loading... </h2>
         </div>
