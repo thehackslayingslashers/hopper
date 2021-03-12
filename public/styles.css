@@ -208,10 +208,8 @@ Overview Module
   width: 5em;
   border: black solid 1px;
   grid-column: 2;
-  grid-row-start: 1;
-  grid-row-end: 11;
   z-index: 6;
-  transition: width 200ms;
+  transition: width 200ms scale 300ms translate 200ms;
 }
 
 .thumbnail:focus {
@@ -220,30 +218,29 @@ Overview Module
 
 .thumbnail:hover {
   cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgb(0, 0, 0);
 }
 
 .thumbnail.chosen {
   box-shadow: -5px -5px 2px rgba(0, 0, 0, 0.2);
-  position: relative;
-  top: 5px;
-  left: 5px;
+  transform: translate(5px, 5px) ;
   width: 7em;
 }
 
+.thumbnail.chosen:hover {
+  transform: scale(1.1) translate(5px, 5px);
+  /* transform: translate(5px, 5px) ; */
+}
+
 .imageGalleryIcon {
-  height: 2vh;
-  min-height: 20px;
-  max-height: 30px;
-  width: 2vh;
-  min-width: 20px;
-  max-width: 30px;
+  height: 22px;
+  width: 22px;
   grid-column: 2;
-  grid-row-start: 1;
-  grid-row-end: 11;
   z-index: 6;
-  transition: width 200ms;
   margin: auto auto auto 10px;
   color: rgb(139, 139, 139);
+  transition: all 300ms;
 }
 
 .imageGalleryIcon:focus {
@@ -252,12 +249,13 @@ Overview Module
 
 .imageGalleryIcon:hover {
   cursor: pointer;
+  transform: scale(1.3);
 }
 
 .imageGalleryIcon.chosen {
   color: #0083a8;
   background-color: rgb(139, 139, 139);
-  border-radius: 15px;
+  border-radius: 50%;
 }
 
 #fullScreenButton {
@@ -269,6 +267,7 @@ Overview Module
 
 #fullScreenButton:hover {
   cursor: pointer;
+  transform: scale(1.3)
 }
 
 .overviewArrow {
@@ -282,6 +281,7 @@ Overview Module
 
 .overviewArrow:hover {
   cursor: pointer;
+  transform: scale(1.3)
 }
 
 .overviewArrow:focus {
@@ -316,7 +316,6 @@ Overview Module
 
 #overviewArrowLeft {
   grid-column: 3;
-  /* margin-left: 12%; */
 }
 
 #overviewArrowRight {
@@ -413,6 +412,10 @@ Overview Module
   font-size: smaller;
   color: #0083a8;
 }
+#readAllReviews a:hover {
+  color: #2dafd3;
+}
+
 
 #overviewBasicInfo span {
   line-height: 1;
@@ -456,6 +459,8 @@ Overview Module
 .overviewStyleItem:hover {
   border: solid 1px grey;
   cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgb(0, 0, 0);
 }
 
 .overviewStyleItem:focus {
