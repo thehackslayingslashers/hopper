@@ -860,8 +860,11 @@ hr {
 }
 
 .starFilter {
+  display: flex;
+  justify-content: left;
   transition: all 1s;
   position: relative;
+  margin: 5%;
 }
 
 .starFilter::after {
@@ -876,12 +879,46 @@ hr {
 }
 
 .starFilter:hover::after {
-  width: 100%;
+  width: 95%;
 }
 
 .starFilter:hover {
   cursor: pointer;
   color: #08344e;
+  transform: scale(1.1, 1.1);
+}
+
+.outterBar {
+  height: 20%;
+  width: 75%;
+  background-color: #e0e0de;
+  border-radius: 50px;
+  margin: 0px;
+}
+
+.innerBar {
+  height: 100%;
+  width: 0;
+  background-Color: #0083a8;
+  border-radius: inherit;
+  text-align: right;
+  transition: all 1s;
+}
+
+.innerBar:hover {
+  background-Color: #08344e;
+}
+
+.percentIndicator {
+  padding: 5px;
+  color: #0083a8;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 1s;
+}
+
+.percentIndicator:hover {
+  color: #e0e0de;
 }
 
 /*
