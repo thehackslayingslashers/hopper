@@ -42,7 +42,7 @@ class QuestionsAndAnswers extends React.Component {
   }
 
   render() {
-    const { currentItemId, withClickTracker } = this.props;
+    const { currentItemId, withClickTracker, darkMode } = this.props;
     const { currentProductQuestions, searchedQuestion } = this.state;
     return (
       <div id="questions-and-answers-container" onClick={withClickTracker}>
@@ -56,6 +56,7 @@ class QuestionsAndAnswers extends React.Component {
           currentItemId={currentItemId}
           currentProductQuestions={currentProductQuestions}
           searchedQuestion={searchedQuestion}
+          darkMode={darkMode}
         />
       </div>
     );

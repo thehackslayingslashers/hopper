@@ -54,9 +54,9 @@ class PostQuestion extends React.Component {
   }
 
   render() {
-    const { onHandleAddAQuestionButtonClick } = this.props;
+    const { onHandleAddAQuestionButtonClick, darkMode } = this.props;
     return (
-      <div className="post-question-container">
+      <div className={darkMode ? "post-question-container darkMode" : "post-question-container"}>
         <div className="post-question-header">
           <u>Post Your Question Here!</u>
         </div>

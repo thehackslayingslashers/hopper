@@ -153,7 +153,7 @@ class App extends React.Component {
       darkMode,
     } = this.state;
     return (
-      <div>
+      <div className={darkMode ? 'darkMode' : null}>
         <Header
           searchId={this.searchId}
           searchValue={searchValue}
@@ -180,6 +180,7 @@ class App extends React.Component {
         <QuestionsAndAnswers
           key={currentItemId}
           currentItemId={currentItemId}
+          darkMode={darkMode}
         />
         <LMod
           currentItemId={currentItemId}
