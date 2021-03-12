@@ -1268,17 +1268,10 @@ Related Items Module
   opacity: 1;
 }
 
-.compareIcon:hover {
-  /* cursor: help; */
-}
-
-.deleteIcon:hover {
-  /* cursor: crosshair; */
-}
-
 .cardIcon:hover {
   transform: scale(1.3);
   transition: 0.5s;
+  cursor: pointer;
 }
 
 .productcard {
@@ -1335,8 +1328,6 @@ Related Items Module
   text-align: center;
   opacity: 1;
   z-index: 7;
-  /* display: flex;
-  flex-direction: column; */
   contain: strict;
   border: 1px solid black;
   border-radius: 6px;
@@ -1346,14 +1337,12 @@ Related Items Module
 table,
 th,
 td {
-  /* background: white; */
   border: 1px solid black;
   border-collapse: collapse;
 }
 
 th,
 td {
-  /* width: 50px; */
   padding: 15px;
   text-align: center;
 }
