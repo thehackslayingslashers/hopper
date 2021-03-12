@@ -32,6 +32,10 @@ h6 {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button, select {
+  transition: all 0.3s;
+}
+
 /*
 =====================
 Header
@@ -44,6 +48,10 @@ Header
   grid-template-rows: 10px auto 10px;
   border-bottom: 1px solid #0083a8;
   background-color: white;
+}
+
+#pageHeader.darkMode{
+  background-color: black;
 }
 
 #logo {
@@ -865,7 +873,6 @@ QuestionsModule
 */
 
 #questions-and-answers-container {
-  background-color: #f8f6f5;
   font-size: 18pt;
   margin: auto;
   width: 100%;
@@ -888,7 +895,7 @@ QuestionsModule
   outline: none;
   border: none;
   height: 50px;
-  background-color: #f8f6f5;
+  background: none;
   border-bottom: 1px solid #0083a8;
   padding-left: 15px;
   padding-top: 25px;
@@ -990,14 +997,18 @@ QuestionsModule
   margin-top: 10%;
   margin-left: 20%;
   position: fixed;
-  z-index: 1;
+  z-index: 7;
   top: 0;
-  background-color: white;
+  background-color: #f8f6f5;
   padding: 20px;
   height: 350px;
   width: 350px;
   border: 1px solid black;
   border-radius: 4px;
+}
+
+.post-question-container.darkMode {
+  background-color: rgb(48, 47, 47);
 }
 
 .post-question-header {
@@ -1047,14 +1058,15 @@ QuestionsModule
 
 .add-a-question-button {
   padding: 20px;
-  border: 2px solid grey;
-  background-color: #f8f6f5;
+  border: 1px solid #0083a8;
+  background: none;
   font-size: 18pt;
+  color: #0083a8;
 }
 
 .add-a-question-button:hover {
   background-color: #0083a8;
-  border: 2px solid #0083a8;
+  border: 1px solid #0083a8;
   color: white;
 }
 
@@ -1105,7 +1117,7 @@ QuestionsModule
   top: 0;
   z-index: 1;
   transform: translate(400px, 300px);
-  background-color: white;
+  background-color: #f8f6f5;
   padding: 35px;
   text-align: center;
   width: 300px;
@@ -1374,5 +1386,5 @@ th {
   z-index: 3;
 }
 .darkMode {
-  background-color: rgb(48, 47, 47) !important;
+  background-color: rgb(48, 47, 47);
 }
