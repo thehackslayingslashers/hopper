@@ -709,7 +709,7 @@ hr {
 .LModButton:hover {
   background: #0083a8;
   color: #fff;
-  border: 2px solid #0083a8;
+  border: 1px solid #0083a8;
 }
 
 .Sorting h2 {
@@ -791,6 +791,7 @@ hr {
   height: 100%;
   overflow: auto;
   backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .reviewModalInner {
@@ -801,10 +802,11 @@ hr {
 }
 
 .modalButton {
-  background-color: white;
-  color: #aaa;
+  background-color: #f8f6f5;;
+  color: #0083a8;
   width: 100px;
-  border: 1px;
+  border: 1px solid #0083a8;
+  border-radius: 5px;
   margin: 20px auto;
   padding: 5px;
 }
@@ -823,7 +825,7 @@ hr {
 }
 
 .addReview {
-  background-color: white;
+  background-color: #f8f6f5;
   border-radius: 20px;
   font-family: Arial, sans-serif;
   border: solid;
@@ -849,6 +851,7 @@ hr {
 .question4 input {
   border: none;
   border-bottom: 2px solid #0083a8;
+  background-color: inherit;
 }
 
 .filterContainer:hover {
