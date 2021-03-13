@@ -29,7 +29,7 @@ class QuestionsAndAnswers extends React.Component {
   getCurrentProductQuestionsAndAnswers() {
     const { currentItemId } = this.props;
     // let id = this.props.currentItemId;
-    let queryObj = { params: { count: 10 } };
+    let queryObj = { params: { count: 20 } };
 
     axios
       .get(`/qa/questions/${currentItemId}`, queryObj)
@@ -56,6 +56,7 @@ class QuestionsAndAnswers extends React.Component {
           currentItemId={currentItemId}
           currentProductQuestions={currentProductQuestions}
           searchedQuestion={searchedQuestion}
+          getCurrentProductQuestionsAndAnswers={this.getCurrentProductQuestionsAndAnswers}
           darkMode={darkMode}
         />
       </div>
