@@ -68,7 +68,7 @@ class OverviewMod extends React.Component {
             key={`${currentItemStyles[selectedStyleIndex].style_id}1`}
             selectedStyleIndex={selectedStyleIndex}
           />
-        ) : <div id="overviewAddToCart"></div>}
+        ) : <div id="overviewAddToCart" />}
         <ProductInformation currentItemInfo={currentItemInfo} />
         <FeatureList features={currentItemInfo.features} />
       </div>
