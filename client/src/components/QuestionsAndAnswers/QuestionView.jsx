@@ -49,7 +49,12 @@ class QuestionView extends React.Component {
   }
 
   render() {
-    const { currentProductQuestions, currentItemId, darkMode } = this.props;
+    const {
+      getCurrentProductQuestionsAndAnswers,
+      currentProductQuestions,
+      currentItemId,
+      darkMode,
+    } = this.props;
     const {
       questionsDisplayed,
       showMoreQuestionsButtonDisplay,
@@ -61,7 +66,12 @@ class QuestionView extends React.Component {
       <div>
         {questionList.map((question, index) => (
           <div key={index}>
-            <Question question={question} currentItemId={currentItemId} darkMode={darkMode} />
+            <Question
+              question={question}
+              currentItemId={currentItemId}
+              darkMode={darkMode}
+              getCurrentProductQuestionsAndAnswers={getCurrentProductQuestionsAndAnswers}
+            />
           </div>
         ))}
         <div className="question-view-button-container">
@@ -87,6 +97,7 @@ class QuestionView extends React.Component {
           <PostQuestion
             currentItemId={currentItemId}
             onHandleAddAQuestionButtonClick={this.handleAddAQuestionButtonClick}
+            getCurrentProductQuestionsAndAnswers={getCurrentProductQuestionsAndAnswers}
             darkMode={darkMode}
           />
         )}
